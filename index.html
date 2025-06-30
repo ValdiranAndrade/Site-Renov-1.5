@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Renov - Sua Troca Inteligente</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <div class="page-wrapper">
+        <!-- Header com Logo e Navegação -->
+    <header>
+            <div class="header-content">
+            <div class="logo">
+                <img src="assets/images/renov-logo.png" alt="Renov - Sua Troca Inteligente">
+            </div>
+                <nav class="main-nav">
+                    <div class="tab-buttons">
+                        <button class="tab-btn active" onclick="openTab('home')">Home</button>
+                        <button class="tab-btn" onclick="openTab('sobre')">Sobre Nós</button>
+                        <button class="tab-btn" onclick="openTab('trabalhe')">Trabalhe Conosco</button>
+                        <button class="tab-btn" onclick="openTab('contato')">Fale Conosco</button>
+                    </div>
+                </nav>
+            <div class="social-links">
+                <a href="https://www.instagram.com/renovsmart" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/company/renovsmart/posts/?feedView=all" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://api.whatsapp.com/send?phone=551151942988&text=Olá! Gostaria de saber mais sobre a Renov." target="_blank"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            </div>
+    </header>
+
+        <!-- Conteúdo das Abas -->
+    <main>
+            <!-- Aba Home -->
+            <section id="home" class="tab-content active">
+                <section class="hero">
+                  <div class="video-bg-wrapper">
+                    <video autoplay muted loop playsinline class="video-bg">
+                      <source src="assets/video/bg-video.mp4.mp4" type="video/mp4">
+                      Seu navegador não suporta vídeo em HTML5.
+                    </video>
+                  </div>
+                    <div class="hero-content">
+                        <div class="hero-text">
+                            <h1>Troque.<br>Economize.<br>Evolua.</h1>
+                            <p>O Trade-in da Renov permite que você use seu dispositivo atual como parte do pagamento na compra de um novo aparelho. Receba um desconto instantâneo e faça um upgrade inteligente.</p>
+                        </div>
+                    </div>
+                </section>
+                <section id="como-funciona" class="como-funciona">
+                    <div class="como-funciona-bg">
+                        <img src="assets/images/bg-como-funciona.png" alt="Background">
+                    </div>
+                    <div class="como-funciona-content">
+                        <div class="como-funciona-texto">
+                            <h2>Conheça o Trade-in da Renov.</h2>
+                            <p>
+                                Nos conectamos com as Redes de Varejo ou Empresas<br>
+                                de pequeno até grande porte onde o nosso processo inovador<br>
+                                trabalha para aumentar suas conversões de vendas<br>
+                                ou upgrade. São 4 macro etapas.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+                <!-- Seção Avaliação, Diagnóstico e Pagamento -->
+                <div class="avaliacao-diagnostico-wrapper">
+                    <section class="avaliacao-container">
+                        <div class="avaliacao-bg"></div>
+                        <div class="avaliacao-conteudo">
+                            <h2 class="avaliacao-titulo">Avaliação</h2>
+                            <p class="avaliacao-descricao">Cliente realiza a avaliação do seu dispositivo usado em um dos nossos parceiros no varejo e empresas.</p>
+                        </div>
+                    </section>
+                    <section class="diagnostico-container">
+                        <div class="diagnostico-bg"></div>
+                        <div class="diagnostico-conteudo">
+                            <h2 class="diagnostico-titulo">Diagnóstico</h2>
+                            <p class="diagnostico-descricao">Plataforma Renovsmart realiza o diagnóstico inteligente e gera um voucher de desconto.</p>
+                        </div>
+                    </section>
+                    <section class="pagamento-container">
+                        <div class="pagamento-bg"></div>
+                        <div class="pagamento-conteudo">
+                            <h2 class="pagamento-titulo">Logistica</h2>
+                            <p class="pagamento-descricao">Operação Logística de coleta reversa dos dispositivos usados nas lojas ou empresas.</p>
+                        </div>
+                    </section>
+                    <section class="novo-container">
+                        <div class="novo-bg"></div>
+                        <div class="novo-conteudo">
+                            <h2 class="novo-titulo">Pagamento</h2>
+                            <p class="novo-descricao">Pagamento e revenda dos dispositivos pela Renovsmart, ou descarte tecnológico responsável caso não apresentem valor comercial.</p>
+                        </div>
+                    </section>
+                </div>
+                <section class="nossa-solucao">
+                    <div class="nossa-solucao-container">
+                        <h2>Nossa Solução</h2>
+                        <p>
+                            Na Renov, oferecemos uma solução completa e prática para quem deseja trocar de dispositivo com economia e consciência. Utilizamos uma tecnologia que realiza uma avaliação automatizada e justa, analisando com precisão o estado do seu aparelho. São considerados o modelo, o funcionamento e as condições físicas para garantir sempre a melhor oferta.
+                        </p>
+                        <p>
+                            Trocar de celular nunca foi tão fácil.<br>
+                            Com a Renov, você economiza, faz a troca com confiança e ainda contribui para o cuidado com o planeta, tudo em um só processo.
+                        </p>
+                    </div>
+                </section>
+                <section class="impactos-renov">
+                    <div class="impactos-container">
+                        <div class="impacto-item">
+                            <img src="assets/icons/sustentabilidade.png" alt="Sustentabilidade" class="impacto-icon">
+                            <h3>Sustentabilidade</h3>
+                            <p>Facilitamos o acesso ao mercado de dispositivos usados.</p>
+                            <a href="Sustentabilidade.html" class="impacto-link" target="_blank">Saiba mais</a>
+                        </div>
+                        <div class="impacto-item">
+                            <img src="assets/icons/economia-circular-icon.png" alt="Economia circular" class="impacto-icon">
+                            <h3>Economia circular</h3>
+                            <p>Produtos são reutilizados invés de descartados.</p>
+                            <a href="#" class="impacto-link">Saiba mais</a>
+                        </div>
+                        <div class="impacto-item">
+                            <img src="assets/icons/responsabilidade-ambiental.png" alt="Responsabilidade ambiental" class="impacto-icon">
+                            <h3>Responsabilidade ambiental</h3>
+                            <p>Práticas alinhadas com ESG e reciclagem tecnologica.</p>
+                            <a href="#" class="impacto-link">Saiba mais</a>
+                        </div>
+                        <div class="impacto-item">
+                            <img src="assets/icons/desigualdade-digital.png" alt="Desigualdade Digital" class="impacto-icon">
+                            <h3>Desigualdade Digital</h3>
+                            <p>Oferecemos uma solução mais inclusiva na sociedade</p>
+                            <a href="#" class="impacto-link">Saiba mais</a>
+                        </div>
+                    </div>
+                </section>
+                <section id="diferenciais" class="diferenciais">
+                    <div class="diferenciais-container">
+                        <h2>Vantagens Exclusivas para Parceiros</h2>
+                        <div class="diferenciais-grid">
+                            <!-- IA -->
+                            <div class="diferencial-card">
+                                <div class="diferencial-icon">
+                                    <img src="assets/icons/ia-icon.png" alt="IA">
+                                </div>
+                                <h3 class="diferencial-title">IA</h3>
+                                <p class="diferencial-text">A análise dos dispositivos é realizada através da nossa tecnologia de IA avançada que avalia cada dispositivo em sua estética e também o seu funcionamento de forma automatizada</p>
+                            </div>
+                            <!-- Aplicativo -->
+                            <div class="diferencial-card">
+                                <div class="diferencial-icon">
+                                    <img src="assets/icons/app-icon.png" alt="Aplicativo">
+                                </div>
+                                <h3 class="diferencial-title">Aplicativo</h3>
+                                <p class="diferencial-text">Através do nosso aplicativo conseguimos avaliar o funcionamento de cada dispositivo em mais de 50 diferentes testes com alta eficiência.</p>
+                            </div>
+                            <!-- API -->
+                            <div class="diferencial-card">
+                                <div class="diferencial-icon">
+                                    <img src="assets/icons/api-icon.png" alt="API">
+                                </div>
+                                <h3 class="diferencial-title">API</h3>
+                                <p class="diferencial-text">Os nossos sistemas são abertos e integrados com os nossos parceiros em todas as pontas gerando maior velocidade nas operações e segurança em cada etapa dos sistemas.</p>
+                            </div>
+                            <!-- Logística -->
+                            <div class="diferencial-card">
+                                <div class="diferencial-icon">
+                                    <img src="assets/icons/logistics-icon.png" alt="Logística">
+                                </div>
+                                <h3 class="diferencial-title">Logística</h3>
+                                <p class="diferencial-text">Atendimento em todo o território nacional com customizações diversas para facilitar e agilizar os fluxos operacionais.</p>
+                            </div>
+                            <!-- Resultados -->
+                            <div class="diferencial-card">
+                                <div class="diferencial-icon">
+                                    <img src="assets/icons/results-icon.png" alt="Resultados">
+                                </div>
+                                <h3 class="diferencial-title">Resultados</h3>
+                                <p class="diferencial-text">Com a união de tecnologia, operações ágeis e eficientes aliado a alta experiência de mercado, elevamos os resultados dos nossos parceiros e potencializamos a satisfação de seus clientes.</p>
+                            </div>
+                            <!-- ESG -->
+                            <div class="diferencial-card">
+                                <div class="diferencial-icon">
+                                    <img src="assets/icons/esg-icon.png" alt="ESG">
+                                </div>
+                                <h3 class="diferencial-title">ESG</h3>
+                                <p class="diferencial-text">Presente em seu DNA, ao facilitar a reciclagem e a revenda conciente dos dispositivos usados, promovemos a economia circular e reduzimos o impacto ambiental no planeta.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section id="parceiros" class="parceiros">
+                    <div class="parceiros-header">
+                        <h2>Nossos Parceiros</h2>
+                    </div>
+                    <div class="parceiros-slider">
+                        <div class="slider-track">
+                            <!-- Primeiro conjunto de logos -->
+                            <div class="parceiro-item">
+                                <img src="assets/images/partners/fujioka.png" alt="Fujioka">
+                            </div>
+                            <div class="parceiro-item">
+                                <img src="assets/images/partners/sol.png" alt="SOL">
+                            </div>
+                            <div class="parceiro-item">
+                                <img src="assets/images/partners/mateus.png" alt="Mateus">
+                            </div>
+                            <div class="parceiro-item">
+                                <img src="assets/images/partners/gazin.png" alt="Gazin">
+                            </div>
+                            <div class="parceiro-item">
+                                <img src="assets/images/partners/foto-nascimento.png" alt="Foto Nascimento">
+                            </div>
+                            <div class="parceiro-item">
+                                <img src="assets/images/partners/ponto-frio.png" alt="Ponto Frio">
+                            </div>
+                            <div class="parceiro-item">
+                                <img src="assets/images/partners/tim.png" alt="TIM">
+                            </div>
+                            <div class="parceiro-item">
+                                <img src="assets/images/partners/casas-bahia.png" alt="Casas Bahia">
+                            </div>
+                            <div class="parceiro-item">
+                                <img src="assets/images/partners/facell.png" alt="Facell">
+                            </div>
+                            <!-- Duplicação dos logos para efeito infinito -->
+                            <div class="parceiro-item">
+                                <img src="assets/images/partners/fujioka.png" alt="Fujioka">
+                            </div>
+                            <div class="parceiro-item">
+                                <img src="assets/images/partners/sol.png" alt="SOL">
+                            </div>
+                            <div class="parceiro-item">
+                                <img src="assets/images/partners/mateus.png" alt="Mateus">
+                            </div>
+                            <div class="parceiro-item">
+                                <img src="assets/images/partners/gazin.png" alt="Gazin">
+                            </div>
+                            <div class="parceiro-item">
+                                <img src="assets/images/partners/foto-nascimento.png" alt="Foto Nascimento">
+                            </div>
+                            <div class="parceiro-item">
+                                <img src="assets/images/partners/ponto-frio.png" alt="Ponto Frio">
+                            </div>
+                            <div class="parceiro-item">
+                                <img src="assets/images/partners/tim.png" alt="TIM">
+                            </div>
+                            <div class="parceiro-item">
+                                <img src="assets/images/partners/casas-bahia.png" alt="Casas Bahia">
+                            </div>
+                            <div class="parceiro-item">
+                                <img src="assets/images/partners/facell.png" alt="Facell">
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- Seção Respostas Rápidas -->
+                <section class="respostas-rapidas">
+                    <div class="respostas-container">
+                        <h2>Dúvidas frequentes</h2>
+                        
+                        <div class="respostas-slider">
+                            <!-- Card 1 -->
+                            <div class="resposta-card">
+                                <h3>Como saber se o dispositivo é aceito no Trade-in Renov?</h3>
+                                <div class="resposta-content">
+                                    <div class="especialista">
+                                        <img src="assets/images/especialista1.png" alt="Especialista Renov" class="avatar">
+                                    </div>
+                                    <p>Através do <a href="https://app.renovsmart.com.br" target="_blank">https://app.renovsmart.com.br</a> você consegue iniciar a avaliação digitando o IMEI do aparelho, caso ele seja cadastrado você poderá dar continuidade na avaliação, caso o dispositivo não seja aceito, aparecerá uma notificação sinalizando que ele não está cadastrado para avaliação.</p>
+                                </div>
+                            </div>
+
+                            <!-- Card 2 -->
+                            <div class="resposta-card">
+                                <h3>Posso aceitar um dispositivo que não está no Programa Trade-in?</h3>
+                                <div class="resposta-content">
+                                    <div class="especialista">
+                                        <img src="assets/images/especialista2.png" alt="Especialista Renov" class="avatar">
+                                    </div>
+                                    <p>Não, no programa Trade-in são aceitos dispositivos fabricados nos últimos 5 anos.</p>
+                                </div>
+                            </div>
+
+                            <!-- Card 3 -->
+                            <div class="resposta-card">
+                                <h3>Posso aceitar um dispositivo que não liga?</h3>
+                                <div class="resposta-content">
+                                    <div class="especialista">
+                                        <img src="assets/images/matheus-mundstock.png" alt="Especialista Renov" class="avatar">
+                                    </div>
+                                    <p>Não, justamente porque o processo de diagnóstico inteligente necessita do dispositivo em pleno funcionamento.</p>
+                                </div>
+                            </div>
+
+                            <!-- Card 4 -->
+                            <div class="resposta-card">
+                                <h3>Caso tenha alguma dúvida ou problema na ferramenta Renov Smart, o que faço?</h3>
+                                <div class="resposta-content">
+                                    <div class="especialista">
+                                        <img src="assets/images/ismael-kolling.png" alt="Especialista Renov" class="avatar">
+                                    </div>
+                                    <p>Simples, pode acionar pelo whatsapp presente na tela de login, a ferramenta possui um atendimento automatizado e também pelo Especialista da Renov.</p>
+                                </div>
+                            </div>
+
+                            <!-- Card 5 -->
+                            <div class="resposta-card">
+                                <h3>Aceitamos dispositivos comprados no exterior?</h3>
+                                <div class="resposta-content">
+                                    <div class="especialista">
+                                        <img src="assets/images/especialista1.png" alt="Especialista Renov" class="avatar">
+                                    </div>
+                                    <p>Sim, o nosso programa de Trade in aceita os dispositivos adquiridos no Exterior.</p>
+                                </div>
+                            </div>
+
+                            <!-- Card 6 -->
+                            <div class="resposta-card">
+                                <h3>Preciso devolver os acessórios para receber o valor integral do voucher?</h3>
+                                <div class="resposta-content">
+                                    <div class="especialista">
+                                        <img src="assets/images/especialista2.png" alt="Especialista Renov" class="avatar">
+                                    </div>
+                                    <p>Não é necessário a entrega de nenhum item adicional, apenas o dispositivo.</p>
+                                </div>
+                            </div>
+
+                            <!-- Card 7 -->
+                            <div class="resposta-card">
+                                <h3>A Renov aceita dispositivos com a tela quebrada?</h3>
+                                <div class="resposta-content">
+                                    <div class="especialista">
+                                        <img src="assets/images/matheus-mundstock.png" alt="Especialista Renov" class="avatar">
+                                    </div>
+                                    <p>Aceitamos desde que o aparelho ligue para realizamos a avaliação Trade-in.</p>
+                                </div>
+                            </div>
+
+                            <!-- Card 8 -->
+                            <div class="resposta-card">
+                                <h3>Posso realizar a avaliação Trade-in em dois ou mais celulares diferentes do mesmo cliente?</h3>
+                                <div class="resposta-content">
+                                    <div class="especialista">
+                                        <img src="assets/images/ismael-kolling.png" alt="Especialista Renov" class="avatar">
+                                    </div>
+                                    <p>Sim, você pode realizar a avaliação Trade-in em diversos celulares do mesmo cliente, e serão gerados vouchers diferentes.</p>
+                                </div>
+                            </div>
+
+                            <!-- Card 9 -->
+                            <div class="resposta-card">
+                                <h3>O que fazer caso o dispositivo do cliente não seja elegível para avaliação Trade-in?</h3>
+                                <div class="resposta-content">
+                                    <div class="especialista">
+                                        <img src="assets/images/especialista1.png" alt="Especialista Renov" class="avatar">
+                                    </div>
+                                    <p>Se o seu dispositivo não for elegível, a melhor opção é entrar em contato com a Central de Apoio a Vendas da Renov, onde você poderá receber orientações sobre a possibilidade de registrar o dispositivo no programa de Trade-in.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Indicadores de slide -->
+                        <div class="slide-indicators">
+                            <button class="indicator active"></button>
+                            <button class="indicator"></button>
+                            <button class="indicator"></button>
+                            <button class="indicator"></button>
+                            <button class="indicator"></button>
+                            <button class="indicator"></button>
+                            <button class="indicator"></button>
+                            <button class="indicator"></button>
+                            <button class="indicator"></button>
+                        </div>
+
+                        <!-- Botões de navegação -->
+                        <button class="nav-button prev">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="nav-button next">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </section>
+            </section>
+
+            <!-- Aba Sobre Nós -->
+            <section id="sobre" class="tab-content">
+                <header style="position: relative; overflow: hidden;">
+                    <div class="header-content" style="position: relative; z-index: 1;">
+                        <!-- REMOVIDO: navegação duplicada -->
+                    </div>
+                </header>
+                <div class="sobre-nos">
+                    <section class="hero">
+                        <div class="hero-content">
+                            <div class="hero-text">
+                                <h2>Somos uma Empresa do Presente<br>pensando no Futuro.</h2>
+                                <p>A Renov oferece uma avaliação detalhada e precisa dos seus dispositivos usados, utilizando tecnologia avançada para garantir a melhor oferta. Seja para smartphones, tablets ou outros eletrônicos, nossa avaliação confiável e eficiente facilita o processo de upgrade para novos dispositivos.</p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </section>
+
+            <!-- Aba Trabalhe Conosco -->
+            <section id="trabalhe" class="tab-content">
+                <header style="position: relative; overflow: hidden;">
+                    <div class="header-content" style="position: relative; z-index: 1;">
+                        <!-- REMOVIDO: navegação duplicada -->
+                    </div>
+                </header>
+                <div class="trabalhe-conosco">
+                    <h1>Trabalhe Conosco</h1>
+                    <div class="trabalhe-content">
+                        <h2>Faça parte do nosso time!</h2>
+                        <p>Estamos sempre em busca de talentos que queiram transformar o mercado de tecnologia e contribuir para um futuro mais sustentável.</p>
+                        <div class="beneficios">
+                            <div class="beneficio">
+                                <i class="fas fa-building"></i>
+                                <span>Presencial</span>
+                            </div>
+                            <div class="beneficio">
+                                <i class="fas fa-graduation-cap"></i>
+                                <span>Desenvolvimento Profissional</span>
+                            </div>
+                            <div class="beneficio">
+                                <i class="fas fa-gift"></i>
+                                <span>Pacotes de Benefícios</span>
+                            </div>
+                            <div class="beneficio">
+                                <i class="fas fa-smile"></i>
+                                <span>Ambiente Descontraído</span>
+                            </div>
+                        </div>
+                        <a href="https://jobs.kenoby.com/renov" target="_blank" class="btn-vagas">Ver Vagas Disponíveis</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Aba Fale Conosco -->
+            <section id="contato" class="tab-content">
+                <header style="position: relative; overflow: hidden;">
+                    <div class="header-content" style="position: relative; z-index: 1;">
+                        <!-- REMOVIDO: navegação duplicada -->
+                    </div>
+                </header>
+                <div class="fale-conosco">
+                    <h1>Fale Conosco</h1>
+                    <p>Entre em contato conosco através dos nossos canais de atendimento:</p>
+                    <div class="contato-grid">
+                        <div class="contato-item">
+                            <i class="fas fa-envelope"></i>
+                            <h3>E-mail</h3>
+                            <p>contato@renovsmart.com.br</p>
+                        </div>
+                        <div class="contato-item">
+                            <i class="fab fa-whatsapp"></i>
+                            <h3>WhatsApp</h3>
+                            <p>(11) 5194-2988</p>
+                        </div>
+                        <div class="contato-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <h3>Endereço</h3>
+                            <p>São Paulo - SP</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-info">
+                <img src="assets/images/logo-2.png" alt="Renov - Sua Troca Inteligente" class="footer-logo">
+                <p>Sua melhor opção para trade-in</p>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/renovsmart" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/company/renovsmart/posts/?feedView=all" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://api.whatsapp.com/send?phone=551151942988&text=Olá! Gostaria de saber mais sobre a Renov." target="_blank"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Renov. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const items = document.querySelectorAll('.impacto-circular-item');
+        const textBox = document.getElementById('impacto-circular-text');
+        let lastActive = null;
+        items.forEach(item => {
+          item.addEventListener('mouseenter', () => {
+            if (lastActive) lastActive.classList.remove('active');
+            item.classList.add('active');
+            textBox.textContent = item.getAttribute('data-text');
+            lastActive = item;
+          });
+          item.addEventListener('mouseleave', () => {
+            item.classList.remove('active');
+            textBox.textContent = 'Passe o mouse sobre um ícone para ver o impacto.';
+            lastActive = null;
+          });
+          item.addEventListener('focus', () => {
+            if (lastActive) lastActive.classList.remove('active');
+            item.classList.add('active');
+            textBox.textContent = item.getAttribute('data-text');
+            lastActive = item;
+          });
+          item.addEventListener('blur', () => {
+            item.classList.remove('active');
+            textBox.textContent = 'Passe o mouse sobre um ícone para ver o impacto.';
+            lastActive = null;
+          });
+        });
+      });
+    </script>
+</body>
+</html> 
