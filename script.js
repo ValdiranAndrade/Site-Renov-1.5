@@ -557,7 +557,7 @@ document.addEventListener('DOMContentLoaded', function() {
         videoBg.style.display = 'none';
         header.classList.add('header-black');
       } else if (this.textContent.includes('Home')) {
-        videoBg.style.display = '';
+        videoBg.style.display = 'block';
         header.classList.remove('header-black');
       } else if (this.textContent.includes('Trabalhe Conosco') || this.textContent.includes('Fale Conosco')) {
         videoBg.style.display = 'none';
