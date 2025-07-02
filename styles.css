@@ -274,7 +274,7 @@ section h2, .impacto-pessoas h2, .diferenciais h2, .parceiros-header h2, .nossa-
 footer {
     width: 100%;
     max-width: 100%;
-    padding: 2px 0.5%;
+    padding: 12px 0 4px 0 !important;
     background-color: #333;
 }
 
@@ -285,29 +285,35 @@ footer {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 0.05rem;
+    padding: 0 !important;
 }
 
 .footer-info {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 0.05rem;
+    gap: 8px !important;
+    padding: 0 !important;
+    margin: 0 !important;
 }
 
 .footer-info img {
     width: auto;
+    max-width: 90px !important;
+    margin-bottom: 4px !important;
     }
 
 .footer-info p {
-    font-size: 1.1rem;
+    font-size: 1rem !important;
     color: #666;
+    margin: 0 0 4px 0 !important;
 }
 
 .footer-bottom {
     text-align: center;
     padding-top: 0px;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
-    font-size: 12px;
+    font-size: 0.95rem !important;
     line-height: 1.33337;
     font-weight: 400;
     letter-spacing: -.01em;
@@ -316,8 +322,8 @@ footer {
 
 .footer-info .social-links {
     display: flex;
-    gap: 1rem;
-    margin: 1rem 0;
+    gap: 8px !important;
+    margin: 0 !important;
 }
 
 .footer-info .social-links a {
@@ -1587,6 +1593,7 @@ header {
     z-index: 10;
     margin-bottom: 0;
     padding: 0 !important;
+    padding-bottom: 0 !important;
 }
 
 .header-content {
@@ -1596,6 +1603,8 @@ header {
     justify-content: space-between;
     align-items: center;
     gap: 0.5rem;
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
 }
 
 .logo {
@@ -1629,6 +1638,7 @@ header {
     cursor: pointer;
     position: relative;
     transition: color 0.3s ease;
+    text-shadow: none !important;
 }
 
 .tab-btn:hover {
@@ -1674,14 +1684,14 @@ header {
 /* Conteúdo Principal */
 main {
     flex-grow: 1;
-    padding: 2rem;
+    padding: 0;
     max-width: 1200px;
     margin: 0 auto;
     width: 100%;
     background-color: #fff;
     position: relative;
     z-index: 5;
-    }
+}
 
 .tab-content {
     display: none;
@@ -1736,8 +1746,7 @@ main {
 .hero {
     text-align: center;
     padding: 0 0 0 0;
-    margin-top: 150px;
-    margin-bottom: 200px;
+    margin-top: 0 !important;
     position: relative;
     overflow: hidden;
 }
@@ -2551,7 +2560,7 @@ header, .header-content, .main-nav, .tab-btn, .logo, .social-links a, .hero-cont
     right: 50%;
     margin-left: -50vw;
     margin-right: -50vw;
-    margin-top: -400px;
+    margin-top: 120px;
 }
 
 .como-funciona-bg {
@@ -2787,7 +2796,7 @@ header, .header-content, .main-nav, .tab-btn, .logo, .social-links a, .hero-cont
     align-items: flex-start;
     gap: 40px;
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 12px auto 0 auto;
     width: 100%;
 }
 
@@ -3295,7 +3304,10 @@ header::before, header::after,
 
 /* Seção Avaliação */
 .avaliacao-container {
-    max-width: 370px;
+    max-width: 780px;
+    min-width: 780px;
+    width: 100%;
+    box-sizing: border-box;
     margin: 48px 0 0 0;
     border-radius: 12px;
     background: #000;
@@ -3367,11 +3379,12 @@ header::before, header::after,
     justify-content: flex-start;
     align-items: flex-start;
     gap: 32px;
-    padding-left: 0%;
-    padding-right: 0;
+    margin-left: -40px;
+    padding-left: 0;
     width: 100%;
     box-sizing: border-box;
     position: static;
+    transform: translateX(-40px);
 }
 
 .avaliacao-diagnostico-wrapper::-webkit-scrollbar {
@@ -3740,6 +3753,7 @@ header::before, header::after,
     padding: 60px 5% 60px 0%;
     text-align: left;
     background: #fff;
+    padding-bottom: 12px;
 }
 
 .ai-description p {
@@ -3768,6 +3782,10 @@ header::before, header::after,
     margin-top: 0;
 }
 
+.ai-description p:last-child {
+    margin-bottom: 0 !important;
+}
+
 /* Estilos para o parágrafo final da seção Nossa Solução */
 .nossa-solucao-final {
     margin-bottom: 80px !important;
@@ -3781,4 +3799,127 @@ header::before, header::after,
 
 .nossa-solucao p:last-of-type {
     margin-bottom: 64px;
+}
+
+/* Nova seção: Melhoria na experiência do cliente */
+.parceiro-experiencia {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 64px 0 64px 0;
+  background: #fff;
+  gap: 48px;
+}
+.parceiro-experiencia-card {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  background: url('assets/images/quero-ser-parceiro.png') center center/cover no-repeat !important;
+  border-radius: 32px;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.08);
+  overflow: hidden;
+  max-width: 1000px;
+  width: 1000px;
+  min-height: 420px;
+  position: relative;
+}
+.parceiro-experiencia-card::before {
+  display: none;
+}
+.parceiro-experiencia-info, .parceiro-experiencia-img {
+  position: relative;
+  z-index: 1;
+}
+.parceiro-experiencia-img {
+  background: none !important;
+}
+.parceiro-experiencia-info {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 300px 40px 40px 40px;
+  background: none;
+}
+.parceiro-experiencia-icone {
+  margin-bottom: 24px;
+}
+.parceiro-experiencia-info h3 {
+  color: #111;
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+.btn-parceiro {
+  background: #fff;
+  color: #111;
+  font-size: 1.15rem;
+  font-weight: 600;
+  border: 2px solid #111;
+  border-radius: 32px;
+  padding: 16px 36px;
+  margin-top: 16px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(176,79,199,0.10);
+  transition: background 0.2s, color 0.2s, border 0.2s, transform 0.2s;
+}
+.btn-parceiro:hover {
+  background: #00C48C;
+  color: #fff;
+  border: 2px solid #00C48C;
+  transform: translateY(-2px) scale(1.04);
+}
+@media (max-width: 900px) {
+  .parceiro-experiencia-card {
+    flex-direction: column;
+    min-height: 0;
+    max-width: 98vw;
+  }
+  .parceiro-experiencia-img {
+    min-width: 0;
+    max-width: 100vw;
+    height: 320px;
+  }
+  .parceiro-experiencia-info {
+    padding: 32px 24px 24px 24px;
+  }
+}
+@media (max-width: 600px) {
+  .parceiro-experiencia {
+    padding: 32px 0;
+  }
+  .parceiro-experiencia-card {
+    border-radius: 18px;
+  }
+  .parceiro-experiencia-info h3 {
+    font-size: 1.3rem;
+    margin-bottom: 18px;
+  }
+  .btn-parceiro {
+    font-size: 1rem;
+    padding: 12px 20px;
+  }
+  .parceiro-experiencia-img {
+    height: 180px;
+  }
+}
+
+.parceiro-experiencia-card.parceiro-revenda-bg {
+  background: url('assets/images/quero-ser-revenda.png') center center/cover no-repeat !important;
+}
+
+.parceiro-experiencia-card.parceiro-revenda-bg .parceiro-experiencia-info h3 {
+  color: #fff;
+}
+.parceiro-experiencia-card.parceiro-revenda-bg .btn-parceiro {
+  background: transparent;
+  color: #fff !important;
+  border: 2px solid #fff;
+}
+.parceiro-experiencia-card.parceiro-revenda-bg .btn-parceiro:hover {
+  background: #00C48C;
+  color: #fff !important;
+  border: 2px solid #00C48C;
 }
