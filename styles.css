@@ -168,12 +168,13 @@ section h2 span {
 }
 
 .hero-text h1 {
-    font-size: 64px;
-    line-height: 1.1;
+    font-size: 48px;
+    line-height: 1.05 !important;
     margin-bottom: 24px;
     color: #fff !important;
     font-weight: 700;
     text-align: left;
+    white-space: normal !important;
 }
 
 .hero-text p {
@@ -197,7 +198,7 @@ section h2 span {
     }
 
     .hero-text h1 {
-        font-size: 48px;
+        font-size: 32px;
     }
 
     .hero-text p {
@@ -597,6 +598,7 @@ footer {
     padding: 4rem 5%;
     text-align: center;
     background: transparent !important;
+    box-shadow: none !important;
 }
 
 .sobre-nos h1 {
@@ -2604,6 +2606,11 @@ header, .header-content, .main-nav, .tab-btn, .logo, .social-links a, .hero-cont
     color: #000;
     font-weight: 700;
     text-align: left;
+    white-space: nowrap !important;
+    width: 100%;
+    max-width: 100%;
+    overflow: visible;
+    text-overflow: unset;
 }
 
 .como-funciona-texto p {
@@ -3125,16 +3132,48 @@ header, .header-content, .main-nav, .tab-btn, .logo, .social-links a, .hero-cont
 }
 
 #sobre .hero {
-  height: auto;
-  max-height: none;
-  display: flex;
-  align-items: flex-start;
+    position: relative !important;
+    width: 100% !important;
+    left: 0 !important;
+    margin-left: 0 !important;
+    right: 0 !important;
+    margin-right: 0 !important;
+    display: block !important;
+    padding: 0 !important;
 }
 
 #sobre .hero-content {
-  margin-top: 100px;
-  padding-top: 0;
-  padding-bottom: 0;
+  margin: 0 !important;
+  padding: 0 !important;
+  max-width: none !important;
+  width: 100% !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+#sobre .hero-text {
+  text-align: left !important;
+  margin: 0 !important;
+  padding: 0 0 0 0 !important;
+  max-width: none !important;
+}
+
+#sobre .hero-text h2 {
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1.15;
+  margin-bottom: 32px;
+  color: #000 !important;
+}
+
+@media (max-width: 768px) {
+  #sobre .hero-content {
+    max-width: 95vw;
+    padding: 0 8px;
+  }
+  #sobre .hero-text h2 {
+    font-size: 2.1rem;
+  }
 }
 
 #sobre.tab-content.active ~ .video-bg-wrapper {
@@ -3864,11 +3903,10 @@ header::before, header::after,
   cursor: pointer;
   box-shadow: 0 2px 8px rgba(176,79,199,0.10);
   transition: background 0.2s, color 0.2s, border 0.2s, transform 0.2s;
+  text-decoration: none;
+  display: inline-block;
 }
 .btn-parceiro:hover {
-  background: #00C48C;
-  color: #fff;
-  border: 2px solid #00C48C;
   transform: translateY(-2px) scale(1.04);
 }
 @media (max-width: 900px) {
@@ -3919,7 +3957,528 @@ header::before, header::after,
   border: 2px solid #fff;
 }
 .parceiro-experiencia-card.parceiro-revenda-bg .btn-parceiro:hover {
-  background: #00C48C;
-  color: #fff !important;
-  border: 2px solid #00C48C;
+  transform: translateY(-2px) scale(1.04);
+}
+
+/* Estilos para a página "Quero ser Parceiro" */
+
+/* Hero Section da página parceiro */
+.parceiro-hero {
+    background: linear-gradient(135deg, #00a137 0%, #00852d 100%);
+    padding: 120px 0 80px 0;
+    color: #fff;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+}
+
+.parceiro-hero-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.parceiro-hero-text h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 24px;
+    color: #fff;
+}
+
+.parceiro-hero-text p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 40px;
+    color: #fff;
+    opacity: 0.9;
+}
+
+.parceiro-hero-buttons {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.btn-parceiro-hero {
+    background: #fff;
+    color: #00a137;
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding: 16px 32px;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 2px solid #fff;
+}
+
+.btn-parceiro-hero:hover {
+    background: transparent;
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+.btn-parceiro-hero.btn-secundario {
+    background: transparent;
+    color: #fff;
+    border: 2px solid #fff;
+}
+
+.btn-parceiro-hero.btn-secundario:hover {
+    background: #fff;
+    color: #00a137;
+}
+
+.parceiro-hero-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.parceiro-hero-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+/* Seção Benefícios */
+.beneficios-parceiro {
+    padding: 80px 0;
+    background: #f8f9fa;
+}
+
+.beneficios-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5%;
+}
+
+.beneficios-container h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 60px;
+    color: #333;
+}
+
+.beneficios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+}
+
+.beneficio-card {
+    background: #fff;
+    padding: 40px 30px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.beneficio-card:hover {
+    transform: translateY(-10px);
+}
+
+.beneficio-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f0f8f0;
+    border-radius: 50%;
+}
+
+.beneficio-icon img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+
+.beneficio-card h3 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: #333;
+}
+
+.beneficio-card p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #666;
+}
+
+/* Seção Como Funciona */
+.como-funciona-parceiro {
+    padding: 80px 0;
+    background: #fff;
+}
+
+.como-funciona-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5%;
+}
+
+.como-funciona-container h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 60px;
+    color: #333;
+}
+
+.processo-parceiro {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+}
+
+.processo-item {
+    text-align: center;
+    padding: 30px 20px;
+}
+
+.processo-numero {
+    width: 60px;
+    height: 60px;
+    background: #00a137;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 auto 20px;
+}
+
+.processo-item h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: #333;
+}
+
+.processo-item p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #666;
+}
+
+/* Seção Parceiros Atuais */
+.parceiros-atuais {
+    padding: 80px 0;
+    background: #f8f9fa;
+}
+
+.parceiros-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5%;
+    text-align: center;
+}
+
+.parceiros-container h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: #333;
+}
+
+.parceiros-container p {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 60px;
+}
+
+.parceiros-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 40px;
+    align-items: center;
+}
+
+.parceiro-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.parceiro-logo:hover {
+    transform: translateY(-5px);
+}
+
+.parceiro-logo img {
+    max-width: 100%;
+    height: auto;
+    max-height: 60px;
+    object-fit: contain;
+}
+
+/* Seção Contato */
+.contato-parceiro {
+    padding: 80px 0;
+    background: #fff;
+}
+
+.contato-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5%;
+    text-align: center;
+}
+
+.contato-container h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: #333;
+}
+
+.contato-container p {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 60px;
+}
+
+.contato-info-parceiro {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+}
+
+.contato-item-parceiro {
+    background: #f8f9fa;
+    padding: 40px 30px;
+    border-radius: 20px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.contato-item-parceiro:hover {
+    transform: translateY(-5px);
+}
+
+.contato-item-parceiro i {
+    font-size: 3rem;
+    color: #00a137;
+    margin-bottom: 20px;
+}
+
+.contato-item-parceiro h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: #333;
+}
+
+.contato-item-parceiro p {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 24px;
+}
+
+.btn-contato {
+    background: #00a137;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 12px 24px;
+    border-radius: 25px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 2px solid #00a137;
+}
+
+.btn-contato:hover {
+    background: transparent;
+    color: #00a137;
+    transform: translateY(-2px);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .parceiro-hero-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        text-align: center;
+    }
+    
+    .parceiro-hero-text h1 {
+        font-size: 2.5rem;
+    }
+    
+    .parceiro-hero-text p {
+        font-size: 1rem;
+    }
+    
+    .parceiro-hero-buttons {
+        justify-content: center;
+    }
+    
+    .beneficios-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .processo-parceiro {
+        grid-template-columns: 1fr;
+    }
+    
+    .parceiros-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .contato-info-parceiro {
+        grid-template-columns: 1fr;
+    }
+    
+    .beneficios-container h2,
+    .como-funciona-container h2,
+    .parceiros-container h2,
+    .contato-container h2 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .parceiro-hero {
+        padding: 100px 0 60px 0;
+    }
+    
+    .parceiro-hero-text h1 {
+        font-size: 2rem;
+    }
+    
+    .parceiro-hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn-parceiro-hero {
+        width: 100%;
+        max-width: 280px;
+        text-align: center;
+    }
+    
+    .parceiros-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+#sobre .hero-content {
+  position: relative !important;
+  left: -150px !important;
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+  margin-top: 100px !important;
+}
+
+#sobre .hero {
+  overflow: visible !important;
+}
+#sobre .hero-content {
+  position: relative !important;
+  left: -150px !important;
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.footer-contact-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 32px;
+  color: #000;
+  text-align: left;
+  margin-top: 40px !important;
+}
+
+.footer-contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.footer-contact-item i {
+  font-size: 1.5rem !important;
+  color: #000;
+  margin-top: 2px;
+}
+
+.footer-contact-title {
+  font-size: 1rem !important;
+  font-weight: 500;
+  color: #000;
+  display: block;
+}
+
+.footer-contact-desc {
+  font-size: 0.85rem !important;
+  color: #000;
+  display: block;
+}
+
+.parceiro-experiencia > h2 {
+  margin-top: 48px;
+  margin-bottom: 32px;
+  text-align: left;
+}
+
+@media (max-width: 600px) {
+  .como-funciona-texto h2 {
+    font-size: 1.3rem;
+  }
+}
+
+.como-funciona-texto p {
+    text-align: left;
+    margin: 0;
+}
+
+.sobre-bg-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+    display: block !important;
+}
+.sobre-bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 120vw;
+    height: 120vh;
+    min-width: 120vw;
+    min-height: 120vh;
+    object-fit: cover;
+    transform: translate(calc(-50% - 200px), -50%);
+    z-index: 0;
+}
+#sobre .hero-content, #sobre .sobre-nos, #sobre .hero {
+    background: transparent !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
 }
