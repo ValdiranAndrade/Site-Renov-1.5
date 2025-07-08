@@ -113,35 +113,6 @@
                         <!-- Texto explicativo após o vídeo -->
                         <div class="ai-description">
                             <p>Nossa IA avalia dispositivos usados em minutos, oferecendo cotações justas e transparentes que seus clientes confiam. Sua equipe não precisa ser especialista em avaliação - a tecnologia cuida de tudo. Processo simples que seus vendedores dominam rapidamente, aumentando o ticket médio das vendas.</p>
-                            <p>Com a Renov, sua empresa aumenta vendas, fideliza clientes e ainda fortalece sua imagem como empresa sustentável - tudo em uma única solução.</p>
-                        </div>
-                    </div>
-                </section>
-                <section class="impactos-renov">
-                    <div class="impactos-container">
-                        <div class="impacto-item">
-                            <img src="assets/icons/sustentabilidade.png" alt="Sustentabilidade" class="impacto-icon">
-                            <h3>Sustentabilidade</h3>
-                            <p>Posicione sua empresa como sustentável ao oferecer alternativas conscientes aos seus clientes.</p>
-                            <a href="Sustentabilidade.html" class="impacto-link" target="_blank">Saiba mais</a>
-                        </div>
-                        <div class="impacto-item">
-                            <img src="assets/icons/economia-circular-icon.png" alt="Economia circular" class="impacto-icon">
-                            <h3>Economia Circular</h3>
-                            <p>Seu negócio participa ativamente da economia circular, agregando valor à marca.</p>
-                            <a href="#" class="impacto-link">Saiba mais</a>
-                        </div>
-                        <div class="impacto-item">
-                            <img src="assets/icons/responsabilidade-ambiental.png" alt="Responsabilidade ambiental" class="impacto-icon">
-                            <h3>Responsabilidade Ambiental</h3>
-                            <p>Fortaleça os pilares ESG da sua empresa com reciclagem tecnológica responsável.</p>
-                            <a href="#" class="impacto-link">Saiba mais</a>
-                        </div>
-                        <div class="impacto-item">
-                            <img src="assets/icons/desigualdade-digital.png" alt="Desigualdade Digital" class="impacto-icon">
-                            <h3>Desigualdade Digital</h3>
-                            <p>Sua empresa contribui para reduzir a desigualdade digital ao facilitar acesso à tecnologia.</p>
-                            <a href="#" class="impacto-link">Saiba mais</a>
                         </div>
                     </div>
                 </section>
@@ -278,7 +249,7 @@
                     <div class="parceiro-experiencia-info">
                       <h3>Redes de Varejo</h3>
                       <p style="color: #000;">Solução escalável para múltiplas lojas com gestão centralizada e relatórios unificados.</p>
-                      <a href="#contato" class="btn-parceiro">Quero ser parceiro</a>
+                      <a href="quero-ser-parceiro.html" class="btn-parceiro" onclick="window.location.href='quero-ser-parceiro.html'">Quero ser parceiro</a>
                     </div>
                     <div class="parceiro-experiencia-img"></div>
                   </div>
@@ -422,25 +393,44 @@
             </section>
 
             <!-- Aba Sobre Nós -->
-            <section id="sobre" class="tab-content">
-                <div class="sobre-bg-wrapper">
-                    <img src="assets/images/sobre-nos/sobre-nos.png" alt="Sobre Nós" class="sobre-bg">
+            <section id="sobre" class="tab-content relative w-full h-screen bg-cover bg-center">
+              <section class="hero">
+                <div class="hero-content" style="position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;height:12vh;text-align:left;color:#222;transform:translateY(400px);">
+                  <div style="max-width:700px;width:100%;display:flex;flex-direction:column;align-items:flex-start;margin-left:-400px;">
+                    <h1 style="font-size:3.2rem;font-weight:800;line-height:1.05;margin-bottom:1.5rem;color:#fff;">Parceiro estratégico<br>para crescimento<br>sustentável</h1>
+                    <p style="font-size:1.2rem;font-weight:400;line-height:1.4;margin-bottom:0;color:#fff;">Somos especialistas em soluções de trade-in que impulsionam vendas de varejo e telefonia. Nossa tecnologia avançada avalia smartphones, tablets e eletrônicos com precisão, facilitando upgrades e aumentando suas conversões. Transformamos objeções de preço em oportunidades de negócio.</p>
+                  </div>
                 </div>
-                <header style="position: relative; overflow: hidden;">
-                    <div class="header-content" style="position: relative; z-index: 1;">
-                        <!-- REMOVIDO: navegação duplicada -->
-                    </div>
-                </header>
-                <div class="sobre-nos">
-                    <section class="hero">
-                        <div class="hero-content">
-                            <div class="hero-text">
-                                <h2>Parceiro estratégico para crescimento sustentável</h2>
-                                <p>Somos especialistas em soluções de trade-in que impulsionam vendas de varejo e telefonia. Nossa tecnologia avançada avalia smartphones, tablets e eletrônicos com precisão, facilitando upgrades e aumentando suas conversões. Transformamos objeções de preço em oportunidades de negócio.</p>
-                            </div>
-                        </div>
-                    </section>
-                </div>
+              </section>
+              <p style="font-size:1.1rem;font-weight:400;line-height:1.4;text-align:left;color:#000;margin:48px auto 56px 350px;max-width:900px;">Com a Renov, sua empresa aumenta vendas, fideliza clientes e ainda fortalece sua imagem como empresa sustentável - tudo em uma única solução.</p>
+              <section class="impactos-renov">
+                  <div class="impactos-container">
+                      <div class="impacto-item">
+                          <img src="assets/icons/sustentabilidade.png" alt="Sustentabilidade" class="impacto-icon">
+                          <h3>Sustentabilidade</h3>
+                          <p class="impacto-texto-preto">Posicione sua empresa como sustentável ao oferecer alternativas conscientes aos seus clientes.</p>
+                          <a href="Sustentabilidade.html" class="impacto-link" target="_blank">Saiba mais</a>
+                      </div>
+                      <div class="impacto-item">
+                          <img src="assets/icons/economia-circular-icon.png" alt="Economia circular" class="impacto-icon">
+                          <h3>Economia Circular</h3>
+                          <p>Seu negócio participa ativamente da economia circular, agregando valor à marca.</p>
+                          <a href="#" class="impacto-link">Saiba mais</a>
+                      </div>
+                      <div class="impacto-item">
+                          <img src="assets/icons/responsabilidade-ambiental.png" alt="Responsabilidade ambiental" class="impacto-icon">
+                          <h3>Responsabilidade Ambiental</h3>
+                          <p>Fortaleça os pilares ESG da sua empresa com reciclagem tecnológica responsável.</p>
+                          <a href="#" class="impacto-link">Saiba mais</a>
+                      </div>
+                      <div class="impacto-item">
+                          <img src="assets/icons/desigualdade-digital.png" alt="Desigualdade Digital" class="impacto-icon">
+                          <h3>Desigualdade Digital</h3>
+                          <p>Sua empresa contribui para reduzir a desigualdade digital ao facilitar acesso à tecnologia.</p>
+                          <a href="#" class="impacto-link">Saiba mais</a>
+                      </div>
+                  </div>
+              </section>
             </section>
 
             <!-- Aba Trabalhe Conosco -->
@@ -450,29 +440,10 @@
                         <!-- REMOVIDO: navegação duplicada -->
                     </div>
                 </header>
-                <div class="trabalhe-conosco">
-                    <h1>Seja parte da revolução no varejo de tecnologia</h1>
-                    <div class="trabalhe-content">
-                        <h2>Seja parte da revolução no varejo de tecnologia</h2>
-                        <p>Junte-se ao time que está transformando como empresas vendem tecnologia no Brasil. Buscamos profissionais que queiram impactar o mercado de varejo e telefonia, criando soluções que geram resultados e sustentabilidade.</p>
-                        <div class="beneficios">
-                            <div class="beneficio">
-                                <i class="fas fa-building"></i>
-                                <span>Presencial</span>
-                            </div>
-                            <div class="beneficio">
-                                <i class="fas fa-graduation-cap"></i>
-                                <span>Desenvolvimento Profissional</span>
-                            </div>
-                            <div class="beneficio">
-                                <i class="fas fa-gift"></i>
-                                <span>Pacotes de Benefícios</span>
-                            </div>
-                            <div class="beneficio">
-                                <i class="fas fa-smile"></i>
-                                <span>Ambiente Descontraído</span>
-                            </div>
-                        </div>
+                <div class="trabalhe-conosco" style="text-align:left;">
+                    <h1 style="text-align:left;font-size:3.2rem;font-weight:800;line-height:1.05;margin-bottom:1.5rem;margin-left:-180px;">Seja parte da<br>revolução no varejo<br>de tecnologia</h1>
+                    <div class="trabalhe-content" style="text-align:left;">
+                        <p style="margin-left:-180px;">Junte-se ao time que está transformando como empresas vendem tecnologia no Brasil.<br>Buscamos profissionais que queiram impactar o mercado de varejo e telefonia,<br>criando soluções que geram resultados e sustentabilidade.</p>
                         <a href="https://jobs.kenoby.com/renov" target="_blank" class="btn-vagas">Ver Vagas Disponíveis</a>
                     </div>
                 </div>

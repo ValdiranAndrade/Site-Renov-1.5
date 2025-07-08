@@ -437,7 +437,7 @@ document.getElementById('form-contato')?.addEventListener('submit', function(e) 
 }); 
 
 // Função para abrir a aba selecionada
-function openTab(tabName) {
+function openTab(tabId) {
     // Oculta todas as abas
     const tabContents = document.querySelectorAll('.tab-content');
     tabContents.forEach(tab => {
@@ -451,12 +451,17 @@ function openTab(tabName) {
     });
 
     // Ativa a aba selecionada
-    document.getElementById(tabName).classList.add('active');
+    document.getElementById(tabId).classList.add('active');
     
     // Ativa o botão correspondente
-    const activeButton = document.querySelector(`.tab-btn[onclick="openTab('${tabName}')"]`);
+    const activeButton = document.querySelector(`.tab-btn[onclick="openTab('${tabId}')"]`);
     if (activeButton) {
         activeButton.classList.add('active');
+    }
+
+    document.body.classList.remove('sobre-bg-global');
+    if (tabId === 'sobre') {
+        document.body.classList.add('sobre-bg-global');
     }
 }
 
