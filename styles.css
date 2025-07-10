@@ -1627,7 +1627,7 @@ header {
     padding: 0.5rem 1rem;
     font-size: 0.9rem;
     font-weight: 500;
-    color: #fff;
+    color: #000;
     cursor: pointer;
     position: relative;
     transition: color 0.3s ease;
@@ -4572,4 +4572,19 @@ body.sobre-bg-global #sobre.tab-content {
 
 .respostas-rapidas, .respostas-container {
     background: none !important;
+}
+
+footer .social-links a {
+  color: #fff;
+  transition: color 0.2s;
+  cursor: pointer;
+  pointer-events: auto;
+}
+footer .social-links a:hover {
+  color: #00b140;
+}
+footer .social-links a i {
+  color: inherit !important;
+  transition: color 0.2s;
+  pointer-events: auto;
 }
