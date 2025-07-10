@@ -3418,12 +3418,12 @@ header::before, header::after,
     justify-content: flex-start;
     align-items: flex-start;
     gap: 32px;
-    margin-left: -40px;
+    margin-left: -10px;
     padding-left: 0;
     width: 100%;
     box-sizing: border-box;
     position: static;
-    transform: translateX(-40px);
+    transform: translateX(-10px);
 }
 
 .avaliacao-diagnostico-wrapper::-webkit-scrollbar {
