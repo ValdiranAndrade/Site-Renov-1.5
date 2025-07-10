@@ -20,10 +20,10 @@
             </div>
                 <nav class="main-nav">
                     <div class="tab-buttons">
-                        <button class="tab-btn active" onclick="openTab('home')">Home</button>
-                        <button class="tab-btn" onclick="openTab('sobre')">Sobre Nós</button>
-                        <button class="tab-btn" onclick="openTab('trabalhe')">Trabalhe Conosco</button>
-                        <button class="tab-btn" onclick="openTab('contato')">Fale Conosco</button>
+                        <button class="tab-btn active" onclick="openTab('home')" style="color:#000!important;">Home</button>
+                        <button class="tab-btn" onclick="openTab('sobre')" style="color:#000!important;">Sobre Nós</button>
+                        <button class="tab-btn" onclick="openTab('trabalhe')" style="color:#000!important;">Trabalhe Conosco</button>
+                        <button class="tab-btn" onclick="openTab('contato')" style="color:#000!important;">Fale Conosco</button>
                     </div>
                 </nav>
             <div class="social-links">
@@ -441,7 +441,7 @@
                     </div>
                 </header>
                 <div class="trabalhe-conosco" style="text-align:left;">
-                    <h1 style="text-align:left;font-size:3.2rem;font-weight:800;line-height:1.05;margin-bottom:1.5rem;margin-left:-180px;">Seja parte da<br>revolução no varejo<br>de tecnologia</h1>
+                    <h1 style="text-align:left;font-size:3.2rem;font-weight:800;line-height:1.05;margin-bottom:1.5rem;margin-left:-180px;">Faça parte da<br>revolução no varejo<br>de tecnologia</h1>
                     <p style="margin-left:-180px; margin-bottom:40px;">Junte-se ao time que está transformando como empresas vendem tecnologia no Brasil.<br>Buscamos profissionais que queiram impactar o mercado de varejo e telefonia,<br>criando soluções que geram resultados e sustentabilidade.</p>
                     <h2 style="text-align:center;font-size:2rem;font-weight:700;margin-bottom:2.5rem;margin-top:0;letter-spacing:-0.5px;color:#008d36;">Benefícios que cuidam de você.</h2>
                     <div class="trabalhe-content" style="text-align:left;">
@@ -449,7 +449,7 @@
                             </div>
                     <div style="display:flex;gap:15px;justify-content:center;margin:48px auto 0 auto;">
                         <section class="trabalhe-grid" style="display:grid;width:280px;grid-template-columns:repeat(3,80px);gap:10px;min-height:340px;height:340px;background:url('assets/images/vale-alimentação.png') center center/cover no-repeat;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,0.04);padding:24px 0;">
-                            <h3 style="grid-column:1/-1;text-align:center;color:#fff;font-size:1rem;font-weight:600;margin:0;text-shadow:2px 2px 4px rgba(0,0,0,0.7);">Vale Alimentação</h3>
+                            <h3 style="grid-column:1/-1;text-align:center;color:#fff;font-size:1rem;font-weight:600;margin:0;text-shadow:2px 2px 4px rgba(0,0,0,0.7);">Vale Alimentação/Refeição</h3>
                         </section>
                         <section class="trabalhe-grid" style="display:grid;width:280px;grid-template-columns:repeat(3,80px);gap:10px;min-height:340px;height:340px;background:url('assets/images/vale-mobilidade.png') center center/cover no-repeat;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,0.04);padding:24px 0;">
                             <h3 style="grid-column:1/-1;text-align:center;color:#fff;font-size:1rem;font-weight:600;margin:0;text-shadow:2px 2px 4px rgba(0,0,0,0.7);">Vale Mobilidade</h3>
@@ -537,38 +537,55 @@
         </main>
     </div>
 
-    <footer>
-        <div class="footer-content">
-            <div class="footer-info">
-                <img src="assets/images/Renov-Logo.png" alt="Renov - Sua Troca Inteligente" class="footer-logo" style="margin-bottom:2px;">
-                <p style="text-align:center;display:block;width:100%;margin:2px auto 2px auto;">Sua melhor opção para trade-in</p>
-                <div class="social-links" style="margin-top:2px;">
-                    <a href="https://www.instagram.com/renovsmart" target="_blank"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.linkedin.com/company/renovsmart/posts/?feedView=all" target="_blank"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://api.whatsapp.com/send?phone=551151942988&text=Olá! Gostaria de saber mais sobre a Renov." target="_blank"><i class="fab fa-whatsapp"></i></a>
-                </div>
-            </div>
-            <div class="footer-contact-info">
-              <div class="footer-contact-item">
-                <i class="fas fa-map-marker-alt"></i>
-                <div>
-                  <span class="footer-contact-title">Endereço</span>
-                  <span class="footer-contact-desc">R. Luigi Galvani, 200<br>São Paulo - SP</span>
-                </div>
-              </div>
-              <div class="footer-contact-item">
-                <i class="fas fa-phone"></i>
-                <div>
-                  <span class="footer-contact-title">Telefone</span>
-                  <span class="footer-contact-desc">(11) 5194-2988</span>
-                </div>
-              </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2024 Renov. Todos os direitos reservados.</p>
-        </div>
-    </footer>
+    <footer style="background:#181818;color:#fff;padding:0;width:100vw;border:none;">
+  <div style="max-width:1200px;margin:0 auto;padding:48px 32px 0 32px;display:flex;align-items:flex-start;justify-content:space-between;gap:48px;flex-wrap:wrap;">
+    <!-- Logo e social -->
+    <div style="flex:1 1 220px;min-width:180px;display:flex;flex-direction:column;align-items:flex-start;gap:24px;">
+      <img src='assets/images/Renov-Logo.png' alt='Renov - Sua Troca Inteligente' style='width:130px;filter:brightness(1.1);margin-top:-60px;'>
+      <div class="social-links" style="display:flex;gap:16px;margin-top:-75px;margin-left:10px;">
+        <a href="https://www.instagram.com/renovsmart" target="_blank" style="color:#fff;font-size:1.5rem;"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/company/renovsmart/posts/?feedView=all" target="_blank" style="color:#fff;font-size:1.5rem;"><i class="fab fa-linkedin"></i></a>
+        <a href="https://api.whatsapp.com/send?phone=551151942988&text=Olá! Gostaria de saber mais sobre a Renov." target="_blank" style="color:#fff;font-size:1.5rem;"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+    <!-- Navegação central -->
+    <div style="flex:2 1 520px;min-width:320px;display:flex;justify-content:center;gap:32px;">
+      <div style="display:flex;flex-direction:column;gap:12px;min-width:120px;">
+        <span style="font-weight:700;font-size:0.95rem;color:#000;margin-bottom:8px;">Home</span>
+        <a href="#como-funciona" onclick="openTab('home');document.getElementById('como-funciona').scrollIntoView({behavior: 'smooth'});" style="color:#000;text-decoration:none;font-size:0.95rem;">Solução</a>
+        <a href="#home" onclick="openTab('home');setTimeout(function(){document.querySelector('.ai-hero-title').scrollIntoView({behavior: 'smooth'});}, 200);" style="color:#000;text-decoration:none;font-size:0.95rem;">IA</a>
+        <a href="#parceiros" onclick="openTab('home');document.getElementById('parceiros').scrollIntoView({behavior: 'smooth'});" style="color:#000;text-decoration:none;font-size:0.95rem;">Parceiros</a>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px;min-width:120px;margin-right:24px;">
+        <span style="font-weight:700;font-size:0.95rem;color:#000;margin-bottom:8px;">Sobre Nós</span>
+        <a href="#sobre" onclick="openTab('sobre');document.querySelector('.impacto-item img[alt=\'Sustentabilidade\']').scrollIntoView({behavior: 'smooth'});" style="color:#000;text-decoration:none;font-size:0.95rem;">Sustentabilidade</a>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px;min-width:120px;margin-right:24px;">
+        <span style="font-weight:700;font-size:0.95rem;color:#000;margin-bottom:8px;white-space:nowrap;">Trabalhe Conosco</span>
+        <a href="#trabalhe" onclick="openTab('trabalhe');document.querySelector('.trabalhe-content').scrollIntoView({behavior: 'smooth'});" style="color:#000;text-decoration:none;font-size:0.95rem;">Benefícios</a>
+        <a href="#trabalhe" onclick="openTab('trabalhe');document.querySelector('.contato-rh-renov').scrollIntoView({behavior: 'smooth'});" style="color:#000;text-decoration:none;font-size:0.95rem;">Contato RH</a>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px;min-width:120px;margin-right:24px;">
+        <span style="font-weight:700;font-size:0.95rem;color:#000;margin-bottom:8px;">Fale Conosco</span>
+        <a href="#contato" onclick="openTab('contato');" style="color:#000;text-decoration:none;font-size:0.95rem;">Atendimento</a>
+      </div>
+    </div>
+    <!-- Contato à direita -->
+    <div style="flex:1 1 220px;min-width:180px;display:flex;flex-direction:column;align-items:flex-start;gap:18px;padding-left:0;margin-left:40px;">
+      <div style="display:flex;align-items:flex-start;gap:10px;font-size:1rem;margin-left:0;">
+        <i class="fas fa-map-marker-alt" style="color:#00b140;margin-top:6px;"></i>
+        <span style="color:#000;text-align:left;">R. Luigi Galvani, 200<br>São Paulo - SP</span>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:10px;font-size:1rem;margin-left:0;">
+        <i class="fas fa-phone" style="color:#00b140;margin-top:6px;"></i>
+        <span style="color:#000;text-align:left;">(11) 5194-2988</span>
+      </div>
+    </div>
+  </div>
+  <div style="margin:40px 0 0 0;padding:18px 0 8px 0;text-align:center;font-size:1rem;color:#bbb;background:#181818;border:none;box-shadow:none;outline:none;">
+    <span>&copy; 2024 Renov. Todos os direitos reservados.</span>
+  </div>
+</footer>
 
     <script src="script.js"></script>
     <script>
