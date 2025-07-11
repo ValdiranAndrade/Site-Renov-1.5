@@ -1584,7 +1584,7 @@ header {
     background: transparent !important;
     position: relative;
     z-index: 10;
-    margin-bottom: 0;
+    margin-bottom: 20px;
     padding: 0 !important;
     padding-bottom: 0 !important;
 }
@@ -2585,7 +2585,7 @@ header, .header-content, .main-nav, .tab-btn, .logo, .social-links a, .hero-cont
 .como-funciona-texto {
     max-width: 1200px;
     padding: 0;
-    margin: 0;
+    margin: 40px 0 0 -120px;
     background: none;
     text-align: left;
 }
@@ -2738,7 +2738,7 @@ header, .header-content, .main-nav, .tab-btn, .logo, .social-links a, .hero-cont
 
 .nossa-solucao {
     background: #fff;
-    padding: 56px 0 40px 0;
+    padding: 120px 0 40px 0;
     display: flex;
     justify-content: center;
 }
