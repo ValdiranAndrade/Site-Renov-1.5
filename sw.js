@@ -1,4 +1,5 @@
-const CACHE_NAME = 'renov-cache-v1.5';
+const CACHE_VERSION = '1.5.1';
+const CACHE_NAME = `renov-cache-v${CACHE_VERSION}`;
 const urlsToCache = [
   '/',
   '/index.html',
@@ -31,24 +32,31 @@ self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then(cache => {
-        console.log('Cache aberto');
+        console.log(`Cache v${CACHE_VERSION} aberto`);
         return cache.addAll(urlsToCache);
       })
   );
 });
 
-// Interceptação de requisições
+// Interceptação de requisições com controle de versão
 self.addEventListener('fetch', event => {
+  const request = event.request;
+  const url = new URL(request.url);
+  
+  // Remove parâmetros de versão para cache lookup
+  const cacheKey = url.origin + url.pathname;
+  
   event.respondWith(
-    caches.match(event.request)
+    caches.match(cacheKey)
       .then(response => {
         // Retorna do cache se disponível
         if (response) {
+          console.log('Serving from cache:', cacheKey);
           return response;
         }
         
         // Se não estiver no cache, busca da rede
-        return fetch(event.request).then(
+        return fetch(request).then(
           response => {
             // Verifica se a resposta é válida
             if(!response || response.status !== 200 || response.type !== 'basic') {
@@ -60,7 +68,8 @@ self.addEventListener('fetch', event => {
 
             caches.open(CACHE_NAME)
               .then(cache => {
-                cache.put(event.request, responseToCache);
+                cache.put(cacheKey, responseToCache);
+                console.log('Cached new resource:', cacheKey);
               });
 
             return response;
@@ -86,18 +95,45 @@ self.addEventListener('activate', event => {
   );
 });
 
-// Estratégia de cache para recursos estáticos
+// Estratégia de cache para recursos estáticos com controle de versão
 self.addEventListener('fetch', event => {
-  if (event.request.destination === 'image' || 
-      event.request.destination === 'video' ||
-      event.request.destination === 'font' ||
-      event.request.url.includes('.css') ||
-      event.request.url.includes('.js')) {
+  const request = event.request;
+  const url = new URL(request.url);
+  
+  // Estratégia cache-first para recursos estáticos
+  if (request.destination === 'image' || 
+      request.destination === 'video' ||
+      request.destination === 'font' ||
+      url.pathname.includes('.css') ||
+      url.pathname.includes('.js')) {
+    
+    const cacheKey = url.origin + url.pathname;
     
     event.respondWith(
-      caches.match(event.request)
+      caches.match(cacheKey)
         .then(response => {
-          return response || fetch(event.request);
+          if (response) {
+            return response;
+          }
+          return fetch(request);
+        })
+    );
+  }
+  
+  // Estratégia network-first para HTML
+  if (request.destination === 'document') {
+    event.respondWith(
+      fetch(request)
+        .then(response => {
+          const responseToCache = response.clone();
+          caches.open(CACHE_NAME)
+            .then(cache => {
+              cache.put(request.url, responseToCache);
+            });
+          return response;
+        })
+        .catch(() => {
+          return caches.match(request.url);
         })
     );
   }

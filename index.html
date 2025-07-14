@@ -9,12 +9,12 @@
     <meta name="robots" content="index, follow">
     
     <!-- PWA Manifest -->
-    <link rel="manifest" href="/manifest.json">
+    <link rel="manifest" href="/manifest.json?v=1.5.1">
     <meta name="theme-color" content="#00b140">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="Renov">
-    <link rel="apple-touch-icon" href="assets/images/Renov-Logo.png">
+    <link rel="apple-touch-icon" href="assets/images/Renov-Logo.png?v=1.5.1">
     
     <!-- Cache headers for long-term caching -->
     <meta http-equiv="Cache-Control" content="public, max-age=31536000, immutable">
@@ -24,15 +24,15 @@
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"></noscript>
     
-    <link rel="preload" href="styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="styles.css"></noscript>
+    <link rel="preload" href="styles.css?v=1.5.1" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="styles.css?v=1.5.1"></noscript>
     
     <!-- Preload critical images -->
-    <link rel="preload" href="assets/images/Renov-Logo.png" as="image">
-    <link rel="preload" href="assets/video/bg-video.mp4.mp4" as="video" type="video/mp4">
+    <link rel="preload" href="assets/images/Renov-Logo.png?v=1.5.1" as="image">
+    <link rel="preload" href="assets/video/bg-video.mp4.mp4?v=1.5.1" as="video" type="video/mp4">
     
     <title>Renov - Sua Troca Inteligente</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=1.5.1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'">
 </head>
 <body>
@@ -705,12 +705,12 @@
   </div>
 </footer>
 
-    <script src="script.js"></script>
+    <script src="script.js?v=1.5.1"></script>
     <script>
       // Registro do Service Worker para cache offline
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
-          navigator.serviceWorker.register('/sw.js')
+          navigator.serviceWorker.register('/sw.js?v=1.5.1')
             .then(registration => {
               console.log('Service Worker registrado com sucesso:', registration.scope);
             })
