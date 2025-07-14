@@ -237,6 +237,47 @@
             background: #008d36;
         }
 
+        .job-requirements {
+            margin: 1.5rem 0;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #00b140;
+        }
+
+        .job-requirements h4 {
+            color: #00b140;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .job-requirements ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 1.5rem 0;
+        }
+
+        .job-requirements li {
+            position: relative;
+            padding: 0.25rem 0 0.25rem 1.5rem;
+            color: #555;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .job-requirements li:before {
+            content: "•";
+            color: #00b140;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .job-requirements h4:last-of-type {
+            margin-top: 1.5rem;
+        }
+
         .no-jobs {
             text-align: center;
             padding: 3rem;
@@ -270,6 +311,24 @@
             background: #00b140;
             color: #fff;
             border-color: #00b140;
+        }
+
+        .show-more-btn {
+            background: none;
+            border: none;
+            color: #00b140;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+            margin-top: -0.5rem;
+            transition: color 0.2s;
+        }
+        .show-more-btn:hover {
+            color: #008d36;
         }
 
         @media (max-width: 768px) {
@@ -351,20 +410,35 @@
             <div class="job-card">
                 <div class="job-header">
                     <div>
-                        <h3 class="job-title">Desenvolvedor Full Stack Senior</h3>
+                        <h3 class="job-title">Desenvolvedor Full Stack Pleno</h3>
                         <p class="job-location"><i class="fas fa-map-marker-alt"></i> São Paulo - SP (Híbrido)</p>
                     </div>
                     <span class="job-type">CLT</span>
                 </div>
                 <p class="job-description">
-                    Estamos buscando um desenvolvedor Full Stack Senior para liderar o desenvolvimento de nossas plataformas de trade-in. Você será responsável por arquitetar soluções escaláveis, mentorar desenvolvedores juniores e garantir a qualidade do código em projetos críticos.
+                    Estamos em busca de um Desenvolvedor Full Stack Pleno responsável por projetar, implementar e manter soluções completas de software, atuando tanto no front-end quanto no back-end.
                 </p>
-                <div class="job-tags">
-                    <span class="job-tag">React/Next.js</span>
-                    <span class="job-tag">Node.js</span>
-                    <span class="job-tag">TypeScript</span>
-                    <span class="job-tag">AWS</span>
-                    <span class="job-tag">5+ anos</span>
+                <button class="show-more-btn" onclick="toggleRequisitos(this)">
+                    <span>Mostrar mais</span> <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="job-requirements" style="display:none;">
+                    <h4>Principais Responsabilidades:</h4>
+                    <ul>
+                        <li>Desenvolver aplicações web responsivas e APIs REST/GraphQL</li>
+                        <li>Estruturar e manter bancos de dados relacionais e não-relacionais</li>
+                        <li>Refatorar código para ganho de performance, organização e segurança</li>
+                        <li>Integrar o sistema Renov Smart com parceiros de varejo, logística e pagamentos</li>
+                        <li>Trabalhar com pipelines de CI/CD e práticas de versionamento</li>
+                        <li>Colaborar com áreas de Produto, Design, QA e Negócios em sprints ágeis</li>
+                        <li>Participar ativamente de revisões de código, testes e documentações</li>
+                        <li>Realizar ajustes, correções e melhorias em sistemas ativos</li>
+                        <li>Gestão de chamados</li>
+                    </ul>
+                    <h4>Requisitos:</h4>
+                    <ul>
+                        <li>Graduação completa ou em andamento em Ciência da Computação, Engenharia de Software, Sistemas de Informação ou áreas afins</li>
+                        <li>Experiência sólida com desenvolvimento full stack (mínimo 3 anos)</li>
+                    </ul>
                 </div>
                 <button class="apply-btn">Candidatar-se</button>
             </div>
@@ -373,20 +447,38 @@
             <div class="job-card">
                 <div class="job-header">
                     <div>
-                        <h3 class="job-title">Especialista em Machine Learning</h3>
-                        <p class="job-location"><i class="fas fa-map-marker-alt"></i> São Paulo - SP (Remoto)</p>
+                        <h3 class="job-title">Coordenador de Marketing Jr</h3>
+                        <p class="job-location"><i class="fas fa-map-marker-alt"></i> São Paulo - SP</p>
                     </div>
                     <span class="job-type">CLT</span>
                 </div>
                 <p class="job-description">
-                    Procura-se especialista em Machine Learning para desenvolver algoritmos de avaliação automática de dispositivos eletrônicos. Você será responsável por criar modelos de IA que analisam imagens e dados de smartphones, tablets e notebooks para determinar seu valor de mercado.
+                    Buscamos um Coordenador de Marketing Jr que garanta a conexão entre marketing, vendas e canais parceiros, estruturando ações que impulsionem a visibilidade, engajamento e conversão de vendas dos produtos usados da Renov. A posição é estratégica para potencializar a proposta de valor da marca no ponto de venda físico ou digital, valorizando a experiência do cliente e dos revendedores.
                 </p>
-                <div class="job-tags">
-                    <span class="job-tag">Python</span>
-                    <span class="job-tag">TensorFlow/PyTorch</span>
-                    <span class="job-tag">Computer Vision</span>
-                    <span class="job-tag">MLOps</span>
-                    <span class="job-tag">4+ anos</span>
+                <button class="show-more-btn" onclick="toggleRequisitos(this)">
+                    <span>Mostrar mais</span> <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="job-requirements" style="display:none;">
+                    <h4>Principais Responsabilidades:</h4>
+                    <ul>
+                        <li>Planejar e executar ações de Trade Marketing em conjunto com o time de vendas e marketing.</li>
+                        <li>Atuar como elo entre a área de marketing e os canais de vendas próprios ou parceiros (revendas, marketplaces, pontos físicos, representantes).</li>
+                        <li>Criar, implementar e acompanhar campanhas promocionais, incentivos, materiais de PDV e treinamentos voltados a canais parceiros.</li>
+                        <li>Apoiar a padronização de comunicação de marca em todos os pontos de contato com o cliente final e os revendedores.</li>
+                        <li>Acompanhar indicadores de sell-in e sell-out, propondo melhorias nas ações promocionais e de incentivo.</li>
+                        <li>Fazer a gestão de materiais promocionais, brindes e verbas cooperadas.</li>
+                        <li>Realizar visitas a pontos de venda, eventos e feiras para reforço de relacionamento e diagnóstico de oportunidades.</li>
+                        <li>Coordenar e desenvolver analistas ou estagiários, apoiando no desenvolvimento técnico e comportamental.</li>
+                    </ul>
+                    <h4>Requisitos:</h4>
+                    <ul>
+                        <li>Formação completa em Administração, Marketing, Comunicação, Publicidade ou áreas correlatas.</li>
+                        <li>Experiência anterior com trade marketing ou execução de campanhas em canais de vendas.</li>
+                        <li>Conhecimento em estratégias de PDV, ações promocionais, relacionamento com canais e gestão de materiais.</li>
+                        <li>Capacidade de leitura e análise de dados de sell-in / sell-out.</li>
+                        <li>Excel intermediário/avançado e uso de ferramentas como PowerPoint, Canva, e plataformas de CRM.</li>
+                        <li>Desejável experiência com canais de venda indireta, revendas ou varejo.</li>
+                    </ul>
                 </div>
                 <button class="apply-btn">Candidatar-se</button>
             </div>
@@ -395,20 +487,36 @@
             <div class="job-card">
                 <div class="job-header">
                     <div>
-                        <h3 class="job-title">Executivo de Vendas B2B</h3>
-                        <p class="job-location"><i class="fas fa-map-marker-alt"></i> São Paulo - SP</p>
+                        <h3 class="job-title">Assistente de Apoio a Vendas</h3>
+                        <p class="job-location"><i class="fas fa-map-marker-alt"></i> São Paulo - SP (Remoto)</p>
                     </div>
                     <span class="job-type">CLT</span>
                 </div>
                 <p class="job-description">
-                    Buscamos um executivo de vendas B2B experiente para expandir nossa base de parceiros no varejo e telefonia. Você será responsável por prospectar grandes redes varejistas, apresentar nossa solução de trade-in e fechar parcerias estratégicas que impulsionem nossas vendas.
+                    Estamos em busca de um Analista de Suporte a Vendas Júnior para atuar no setor de varejo, prestando suporte operacional e estratégico às equipes comerciais. O profissional será responsável por auxiliar na organização de processos, garantir o correto fluxo de informações e apoiar as lojas e vendedores na resolução de demandas.
                 </p>
-                <div class="job-tags">
-                    <span class="job-tag">Vendas B2B</span>
-                    <span class="job-tag">Varejo</span>
-                    <span class="job-tag">Telefonia</span>
-                    <span class="job-tag">CRM</span>
-                    <span class="job-tag">3+ anos</span>
+                <button class="show-more-btn" onclick="toggleRequisitos(this)">
+                    <span>Mostrar mais</span> <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="job-requirements" style="display:none;">
+                    <h4>Responsabilidades:</h4>
+                    <ul>
+                        <li>Suporte às equipes de vendas no ponto de venda, garantindo um atendimento ágil e eficiente.</li>
+                        <li>Acompanhamento de pedido, auxiliando na resolução de divergências.</li>
+                        <li>Interface com áreas internas (logística, financeiro e atendimento) para solucionar problemas comerciais.</li>
+                        <li>Atualização de tabelas de preços, campanhas e promoções no sistema.</li>
+                        <li>Controle e análise de indicadores de vendas, propondo melhorias.</li>
+                        <li>Apoio na organização de treinamentos e materiais para a equipe comercial.</li>
+                        <li>Atendimento a chamados internos e suporte técnico para dúvidas operacionais dos vendedores.</li>
+                    </ul>
+                    <h4>Requisitos:</h4>
+                    <ul>
+                        <li>Experiência prévia com suporte a vendas, atendimento ao cliente ou áreas comerciais no varejo.</li>
+                        <li>Conhecimento básico de Excel e sistemas ERP ou CRM.</li>
+                        <li>Boa comunicação verbal e escrita para interação com diferentes equipes.</li>
+                        <li>Perfil proativo, organizado e com senso de urgência.</li>
+                        <li>Disponibilidade para atuar em escala 6x1, incluindo finais de semana e feriados.</li>
+                    </ul>
                 </div>
                 <button class="apply-btn">Candidatar-se</button>
             </div>
@@ -417,108 +525,36 @@
             <div class="job-card">
                 <div class="job-header">
                     <div>
-                        <h3 class="job-title">Product Manager</h3>
+                        <h3 class="job-title">Assistente de Expedição</h3>
                         <p class="job-location"><i class="fas fa-map-marker-alt"></i> São Paulo - SP (Híbrido)</p>
                     </div>
                     <span class="job-type">CLT</span>
                 </div>
                 <p class="job-description">
-                    Procuramos um Product Manager para liderar o desenvolvimento de nossos produtos de trade-in. Você será responsável por definir a estratégia de produto, priorizar funcionalidades, trabalhar com equipes de desenvolvimento e garantir que nossos produtos atendam às necessidades dos clientes.
+                    Estamos em busca de um Assistente de Logística para apoiar as operações do nosso setor de Logística. Você será responsável por acompanhar o fluxo de entrada e saída de produtos, organizar a expedição e recebimento de aparelhos, controlar estoques e garantir que os processos logísticos ocorram com precisão e agilidade. Trabalhará em parceria com as áreas de atendimento, transportadoras e parceiros varejistas, contribuindo para uma operação eficiente e orientada à experiência do cliente.
                 </p>
-                <div class="job-tags">
-                    <span class="job-tag">Product Strategy</span>
-                    <span class="job-tag">Agile/Scrum</span>
-                    <span class="job-tag">Data Analysis</span>
-                    <span class="job-tag">User Research</span>
-                    <span class="job-tag">4+ anos</span>
-                </div>
-                <button class="apply-btn">Candidatar-se</button>
-            </div>
-
-            <!-- Vaga 5 -->
-            <div class="job-card">
-                <div class="job-header">
-                    <div>
-                        <h3 class="job-title">Analista de Dados</h3>
-                        <p class="job-location"><i class="fas fa-map-marker-alt"></i> São Paulo - SP</p>
-                    </div>
-                    <span class="job-type">CLT</span>
-                </div>
-                <p class="job-description">
-                    Estamos buscando um analista de dados para transformar dados em insights acionáveis. Você será responsável por analisar métricas de performance, criar dashboards, identificar tendências de mercado e apoiar decisões estratégicas baseadas em dados.
-                </p>
-                <div class="job-tags">
-                    <span class="job-tag">SQL</span>
-                    <span class="job-tag">Python</span>
-                    <span class="job-tag">Power BI</span>
-                    <span class="job-tag">Excel</span>
-                    <span class="job-tag">2+ anos</span>
-                </div>
-                <button class="apply-btn">Candidatar-se</button>
-            </div>
-
-            <!-- Vaga 6 -->
-            <div class="job-card">
-                <div class="job-header">
-                    <div>
-                        <h3 class="job-title">UX/UI Designer</h3>
-                        <p class="job-location"><i class="fas fa-map-marker-alt"></i> São Paulo - SP (Híbrido)</p>
-                    </div>
-                    <span class="job-type">CLT</span>
-                </div>
-                <p class="job-description">
-                    Procuramos um UX/UI Designer para criar experiências digitais excepcionais para nossos aplicativos de trade-in. Você trabalhará em interfaces intuitivas que facilitam a avaliação de dispositivos para vendedores e clientes, sempre pensando na usabilidade e acessibilidade.
-                </p>
-                <div class="job-tags">
-                    <span class="job-tag">Figma</span>
-                    <span class="job-tag">Mobile First</span>
-                    <span class="job-tag">Design System</span>
-                    <span class="job-tag">Prototipagem</span>
-                    <span class="job-tag">3+ anos</span>
-                </div>
-                <button class="apply-btn">Candidatar-se</button>
-            </div>
-
-            <!-- Vaga 7 -->
-            <div class="job-card">
-                <div class="job-header">
-                    <div>
-                        <h3 class="job-title">Analista de Customer Success</h3>
-                        <p class="job-location"><i class="fas fa-map-marker-alt"></i> São Paulo - SP</p>
-                    </div>
-                    <span class="job-type">CLT</span>
-                </div>
-                <p class="job-description">
-                    Buscamos um analista de Customer Success para garantir a satisfação e retenção de nossos parceiros. Você será responsável por acompanhar o onboarding de novos clientes, resolver problemas, coletar feedback e trabalhar para melhorar a experiência dos usuários.
-                </p>
-                <div class="job-tags">
-                    <span class="job-tag">Atendimento</span>
-                    <span class="job-tag">CRM</span>
-                    <span class="job-tag">Onboarding</span>
-                    <span class="job-tag">Feedback</span>
-                    <span class="job-tag">2+ anos</span>
-                </div>
-                <button class="apply-btn">Candidatar-se</button>
-            </div>
-
-            <!-- Vaga 8 -->
-            <div class="job-card">
-                <div class="job-header">
-                    <div>
-                        <h3 class="job-title">Estagiário de Desenvolvimento</h3>
-                        <p class="job-location"><i class="fas fa-map-marker-alt"></i> São Paulo - SP</p>
-                    </div>
-                    <span class="job-type">Estágio</span>
-                </div>
-                <p class="job-description">
-                    Oportunidade de estágio para estudantes de Ciência da Computação, Sistemas de Informação ou áreas relacionadas. Você apoiará nossa equipe de desenvolvimento, aprendendo sobre tecnologias modernas e contribuindo para projetos reais de trade-in.
-                </p>
-                <div class="job-tags">
-                    <span class="job-tag">JavaScript</span>
-                    <span class="job-tag">React</span>
-                    <span class="job-tag">Node.js</span>
-                    <span class="job-tag">Git</span>
-                    <span class="job-tag">Estudante</span>
+                <button class="show-more-btn" onclick="toggleRequisitos(this)">
+                    <span>Mostrar mais</span> <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="job-requirements" style="display:none;">
+                    <h4>Responsabilidades:</h4>
+                    <ul>
+                        <li>Realizar separação e conferência de produtos para envio.</li>
+                        <li>Efetuar a embalagem correta dos itens conforme padrões de qualidade da empresa.</li>
+                        <li>Apoiar no controle de entrada e saída de produtos no estoque.</li>
+                        <li>Emitir etiquetas de transporte, notas fiscais e organizar documentos de expedição.</li>
+                        <li>Acompanhar coletas e entregas junto às transportadoras e parceiros. Manter o espaço de expedição organizado e funcional.</li>
+                        <li>Colaborar com o time de triagem, logística reversa e atendimento quando necessário.</li>
+                        <li>Apoiar o processo administrativo junto as equipes de triagem, logística e revendas.</li>
+                        <li>Sinalizar eventuais avarias, divergências ou atrasos de forma proativa.</li>
+                    </ul>
+                    <h4>Requisitos:</h4>
+                    <ul>
+                        <li>Ensino médio completo.</li>
+                        <li>Experiência anterior em expedição, almoxarifado ou logística.</li>
+                        <li>Familiaridade com sistemas de controle de estoque.</li>
+                        <li>Desejável experiência em utilização do pacote Office e ferramentas Google.</li>
+                    </ul>
                 </div>
                 <button class="apply-btn">Candidatar-se</button>
             </div>
@@ -533,31 +569,147 @@
         </div>
     </main>
 
+    <!-- Modal de candidatura -->
+    <div id="modal-candidatura" class="modal-candidatura" style="display:none;">
+      <div class="modal-content">
+        <span class="close-modal" onclick="fecharModal()">&times;</span>
+        <h2 id="modal-titulo-vaga">Candidatura</h2>
+        <form id="form-candidatura" action="https://formspree.io/f/xzzvpwlg" method="POST" enctype="multipart/form-data" target="_blank" onsubmit="return mostrarMensagemSucesso();">
+          <label for="curriculo-pdf" style="font-weight:600;">Anexe seu currículo (PDF):</label><br>
+          <input type="file" id="curriculo-pdf" name="curriculo" accept="application/pdf" required style="margin:12px 0 24px 0;">
+          <div id="file-name" style="font-size:0.95rem;color:#555;margin-bottom:16px;"></div>
+          <button type="submit" class="enviar-btn">Enviar candidatura</button>
+        </form>
+        <div id="mensagem-sucesso" style="display:none;color:#00b140;font-weight:600;font-size:1.1rem;margin-top:18px;text-align:center;">Candidatura enviada com sucesso! Em breve entraremos em contato.</div>
+      </div>
+    </div>
+
+    <style>
+    .modal-candidatura {
+      position: fixed;
+      z-index: 9999;
+      left: 0; top: 0; width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.45);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .modal-content {
+      background: #fff;
+      border-radius: 12px;
+      padding: 32px 32px 24px 32px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+      min-width: 340px; max-width: 95vw;
+      position: relative;
+      text-align: left;
+    }
+    .close-modal {
+      position: absolute; right: 18px; top: 12px;
+      font-size: 2rem; color: #888; cursor: pointer;
+      transition: color 0.2s;
+    }
+    .close-modal:hover { color: #00b140; }
+    .enviar-btn {
+      background: #00b140; color: #fff; font-weight:600; border:none; border-radius:8px;
+      padding: 12px 32px; font-size:1.1rem; cursor:pointer; transition: background 0.2s;
+    }
+    .enviar-btn:hover { background: #008d36; }
+    #file-name { margin-top: -12px; margin-bottom: 12px; }
+    </style>
+
     <script>
         // Funcionalidade de busca
         document.querySelector('.search-form').addEventListener('submit', function(e) {
             e.preventDefault();
-            const searchTerm = document.querySelector('.search-input').value;
-            // Aqui você implementaria a lógica de busca
-            console.log('Buscando por:', searchTerm);
+            aplicarFiltrosEBusca();
         });
+
+        // Funcionalidade dos filtros
+        document.querySelectorAll('.filter-select').forEach(select => {
+            select.addEventListener('change', function() {
+                aplicarFiltrosEBusca();
+            });
+        });
+
+        function aplicarFiltrosEBusca() {
+            const searchTerm = document.querySelector('.search-input').value.trim().toLowerCase();
+            const area = document.querySelectorAll('.filter-select')[0].value;
+            const localizacao = document.querySelectorAll('.filter-select')[1].value;
+            const tipo = document.querySelectorAll('.filter-select')[2].value;
+            const vagas = document.querySelectorAll('.job-card');
+            let encontrou = false;
+            vagas.forEach(vaga => {
+                const titulo = vaga.querySelector('.job-title').textContent.toLowerCase();
+                const descricao = vaga.querySelector('.job-description').textContent.toLowerCase();
+                const local = vaga.querySelector('.job-location').textContent.toLowerCase();
+                // Área
+                let areaMatch = (area === 'Todas as áreas');
+                if (!areaMatch) {
+                    if (area === 'Tecnologia' && titulo.includes('desenvolvedor')) areaMatch = true;
+                    if (area === 'Marketing' && titulo.includes('marketing')) areaMatch = true;
+                    if (area === 'Operações' && titulo.includes('expedição')) areaMatch = true;
+                    if (area === 'Vendas' && titulo.includes('apoio a vendas')) areaMatch = true;
+                }
+                // Localização
+                let localMatch = (localizacao === 'Todas as localizações') || local.includes(localizacao.toLowerCase());
+                // Tipo (ajustado para considerar também o título da vaga)
+                let tipoMatch = (tipo === 'Todos os tipos') || vaga.querySelector('.job-type').textContent.toLowerCase().includes(tipo.toLowerCase()) || titulo.includes(tipo.toLowerCase());
+                // Busca
+                let buscaMatch = (!searchTerm || titulo.includes(searchTerm) || descricao.includes(searchTerm));
+                if (areaMatch && localMatch && tipoMatch && buscaMatch) {
+                    vaga.style.display = '';
+                    encontrou = true;
+                } else {
+                    vaga.style.display = 'none';
+                }
+            });
+            // Se não encontrar nenhuma vaga, exibe mensagem
+            let noJobs = document.getElementById('no-jobs-msg');
+            if (!noJobs) {
+                noJobs = document.createElement('div');
+                noJobs.id = 'no-jobs-msg';
+                noJobs.className = 'no-jobs';
+                noJobs.innerHTML = '<i class="fas fa-search"></i><br>Nenhuma vaga encontrada para essa busca.';
+                document.querySelector('.jobs-container').appendChild(noJobs);
+            }
+            noJobs.style.display = encontrou ? 'none' : 'block';
+        }
 
         // Funcionalidade dos botões de candidatura
         document.querySelectorAll('.apply-btn').forEach(btn => {
             btn.addEventListener('click', function() {
                 const jobTitle = this.closest('.job-card').querySelector('.job-title').textContent;
-                // Aqui você implementaria a lógica de candidatura
-                alert(`Candidatura enviada para: ${jobTitle}\n\nEm breve entraremos em contato!`);
+                document.getElementById('modal-titulo-vaga').textContent = `Candidatura para: ${jobTitle}`;
+                document.getElementById('modal-candidatura').style.display = 'flex';
+                document.getElementById('form-candidatura').reset();
+                document.getElementById('file-name').textContent = '';
             });
         });
 
-        // Funcionalidade de filtros
-        document.querySelectorAll('.filter-select').forEach(select => {
-            select.addEventListener('change', function() {
-                // Aqui você implementaria a lógica de filtro
-                console.log('Filtro alterado:', this.value);
-            });
+        // Fechar modal
+        function fecharModal() {
+            document.getElementById('modal-candidatura').style.display = 'none';
+        }
+
+        // Mostrar nome do arquivo selecionado
+        document.getElementById('curriculo-pdf').addEventListener('change', function() {
+            const file = this.files[0];
+            if (file) {
+                document.getElementById('file-name').textContent = `Selecionado: ${file.name}`;
+            } else {
+                document.getElementById('file-name').textContent = '';
+            }
         });
+
+        // Mensagem de sucesso após envio
+        function mostrarMensagemSucesso() {
+            setTimeout(function() {
+                document.getElementById('mensagem-sucesso').style.display = 'block';
+                setTimeout(function() {
+                    document.getElementById('mensagem-sucesso').style.display = 'none';
+                    fecharModal();
+                }, 2500);
+            }, 500);
+            return true; // permite o envio do form
+        }
 
         // Funcionalidade de paginação
         document.querySelectorAll('.page-btn').forEach(btn => {
@@ -567,6 +719,22 @@
                 // Aqui você implementaria a lógica de paginação
             });
         });
+
+        function toggleRequisitos(btn) {
+            const req = btn.nextElementSibling;
+            const icon = btn.querySelector('i');
+            if (req.style.display === 'none' || req.style.display === '') {
+                req.style.display = 'block';
+                btn.querySelector('span').textContent = 'Mostrar menos';
+                icon.classList.remove('fa-chevron-down');
+                icon.classList.add('fa-chevron-up');
+            } else {
+                req.style.display = 'none';
+                btn.querySelector('span').textContent = 'Mostrar mais';
+                icon.classList.remove('fa-chevron-up');
+                icon.classList.add('fa-chevron-down');
+            }
+        }
     </script>
 </body>
 </html> 
