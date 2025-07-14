@@ -1,0 +1,73 @@
+{
+  "name": "renov-build-config",
+  "version": "1.5.1",
+  "description": "Configuração de build otimizada seguindo as melhores práticas do Chrome para cache de longo prazo",
+  "cache": {
+    "strategy": "long-term",
+    "duration": "31536000",
+    "immutable": true,
+    "versioning": "hash-based"
+  },
+  "optimization": {
+    "compression": {
+      "gzip": true,
+      "brotli": true,
+      "minify": true
+    },
+    "images": {
+      "webp": true,
+      "responsive": true,
+      "lazy": true
+    },
+    "fonts": {
+      "preload": true,
+      "display": "swap",
+      "fallback": true
+    }
+  },
+  "headers": {
+    "static": {
+      "Cache-Control": "public, max-age=31536000, immutable",
+      "X-Content-Type-Options": "nosniff",
+      "X-Frame-Options": "DENY",
+      "X-XSS-Protection": "1; mode=block"
+    },
+    "html": {
+      "Cache-Control": "public, max-age=3600",
+      "Content-Type": "text/html; charset=utf-8"
+    }
+  },
+  "serviceWorker": {
+    "enabled": true,
+    "strategy": "cache-first",
+    "version": "1.5.1",
+    "scope": "/"
+  },
+  "pwa": {
+    "enabled": true,
+    "manifest": "manifest.json",
+    "theme": "#00b140",
+    "display": "standalone"
+  },
+  "performance": {
+    "preload": [
+      "styles.css",
+      "script.js",
+      "assets/images/Renov-Logo.png"
+    ],
+    "preconnect": [
+      "https://fonts.googleapis.com",
+      "https://fonts.gstatic.com",
+      "https://cdnjs.cloudflare.com"
+    ],
+    "dns-prefetch": [
+      "//fonts.googleapis.com",
+      "//cdnjs.cloudflare.com"
+    ]
+  },
+  "monitoring": {
+    "lighthouse": true,
+    "web-vitals": true,
+    "cache-hit-ratio": true
+  }
+} 
