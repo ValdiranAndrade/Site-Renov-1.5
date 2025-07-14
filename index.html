@@ -9,12 +9,12 @@
     <meta name="robots" content="index, follow">
     
     <!-- PWA Manifest -->
-    <link rel="manifest" href="/manifest.json?v=1.5.3">
+    <link rel="manifest" href="/manifest.json?v=1.5.4">
     <meta name="theme-color" content="#00b140">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="Renov">
-    <link rel="apple-touch-icon" href="assets/images/Renov-Logo.png?v=1.5.3">
+    <link rel="apple-touch-icon" href="assets/images/Renov-Logo.png?v=1.5.4">
     
     <!-- Cache headers for long-term caching - Baseado na documentação oficial do Chrome -->
     <meta http-equiv="Cache-Control" content="public, max-age=31536000, immutable">
@@ -30,20 +30,26 @@
     <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
     
     <!-- Highest priority preload for LCP image -->
-    <link rel="preload" href="assets/images/Renov-Logo.png?v=1.5.3" as="image" fetchpriority="high" type="image/png" crossorigin="anonymous">
+    <link rel="preload" href="assets/images/Renov-Logo.png?v=1.5.4" as="image" fetchpriority="high" type="image/png" crossorigin="anonymous">
     
     <!-- Preload critical resources -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=optional" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=optional" as="style" fetchpriority="high" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=optional"></noscript>
     
-    <link rel="preload" href="styles.css?v=1.5.3" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="styles.css?v=1.5.3"></noscript>
+    <link rel="preload" href="styles.css?v=1.5.4" as="style" fetchpriority="high" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="styles.css?v=1.5.4"></noscript>
     
     <!-- Preload critical video -->
-    <link rel="preload" href="assets/video/bg-video.mp4.mp4?v=1.5.3" as="video" type="video/mp4">
+    <link rel="preload" href="assets/video/bg-video.mp4.mp4?v=1.5.4" as="video" type="video/mp4">
+    
+    <!-- Preload critical script -->
+    <link rel="preload" href="script.js?v=1.5.4" as="script" fetchpriority="high">
+    
+    <!-- Preload critical background image -->
+    <link rel="preload" href="assets/images/bg-como-funciona.png?v=1.5.4" as="image" fetchpriority="high" type="image/png">
     
     <title>Renov - Sua Troca Inteligente</title>
-    <link rel="stylesheet" href="styles.css?v=1.5.3">
+    <link rel="stylesheet" href="styles.css?v=1.5.4">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'">
     
     <!-- Critical CSS for LCP optimization -->
@@ -70,7 +76,7 @@
     <header>
             <div class="header-content">
             <div class="logo">
-                <img src="assets/images/Renov-Logo.png?v=1.5.3" alt="Renov - Sua Troca Inteligente" loading="eager" fetchpriority="high" decoding="sync" width="160" height="40">
+                <img src="assets/images/Renov-Logo.png?v=1.5.4" alt="Renov - Sua Troca Inteligente" loading="eager" fetchpriority="high" decoding="sync" width="160" height="40">
             </div>
                 <nav class="main-nav">
                     <div class="tab-buttons">
@@ -108,7 +114,7 @@
                 </section>
                 <section id="como-funciona" class="como-funciona">
                     <div class="como-funciona-bg">
-                        <img src="assets/images/bg-como-funciona.png" alt="Background">
+                        <img src="assets/images/bg-como-funciona.png?v=1.5.4" alt="Background" loading="eager" fetchpriority="high">
                     </div>
                     <div class="como-funciona-content">
                         <div class="como-funciona-texto">
@@ -688,7 +694,7 @@
   <div style="max-width:1200px;margin:0 auto;padding:48px 32px 0 32px;display:flex;align-items:flex-start;justify-content:space-between;gap:48px;flex-wrap:wrap;">
     <!-- Logo e social -->
     <div style="flex:1 1 220px;min-width:180px;display:flex;flex-direction:column;align-items:flex-start;gap:24px;">
-      <img src='assets/images/Renov-Logo.png?v=1.5.3' alt='Renov - Sua Troca Inteligente' style='width:130px;filter:brightness(1.1);margin-top:-10px;' loading="lazy">
+      <img src='assets/images/Renov-Logo.png?v=1.5.4' alt='Renov - Sua Troca Inteligente' style='width:130px;filter:brightness(1.1);margin-top:-10px;' loading="lazy">
               <div class="social-links" style="display:flex;gap:16px;margin-top:-5px;margin-left:10px;">
         <a href="https://www.instagram.com/renovsmart" target="_blank" style="color:#fff;font-size:1.5rem;transition:color 0.2s;" onmouseover="this.style.color='#00b140'" onmouseout="this.style.color='#fff'"><i class="fab fa-instagram"></i></a>
         <a href="https://www.linkedin.com/company/renovsmart/posts/?feedView=all" target="_blank" style="color:#fff;font-size:1.5rem;transition:color 0.2s;" onmouseover="this.style.color='#00b140'" onmouseout="this.style.color='#fff'"><i class="fab fa-linkedin"></i></a>
@@ -734,12 +740,12 @@
   </div>
 </footer>
 
-    <script src="script.js?v=1.5.3"></script>
+    <script src="script.js?v=1.5.4" fetchpriority="high"></script>
     <script>
       // Registro do Service Worker para cache offline
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
-          navigator.serviceWorker.register('/sw.js?v=1.5.3')
+          navigator.serviceWorker.register('/sw.js?v=1.5.4')
             .then(registration => {
               console.log('Service Worker registrado com sucesso:', registration.scope);
             })
