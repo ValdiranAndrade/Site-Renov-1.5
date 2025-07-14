@@ -574,13 +574,12 @@
       <div class="modal-content">
         <span class="close-modal" onclick="fecharModal()">&times;</span>
         <h2 id="modal-titulo-vaga">Candidatura</h2>
-        <form id="form-candidatura" action="https://formspree.io/f/xzzvpwlg" method="POST" enctype="multipart/form-data" target="_blank" onsubmit="return mostrarMensagemSucesso();">
+        <form id="form-candidatura" action="https://getform.io/f/byvyxwka" method="POST" enctype="multipart/form-data">
           <label for="curriculo-pdf" style="font-weight:600;">Anexe seu currículo (PDF):</label><br>
-          <input type="file" id="curriculo-pdf" name="curriculo" accept="application/pdf" required style="margin:12px 0 24px 0;">
+          <input type="file" id="curriculo-pdf" name="file" accept="application/pdf" required style="margin:12px 0 24px 0;">
           <div id="file-name" style="font-size:0.95rem;color:#555;margin-bottom:16px;"></div>
           <button type="submit" class="enviar-btn">Enviar candidatura</button>
         </form>
-        <div id="mensagem-sucesso" style="display:none;color:#00b140;font-weight:600;font-size:1.1rem;margin-top:18px;text-align:center;">Candidatura enviada com sucesso! Em breve entraremos em contato.</div>
       </div>
     </div>
 
@@ -698,18 +697,6 @@
                 document.getElementById('file-name').textContent = '';
             }
         });
-
-        // Mensagem de sucesso após envio
-        function mostrarMensagemSucesso() {
-            setTimeout(function() {
-                document.getElementById('mensagem-sucesso').style.display = 'block';
-                setTimeout(function() {
-                    document.getElementById('mensagem-sucesso').style.display = 'none';
-                    fecharModal();
-                }, 2500);
-            }, 500);
-            return true; // permite o envio do form
-        }
 
         // Funcionalidade de paginação
         document.querySelectorAll('.page-btn').forEach(btn => {
