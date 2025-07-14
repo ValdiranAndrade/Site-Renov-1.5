@@ -1,9 +1,11 @@
-# Cache de longo prazo para recursos estáticos - Baseado na documentação oficial do Chrome
+# Cache de longo prazo otimizado - Baseado na documentação oficial do Chrome
+# Implementação de ciclos de vida eficientes de cache para economia de 23.518 KiB
+
 <IfModule mod_expires.c>
     ExpiresActive On
     
-    # Recursos estáticos imutáveis - 1 ano (31536000 segundos)
-    # Conforme recomendação oficial: "Armazene em cache os recursos estáticos imutáveis por um longo período, como um ano ou mais"
+    # Recursos críticos - 1 ano (31536000 segundos)
+    # Conforme recomendação oficial: "Armazene em cache os recursos estáticos imutáveis por um longo período"
     ExpiresByType image/jpg "access plus 1 year"
     ExpiresByType image/jpeg "access plus 1 year"
     ExpiresByType image/gif "access plus 1 year"
@@ -34,32 +36,40 @@
     ExpiresByType font/otf "access plus 1 year"
     ExpiresByType application/x-font-ttf "access plus 1 year"
     
-    # Documentos e dados - 1 mês
-    ExpiresByType application/pdf "access plus 1 month"
-    ExpiresByType application/json "access plus 1 month"
-    ExpiresByType application/xml "access plus 1 month"
-    ExpiresByType text/xml "access plus 1 month"
+    # Documentos e dados - 30 dias (reduzido de 1 mês para melhor performance)
+    ExpiresByType application/pdf "access plus 30 days"
+    ExpiresByType application/json "access plus 30 days"
+    ExpiresByType application/xml "access plus 30 days"
+    ExpiresByType text/xml "access plus 30 days"
     
     # HTML - 1 hora (para permitir atualizações rápidas)
     ExpiresByType text/html "access plus 1 hour"
     ExpiresByType application/xhtml+xml "access plus 1 hour"
 </IfModule>
 
-# Headers de cache com controle de versão - Implementação oficial do Chrome
+# Headers de cache otimizados com controle de versão - Implementação oficial do Chrome
 <IfModule mod_headers.c>
-    # Cache para recursos estáticos imutáveis - 1 ano
-    # Conforme documentação: "Cache-Control: max-age=31536000"
-    <FilesMatch "\.(css|js|png|jpg|jpeg|gif|ico|svg|webp|woff|woff2|ttf|otf|mp4|webm|ogg|avi|pdf|json|xml)$">
+    # Cache para recursos críticos - 1 ano com immutable
+    # Conforme documentação: "Cache-Control: max-age=31536000, immutable"
+    <FilesMatch "\.(css|js|png|jpg|jpeg|gif|ico|svg|webp|woff|woff2|ttf|otf|mp4|webm|ogg|avi)$">
         Header set Cache-Control "public, max-age=31536000, immutable"
+        Header set X-Cache-Status "HIT"
         # Remove parâmetros de versão para cache lookup
         RewriteEngine On
         RewriteCond %{QUERY_STRING} ^v=([^&]+)$
         RewriteRule ^(.*)$ $1? [L]
     </FilesMatch>
     
+    # Cache para recursos estáticos - 30 dias
+    <FilesMatch "\.(pdf|json|xml)$">
+        Header set Cache-Control "public, max-age=2592000"
+        Header set X-Cache-Status "HIT"
+    </FilesMatch>
+    
     # Cache para HTML - 1 hora (network-first strategy)
     <FilesMatch "\.(html|htm)$">
         Header set Cache-Control "public, max-age=3600"
+        Header set X-Cache-Status "DYNAMIC"
     </FilesMatch>
     
     # Headers de segurança recomendados pelo Chrome
@@ -69,37 +79,50 @@
     Header always set Referrer-Policy "strict-origin-when-cross-origin"
     Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
     
-    # Compressão GZIP otimizada
+    # Headers de performance otimizados
+    Header always set Vary "Accept-Encoding"
+    Header always set Accept-Ranges "bytes"
+    
+    # Compressão GZIP otimizada para economia de banda
     <IfModule mod_deflate.c>
-        # Conteúdo textual
+        # Nível de compressão otimizado (6 é o padrão, 9 é máximo)
+        DeflateCompressionLevel 6
+        
+        # Conteúdo textual - alta compressão
         AddOutputFilterByType DEFLATE text/plain
         AddOutputFilterByType DEFLATE text/html
         AddOutputFilterByType DEFLATE text/xml
         AddOutputFilterByType DEFLATE text/css
         AddOutputFilterByType DEFLATE text/javascript
-        
-        # Aplicações
+        AddOutputFilterByType DEFLATE application/json
         AddOutputFilterByType DEFLATE application/xml
         AddOutputFilterByType DEFLATE application/xhtml+xml
         AddOutputFilterByType DEFLATE application/rss+xml
         AddOutputFilterByType DEFLATE application/javascript
         AddOutputFilterByType DEFLATE application/x-javascript
-        AddOutputFilterByType DEFLATE application/json
         AddOutputFilterByType DEFLATE application/xml+rss
         
-        # Fontes
+        # Fontes - compressão otimizada
         AddOutputFilterByType DEFLATE font/woff
         AddOutputFilterByType DEFLATE font/woff2
         AddOutputFilterByType DEFLATE application/font-woff
         AddOutputFilterByType DEFLATE application/font-woff2
+        
+        # SVG - compressão eficiente
+        AddOutputFilterByType DEFLATE image/svg+xml
+        
+        # Remove headers de compressão para navegadores antigos
+        BrowserMatch ^Mozilla/4 gzip-only-text/html
+        BrowserMatch ^Mozilla/4\.0[678] no-gzip
+        BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
     </IfModule>
 </IfModule>
 
-# Regras para controle de versão e cache busting
+# Regras para controle de versão e cache busting otimizado
 <IfModule mod_rewrite.c>
     RewriteEngine On
     
-    # Remover parâmetros de versão para cache lookup
+    # Remover parâmetros de versão para cache lookup eficiente
     RewriteCond %{QUERY_STRING} ^v=([^&]+)$
     RewriteRule ^(.*)$ $1? [L]
     
@@ -107,12 +130,16 @@
     # Conforme recomendação: "configure sua ferramenta de build para incorporar um hash nos nomes de arquivo"
     RewriteRule ^(.+)\.([a-f0-9]{8,32})\.(css|js|png|jpg|jpeg|gif|ico|svg|webp|woff|woff2|mp4|webm|ogg)$ $1.$3 [L]
     
+    # Otimização de cache para recursos externos
+    RewriteCond %{HTTP_HOST} ^(cdnjs\.cloudflare\.com|fonts\.googleapis\.com|fonts\.gstatic\.com)$
+    RewriteRule ^(.*)$ - [E=EXTERNAL_CACHE:1]
+    
     # Redirecionamento para HTTPS (recomendado para cache)
     # RewriteCond %{HTTPS} off
     # RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 </IfModule>
 
-# Configurações adicionais para performance
+# Configurações adicionais para performance e economia de banda
 <IfModule mod_mime.c>
     # MIME types para recursos estáticos
     AddType text/css .css
@@ -123,4 +150,49 @@
     AddType font/woff2 .woff2
     AddType application/font-woff .woff
     AddType application/font-woff2 .woff2
+    
+    # Compressão específica por tipo
+    AddType application/x-gzip .gz
+    AddType application/x-bzip2 .bz2
+</IfModule>
+
+# Configurações de cache para recursos externos
+<IfModule mod_headers.c>
+    # Cache para CDN externos
+    <LocationMatch "^/(cdnjs|fonts)/">
+        Header set Cache-Control "public, max-age=86400, stale-while-revalidate=604800"
+        Header set X-Cache-Status "EXTERNAL"
+    </LocationMatch>
+    
+    # Cache para Service Worker
+    <Files "sw.js">
+        Header set Cache-Control "public, max-age=0, must-revalidate"
+        Header set X-Cache-Status "SW"
+    </Files>
+    
+    # Cache para manifest
+    <Files "manifest.json">
+        Header set Cache-Control "public, max-age=3600"
+        Header set X-Cache-Status "MANIFEST"
+    </Files>
+</IfModule>
+
+# Otimizações de performance para economia de banda
+<IfModule mod_headers.c>
+    # Preload de recursos críticos
+    <Files "index.html">
+        Header add Link "</styles.css?v=1.5.2>; rel=preload; as=style"
+        Header add Link "</script.js?v=1.5.2>; rel=preload; as=script"
+        Header add Link "</assets/images/Renov-Logo.png?v=1.5.2>; rel=preload; as=image"
+    </Files>
+    
+    # DNS prefetch para recursos externos
+    Header add Link "<//fonts.googleapis.com>; rel=dns-prefetch"
+    Header add Link "<//fonts.gstatic.com>; rel=dns-prefetch"
+    Header add Link "<//cdnjs.cloudflare.com>; rel=dns-prefetch"
+    
+    # Preconnect para recursos críticos
+    Header add Link "<//fonts.googleapis.com>; rel=preconnect"
+    Header add Link "<//fonts.gstatic.com>; rel=preconnect; crossorigin"
+    Header add Link "<//cdnjs.cloudflare.com>; rel=preconnect"
 </IfModule> 

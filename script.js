@@ -573,3 +573,228 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 }); 
+
+// Sistema de gerenciamento de cache eficiente
+class CacheManager {
+  constructor() {
+    this.cacheVersion = '1.5.2';
+    this.cacheStrategies = {
+      critical: { maxAge: 31536000 }, // 1 ano
+      static: { maxAge: 2592000 },    // 30 dias
+      external: { maxAge: 86400 },    // 1 dia
+      dynamic: { maxAge: 3600 }       // 1 hora
+    };
+  }
+
+  // Inicializa o gerenciador de cache
+  async init() {
+    if ('serviceWorker' in navigator) {
+      try {
+        const registration = await navigator.serviceWorker.register('/sw.js?v=' + this.cacheVersion);
+        console.log('Cache Manager inicializado:', registration.scope);
+        
+        // Configura listeners para mensagens do Service Worker
+        navigator.serviceWorker.addEventListener('message', this.handleSWMessage.bind(this));
+        
+        return registration;
+      } catch (error) {
+        console.error('Erro ao inicializar Cache Manager:', error);
+      }
+    }
+  }
+
+  // Manipula mensagens do Service Worker
+  handleSWMessage(event) {
+    const { type, data } = event.data;
+    
+    switch (type) {
+      case 'CACHE_INFO':
+        console.log('Informações do cache:', data);
+        this.updateCacheStatus(data);
+        break;
+      case 'CACHE_CLEARED':
+        console.log('Cache limpo com sucesso');
+        this.showNotification('Cache atualizado', 'success');
+        break;
+    }
+  }
+
+  // Obtém informações do cache
+  async getCacheInfo() {
+    if (navigator.serviceWorker.controller) {
+      const messageChannel = new MessageChannel();
+      messageChannel.port1.onmessage = (event) => {
+        this.handleSWMessage(event);
+      };
+      
+      navigator.serviceWorker.controller.postMessage({
+        type: 'GET_CACHE_INFO'
+      }, [messageChannel.port2]);
+    }
+  }
+
+  // Limpa o cache
+  async clearCache() {
+    if (navigator.serviceWorker.controller) {
+      const messageChannel = new MessageChannel();
+      messageChannel.port1.onmessage = (event) => {
+        this.handleSWMessage(event);
+      };
+      
+      navigator.serviceWorker.controller.postMessage({
+        type: 'CLEAR_CACHE'
+      }, [messageChannel.port2]);
+    }
+  }
+
+  // Atualiza status do cache na interface
+  updateCacheStatus(cacheInfo) {
+    const cacheStatusElement = document.getElementById('cache-status');
+    if (cacheStatusElement) {
+      cacheStatusElement.textContent = `Cache v${cacheInfo.version} - ${cacheInfo.caches.length} caches ativos`;
+    }
+  }
+
+  // Mostra notificação
+  showNotification(message, type = 'info') {
+    const notification = document.createElement('div');
+    notification.className = `cache-notification ${type}`;
+    notification.textContent = message;
+    notification.style.cssText = `
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: 12px 20px;
+      border-radius: 8px;
+      color: white;
+      font-weight: 600;
+      z-index: 10000;
+      animation: slideIn 0.3s ease-out;
+    `;
+    
+    if (type === 'success') {
+      notification.style.backgroundColor = '#00b140';
+    } else if (type === 'error') {
+      notification.style.backgroundColor = '#dc3545';
+    } else {
+      notification.style.backgroundColor = '#007bff';
+    }
+    
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+      notification.style.animation = 'slideOut 0.3s ease-in';
+      setTimeout(() => {
+        document.body.removeChild(notification);
+      }, 300);
+    }, 3000);
+  }
+
+  // Preload inteligente de recursos
+  preloadResources(resources) {
+    resources.forEach(resource => {
+      const link = document.createElement('link');
+      link.rel = 'preload';
+      link.href = resource.url;
+      link.as = resource.type;
+      
+      if (resource.crossorigin) {
+        link.crossOrigin = 'anonymous';
+      }
+      
+      document.head.appendChild(link);
+    });
+  }
+
+  // Lazy loading otimizado
+  setupLazyLoading() {
+    const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+    const lazyVideos = document.querySelectorAll('video[loading="lazy"]');
+    
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const img = entry.target;
+          img.src = img.dataset.src || img.src;
+          img.classList.remove('lazy');
+          observer.unobserve(img);
+        }
+      });
+    });
+    
+    const videoObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const video = entry.target;
+          video.src = video.dataset.src || video.src;
+          video.classList.remove('lazy');
+          observer.unobserve(video);
+        }
+      });
+    });
+    
+    lazyImages.forEach(img => imageObserver.observe(img));
+    lazyVideos.forEach(video => videoObserver.observe(video));
+  }
+
+  // Otimização de performance
+  optimizePerformance() {
+    // Preload de recursos críticos
+    this.preloadResources([
+      { url: '/styles.css?v=' + this.cacheVersion, type: 'style' },
+      { url: '/script.js?v=' + this.cacheVersion, type: 'script' },
+      { url: '/assets/images/Renov-Logo.png?v=' + this.cacheVersion, type: 'image' }
+    ]);
+    
+    // DNS prefetch para recursos externos
+    const dnsPrefetchLinks = [
+      '//fonts.googleapis.com',
+      '//fonts.gstatic.com',
+      '//cdnjs.cloudflare.com'
+    ];
+    
+    dnsPrefetchLinks.forEach(domain => {
+      const link = document.createElement('link');
+      link.rel = 'dns-prefetch';
+      link.href = domain;
+      document.head.appendChild(link);
+    });
+    
+    // Preconnect para recursos críticos
+    const preconnectLinks = [
+      { href: '//fonts.googleapis.com' },
+      { href: '//fonts.gstatic.com', crossorigin: true },
+      { href: '//cdnjs.cloudflare.com' }
+    ];
+    
+    preconnectLinks.forEach(config => {
+      const link = document.createElement('link');
+      link.rel = 'preconnect';
+      link.href = config.href;
+      if (config.crossorigin) {
+        link.crossOrigin = 'anonymous';
+      }
+      document.head.appendChild(link);
+    });
+  }
+}
+
+// Inicialização do Cache Manager
+const cacheManager = new CacheManager();
+
+// Inicializa quando o DOM estiver pronto
+document.addEventListener('DOMContentLoaded', async () => {
+  // Inicializa o Cache Manager
+  await cacheManager.init();
+  
+  // Otimiza performance
+  cacheManager.optimizePerformance();
+  
+  // Configura lazy loading
+  cacheManager.setupLazyLoading();
+  
+  // Obtém informações do cache
+  setTimeout(() => {
+    cacheManager.getCacheInfo();
+  }, 1000);
+}); 
