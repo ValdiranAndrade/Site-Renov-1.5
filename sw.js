@@ -1,4 +1,4 @@
-const CACHE_VERSION = '1.5.2';
+const CACHE_VERSION = '1.5.3';
 const CACHE_NAME = `renov-cache-v${CACHE_VERSION}`;
 
 // Estratégia de cache por prioridade - Baseada na documentação oficial do Chrome
