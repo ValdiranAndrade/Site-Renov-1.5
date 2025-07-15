@@ -21,26 +21,25 @@
     <meta http-equiv="Expires" content="Thu, 31 Dec 2025 23:59:59 GMT">
     
     <!-- Preconnect para recursos externos - Melhoria de performance -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     
     <!-- DNS prefetch para recursos críticos -->
-    <link rel="dns-prefetch" href="//fonts.googleapis.com">
     <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
     
     <!-- Highest priority preload for LCP image -->
     <link rel="preload" href="assets/images/Renov-Logo.png?v=1.5.7" as="image" fetchpriority="high" type="image/png" crossorigin="anonymous">
     
-    <!-- Preload critical resources -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=optional" as="style" fetchpriority="high" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=optional"></noscript>
+    <!-- Local fonts loaded via CSS @font-face -->
     
     <link rel="preload" href="styles.css?v=1.5.7" as="style" fetchpriority="high" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="styles.css?v=1.5.7"></noscript>
     
     <!-- Preload critical video -->
     <link rel="preload" href="assets/video/bg-video.mp4.mp4?v=1.5.7" as="video" type="video/mp4">
+    
+    <!-- Preload local fonts for better performance -->
+    <link rel="preload" href="assets/fonts/Montserrat-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="assets/fonts/Montserrat-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
     
     <!-- Preload critical script -->
     <link rel="preload" href="script.js?v=1.5.7" as="script" fetchpriority="high">
@@ -611,8 +610,8 @@
                     </div>
                 </header>
                 <div class="trabalhe-conosco" style="text-align:left;">
-                    <h1 style="text-align:left;font-size:3.2rem;font-weight:800;line-height:1.05;margin-bottom:1.5rem;margin-left:-180px;">Faça parte da<br>revolução no varejo<br>de tecnologia</h1>
-                    <p style="margin-left:-180px; margin-bottom:80px;">Junte-se ao time que está transformando como empresas vendem tecnologia no Brasil.<br>Buscamos profissionais que queiram impactar o mercado de varejo e telefonia,<br>criando soluções que geram resultados e sustentabilidade.</p>
+                    <h1 style="text-align:left;font-size:3.2rem;font-weight:800;line-height:1.05;margin-bottom:1.5rem;margin-left:0;">Junte-se à Nossa Equipe</h1>
+                    <p style="text-align:left;margin-left:0; margin-bottom:80px;">Descubra oportunidades incríveis para fazer parte da revolução no varejo de tecnologia</p>
                     
                     <div class="simples-bem-feito-container" style="margin-left:-280px; margin-bottom:40px; padding: 100px; background: #f8f9fa url('assets/images/simples.png') no-repeat center center; background-size: cover; border-radius: 12px; width: 1300px; min-height: 500px; text-align: left;">
                         <h2 style="font-size:2.5rem;font-weight:700;margin-bottom:1.5rem;color:#008d36; text-align: left;">Simples e Bem Feito</h2>
