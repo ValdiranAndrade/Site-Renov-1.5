@@ -499,7 +499,10 @@
                   </div>
                 </div>
               </section>
-              <p style="font-size:1.1rem;font-weight:400;line-height:1.4;text-align:left;color:#000;margin:48px auto 24px 350px;max-width:900px;">Somos uma empresa brasileira de inovação tecnológica focada em soluções inteligentes de trade-in para o varejo e o mercado de eletrônicos. Utilizando inteligência artificial e automação, tornamos o processo de avaliação e troca de dispositivos usados mais rápido, preciso e acessível — transformando smartphones, tablets e outros eletrônicos usados em oportunidades de negócio e inclusão digital.</p>
+              <p style="font-size:1.1rem;font-weight:400;line-height:1.4;text-align:left;color:#000;margin:48px auto 24px 350px;max-width:900px;">
+  <span style="display:block;font-weight:700;font-size:2rem;text-align:left;margin-bottom:12px;">Quem somos</span>
+  Somos uma empresa brasileira de inovação tecnológica focada em soluções inteligentes de trade-in para o varejo e o mercado de eletrônicos. Utilizando inteligência artificial e automação, tornamos o processo de avaliação e troca de dispositivos usados mais rápido, preciso e acessível — transformando smartphones, tablets e outros eletrônicos usados em oportunidades de negócio e inclusão digital.
+</p>
               <section class="impactos-renov">
                   <div class="impactos-container">
                       <div class="impacto-item">
@@ -525,9 +528,7 @@
                         </div>
                     </section>
                 <section class="institucional-renov" style="margin: 40px 0 0 0;display:flex;justify-content:center;align-items:center;">
-                  <p style="font-size:1.1rem;font-weight:400;line-height:1.5;text-align:left;color:#000;max-width:700px;margin:0 auto 0 345px;">
-                    Fundada em 2023, a Renov nasceu com o propósito de fortalecer a economia circular, combatendo o descarte precoce de aparelhos e promovendo a reutilização responsável. Nossa tecnologia elimina a complexidade e os erros manuais da avaliação tradicional, oferecendo uma solução eficiente para varejistas, operadores de telefonia e revendedores em todo o Brasil.
-                  </p>
+                  
                 </section>
 
                 <!-- Nova seção Missão, Visão e Valores -->
@@ -690,13 +691,17 @@
                     <p style="font-size:1.2rem;color:#222;margin-bottom:32px;margin-left:300px;">Preencha o formulário abaixo e nossa equipe entrará em contato com você!</p>
                     <div style="display:flex;flex-wrap:wrap;gap:40px;align-items:flex-start;margin-left:300px;">
                         <!-- Formulário -->
-                        <form style="flex:1 1 320px;min-width:300px;display:flex;flex-direction:column;gap:18px;margin-left:0;">
-                            <input type="text" name="nome" placeholder="Seu nome" required style="padding:12px 16px;border:1px solid #ccc;border-radius:8px;font-size:1rem;margin-left:0;">
-                            <input type="email" name="email" placeholder="Seu e-mail" required style="padding:12px 16px;border:1px solid #ccc;border-radius:8px;font-size:1rem;margin-left:0;">
-                            <input type="tel" name="telefone" placeholder="Seu telefone" style="padding:12px 16px;border:1px solid #ccc;border-radius:8px;font-size:1rem;margin-left:0;">
-                            <textarea name="mensagem" placeholder="Sua mensagem" rows="4" required style="padding:12px 16px;border:1px solid #ccc;border-radius:8px;font-size:1rem;margin-left:0;"></textarea>
-                            <button type="submit" style="background:#008d36;color:#fff;font-size:1.1rem;font-weight:600;padding:14px 0;border:none;border-radius:8px;cursor:pointer;transition:background 0.2s;margin-left:0;">Enviar mensagem</button>
-                        </form>
+                        <div style="display:flex;flex-direction:column;flex:1 1 320px;min-width:300px;">
+                            <form action="https://formspree.io/f/xovlqvwp" method="POST" id="form-contato" style="display:flex;flex-direction:column;gap:18px;">
+                                <input type="text" name="nome" placeholder="Seu nome" required style="padding:12px 16px;border:1px solid #ccc;border-radius:8px;font-size:1rem;">
+                                <input type="email" name="email" placeholder="Seu e-mail" required style="padding:12px 16px;border:1px solid #ccc;border-radius:8px;font-size:1rem;">
+                                <input type="tel" name="telefone" placeholder="Seu telefone" style="padding:12px 16px;border:1px solid #ccc;border-radius:8px;font-size:1rem;">
+                                <textarea name="mensagem" placeholder="Sua mensagem" rows="4" required style="padding:12px 16px;border:1px solid #ccc;border-radius:8px;font-size:1rem;"></textarea>
+                                <input type="hidden" name="_replyto" value="">
+                                <button type="submit" style="background:#008d36;color:#fff;font-size:1.1rem;font-weight:600;padding:14px 0;border:none;border-radius:8px;cursor:pointer;transition:background 0.2s;">Enviar mensagem</button>
+                            </form>
+                            <div id="form-mensagem" style="margin-top:18px;font-size:1.1rem;"></div>
+                        </div>
                         <!-- Informações de contato -->
                         <div style="flex:1 1 260px;min-width:240px;display:flex;flex-direction:column;gap:36px;margin-left:300px;">
                             <div style="display:flex;align-items:center;gap:18px;">
@@ -822,5 +827,40 @@
         });
       });
     </script>
+    <script>
+document.addEventListener('submit', function(e) {
+  var form = e.target;
+  if (form && form.id === 'form-contato') {
+    e.preventDefault();
+    var mensagem = document.getElementById('form-mensagem');
+    if (!mensagem) return;
+    mensagem.textContent = 'Enviando...';
+    mensagem.style.color = '#008d36';
+    var emailInput = form.querySelector('input[name="email"]');
+    var replytoInput = form.querySelector('input[name="_replyto"]');
+    if(emailInput && replytoInput) replytoInput.value = emailInput.value;
+    var data = new FormData(form);
+    fetch(form.action, {
+      method: 'POST',
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    })
+    .then(function(response) {
+      if (response.ok) {
+        mensagem.textContent = 'Mensagem enviada com sucesso! Em breve entraremos em contato.';
+        mensagem.style.color = '#008d36';
+        form.reset();
+      } else {
+        mensagem.textContent = 'Ocorreu um erro ao enviar. Por favor, tente novamente ou envie um e-mail para contato@renovsmart.com.br.';
+        mensagem.style.color = '#d32f2f';
+      }
+    })
+    .catch(function() {
+      mensagem.textContent = 'Erro de conexão. Por favor, tente novamente mais tarde.';
+      mensagem.style.color = '#d32f2f';
+    });
+  }
+}, true);
+</script>
 </body>
 </html> 
