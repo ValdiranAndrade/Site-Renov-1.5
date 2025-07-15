@@ -8,6 +8,12 @@
     <meta name="author" content="Renov">
     <meta name="robots" content="index, follow">
     
+    <!-- Performance optimizations -->
+    <meta name="format-detection" content="telephone=no">
+    <meta name="theme-color" content="#00b140">
+    <meta name="msapplication-TileColor" content="#00b140">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
     <!-- PWA Manifest -->
     <link rel="manifest" href="/manifest.json?v=1.5.7">
     <meta name="theme-color" content="#00b140">
@@ -60,6 +66,7 @@
     
     <!-- Critical CSS for LCP optimization -->
     <style>
+      /* Critical rendering path optimizations */
       .logo img {
         width: 160px;
         height: 40px;
@@ -73,6 +80,44 @@
         padding: 1rem 2rem;
         max-width: 1200px;
         margin: 0 auto;
+      }
+      
+      /* Hero section critical styles */
+      .hero {
+        position: relative;
+        width: 100vw;
+        left: 50%;
+        right: 50%;
+        margin-left: -50vw;
+        margin-right: -50vw;
+        height: 140vh;
+        min-height: 0;
+        max-height: none;
+        display: flex;
+        align-items: flex-start;
+        overflow: hidden;
+        margin-top: 0 !important;
+        margin-bottom: -350px;
+      }
+      
+      .hero-content {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 5%;
+        margin-top: 300px;
+      }
+      
+      .hero-text h1 {
+        font-size: 48px;
+        line-height: 1.05 !important;
+        margin-bottom: 24px;
+        color: #fff !important;
+        font-weight: 700;
+        text-align: left;
+        white-space: normal !important;
       }
       
       /* Font Awesome font-display optimization */
@@ -103,6 +148,47 @@
         clip: rect(0, 0, 0, 0) !important;
         white-space: nowrap !important;
         border: 0 !important;
+      }
+      
+      /* Prevent layout shift */
+      .video-bg-wrapper {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100%;
+        z-index: 0;
+        overflow: hidden;
+        pointer-events: none;
+        transform: translateY(-300px);
+        display: block !important;
+      }
+      
+      .video-bg {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: 100vw;
+        height: 100%;
+        min-width: 100vw;
+        min-height: 100%;
+        object-fit: cover;
+        transform: translateX(-50%);
+        opacity: 1 !important;
+        visibility: visible !important;
+      }
+      
+      /* Garantir que o vídeo apareça na aba Home */
+      #home.tab-content.active .video-bg-wrapper {
+        display: block !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+      }
+      
+      #home.tab-content.active .video-bg {
+        display: block !important;
+        opacity: 1 !important;
+        visibility: visible !important;
       }
     </style>
 </head>
@@ -138,7 +224,7 @@
             <section id="home" class="tab-content active">
                 <section class="hero">
                   <div class="video-bg-wrapper">
-                    <video autoplay muted loop playsinline class="video-bg" preload="metadata">
+                    <video autoplay muted loop playsinline class="video-bg" preload="auto">
                       <source src="assets/video/bg-video.mp4.mp4" type="video/mp4">
                       Seu navegador não suporta vídeo em HTML5.
                     </video>
@@ -152,7 +238,7 @@
                 </section>
                 <section id="como-funciona" class="como-funciona">
                     <div class="como-funciona-bg">
-                        <img src="assets/images/bg-como-funciona.jpeg?v=1.5.7" alt="Background" loading="eager" fetchpriority="high">
+                        <img src="assets/images/bg-como-funciona.jpeg?v=1.5.7" alt="Background" loading="eager" fetchpriority="high" decoding="async">
                     </div>
                     <div class="como-funciona-content">
                         <div class="como-funciona-texto">
@@ -164,28 +250,28 @@
                 <!-- Seção Avaliação, Diagnóstico e Pagamento -->
                 <div class="avaliacao-diagnostico-wrapper">
                     <section class="avaliacao-container">
-                        <div class="avaliacao-bg" style="background-image: url('assets/icons/avaliacao-icon.png');" loading="lazy"></div>
+                        <div class="avaliacao-bg" style="background-image: url('assets/icons/avaliacao-icon.png');" loading="lazy" decoding="async"></div>
                         <div class="avaliacao-conteudo">
                             <h2 class="avaliacao-titulo">Avaliação</h2>
                             <p class="avaliacao-descricao">Seus clientes avaliam dispositivos usados diretamente na sua loja usando nossa tecnologia inteligente integrada.</p>
                         </div>
                     </section>
                     <section class="diagnostico-container">
-                        <div class="diagnostico-bg" style="background-image: url('assets/icons/diagnostico-icon.png');" loading="lazy"></div>
+                        <div class="diagnostico-bg" style="background-image: url('assets/icons/diagnostico-icon.png');" loading="lazy" decoding="async"></div>
                         <div class="diagnostico-conteudo">
                             <h2 class="diagnostico-titulo">Diagnóstico</h2>
                             <p class="diagnostico-descricao">Nossa IA gera instantaneamente um voucher de desconto que seus clientes podem usar na compra de novos dispositivos.</p>
                         </div>
                     </section>
                     <section class="pagamento-container">
-                        <div class="pagamento-bg" style="background-image: url('assets/icons/logistica-icon.png');" loading="lazy"></div>
+                        <div class="pagamento-bg" style="background-image: url('assets/icons/logistica-icon.png');" loading="lazy" decoding="async"></div>
                         <div class="pagamento-conteudo">
                             <h2 class="pagamento-titulo">Logística</h2>
                             <p class="pagamento-descricao">Cuidamos de toda a logística reversa, coletando os dispositivos usados sem gerar trabalho extra para sua equipe.</p>
                         </div>
                     </section>
                     <section class="novo-container">
-                        <div class="novo-bg" style="background-image: url('assets/icons/pagamento-icon.png');" loading="lazy"></div>
+                        <div class="novo-bg" style="background-image: url('assets/icons/pagamento-icon.png');" loading="lazy" decoding="async"></div>
                         <div class="novo-conteudo">
                             <h2 class="novo-titulo">Pagamento</h2>
                             <p class="novo-descricao">Você recebe o pagamento pelos dispositivos coletados, que são revendidos ou descartados de forma responsável pela Renovsmart.</p>
@@ -785,6 +871,7 @@
 </footer>
 
     <script src="script.js?v=1.5.7" fetchpriority="high"></script>
+    <script src="performance-optimizer.js?v=1.5.7"></script>
     <script>
       // Registro do Service Worker para cache offline
       if ('serviceWorker' in navigator) {

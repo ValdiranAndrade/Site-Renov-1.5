@@ -559,19 +559,24 @@ document.addEventListener('DOMContentLoaded', function() {
   tabButtons.forEach(btn => {
     btn.addEventListener('click', function() {
       if (this.textContent.includes('Sobre Nós')) {
-        videoBg.style.display = 'none';
+        if (videoBg) videoBg.style.display = 'none';
         header.classList.add('header-black');
       } else if (this.textContent.includes('Home')) {
-        videoBg.style.display = 'block';
+        if (videoBg) videoBg.style.display = 'block';
         header.classList.remove('header-black');
       } else if (this.textContent.includes('Trabalhe Conosco') || this.textContent.includes('Fale Conosco')) {
-        videoBg.style.display = 'none';
+        if (videoBg) videoBg.style.display = 'none';
         header.classList.add('header-black');
       } else {
         header.classList.remove('header-black');
       }
     });
   });
+  
+  // Garantir que o vídeo apareça na aba Home inicial
+  if (videoBg) {
+    videoBg.style.display = 'block';
+  }
 }); 
 
 // Sistema de gerenciamento de cache eficiente
