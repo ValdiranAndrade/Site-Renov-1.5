@@ -1609,6 +1609,15 @@ header {
     height: auto;
 }
 
+.logo a {
+    display: block;
+    transition: opacity 0.3s ease;
+}
+
+.logo a:hover {
+    opacity: 0.8;
+}
+
 /* Navegação Principal */
 .main-nav {
     flex-grow: 1;
