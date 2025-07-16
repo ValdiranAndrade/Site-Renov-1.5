@@ -4861,3 +4861,20 @@ picture img {
   font-style: normal;
   font-display: swap;
 }
+
+/* Resolver problema do poster aparecendo brevemente */
+.video-bg {
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: block !important;
+}
+
+/* Esconder poster até o vídeo carregar */
+video[poster] {
+    background: #000;
+}
+
+/* Garantir que o vídeo apareça imediatamente */
+.video-bg-wrapper {
+    background: #000;
+}
