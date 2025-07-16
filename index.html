@@ -35,6 +35,13 @@
     <!-- Highest priority preload for LCP image -->
     <link rel="preload" href="assets/images/Renov-Logo.webp?v=1.5.7" as="image" fetchpriority="high" type="image/webp" crossorigin="anonymous">
     
+    <!-- Mobile-specific LCP optimizations -->
+    <link rel="preload" href="assets/fonts/Montserrat-Regular.woff2" as="font" type="font/woff2" crossorigin fetchpriority="high">
+    <link rel="preload" href="assets/fonts/Montserrat-Medium.woff2" as="font" type="font/woff2" crossorigin fetchpriority="high">
+    
+    <!-- Preload critical CSS for mobile -->
+    <link rel="preload" href="styles.css?v=1.5.7" as="style" fetchpriority="high">
+    
     <!-- Local fonts loaded via CSS @font-face -->
     
     <link rel="preload" href="styles.css?v=1.5.7" as="style" fetchpriority="high" onload="this.onload=null;this.rel='stylesheet'">
@@ -66,13 +73,16 @@
     
     <!-- Critical CSS for LCP optimization -->
     <style>
-      /* Critical rendering path optimizations */
+      /* Critical rendering path optimizations for LCP */
       .logo img {
         width: 160px;
         height: 40px;
         object-fit: contain;
         display: block;
+        max-width: 100%;
+        height: auto;
       }
+      
       .header-content {
         display: flex;
         align-items: center;
@@ -80,9 +90,11 @@
         padding: 1rem 2rem;
         max-width: 1200px;
         margin: 0 auto;
+        position: relative;
+        z-index: 10;
       }
       
-      /* Hero section critical styles */
+      /* Hero section critical styles - LCP optimization */
       .hero {
         position: relative;
         width: 100vw;
@@ -98,32 +110,76 @@
         overflow: hidden;
         margin-top: 0 !important;
         margin-bottom: -350px;
+        background: #000; /* Fallback background */
       }
       
-      /* Mobile-specific optimizations */
+      /* Mobile-specific LCP optimizations */
       @media (max-width: 768px) {
         .hero {
           height: 100vh;
           margin-bottom: 0;
+          min-height: 600px;
         }
         
         .hero-content {
           margin-top: 120px;
           padding: 0 20px;
+          position: relative;
+          z-index: 2;
         }
         
         .hero-text h1 {
           font-size: 32px;
           line-height: 1.1;
+          font-weight: 700;
+          color: #fff !important;
+          text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+          margin-bottom: 16px;
+        }
+        
+        .hero-text p {
+          font-size: 16px;
+          line-height: 1.5;
+          color: #fff !important;
+          text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
         }
         
         .header-content {
           padding: 0.5rem 1rem;
+          background: rgba(255,255,255,0.95);
+          backdrop-filter: blur(10px);
         }
         
         .logo img {
           width: 120px;
           height: 30px;
+          max-width: 100%;
+          height: auto;
+        }
+        
+        /* Optimize LCP for mobile */
+        .hero-text {
+          max-width: 100%;
+          padding: 0;
+          margin: 0;
+        }
+      }
+      
+      /* Ultra-mobile optimizations */
+      @media (max-width: 480px) {
+        .hero-text h1 {
+          font-size: 28px;
+          line-height: 1.2;
+        }
+        
+        .hero-text p {
+          font-size: 14px;
+          line-height: 1.4;
+        }
+        
+        .logo img {
+          width: 100px;
+          height: 25px;
         }
       }
       
@@ -262,8 +318,8 @@
                   </div>
                     <div class="hero-content">
                         <div class="hero-text">
-                            <h1>Potencialize<br>suas vendas com<br>Trade-in Inteligente</h1>
-                            <p style="color: #fff;">A plataforma Renov transforma dispositivos usados em oportunidades de venda para sua empresa. Ofereça aos seus clientes a possibilidade de usar seus aparelhos antigos como forma de pagamento e aumente suas conversões de forma inteligente.</p>
+                            <h1 style="font-size: 48px; line-height: 1.05; margin-bottom: 24px; color: #fff; font-weight: 700; text-align: left; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">Potencialize<br>suas vendas com<br>Trade-in Inteligente</h1>
+                            <p style="color: #fff; font-size: 18px; line-height: 1.5; margin: 0; text-shadow: 1px 1px 2px rgba(0,0,0,0.7);">A plataforma Renov transforma dispositivos usados em oportunidades de venda para sua empresa. Ofereça aos seus clientes a possibilidade de usar seus aparelhos antigos como forma de pagamento e aumente suas conversões de forma inteligente.</p>
                         </div>
                     </div>
                 </section>

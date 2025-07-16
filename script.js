@@ -15,6 +15,32 @@ if (isMobile) {
     inputs.forEach(input => {
         input.style.fontSize = '16px';
     });
+    
+    // LCP optimizations for mobile
+    document.addEventListener('DOMContentLoaded', function() {
+        // Prioritize hero text rendering
+        const heroText = document.querySelector('.hero-text');
+        if (heroText) {
+            heroText.style.display = 'block';
+            heroText.style.visibility = 'visible';
+            heroText.style.opacity = '1';
+        }
+        
+        // Optimize video loading for mobile
+        const video = document.querySelector('.video-bg');
+        if (video) {
+            video.style.display = 'block';
+            video.style.visibility = 'visible';
+            video.style.opacity = '1';
+        }
+        
+        // Optimize logo rendering
+        const logo = document.querySelector('.logo img');
+        if (logo) {
+            logo.style.display = 'block';
+            logo.style.visibility = 'visible';
+        }
+    });
 }
 
 // Dados dos modelos de celulares por marca

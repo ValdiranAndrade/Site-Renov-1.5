@@ -18,8 +18,19 @@ const MOBILE_CONFIG = {
     '/script.js',
     '/assets/images/Renov-Logo.webp',
     '/assets/fonts/Montserrat-Regular.woff2',
-    '/assets/fonts/Montserrat-Medium.woff2'
-  ]
+    '/assets/fonts/Montserrat-Medium.woff2',
+    '/assets/video/bg-video.mp4.mp4'
+  ],
+  
+  // LCP optimization settings
+  lcpOptimization: {
+    // Prioritize hero text and logo
+    criticalElements: ['.hero-text h1', '.logo img', '.video-bg'],
+    // Reduce non-critical resources loading
+    deferNonCritical: true,
+    // Optimize font loading
+    fontDisplay: 'swap'
+  }
 };
 
 // Estratégia de cache por prioridade - Baseada na documentação oficial do Chrome
