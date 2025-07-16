@@ -1,41 +1,39 @@
-const CACHE_VERSION = '1.5.8';
+const CACHE_VERSION = '1.5.9';
 const CACHE_NAME = `renov-cache-v${CACHE_VERSION}`;
 
 // Detectar se é dispositivo mobile
 const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
-// Configurações otimizadas para mobile
+// Configurações mobile otimizadas - Reduzidas cadeias
 const MOBILE_CONFIG = {
-  // Reduzir tamanho do cache em mobile
-  maxCacheSize: isMobile ? 50 * 1024 * 1024 : 100 * 1024 * 1024, // 50MB vs 100MB
-  // Cache mais agressivo em mobile para economizar dados
+  // Cache otimizado para mobile
+  maxCacheSize: isMobile ? 30 * 1024 * 1024 : 100 * 1024 * 1024, // 30MB vs 100MB
   cacheStrategy: isMobile ? 'cache-first' : 'stale-while-revalidate',
-  // Priorizar recursos críticos em mobile
+  
+  // Recursos críticos mobile - Minimal chain
   criticalResources: [
     '/',
     '/index.html',
     '/styles.css',
     '/script.js',
     '/assets/images/Renov-Logo.webp',
-    '/assets/fonts/Montserrat-Regular.woff2',
-    '/assets/fonts/Montserrat-Medium.woff2',
-    '/assets/video/bg-video.mp4.mp4'
+    '/assets/fonts/Montserrat-Regular.woff2'
   ],
   
-  // LCP optimization settings
+  // LCP mobile optimization
   lcpOptimization: {
-    // Prioritize hero text and logo
     criticalElements: ['.hero-text h1', '.logo img', '.video-bg'],
-    // Reduce non-critical resources loading
     deferNonCritical: true,
-    // Optimize font loading
-    fontDisplay: 'swap'
+    fontDisplay: 'swap',
+    // Mobile-specific optimizations
+    reduceAnimations: true,
+    optimizeImages: true
   }
 };
 
-// Estratégia de cache por prioridade - Baseada na documentação oficial do Chrome
+// Estratégias de cache mobile otimizadas - Reduzidas cadeias
 const CACHE_STRATEGIES = {
-  // Recursos críticos - Cache imediato, nunca expira
+  // Recursos críticos mobile - Minimal chain
   CRITICAL: {
     name: 'critical',
     urls: [
@@ -43,55 +41,51 @@ const CACHE_STRATEGIES = {
       '/index.html',
       '/styles.css',
       '/script.js',
-      '/assets/images/Renov-Logo.png'
+      '/assets/images/Renov-Logo.webp',
+      '/assets/fonts/Montserrat-Regular.woff2'
     ],
     strategy: 'cache-first',
     maxAge: 31536000 // 1 ano
   },
   
-  // Recursos estáticos - Cache de longo prazo
+  // Recursos estáticos - Otimizados para mobile
   STATIC: {
     name: 'static',
     urls: [
       '/assets/video/bg-video.mp4.mp4',
       '/assets/video/bg-IA.mp4 (1).mp4',
-      '/assets/images/missao.png',
-      '/assets/images/visao.png',
-      '/assets/images/valores.png',
-      '/assets/images/ismael-kolling.png',
-      '/assets/images/matheus-mundstock.png',
-      '/assets/icons/ia-icon.png',
-      '/assets/icons/app-icon.png',
-      '/assets/icons/api-icon.png',
-      '/assets/icons/logistics-icon.png',
-      '/assets/icons/results-icon.png',
-      '/assets/icons/esg-icon.png',
-      '/assets/icons/sustentabilidade.png',
-      '/assets/icons/economia-circular-icon.png',
-      '/assets/icons/responsabilidade-ambiental.png',
-      '/assets/icons/desigualdade-digital.png'
+      '/assets/images/missao.webp',
+      '/assets/images/visao.webp',
+      '/assets/images/valores.webp',
+      '/assets/images/ismael-kolling.webp',
+      '/assets/images/matheus-mundstock.webp',
+      '/assets/icons/ia-icon.webp',
+      '/assets/icons/app-icon.webp',
+      '/assets/icons/api-icon.webp',
+      '/assets/icons/logistics-icon.webp',
+      '/assets/icons/results-icon.webp',
+      '/assets/icons/esg-icon.webp'
     ],
     strategy: 'cache-first',
-    maxAge: 2592000 // 30 dias
+    maxAge: isMobile ? 604800 : 2592000 // 7 dias mobile vs 30 dias desktop
   },
   
-  // Recursos externos - Cache com revalidação
+  // Recursos externos - Deferred loading
   EXTERNAL: {
     name: 'external',
     urls: [
-      'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css',
-      'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap'
+      'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css'
     ],
     strategy: 'stale-while-revalidate',
-    maxAge: 86400 // 1 dia
+    maxAge: isMobile ? 43200 : 86400 // 12h mobile vs 24h desktop
   },
   
-  // Recursos dinâmicos - Cache de curto prazo
+  // Recursos dinâmicos - Network first
   DYNAMIC: {
     name: 'dynamic',
     urls: [],
     strategy: 'network-first',
-    maxAge: 3600 // 1 hora
+    maxAge: isMobile ? 1800 : 3600 // 30min mobile vs 1h desktop
   }
 };
 

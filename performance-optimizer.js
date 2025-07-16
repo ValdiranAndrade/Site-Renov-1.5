@@ -103,3 +103,112 @@
     }
     
 })(); 
+
+// Performance Optimizer for Mobile - Reduce Critical Request Chains
+(function() {
+    'use strict';
+    
+    // Detect mobile device
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
+    
+    if (isMobile) {
+        // Optimize partner logos loading - Reduce request chains
+        const optimizePartnerLogos = () => {
+            const partnerImages = document.querySelectorAll('.parceiro-item img');
+            partnerImages.forEach(img => {
+                // Set low priority for all partner logos
+                img.setAttribute('fetchpriority', 'low');
+                img.setAttribute('loading', 'lazy');
+                img.setAttribute('decoding', 'async');
+                
+                // Reduce image quality for mobile if needed
+                if (window.innerWidth <= 480) {
+                    img.style.maxWidth = '80px';
+                    img.style.height = 'auto';
+                }
+            });
+        };
+        
+        // Optimize FAQ images loading
+        const optimizeFAQImages = () => {
+            const faqImages = document.querySelectorAll('.resposta-card img.avatar');
+            faqImages.forEach(img => {
+                img.setAttribute('fetchpriority', 'low');
+                img.setAttribute('loading', 'lazy');
+                img.setAttribute('decoding', 'async');
+            });
+        };
+        
+        // Optimize non-critical images
+        const optimizeNonCriticalImages = () => {
+            const nonCriticalImages = document.querySelectorAll('img[loading="lazy"]');
+            nonCriticalImages.forEach(img => {
+                if (!img.hasAttribute('fetchpriority')) {
+                    img.setAttribute('fetchpriority', 'low');
+                }
+            });
+        };
+        
+        // Execute optimizations when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => {
+                optimizePartnerLogos();
+                optimizeFAQImages();
+                optimizeNonCriticalImages();
+            });
+        } else {
+            optimizePartnerLogos();
+            optimizeFAQImages();
+            optimizeNonCriticalImages();
+        }
+        
+        // Reduce animation complexity for mobile
+        document.documentElement.style.setProperty('--animation-duration', '0.15s');
+        document.documentElement.style.setProperty('--transition-duration', '0.15s');
+        
+        // Optimize scroll performance
+        let ticking = false;
+        const optimizeScroll = () => {
+            if (!ticking) {
+                requestAnimationFrame(() => {
+                    // Scroll optimizations here if needed
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        };
+        
+        // Add passive scroll listeners
+        document.addEventListener('scroll', optimizeScroll, { passive: true });
+        document.addEventListener('touchmove', optimizeScroll, { passive: true });
+    }
+    
+    // Global performance optimizations
+    const globalOptimizations = () => {
+        // Preload critical resources only
+        const criticalResources = [
+            'assets/images/Renov-Logo.webp',
+            'assets/fonts/Montserrat-Regular.woff2',
+            'styles.css',
+            'script.js'
+        ];
+        
+        // Defer non-critical resources
+        const deferResources = () => {
+            const nonCritical = document.querySelectorAll('link[fetchpriority="low"], img[fetchpriority="low"]');
+            nonCritical.forEach(resource => {
+                if (resource.tagName === 'LINK') {
+                    resource.setAttribute('media', 'print');
+                    resource.setAttribute('onload', "this.media='all'");
+                }
+            });
+        };
+        
+        // Execute after page load
+        window.addEventListener('load', deferResources);
+    };
+    
+    // Initialize optimizations
+    globalOptimizations();
+    
+})(); 

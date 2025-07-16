@@ -1,44 +1,40 @@
 // Detectar se é dispositivo mobile
 const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
 
-// Otimizações para mobile - Consolidadas para reduzir cadeias de solicitações
+// Otimizações mobile - Reduzidas cadeias de solicitações
 if (isMobile) {
-    // Configurações otimizadas para mobile
+    // Configurações mobile otimizadas - Single function
     const mobileOptimizations = () => {
-        // Reduzir animações em mobile
+        // CSS custom properties para performance
         document.documentElement.style.setProperty('--animation-duration', '0.2s');
+        document.documentElement.style.setProperty('--scroll-behavior', 'auto');
         
-        // Prevenir zoom em inputs
-        const inputs = document.querySelectorAll('input, textarea, select');
-        inputs.forEach(input => {
+        // Inputs otimizados para mobile
+        document.querySelectorAll('input, textarea, select').forEach(input => {
             input.style.fontSize = '16px';
         });
         
-        // LCP optimizations - Consolidadas
-        const criticalElements = [
-            { selector: '.hero-text', styles: { display: 'block', visibility: 'visible', opacity: '1' } },
-            { selector: '.video-bg', styles: { display: 'block', visibility: 'visible', opacity: '1' } },
-            { selector: '.logo img', styles: { display: 'block', visibility: 'visible' } }
-        ];
-        
-        criticalElements.forEach(({ selector, styles }) => {
+        // LCP optimizations - Minimal DOM manipulation
+        const criticalSelectors = ['.hero-text', '.video-bg', '.logo img'];
+        criticalSelectors.forEach(selector => {
             const element = document.querySelector(selector);
             if (element) {
-                Object.assign(element.style, styles);
+                element.style.display = 'block';
+                element.style.visibility = 'visible';
+                element.style.opacity = '1';
             }
         });
     };
     
-    // Otimizar scroll para mobile - Event listeners passivos
-    document.addEventListener('touchstart', () => {}, {passive: true});
-    document.addEventListener('touchmove', () => {}, {passive: true});
+    // Event listeners passivos - Single chain
+    ['touchstart', 'touchmove'].forEach(event => {
+        document.addEventListener(event, () => {}, {passive: true});
+    });
     
-    // Executar otimizações quando DOM estiver pronto
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', mobileOptimizations);
-    } else {
-        mobileOptimizations();
-    }
+    // Execução otimizada
+    document.readyState === 'loading' 
+        ? document.addEventListener('DOMContentLoaded', mobileOptimizations)
+        : mobileOptimizations();
 }
 
 // Dados dos modelos de celulares por marca
