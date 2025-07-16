@@ -1,6 +1,27 @@
 const CACHE_VERSION = '1.5.7';
 const CACHE_NAME = `renov-cache-v${CACHE_VERSION}`;
 
+// Detectar se é dispositivo mobile
+const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+// Configurações otimizadas para mobile
+const MOBILE_CONFIG = {
+  // Reduzir tamanho do cache em mobile
+  maxCacheSize: isMobile ? 50 * 1024 * 1024 : 100 * 1024 * 1024, // 50MB vs 100MB
+  // Cache mais agressivo em mobile para economizar dados
+  cacheStrategy: isMobile ? 'cache-first' : 'stale-while-revalidate',
+  // Priorizar recursos críticos em mobile
+  criticalResources: [
+    '/',
+    '/index.html',
+    '/styles.css',
+    '/script.js',
+    '/assets/images/Renov-Logo.webp',
+    '/assets/fonts/Montserrat-Regular.woff2',
+    '/assets/fonts/Montserrat-Medium.woff2'
+  ]
+};
+
 // Estratégia de cache por prioridade - Baseada na documentação oficial do Chrome
 const CACHE_STRATEGIES = {
   // Recursos críticos - Cache imediato, nunca expira

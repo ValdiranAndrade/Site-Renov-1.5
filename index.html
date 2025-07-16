@@ -40,8 +40,8 @@
     <link rel="preload" href="styles.css?v=1.5.7" as="style" fetchpriority="high" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="styles.css?v=1.5.7"></noscript>
     
-    <!-- Preload critical video -->
-    <link rel="preload" href="assets/video/bg-video.mp4.mp4?v=1.5.7" as="video" type="video/mp4">
+    <!-- Preload critical video with mobile optimization -->
+    <link rel="preload" href="assets/video/bg-video.mp4.mp4?v=1.5.7" as="video" type="video/mp4" media="(min-width: 768px)">
     
     <!-- Preload local fonts for better performance -->
     <link rel="preload" href="assets/fonts/Montserrat-Regular.woff2" as="font" type="font/woff2" crossorigin>
@@ -98,6 +98,33 @@
         overflow: hidden;
         margin-top: 0 !important;
         margin-bottom: -350px;
+      }
+      
+      /* Mobile-specific optimizations */
+      @media (max-width: 768px) {
+        .hero {
+          height: 100vh;
+          margin-bottom: 0;
+        }
+        
+        .hero-content {
+          margin-top: 120px;
+          padding: 0 20px;
+        }
+        
+        .hero-text h1 {
+          font-size: 32px;
+          line-height: 1.1;
+        }
+        
+        .header-content {
+          padding: 0.5rem 1rem;
+        }
+        
+        .logo img {
+          width: 120px;
+          height: 30px;
+        }
       }
       
       .hero-content {
@@ -227,8 +254,9 @@
             <section id="home" class="tab-content active">
                 <section class="hero">
                   <div class="video-bg-wrapper">
-                    <video autoplay muted loop playsinline class="video-bg" preload="auto">
-                      <source src="assets/video/bg-video.mp4.mp4" type="video/mp4">
+                    <video autoplay muted loop playsinline class="video-bg" preload="metadata" poster="assets/images/Renov-Logo.webp">
+                      <source src="assets/video/bg-video.mp4.mp4" type="video/mp4" media="(min-width: 768px)">
+                      <source src="assets/video/bg-video-mobile.mp4" type="video/mp4" media="(max-width: 767px)">
                       Seu navegador não suporta vídeo em HTML5.
                     </video>
                   </div>
@@ -810,7 +838,7 @@
                     </div>
                 </header>
                 <div class="trabalhe-conosco" style="text-align:left;">
-                    <h1 style="text-align:left;font-size:3.2rem;font-weight:800;line-height:1.05;margin-bottom:1.5rem;margin-left:0;">Junte-se à Nossa Equipe</h1>
+                    <h1 style="text-align:center;font-size:3.2rem;font-weight:800;line-height:1.05;margin-bottom:1.5rem;margin-left:0;">Junte-se à Nossa Equipe</h1>
                     <p style="text-align:left;margin-left:0; margin-bottom:80px;">Descubra oportunidades incríveis para fazer parte da revolução no varejo de tecnologia</p>
                     
                     <div class="simples-bem-feito-container" style="margin-left:-280px; margin-bottom:40px; padding: 100px; background: #f8f9fa url('assets/images/simples.webp') no-repeat center center; background-size: cover; border-radius: 12px; width: 1300px; min-height: 500px; text-align: left;">

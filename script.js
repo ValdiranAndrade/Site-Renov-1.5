@@ -1,3 +1,22 @@
+// Detectar se é dispositivo mobile
+const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
+
+// Otimizações para mobile
+if (isMobile) {
+    // Reduzir animações em mobile
+    document.documentElement.style.setProperty('--animation-duration', '0.2s');
+    
+    // Otimizar scroll para mobile
+    document.addEventListener('touchstart', function() {}, {passive: true});
+    document.addEventListener('touchmove', function() {}, {passive: true});
+    
+    // Prevenir zoom em inputs
+    const inputs = document.querySelectorAll('input, textarea, select');
+    inputs.forEach(input => {
+        input.style.fontSize = '16px';
+    });
+}
+
 // Dados dos modelos de celulares por marca
 const modelosPorMarca = {
     apple: [

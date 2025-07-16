@@ -99,6 +99,8 @@ section h2 span {
 @media (max-width: 768px) {
     .hero {
         margin-top: 120px; /* Mais espaço para o cabeçalho em mobile */
+        height: 100vh;
+        max-height: 600px;
     }
     
     /* Garantir área de toque mínima para botões */
@@ -111,6 +113,13 @@ section h2 span {
     /* Garantir contraste adequado */
     .hero-text h1 {
         text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        font-size: 32px;
+        line-height: 1.1;
+    }
+    
+    .hero-text p {
+        font-size: 16px;
+        line-height: 1.5;
     }
     
     /* Melhorar legibilidade em mobile */
@@ -132,6 +141,36 @@ section h2 span {
     p {
         font-size: 1rem !important;
         line-height: 1.6 !important;
+    }
+    
+    /* Otimizações de performance para mobile */
+    .video-bg {
+        object-fit: cover;
+        width: 100vw;
+        height: 100%;
+    }
+    
+    /* Reduzir animações em mobile para melhor performance */
+    .diferencial-card:hover,
+    .parceiro-item:hover,
+    .beneficio-card:hover {
+        transform: none;
+    }
+    
+    /* Otimizar grid layouts para mobile */
+    .diferenciais-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .parceiros-slider {
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+    }
+    
+    .parceiro-item {
+        scroll-snap-align: start;
+        flex-shrink: 0;
     }
 }
 
