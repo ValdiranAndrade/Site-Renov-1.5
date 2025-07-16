@@ -1,46 +1,44 @@
 // Detectar se é dispositivo mobile
 const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
 
-// Otimizações para mobile
+// Otimizações para mobile - Consolidadas para reduzir cadeias de solicitações
 if (isMobile) {
-    // Reduzir animações em mobile
-    document.documentElement.style.setProperty('--animation-duration', '0.2s');
-    
-    // Otimizar scroll para mobile
-    document.addEventListener('touchstart', function() {}, {passive: true});
-    document.addEventListener('touchmove', function() {}, {passive: true});
-    
-    // Prevenir zoom em inputs
-    const inputs = document.querySelectorAll('input, textarea, select');
-    inputs.forEach(input => {
-        input.style.fontSize = '16px';
-    });
-    
-    // LCP optimizations for mobile
-    document.addEventListener('DOMContentLoaded', function() {
-        // Prioritize hero text rendering
-        const heroText = document.querySelector('.hero-text');
-        if (heroText) {
-            heroText.style.display = 'block';
-            heroText.style.visibility = 'visible';
-            heroText.style.opacity = '1';
-        }
+    // Configurações otimizadas para mobile
+    const mobileOptimizations = () => {
+        // Reduzir animações em mobile
+        document.documentElement.style.setProperty('--animation-duration', '0.2s');
         
-        // Optimize video loading for mobile
-        const video = document.querySelector('.video-bg');
-        if (video) {
-            video.style.display = 'block';
-            video.style.visibility = 'visible';
-            video.style.opacity = '1';
-        }
+        // Prevenir zoom em inputs
+        const inputs = document.querySelectorAll('input, textarea, select');
+        inputs.forEach(input => {
+            input.style.fontSize = '16px';
+        });
         
-        // Optimize logo rendering
-        const logo = document.querySelector('.logo img');
-        if (logo) {
-            logo.style.display = 'block';
-            logo.style.visibility = 'visible';
-        }
-    });
+        // LCP optimizations - Consolidadas
+        const criticalElements = [
+            { selector: '.hero-text', styles: { display: 'block', visibility: 'visible', opacity: '1' } },
+            { selector: '.video-bg', styles: { display: 'block', visibility: 'visible', opacity: '1' } },
+            { selector: '.logo img', styles: { display: 'block', visibility: 'visible' } }
+        ];
+        
+        criticalElements.forEach(({ selector, styles }) => {
+            const element = document.querySelector(selector);
+            if (element) {
+                Object.assign(element.style, styles);
+            }
+        });
+    };
+    
+    // Otimizar scroll para mobile - Event listeners passivos
+    document.addEventListener('touchstart', () => {}, {passive: true});
+    document.addEventListener('touchmove', () => {}, {passive: true});
+    
+    // Executar otimizações quando DOM estiver pronto
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', mobileOptimizations);
+    } else {
+        mobileOptimizations();
+    }
 }
 
 // Dados dos modelos de celulares por marca

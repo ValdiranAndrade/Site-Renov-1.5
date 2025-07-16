@@ -4879,9 +4879,8 @@ video[poster] {
     background: #000;
 }
 
-/* LCP Mobile Optimizations */
+/* Mobile LCP optimizations - Consolidated */
 @media (max-width: 768px) {
-    /* Optimize hero text for LCP */
     .hero-text h1 {
         font-size: 32px !important;
         line-height: 1.1 !important;
@@ -4900,7 +4899,6 @@ video[poster] {
         margin: 0 !important;
     }
     
-    /* Optimize hero content positioning */
     .hero-content {
         margin-top: 120px !important;
         padding: 0 20px !important;
@@ -4908,7 +4906,6 @@ video[poster] {
         z-index: 2 !important;
     }
     
-    /* Optimize hero section */
     .hero {
         height: 100vh !important;
         min-height: 600px !important;
@@ -4916,7 +4913,6 @@ video[poster] {
         background: #000 !important;
     }
     
-    /* Optimize header for mobile LCP */
     .header-content {
         padding: 0.5rem 1rem !important;
         background: rgba(255,255,255,0.95) !important;
@@ -4925,7 +4921,6 @@ video[poster] {
         z-index: 10 !important;
     }
     
-    /* Optimize logo for mobile */
     .logo img {
         width: 120px !important;
         height: 30px !important;
@@ -4934,7 +4929,6 @@ video[poster] {
     }
 }
 
-/* Ultra-mobile LCP optimizations */
 @media (max-width: 480px) {
     .hero-text h1 {
         font-size: 28px !important;

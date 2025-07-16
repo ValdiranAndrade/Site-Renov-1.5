@@ -15,12 +15,12 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     
     <!-- PWA Manifest -->
-    <link rel="manifest" href="/manifest.json?v=1.5.7">
+    <link rel="manifest" href="/manifest.json?v=1.5.8">
     <meta name="theme-color" content="#00b140">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="Renov">
-    <link rel="apple-touch-icon" href="assets/images/Renov-Logo.webp?v=1.5.7">
+    <link rel="apple-touch-icon" href="assets/images/Renov-Logo.webp?v=1.5.8">
     
     <!-- Cache headers for long-term caching - Baseado na documentação oficial do Chrome -->
     <meta http-equiv="Cache-Control" content="public, max-age=31536000, immutable">
@@ -32,42 +32,27 @@
     <!-- DNS prefetch para recursos críticos -->
     <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
     
-    <!-- Highest priority preload for LCP image -->
-    <link rel="preload" href="assets/images/Renov-Logo.webp?v=1.5.7" as="image" fetchpriority="high" type="image/webp" crossorigin="anonymous">
-    
-    <!-- Mobile-specific LCP optimizations -->
+    <!-- Critical resources - Highest priority -->
+    <link rel="preload" href="assets/images/Renov-Logo.webp?v=1.5.8" as="image" fetchpriority="high" type="image/webp" crossorigin="anonymous">
     <link rel="preload" href="assets/fonts/Montserrat-Regular.woff2" as="font" type="font/woff2" crossorigin fetchpriority="high">
     <link rel="preload" href="assets/fonts/Montserrat-Medium.woff2" as="font" type="font/woff2" crossorigin fetchpriority="high">
+    <link rel="preload" href="styles.css?v=1.5.8" as="style" fetchpriority="high" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="styles.css?v=1.5.8"></noscript>
     
-    <!-- Preload critical CSS for mobile -->
-    <link rel="preload" href="styles.css?v=1.5.7" as="style" fetchpriority="high">
+    <!-- High priority resources -->
+    <link rel="preload" href="script.js?v=1.5.8" as="script" fetchpriority="high">
+    <link rel="preload" href="assets/video/bg-video.mp4.mp4?v=1.5.8" as="video" type="video/mp4" media="(min-width: 768px)">
     
-    <!-- Local fonts loaded via CSS @font-face -->
+    <!-- Medium priority resources -->
+    <link rel="preload" href="assets/images/bg-como-funciona.webp?v=1.5.8" as="image" fetchpriority="medium" type="image/webp">
     
-    <link rel="preload" href="styles.css?v=1.5.7" as="style" fetchpriority="high" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="styles.css?v=1.5.7"></noscript>
-    
-    <!-- Preload critical video with mobile optimization -->
-    <link rel="preload" href="assets/video/bg-video.mp4.mp4?v=1.5.7" as="video" type="video/mp4" media="(min-width: 768px)">
-    
-    <!-- Preload local fonts for better performance -->
-    <link rel="preload" href="assets/fonts/Montserrat-Regular.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="assets/fonts/Montserrat-Medium.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="assets/fonts/Montserrat-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
-    
-    <!-- Preload critical script -->
-    <link rel="preload" href="script.js?v=1.5.7" as="script" fetchpriority="high">
-    
-    <!-- Preload critical background image -->
-    <link rel="preload" href="assets/images/bg-como-funciona.webp?v=1.5.7" as="image" fetchpriority="high" type="image/webp">
-    
-    <!-- Preload Font Awesome fonts with font-display=swap -->
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+    <!-- Low priority resources - Deferred -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin fetchpriority="low">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin fetchpriority="low">
     
     <title>Renov - Sua Troca Inteligente</title>
-    <link rel="stylesheet" href="styles.css?v=1.5.7">
-    <!-- Font Awesome com font-display=swap para otimização -->
+    <link rel="stylesheet" href="styles.css?v=1.5.8">
+    <!-- Font Awesome - Deferred loading for better performance -->
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" fetchpriority="low" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
     
@@ -193,16 +178,6 @@
         margin-top: 300px;
       }
       
-      .hero-text h1 {
-        font-size: 48px;
-        line-height: 1.05 !important;
-        margin-bottom: 24px;
-        color: #fff !important;
-        font-weight: 700;
-        text-align: left;
-        white-space: normal !important;
-      }
-      
       /* Font Awesome font-display optimization */
       @font-face {
         font-family: 'Font Awesome 6 Brands';
@@ -283,8 +258,8 @@
             <div class="logo">
                 <a href="#" onclick="openTab('home'); return false;" style="text-decoration: none; cursor: pointer;">
                     <picture>
-                        <source srcset="assets/images/Renov-Logo.webp?v=1.5.7" type="image/webp">
-                        <img src="assets/images/Renov-Logo.webp?v=1.5.7" alt="Renov - Sua Troca Inteligente" loading="eager" fetchpriority="high" decoding="sync" width="160" height="40">
+                        <source srcset="assets/images/Renov-Logo.webp?v=1.5.8" type="image/webp">
+                        <img src="assets/images/Renov-Logo.webp?v=1.5.8" alt="Renov - Sua Troca Inteligente" loading="eager" fetchpriority="high" decoding="sync" width="160" height="40">
                     </picture>
                 </a>
             </div>
@@ -326,8 +301,8 @@
                 <section id="como-funciona" class="como-funciona">
                     <div class="como-funciona-bg">
                         <picture>
-                            <source srcset="assets/images/bg-como-funciona.webp?v=1.5.7" type="image/webp">
-                            <img src="assets/images/bg-como-funciona.webp?v=1.5.7" alt="Background da seção Como Funciona" loading="eager" fetchpriority="high" decoding="async">
+                            <source srcset="assets/images/bg-como-funciona.webp?v=1.5.8" type="image/webp">
+                            <img src="assets/images/bg-como-funciona.webp?v=1.5.8" alt="Background da seção Como Funciona" loading="eager" fetchpriority="high" decoding="async">
                         </picture>
                     </div>
                     <div class="como-funciona-content">
@@ -375,7 +350,7 @@
                         <!-- Nova seção: Avaliação Inteligente -->
                         <section class="ai-hero">
                             <div class="ai-video-bg-wrapper">
-                                <video autoplay muted loop playsinline class="ai-video-bg" preload="metadata">
+                                <video autoplay muted loop playsinline class="ai-video-bg" preload="none">
                                     <source src="assets/video/bg-IA.mp4 (1).mp4" type="video/mp4">
                                     Seu navegador não suporta vídeo em HTML5.
                                 </video>
@@ -398,8 +373,8 @@
                             <div class="diferencial-card">
                                                             <div class="diferencial-icon">
                                 <picture>
-                                    <source srcset="assets/icons/ia-icon.webp?v=1.5.7" type="image/webp">
-                                    <img src="assets/icons/ia-icon.webp?v=1.5.7" alt="Ícone de Inteligência Artificial" loading="lazy" decoding="async">
+                                    <source srcset="assets/icons/ia-icon.webp?v=1.5.8" type="image/webp">
+                                    <img src="assets/icons/ia-icon.webp?v=1.5.8" alt="Ícone de Inteligência Artificial" loading="lazy" decoding="async">
                                 </picture>
                             </div>
                                 <h3 class="diferencial-title">IA</h3>
@@ -409,8 +384,8 @@
                             <div class="diferencial-card">
                                                             <div class="diferencial-icon">
                                 <picture>
-                                    <source srcset="assets/icons/app-icon.webp?v=1.5.7" type="image/webp">
-                                    <img src="assets/icons/app-icon.webp?v=1.5.7" alt="Ícone de Aplicativo Mobile" loading="lazy" decoding="async">
+                                    <source srcset="assets/icons/app-icon.webp?v=1.5.8" type="image/webp">
+                                    <img src="assets/icons/app-icon.webp?v=1.5.8" alt="Ícone de Aplicativo Mobile" loading="lazy" decoding="async">
                                 </picture>
                             </div>
                                 <h3 class="diferencial-title">Aplicativo</h3>
@@ -420,8 +395,8 @@
                             <div class="diferencial-card">
                                                             <div class="diferencial-icon">
                                 <picture>
-                                    <source srcset="assets/icons/api-icon.webp?v=1.5.7" type="image/webp">
-                                    <img src="assets/icons/api-icon.webp?v=1.5.7" alt="Ícone de API e Integração" loading="lazy" decoding="async">
+                                    <source srcset="assets/icons/api-icon.webp?v=1.5.8" type="image/webp">
+                                    <img src="assets/icons/api-icon.webp?v=1.5.8" alt="Ícone de API e Integração" loading="lazy" decoding="async">
                                 </picture>
                             </div>
                                 <h3 class="diferencial-title">API</h3>
@@ -431,8 +406,8 @@
                             <div class="diferencial-card">
                                                             <div class="diferencial-icon">
                                 <picture>
-                                    <source srcset="assets/icons/logistics-icon.webp?v=1.5.7" type="image/webp">
-                                    <img src="assets/icons/logistics-icon.webp?v=1.5.7" alt="Ícone de Logística e Distribuição" loading="lazy" decoding="async">
+                                    <source srcset="assets/icons/logistics-icon.webp?v=1.5.8" type="image/webp">
+                                    <img src="assets/icons/logistics-icon.webp?v=1.5.8" alt="Ícone de Logística e Distribuição" loading="lazy" decoding="async">
                                 </picture>
                             </div>
                                 <h3 class="diferencial-title">Logística</h3>
@@ -442,8 +417,8 @@
                             <div class="diferencial-card">
                                                             <div class="diferencial-icon">
                                 <picture>
-                                    <source srcset="assets/icons/results-icon.webp?v=1.5.7" type="image/webp">
-                                    <img src="assets/icons/results-icon.webp?v=1.5.7" alt="Ícone de Resultados e Performance" loading="lazy" decoding="async">
+                                    <source srcset="assets/icons/results-icon.webp?v=1.5.8" type="image/webp">
+                                    <img src="assets/icons/results-icon.webp?v=1.5.8" alt="Ícone de Resultados e Performance" loading="lazy" decoding="async">
                                 </picture>
                             </div>
                                 <h3 class="diferencial-title">Resultados</h3>
@@ -453,8 +428,8 @@
                             <div class="diferencial-card">
                                                             <div class="diferencial-icon">
                                 <picture>
-                                    <source srcset="assets/icons/esg-icon.webp?v=1.5.7" type="image/webp">
-                                    <img src="assets/icons/esg-icon.webp?v=1.5.7" alt="Ícone de ESG e Sustentabilidade" loading="lazy" decoding="async">
+                                    <source srcset="assets/icons/esg-icon.webp?v=1.5.8" type="image/webp">
+                                    <img src="assets/icons/esg-icon.webp?v=1.5.8" alt="Ícone de ESG e Sustentabilidade" loading="lazy" decoding="async">
                                 </picture>
                             </div>
                                 <h3 class="diferencial-title">ESG</h3>
@@ -472,123 +447,123 @@
                             <!-- Primeiro conjunto de logos -->
                             <div class="parceiro-item">
                                 <picture>
-                                    <source srcset="assets/images/partners/fujioka.webp?v=1.5.7" type="image/webp">
-                                    <img src="assets/images/partners/fujioka.webp?v=1.5.7" alt="Logo da empresa Fujioka" loading="lazy" decoding="async">
+                                    <source srcset="assets/images/partners/fujioka.webp?v=1.5.8" type="image/webp">
+                                    <img src="assets/images/partners/fujioka.webp?v=1.5.8" alt="Logo da empresa Fujioka" loading="lazy" decoding="async">
                                 </picture>
                             </div>
                             <div class="parceiro-item">
                                 <picture>
-                                    <source srcset="assets/images/partners/sol.webp?v=1.5.7" type="image/webp">
-                                    <img src="assets/images/partners/sol.webp?v=1.5.7" alt="Logo da empresa SOL" loading="lazy" decoding="async">
+                                    <source srcset="assets/images/partners/sol.webp?v=1.5.8" type="image/webp">
+                                    <img src="assets/images/partners/sol.webp?v=1.5.8" alt="Logo da empresa SOL" loading="lazy" decoding="async">
                                 </picture>
                             </div>
                             <div class="parceiro-item">
                                 <picture>
-                                    <source srcset="assets/images/partners/mateus.webp?v=1.5.7" type="image/webp">
-                                    <img src="assets/images/partners/mateus.webp?v=1.5.7" alt="Logo da empresa Mateus" loading="lazy" decoding="async">
+                                    <source srcset="assets/images/partners/mateus.webp?v=1.5.8" type="image/webp">
+                                    <img src="assets/images/partners/mateus.webp?v=1.5.8" alt="Logo da empresa Mateus" loading="lazy" decoding="async">
                                 </picture>
                             </div>
                             <div class="parceiro-item">
                                 <picture>
-                                    <source srcset="assets/images/partners/gazin.webp?v=1.5.7" type="image/webp">
-                                    <img src="assets/images/partners/gazin.webp?v=1.5.7" alt="Logo da empresa Gazin" loading="lazy" decoding="async">
+                                    <source srcset="assets/images/partners/gazin.webp?v=1.5.8" type="image/webp">
+                                    <img src="assets/images/partners/gazin.webp?v=1.5.8" alt="Logo da empresa Gazin" loading="lazy" decoding="async">
                                 </picture>
                             </div>
                             <div class="parceiro-item">
                                 <picture>
-                                    <source srcset="assets/images/partners/foto-nascimento.webp?v=1.5.7" type="image/webp">
-                                    <img src="assets/images/partners/foto-nascimento.webp?v=1.5.7" alt="Logo da empresa Foto Nascimento" loading="lazy" decoding="async">
+                                    <source srcset="assets/images/partners/foto-nascimento.webp?v=1.5.8" type="image/webp">
+                                    <img src="assets/images/partners/foto-nascimento.webp?v=1.5.8" alt="Logo da empresa Foto Nascimento" loading="lazy" decoding="async">
                                 </picture>
                             </div>
                             <div class="parceiro-item">
                                 <picture>
-                                    <source srcset="assets/images/partners/ponto-frio.webp?v=1.5.7" type="image/webp">
-                                    <img src="assets/images/partners/ponto-frio.webp?v=1.5.7" alt="Logo da empresa Ponto Frio" loading="lazy" decoding="async">
+                                    <source srcset="assets/images/partners/ponto-frio.webp?v=1.5.8" type="image/webp">
+                                    <img src="assets/images/partners/ponto-frio.webp?v=1.5.8" alt="Logo da empresa Ponto Frio" loading="lazy" decoding="async">
                                 </picture>
                             </div>
                             <div class="parceiro-item">
                                 <picture>
-                                    <source srcset="assets/images/partners/tim.webp?v=1.5.7" type="image/webp">
-                                    <img src="assets/images/partners/tim.webp?v=1.5.7" alt="Logo da empresa TIM" loading="lazy" decoding="async">
+                                    <source srcset="assets/images/partners/tim.webp?v=1.5.8" type="image/webp">
+                                    <img src="assets/images/partners/tim.webp?v=1.5.8" alt="Logo da empresa TIM" loading="lazy" decoding="async">
                                 </picture>
                             </div>
                             <div class="parceiro-item">
                                 <picture>
-                                    <source srcset="assets/images/partners/casas-bahia.webp?v=1.5.7" type="image/webp">
-                                    <img src="assets/images/partners/casas-bahia.webp?v=1.5.7" alt="Logo da empresa Casas Bahia" loading="lazy" decoding="async">
+                                    <source srcset="assets/images/partners/casas-bahia.webp?v=1.5.8" type="image/webp">
+                                    <img src="assets/images/partners/casas-bahia.webp?v=1.5.8" alt="Logo da empresa Casas Bahia" loading="lazy" decoding="async">
                                 </picture>
                             </div>
                             <div class="parceiro-item">
                                 <picture>
-                                    <source srcset="assets/images/partners/voke.webp?v=1.5.7" type="image/webp">
-                                    <img src="assets/images/partners/voke.webp?v=1.5.7" alt="Logo da empresa Voke" loading="lazy" decoding="async">
+                                    <source srcset="assets/images/partners/voke.webp?v=1.5.8" type="image/webp">
+                                    <img src="assets/images/partners/voke.webp?v=1.5.8" alt="Logo da empresa Voke" loading="lazy" decoding="async">
                                 </picture>
                             </div>
                             <div class="parceiro-item">
                                 <picture>
-                                    <source srcset="assets/images/partners/apple.webp?v=1.5.7" type="image/webp">
-                                    <img src="assets/images/partners/apple.webp?v=1.5.7" alt="Logo da empresa Apple" loading="lazy" decoding="async">
+                                    <source srcset="assets/images/partners/apple.webp?v=1.5.8" type="image/webp">
+                                    <img src="assets/images/partners/apple.webp?v=1.5.8" alt="Logo da empresa Apple" loading="lazy" decoding="async">
                                 </picture>
                             </div>
                             <!-- Duplicação dos logos para efeito infinito -->
                             <div class="parceiro-item">
                                 <picture>
-                                    <source srcset="assets/images/partners/fujioka.webp?v=1.5.7" type="image/webp">
-                                    <img src="assets/images/partners/fujioka.webp?v=1.5.7" alt="Logo da empresa Fujioka" loading="lazy" decoding="async">
+                                    <source srcset="assets/images/partners/fujioka.webp?v=1.5.8" type="image/webp">
+                                    <img src="assets/images/partners/fujioka.webp?v=1.5.8" alt="Logo da empresa Fujioka" loading="lazy" decoding="async">
                                 </picture>
                             </div>
                             <div class="parceiro-item">
                                 <picture>
-                                    <source srcset="assets/images/partners/sol.webp?v=1.5.7" type="image/webp">
-                                    <img src="assets/images/partners/sol.webp?v=1.5.7" alt="Logo da empresa SOL" loading="lazy" decoding="async">
+                                    <source srcset="assets/images/partners/sol.webp?v=1.5.8" type="image/webp">
+                                    <img src="assets/images/partners/sol.webp?v=1.5.8" alt="Logo da empresa SOL" loading="lazy" decoding="async">
                                 </picture>
                             </div>
                             <div class="parceiro-item">
                                 <picture>
-                                    <source srcset="assets/images/partners/mateus.webp?v=1.5.7" type="image/webp">
-                                    <img src="assets/images/partners/mateus.webp?v=1.5.7" alt="Logo da empresa Mateus" loading="lazy" decoding="async">
+                                    <source srcset="assets/images/partners/mateus.webp?v=1.5.8" type="image/webp">
+                                    <img src="assets/images/partners/mateus.webp?v=1.5.8" alt="Logo da empresa Mateus" loading="lazy" decoding="async">
                                 </picture>
                             </div>
                             <div class="parceiro-item">
                                 <picture>
-                                    <source srcset="assets/images/partners/gazin.webp?v=1.5.7" type="image/webp">
-                                    <img src="assets/images/partners/gazin.webp?v=1.5.7" alt="Logo da empresa Gazin" loading="lazy" decoding="async">
+                                    <source srcset="assets/images/partners/gazin.webp?v=1.5.8" type="image/webp">
+                                    <img src="assets/images/partners/gazin.webp?v=1.5.8" alt="Logo da empresa Gazin" loading="lazy" decoding="async">
                                 </picture>
                             </div>
                             <div class="parceiro-item">
                                 <picture>
-                                    <source srcset="assets/images/partners/foto-nascimento.webp?v=1.5.7" type="image/webp">
-                                    <img src="assets/images/partners/foto-nascimento.webp?v=1.5.7" alt="Logo da empresa Foto Nascimento" loading="lazy" decoding="async">
+                                    <source srcset="assets/images/partners/foto-nascimento.webp?v=1.5.8" type="image/webp">
+                                    <img src="assets/images/partners/foto-nascimento.webp?v=1.5.8" alt="Logo da empresa Foto Nascimento" loading="lazy" decoding="async">
                                 </picture>
                             </div>
                             <div class="parceiro-item">
                                 <picture>
-                                    <source srcset="assets/images/partners/ponto-frio.webp?v=1.5.7" type="image/webp">
-                                    <img src="assets/images/partners/ponto-frio.webp?v=1.5.7" alt="Logo da empresa Ponto Frio" loading="lazy" decoding="async">
+                                    <source srcset="assets/images/partners/ponto-frio.webp?v=1.5.8" type="image/webp">
+                                    <img src="assets/images/partners/ponto-frio.webp?v=1.5.8" alt="Logo da empresa Ponto Frio" loading="lazy" decoding="async">
                                 </picture>
                             </div>
                             <div class="parceiro-item">
                                 <picture>
-                                    <source srcset="assets/images/partners/tim.webp?v=1.5.7" type="image/webp">
-                                    <img src="assets/images/partners/tim.webp?v=1.5.7" alt="Logo da empresa TIM" loading="lazy" decoding="async">
+                                    <source srcset="assets/images/partners/tim.webp?v=1.5.8" type="image/webp">
+                                    <img src="assets/images/partners/tim.webp?v=1.5.8" alt="Logo da empresa TIM" loading="lazy" decoding="async">
                                 </picture>
                             </div>
                             <div class="parceiro-item">
                                 <picture>
-                                    <source srcset="assets/images/partners/casas-bahia.webp?v=1.5.7" type="image/webp">
-                                    <img src="assets/images/partners/casas-bahia.webp?v=1.5.7" alt="Logo da empresa Casas Bahia" loading="lazy" decoding="async">
+                                    <source srcset="assets/images/partners/casas-bahia.webp?v=1.5.8" type="image/webp">
+                                    <img src="assets/images/partners/casas-bahia.webp?v=1.5.8" alt="Logo da empresa Casas Bahia" loading="lazy" decoding="async">
                                 </picture>
                             </div>
                             <div class="parceiro-item">
                                 <picture>
-                                    <source srcset="assets/images/partners/voke.webp?v=1.5.7" type="image/webp">
-                                    <img src="assets/images/partners/voke.webp?v=1.5.7" alt="Logo da empresa Voke" loading="lazy" decoding="async">
+                                    <source srcset="assets/images/partners/voke.webp?v=1.5.8" type="image/webp">
+                                    <img src="assets/images/partners/voke.webp?v=1.5.8" alt="Logo da empresa Voke" loading="lazy" decoding="async">
                                 </picture>
                             </div>
                             <div class="parceiro-item">
                                 <picture>
-                                    <source srcset="assets/images/partners/apple.webp?v=1.5.7" type="image/webp">
-                                    <img src="assets/images/partners/apple.webp?v=1.5.7" alt="Logo da empresa Apple" loading="lazy" decoding="async">
+                                    <source srcset="assets/images/partners/apple.webp?v=1.5.8" type="image/webp">
+                                    <img src="assets/images/partners/apple.webp?v=1.5.8" alt="Logo da empresa Apple" loading="lazy" decoding="async">
                                 </picture>
                             </div>
                         </div>
@@ -763,32 +738,32 @@
                   <div class="impactos-container">
                       <div class="impacto-item">
                           <picture>
-                              <source srcset="assets/icons/sustentabilidade.webp?v=1.5.7" type="image/webp">
-                              <img src="assets/icons/sustentabilidade.webp?v=1.5.7" alt="Ícone de Sustentabilidade" class="impacto-icon" loading="lazy" decoding="async">
+                              <source srcset="assets/icons/sustentabilidade.webp?v=1.5.8" type="image/webp">
+                              <img src="assets/icons/sustentabilidade.webp?v=1.5.8" alt="Ícone de Sustentabilidade" class="impacto-icon" loading="lazy" decoding="async">
                           </picture>
                           <h3>Sustentabilidade</h3>
                           <p class="impacto-texto-preto">Posicione sua empresa como sustentável ao oferecer alternativas conscientes aos seus clientes.</p>
                       </div>
                       <div class="impacto-item">
                           <picture>
-                              <source srcset="assets/icons/economia-circular-icon.webp?v=1.5.7" type="image/webp">
-                              <img src="assets/icons/economia-circular-icon.webp?v=1.5.7" alt="Ícone de Economia Circular" class="impacto-icon" loading="lazy" decoding="async">
+                              <source srcset="assets/icons/economia-circular-icon.webp?v=1.5.8" type="image/webp">
+                              <img src="assets/icons/economia-circular-icon.webp?v=1.5.8" alt="Ícone de Economia Circular" class="impacto-icon" loading="lazy" decoding="async">
                           </picture>
                           <h3>Economia Circular</h3>
                           <p>Seu negócio participa ativamente da economia circular, agregando valor à marca.</p>
                       </div>
                       <div class="impacto-item">
                           <picture>
-                              <source srcset="assets/icons/responsabilidade-ambiental.webp?v=1.5.7" type="image/webp">
-                              <img src="assets/icons/responsabilidade-ambiental.webp?v=1.5.7" alt="Ícone de Responsabilidade Ambiental" class="impacto-icon" loading="lazy" decoding="async">
+                              <source srcset="assets/icons/responsabilidade-ambiental.webp?v=1.5.8" type="image/webp">
+                              <img src="assets/icons/responsabilidade-ambiental.webp?v=1.5.8" alt="Ícone de Responsabilidade Ambiental" class="impacto-icon" loading="lazy" decoding="async">
                           </picture>
                           <h3>Responsabilidade Ambiental</h3>
                           <p>Fortaleça os pilares ESG da sua empresa com reciclagem tecnológica responsável.</p>
                     </div>
                       <div class="impacto-item">
                           <picture>
-                              <source srcset="assets/icons/desigualdade-digital.webp?v=1.5.7" type="image/webp">
-                              <img src="assets/icons/desigualdade-digital.webp?v=1.5.7" alt="Ícone de Desigualdade Digital" class="impacto-icon" loading="lazy" decoding="async">
+                              <source srcset="assets/icons/desigualdade-digital.webp?v=1.5.8" type="image/webp">
+                              <img src="assets/icons/desigualdade-digital.webp?v=1.5.8" alt="Ícone de Desigualdade Digital" class="impacto-icon" loading="lazy" decoding="async">
                           </picture>
                           <h3>Desigualdade Digital</h3>
                           <p>Sua empresa contribui para reduzir a desigualdade digital ao facilitar acesso à tecnologia.</p>
@@ -804,8 +779,8 @@
                   <!-- Missão -->
                   <div class="mvv-card" style="position:relative;flex:1 1 340px;max-width:420px;min-width:320px;height:520px;border-radius:32px;overflow:hidden;box-shadow:0 4px 32px rgba(0,0,0,0.10);display:flex;align-items:flex-start;">
                     <picture style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:1;">
-                        <source srcset="assets/images/missao.webp?v=1.5.7" type="image/webp">
-                        <img src="assets/images/missao.webp?v=1.5.7" alt="Imagem representando a missão da Renov" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:1;">
+                        <source srcset="assets/images/missao.webp?v=1.5.8" type="image/webp">
+                        <img src="assets/images/missao.webp?v=1.5.8" alt="Imagem representando a missão da Renov" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:1;">
                     </picture>
                     <div style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.45);z-index:2;"></div>
                     <div style="position:relative;z-index:3;padding:40px 32px 32px 32px;color:#fff;width:100%;">
@@ -817,8 +792,8 @@
                   <!-- Visão -->
                   <div class="mvv-card" style="position:relative;flex:1 1 340px;max-width:420px;min-width:320px;height:520px;border-radius:32px;overflow:hidden;box-shadow:0 4px 32px rgba(0,0,0,0.10);display:flex;align-items:flex-start;">
                     <picture style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:1;">
-                        <source srcset="assets/images/visao.webp?v=1.5.7" type="image/webp">
-                        <img src="assets/images/visao.webp?v=1.5.7" alt="Imagem representando a visão da Renov" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:1;">
+                        <source srcset="assets/images/visao.webp?v=1.5.8" type="image/webp">
+                        <img src="assets/images/visao.webp?v=1.5.8" alt="Imagem representando a visão da Renov" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:1;">
                     </picture>
                     <div style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(255,255,255,0.30);z-index:2;"></div>
                     <div style="position:relative;z-index:3;padding:40px 32px 32px 32px;color:#000;width:100%;">
@@ -830,8 +805,8 @@
                   <!-- Valores -->
                   <div class="mvv-card" style="position:relative;flex:1 1 340px;max-width:420px;min-width:320px;height:520px;border-radius:32px;overflow:hidden;box-shadow:0 4px 32px rgba(0,0,0,0.10);display:flex;align-items:flex-start;">
                     <picture style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:1;">
-                        <source srcset="assets/images/valores.webp?v=1.5.7" type="image/webp">
-                        <img src="assets/images/valores.webp?v=1.5.7" alt="Imagem representando os valores da Renov" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:1;">
+                        <source srcset="assets/images/valores.webp?v=1.5.8" type="image/webp">
+                        <img src="assets/images/valores.webp?v=1.5.8" alt="Imagem representando os valores da Renov" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:1;">
                     </picture>
                     <div style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.45);z-index:2;"></div>
                     <div style="position:relative;z-index:3;padding:40px 32px 32px 32px;color:#fff;width:100%;">
@@ -862,8 +837,8 @@
       <div class="fundador-card">
         <div class="fundador-foto-wrapper">
           <picture>
-            <source srcset="assets/images/ismael-kolling.webp?v=1.5.7" type="image/webp">
-            <img src="assets/images/ismael-kolling.webp?v=1.5.7" alt="Ismael Kolling, CO-Founder da Renov" loading="lazy" decoding="async">
+            <source srcset="assets/images/ismael-kolling.webp?v=1.5.8" type="image/webp">
+            <img src="assets/images/ismael-kolling.webp?v=1.5.8" alt="Ismael Kolling, CO-Founder da Renov" loading="lazy" decoding="async">
           </picture>
         </div>
         <h3>Ismael Kolling</h3>
@@ -873,8 +848,8 @@
       <div class="fundador-card">
         <div class="fundador-foto-wrapper">
           <picture>
-            <source srcset="assets/images/matheus-mundstock.webp?v=1.5.7" type="image/webp">
-            <img src="assets/images/matheus-mundstock.webp?v=1.5.7" alt="Matheus Mundstock, CEO da Renov" loading="lazy" decoding="async">
+            <source srcset="assets/images/matheus-mundstock.webp?v=1.5.8" type="image/webp">
+            <img src="assets/images/matheus-mundstock.webp?v=1.5.8" alt="Matheus Mundstock, CEO da Renov" loading="lazy" decoding="async">
           </picture>
         </div>
         <h3>Matheus Mundstock</h3>
@@ -1020,8 +995,8 @@
     <!-- Logo e social -->
     <div style="flex:1 1 220px;min-width:180px;display:flex;flex-direction:column;align-items:flex-start;gap:24px;">
       <picture>
-        <source srcset="assets/images/Renov-Logo.webp?v=1.5.7" type="image/webp">
-        <img src='assets/images/Renov-Logo.webp?v=1.5.7' alt='Renov - Sua Troca Inteligente' style='width:130px;filter:brightness(1.1);margin-top:-10px;' loading="lazy" decoding="async">
+        <source srcset="assets/images/Renov-Logo.webp?v=1.5.8" type="image/webp">
+        <img src='assets/images/Renov-Logo.webp?v=1.5.8' alt='Renov - Sua Troca Inteligente' style='width:130px;filter:brightness(1.1);margin-top:-10px;' loading="lazy" decoding="async">
       </picture>
               <div class="social-links" style="display:flex;gap:16px;margin-top:-5px;margin-left:10px;">
         <a href="https://www.instagram.com/renovsmart" target="_blank" style="color:#fff;font-size:1.5rem;transition:color 0.2s;" onmouseover="this.style.color='#00b140'" onmouseout="this.style.color='#fff'"><i class="fab fa-instagram"></i></a>
@@ -1068,13 +1043,13 @@
   </div>
 </footer>
 
-    <script src="script.js?v=1.5.7" fetchpriority="high"></script>
-    <script src="performance-optimizer.js?v=1.5.7"></script>
+    <script src="script.js?v=1.5.8" fetchpriority="high"></script>
+    <script src="performance-optimizer.js?v=1.5.8"></script>
     <script>
       // Registro do Service Worker para cache offline
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
-          navigator.serviceWorker.register('/sw.js?v=1.5.7')
+          navigator.serviceWorker.register('/sw.js?v=1.5.8')
             .then(registration => {
               console.log('Service Worker registrado com sucesso:', registration.scope);
             })

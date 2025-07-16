@@ -1,4 +1,4 @@
-const CACHE_VERSION = '1.5.7';
+const CACHE_VERSION = '1.5.8';
 const CACHE_NAME = `renov-cache-v${CACHE_VERSION}`;
 
 // Detectar se é dispositivo mobile
@@ -102,37 +102,34 @@ const CACHE_METADATA = {
   strategies: CACHE_STRATEGIES
 };
 
-// Instalação do Service Worker com cache inteligente
+// Instalação do Service Worker com cache otimizado - Reduz cadeias de solicitações
 self.addEventListener('install', event => {
   event.waitUntil(
-    Promise.all([
-      // Cache crítico - instalação imediata
-      caches.open(`${CACHE_NAME}-critical`)
-        .then(cache => {
-          console.log('Instalando cache crítico...');
-          return cache.addAll(CACHE_STRATEGIES.CRITICAL.urls);
-        }),
-      
-      // Cache estático - instalação em background
-      caches.open(`${CACHE_NAME}-static`)
-        .then(cache => {
-          console.log('Instalando cache estático...');
-          return cache.addAll(CACHE_STRATEGIES.STATIC.urls);
-        }),
-      
-      // Cache externo - instalação assíncrona
-      caches.open(`${CACHE_NAME}-external`)
-        .then(cache => {
-          console.log('Instalando cache externo...');
-          return cache.addAll(CACHE_STRATEGIES.EXTERNAL.urls);
-        })
-    ]).then(() => {
-      console.log(`Service Worker v${CACHE_VERSION} instalado com sucesso`);
-      // Ativação imediata para melhor performance
-      return self.skipWaiting();
-    }).catch(error => {
-      console.error('Erro na instalação do cache:', error);
-    })
+    // Cache crítico primeiro - instalação imediata
+    caches.open(`${CACHE_NAME}-critical`)
+      .then(cache => {
+        console.log('Instalando cache crítico...');
+        return cache.addAll(CACHE_STRATEGIES.CRITICAL.urls);
+      })
+      .then(() => {
+        // Ativação imediata para melhor performance
+        return self.skipWaiting();
+      })
+      .then(() => {
+        // Cache estático e externo em background - não bloqueia
+        return Promise.allSettled([
+          caches.open(`${CACHE_NAME}-static`)
+            .then(cache => cache.addAll(CACHE_STRATEGIES.STATIC.urls)),
+          caches.open(`${CACHE_NAME}-external`)
+            .then(cache => cache.addAll(CACHE_STRATEGIES.EXTERNAL.urls))
+        ]);
+      })
+      .then(() => {
+        console.log(`Service Worker v${CACHE_VERSION} instalado com sucesso`);
+      })
+      .catch(error => {
+        console.error('Erro na instalação do cache:', error);
+      })
   );
 });
 
