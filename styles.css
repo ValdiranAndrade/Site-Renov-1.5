@@ -157,11 +157,7 @@ section h2 span {
         border-radius: 8px;
     }
     
-    /* Melhorar foco visível */
-    *:focus {
-        outline: 2px solid #00b140;
-        outline-offset: 2px;
-    }
+
     
     /* Garantir contraste adequado para links */
     a {
@@ -2572,7 +2568,8 @@ header, .header-content, .main-nav, .tab-btn, .logo, .social-links a, .hero-cont
 
 .tab-btn {
     color: #000 !important;
-    border-color: #fff !important;
+    border: none !important;
+    box-shadow: none !important;
 }
 
 .tab-btn.active {
@@ -4689,25 +4686,18 @@ footer .social-links a i {
   white-space: normal;
 }
 
-/* Foco visível para navegação por teclado */
-*:focus {
-  outline: 2px solid #00b140;
-  outline-offset: 2px;
-}
-
 /* Melhorar contraste para elementos interativos */
 button, .tab-btn, .btn-parceiro {
-  background-color: #00b140;
-  color: #ffffff;
-  border: 2px solid #00b140;
-  transition: all 0.3s ease;
+  background: none !important;
+  color: #000 !important;
+  border: none;
+  box-shadow: none;
 }
 
-button:hover, .tab-btn:hover, .btn-parceiro:hover,
-button:focus, .tab-btn:focus, .btn-parceiro:focus {
-  background-color: #008d36;
-  border-color: #008d36;
-  transform: translateY(-1px);
+button:hover, .tab-btn:hover, .btn-parceiro:hover {
+  background: none !important;
+  border: none !important;
+  transform: none !important;
 }
 
 /* Garantir área de toque mínima */
