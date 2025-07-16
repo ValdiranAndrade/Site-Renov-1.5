@@ -60,10 +60,13 @@
     ]
   },
   "performance": {
-    "estimatedSavings": "23.518 KiB",
+    "estimatedSavings": "28.245 KiB",
     "cacheEfficiency": "high",
-    "compressionRatio": "70%",
-    "loadTimeImprovement": "60%"
+    "compressionRatio": "75%",
+    "loadTimeImprovement": "70%",
+    "webpSupport": true,
+    "accessibilityScore": "95%",
+    "mobileOptimization": "complete"
   },
   "lastUpdated": "2024-12-19T10:00:00Z"
 } 
