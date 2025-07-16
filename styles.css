@@ -3437,7 +3437,7 @@ header::before, header::after,
     inset: 0;
     width: 100%;
     height: 100%;
-    background: url('assets/images/avaliacao-mock.png') center bottom/cover no-repeat !important;
+    background: url('assets/images/avaliacao-mock.webp') center bottom/cover no-repeat !important;
     z-index: 1;
 }
 .avaliacao-conteudo {
@@ -3552,7 +3552,7 @@ header::before, header::after,
     inset: 0;
     width: 100%;
     height: 100%;
-    background: url('assets/images/diagnostico-mock.png') center bottom/cover no-repeat !important;
+    background: url('assets/images/diagnostico-mock.webp') center bottom/cover no-repeat !important;
     z-index: 1;
     opacity: 1;
 }
@@ -3627,7 +3627,7 @@ header::before, header::after,
     inset: 0;
     width: 100%;
     height: 100%;
-    background: url('assets/images/logistica-mock.png') center bottom/cover no-repeat !important;
+    background: url('assets/images/logistica-mock.webp') center bottom/cover no-repeat !important;
     z-index: 1;
     opacity: 1;
 }
@@ -3716,7 +3716,7 @@ header::before, header::after,
     inset: 0;
     width: 100%;
     height: 100%;
-    background: url('assets/images/pagamento-mock.png') center bottom/cover no-repeat !important;
+    background: url('assets/images/pagamento-mock.webp') center bottom/cover no-repeat !important;
     z-index: 1;
     opacity: 1;
 }
@@ -3925,7 +3925,7 @@ header::before, header::after,
   display: flex;
   flex-direction: row;
   align-items: stretch;
-  background: url('assets/images/quero-ser-parceiro.png') center center/cover no-repeat !important;
+  background: url('assets/images/quero-ser-parceiro.webp') center center/cover no-repeat !important;
   border-radius: 32px;
   box-shadow: 0 4px 32px rgba(0,0,0,0.08);
   overflow: hidden;
@@ -4016,7 +4016,7 @@ header::before, header::after,
 }
 
 .parceiro-experiencia-card.parceiro-revenda-bg {
-  background: url('assets/images/quero-ser-revenda.png') center center/cover no-repeat !important;
+  background: url('assets/images/quero-ser-revenda.webp') center center/cover no-repeat !important;
 }
 
 .parceiro-experiencia-card.parceiro-revenda-bg .parceiro-experiencia-info h3 {
@@ -4581,7 +4581,7 @@ header::before, header::after,
 }
 
 #sobre.tab-content {
-  background: url('assets/images/sobre-nos/sobre-nos.jpg') center center/120vw 100vh no-repeat !important;
+  background: url('assets/images/sobre-nos/sobre-nos.webp') center center/120vw 100vh no-repeat !important;
   min-height: 100vh !important;
   width: 100vw !important;
   max-width: 100vw !important;
@@ -4593,7 +4593,7 @@ header::before, header::after,
   display: none !important;
 }
 #sobre .hero {
-  background: url('assets/images/sobre-nos/sobre-nos.jpg') calc(-200px) center/cover no-repeat !important;
+  background: url('assets/images/sobre-nos/sobre-nos.webp') calc(-200px) center/cover no-repeat !important;
   min-height: 100vh;
   width: 100vw;
   margin: 0 !important;
@@ -4609,7 +4609,7 @@ header::before, header::after,
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: url('assets/images/sobre-nos/sobre-nos.jpg') center center/120vw 100vh no-repeat;
+  background: url('assets/images/sobre-nos/sobre-nos.webp') center center/120vw 100vh no-repeat;
   z-index: 0;
   pointer-events: none;
 }
