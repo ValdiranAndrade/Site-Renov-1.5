@@ -42,11 +42,11 @@
     <!-- Ultra-critical resources for LCP - Minimal chain -->
     <link rel="preload" href="assets/images/Renov-Logo.webp?v=1.6.0" as="image" fetchpriority="high" type="image/webp" crossorigin="anonymous">
     <link rel="preload" href="assets/fonts/Montserrat-Regular.woff2" as="font" type="font/woff2" crossorigin fetchpriority="high">
-    <link rel="preload" href="styles.css?v=1.6.0" as="style" fetchpriority="high" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="styles.css?v=1.6.0"></noscript>
+    <link rel="preload" href="styles-optimized.css?v=1.7.0" as="style" fetchpriority="high" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="styles-optimized.css?v=1.7.0"></noscript>
     
     <!-- High priority resources -->
-    <link rel="preload" href="script.js?v=1.6.0" as="script" fetchpriority="high">
+    <link rel="preload" href="script-optimized.js?v=1.7.0" as="script" fetchpriority="high">
     
     <!-- Deferred resources - Reduced chain -->
     <link rel="preload" href="assets/video/bg-video.mp4.mp4?v=1.6.0" as="video" type="video/mp4" media="(min-width: 768px)" fetchpriority="medium">
@@ -56,7 +56,7 @@
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin fetchpriority="low">
     
     <title>Renov - Sua Troca Inteligente</title>
-    <link rel="stylesheet" href="styles.css?v=1.6.0">
+    <link rel="stylesheet" href="styles-optimized.css?v=1.7.0">
     <!-- Font Awesome - Preload e fallback para performance e renderização imediata dos ícones -->
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" fetchpriority="low">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'">
@@ -799,7 +799,7 @@
                                 <input type="tel" name="telefone" placeholder="Seu telefone" style="padding:12px 16px;border:1px solid #ccc;border-radius:8px;font-size:1rem;">
                                 <textarea name="mensagem" placeholder="Sua mensagem" rows="4" required style="padding:12px 16px;border:1px solid #ccc;border-radius:8px;font-size:1rem;"></textarea>
                                 <input type="hidden" name="_replyto" value="">
-                                <button type="submit" style="background:#008d36;color:#fff;font-size:1.1rem;font-weight:600;padding:14px 0;border:none;border-radius:8px;cursor:pointer;transition:background 0.2s;">Enviar mensagem</button>
+                                <button type="submit" style="background:#00b140 !important;color:#fff !important;font-size:1rem !important;font-weight:600 !important;padding:10px 8px !important;border:none !important;border-radius:32px !important;cursor:pointer !important;transition:background 0.2s !important;">Enviar mensagem</button>
                             </form>
                             <div id="form-mensagem" style="margin-top:18px;font-size:1.1rem;"></div>
                         </div>
@@ -886,7 +886,7 @@
   </div>
 </footer>
 
-    <script src="script.js?v=1.6.0" fetchpriority="high"></script>
+    <script src="script-optimized.js?v=1.7.0" fetchpriority="high"></script>
     <script src="performance-optimizer.js?v=1.6.0"></script>
     <script src="mobile-performance-optimizer.js?v=1.6.0"></script>
     <script>
