@@ -816,9 +816,9 @@
                         <!-- Formulário -->
                         <div style="display:flex;flex-direction:column;flex:1 1 320px;min-width:300px;">
                             <form action="https://formspree.io/f/xovlqvwp" method="POST" id="form-contato" style="display:flex;flex-direction:column;gap:18px;">
-                                <input type="text" name="nome" placeholder="Seu nome" required style="padding:12px 16px;border:1px solid #ccc;border-radius:8px;font-size:1rem;">
-                                <input type="email" name="email" placeholder="Seu e-mail" required style="padding:12px 16px;border:1px solid #ccc;border-radius:8px;font-size:1rem;">
-                                <input type="tel" name="telefone" placeholder="Seu telefone" style="padding:12px 16px;border:1px solid #ccc;border-radius:8px;font-size:1rem;">
+                                <input type="text" name="nome" placeholder="Seu nome" autocomplete="name" required style="padding:12px 16px;border:1px solid #ccc;border-radius:8px;font-size:1rem;">
+                                <input type="email" name="email" placeholder="Seu e-mail" autocomplete="email" required style="padding:12px 16px;border:1px solid #ccc;border-radius:8px;font-size:1rem;">
+                                <input type="tel" name="telefone" placeholder="Seu telefone" autocomplete="tel" style="padding:12px 16px;border:1px solid #ccc;border-radius:8px;font-size:1rem;">
                                 <textarea name="mensagem" placeholder="Sua mensagem" rows="4" required style="padding:12px 16px;border:1px solid #ccc;border-radius:8px;font-size:1rem;"></textarea>
                                 <input type="hidden" name="_replyto" value="">
                                 <button type="submit" style="background:#00b140 !important;color:#fff !important;font-size:1rem !important;font-weight:600 !important;padding:10px 8px !important;border:none !important;border-radius:32px !important;cursor:pointer !important;transition:background 0.2s !important;">Enviar mensagem</button>
