@@ -14,6 +14,13 @@
     <meta name="msapplication-TileColor" content="#00b140">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     
+    <!-- Mobile Performance Optimizations -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="HandheldFriendly" content="true">
+    <meta name="MobileOptimized" content="width">
+    
     <!-- PWA Manifest -->
     <link rel="manifest" href="/manifest.json?v=1.6.0">
     <meta name="theme-color" content="#00b140">
@@ -66,8 +73,8 @@
       .video-bg{position:absolute;top:0;left:50%;width:100vw;height:100%;min-width:100vw;min-height:100%;object-fit:cover;transform:translateX(-50%);opacity:1!important;visibility:visible!important}
       
       /* Mobile LCP optimizations - Ultra-compressed */
-      @media (max-width:768px){.hero{height:100vh;margin-bottom:0;min-height:600px}.hero-content{margin-top:120px;padding:0 20px;z-index:2}.hero-text h1{font-size:32px;line-height:1.1;font-weight:700;color:#fff!important;text-shadow:2px 2px 4px rgba(0,0,0,0.8);margin-bottom:16px}.hero-text p{font-size:16px;line-height:1.5;color:#fff!important;text-shadow:1px 1px 2px rgba(0,0,0,0.7)}.header-content{padding:0.5rem 1rem;background:rgba(255,255,255,0.95);backdrop-filter:blur(10px)}.logo img{width:120px;height:30px}.hero-text{max-width:100%;padding:0;margin:0}}
-      @media (max-width:480px){.hero-text h1{font-size:28px;line-height:1.2}.hero-text p{font-size:14px;line-height:1.4}.logo img{width:100px;height:25px}}
+      @media (max-width:768px){.hero{height:100vh;margin-bottom:0;min-height:600px}.hero-content{margin-top:120px;padding:0 20px;z-index:2}.hero-text h1{font-size:32px;line-height:1.1;font-weight:700;color:#fff!important;text-shadow:2px 2px 4px rgba(0,0,0,0.8);margin-bottom:16px}.hero-text p{font-size:16px;line-height:1.5;color:#fff!important;text-shadow:1px 1px 2px rgba(0,0,0,0.7)}.header-content{padding:0.5rem 1rem;background:rgba(255,255,255,0.95);backdrop-filter:blur(10px)}.logo img{width:120px;height:30px}.hero-text{max-width:100%;padding:0;margin:0}.parceiro-item img{max-width:80px!important;height:auto!important}.diferenciais-grid{grid-template-columns:1fr!important;gap:1rem!important}.parceiros{padding:40px 0!important}.diferenciais{padding:40px 0!important}}
+      @media (max-width:480px){.hero-text h1{font-size:28px;line-height:1.2}.hero-text p{font-size:14px;line-height:1.4}.logo img{width:100px;height:25px}.parceiro-item img{max-width:60px!important}}
       /* Correção: garantir que o vídeo ocupe toda a altura da .hero no mobile */
       @media (max-width: 768px) {
         .hero { align-items: stretch !important; }
@@ -136,6 +143,7 @@
                 <section id="como-funciona" class="como-funciona">
                     <div class="como-funciona-bg">
                         <picture>
+                            <source srcset="assets/images/mobile/bg-como-funciona.webp?v=1.6.0" type="image/webp" media="(max-width: 768px)">
                             <source srcset="assets/images/bg-como-funciona.webp?v=1.6.0" type="image/webp">
                             <img src="assets/images/bg-como-funciona.webp?v=1.6.0" alt="Background da seção Como Funciona" loading="eager" fetchpriority="high" decoding="async">
                         </picture>
@@ -880,6 +888,7 @@
 
     <script src="script.js?v=1.6.0" fetchpriority="high"></script>
     <script src="performance-optimizer.js?v=1.6.0"></script>
+    <script src="mobile-performance-optimizer.js?v=1.6.0"></script>
     <script>
       // Registro do Service Worker para cache offline
       if ('serviceWorker' in navigator) {
