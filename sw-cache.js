@@ -49,6 +49,12 @@ const CRITICAL_RESOURCES = [
     '/contato-parceiros.html'
 ];
 
+// Recursos dinâmicos para cache de médio prazo
+const DYNAMIC_RESOURCES = [
+    '/api/',
+    '/data/'
+];
+
 // Estratégias de cache
 const CACHE_STRATEGIES = {
     // Cache First para recursos estáticos
