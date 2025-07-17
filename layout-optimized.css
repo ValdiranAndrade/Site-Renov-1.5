@@ -1,0 +1,613 @@
+/**
+ * Layout Optimized CSS - Evita Layout Thrashing e Layouts Complexos
+ * Baseado nas recomendações do web.dev: https://web.dev/articles/avoid-large-complex-layouts-and-layout-thrashing
+ */
+
+/* ===== VARIÁVEIS CSS OTIMIZADAS ===== */
+:root {
+    /* Propriedades que não causam layout */
+    --animation-duration: 0.3s;
+    --animation-timing: cubic-bezier(0.4, 0, 0.2, 1);
+    --scroll-behavior: smooth;
+    --touch-action: manipulation;
+    
+    /* Cores e valores estáticos */
+    --primary-color: #00b140;
+    --secondary-color: #333;
+    --text-color: #fff;
+    --background-color: #000;
+    
+    /* Tamanhos fixos para evitar recálculos */
+    --header-height: 80px;
+    --mobile-header-height: 60px;
+    --container-max-width: 1200px;
+    
+    /* Z-index layers para evitar stacking context issues */
+    --z-header: 1000;
+    --z-modal: 2000;
+    --z-tooltip: 3000;
+}
+
+/* ===== RESET OTIMIZADO ===== */
+* {
+    /* Evitar box-sizing recálculos */
+    box-sizing: border-box;
+    
+    /* Forçar hardware acceleration */
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+html {
+    /* Scroll behavior otimizado */
+    scroll-behavior: var(--scroll-behavior);
+    
+    /* Prevenir zoom em mobile */
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+
+body {
+    /* Propriedades que não causam layout */
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background: var(--background-color);
+    
+    /* Otimizações de performance */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    
+    /* Prevenir layout shifts */
+    overflow-x: hidden;
+}
+
+/* ===== LAYOUT CONTAINERS OTIMIZADOS ===== */
+.page-wrapper {
+    /* Container principal com tamanho fixo */
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
+
+.container {
+    /* Container responsivo sem recálculos */
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 0 20px;
+    
+    /* Evitar layout thrashing */
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* ===== HEADER OTIMIZADO ===== */
+header {
+    /* Posição fixa para evitar layout shifts */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--header-height);
+    z-index: var(--z-header);
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    
+    /* Otimizações de performance */
+    will-change: transform;
+    transform: translateZ(0);
+}
+
+.header-content {
+    /* Layout flexbox otimizado */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 0 20px;
+    
+    /* Evitar recálculos */
+    box-sizing: border-box;
+}
+
+/* ===== LOGO OTIMIZADO ===== */
+.logo {
+    /* Tamanho fixo para evitar layout shifts */
+    width: 160px;
+    height: 40px;
+    flex-shrink: 0;
+}
+
+.logo img {
+    /* Imagem com tamanho fixo */
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    
+    /* Otimizações de performance */
+    will-change: auto;
+    transform: translateZ(0);
+}
+
+/* ===== NAVEGAÇÃO OTIMIZADA ===== */
+.main-nav {
+    /* Flexbox para layout estável */
+    display: flex;
+    align-items: center;
+    flex: 1;
+    justify-content: center;
+}
+
+.tab-buttons {
+    /* Layout flexbox sem recálculos */
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.tab-btn {
+    /* Botões com tamanho fixo */
+    padding: 10px 20px;
+    border: none;
+    background: transparent;
+    color: var(--secondary-color);
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: color var(--animation-duration) var(--animation-timing);
+    
+    /* Evitar layout thrashing */
+    white-space: nowrap;
+    text-decoration: none;
+    
+    /* Otimizações de performance */
+    will-change: color;
+    transform: translateZ(0);
+}
+
+.tab-btn:hover,
+.tab-btn.active {
+    color: var(--primary-color);
+}
+
+/* ===== HERO SECTION OTIMIZADA ===== */
+.hero {
+    /* Layout otimizado sem recálculos */
+    position: relative;
+    width: 100vw;
+    height: 140vh;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    display: flex;
+    align-items: flex-start;
+    overflow: hidden;
+    background: var(--background-color);
+    
+    /* Otimizações de performance */
+    will-change: transform;
+    transform: translateZ(0);
+}
+
+.hero-content {
+    /* Container com tamanho fixo */
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 0 5%;
+    margin-top: 300px;
+    
+    /* Evitar layout thrashing */
+    box-sizing: border-box;
+}
+
+.hero-text {
+    /* Texto com tamanho fixo */
+    max-width: 600px;
+    color: var(--text-color);
+}
+
+.hero-text h1 {
+    /* Título com tamanho fixo */
+    font-size: 48px;
+    line-height: 1.05;
+    margin-bottom: 24px;
+    font-weight: 700;
+    text-align: left;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    
+    /* Evitar layout thrashing */
+    white-space: normal;
+    word-wrap: break-word;
+}
+
+.hero-text p {
+    /* Parágrafo com tamanho fixo */
+    font-size: 18px;
+    line-height: 1.5;
+    margin: 0;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+/* ===== VIDEO BACKGROUND OTIMIZADO ===== */
+.video-bg-wrapper {
+    /* Container com tamanho fixo */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100%;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+    transform: translateY(-300px);
+    
+    /* Otimizações de performance */
+    will-change: transform;
+}
+
+.video-bg {
+    /* Vídeo com tamanho fixo */
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 100vw;
+    height: 100%;
+    min-width: 100vw;
+    min-height: 100%;
+    object-fit: cover;
+    transform: translateX(-50%);
+    
+    /* Otimizações de performance */
+    will-change: transform;
+}
+
+/* ===== FORMULÁRIOS OTIMIZADOS ===== */
+.form-container {
+    /* Container com tamanho fixo */
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    
+    /* Evitar layout thrashing */
+    box-sizing: border-box;
+}
+
+.form-group {
+    /* Grupo com tamanho fixo */
+    margin-bottom: 20px;
+    
+    /* Evitar layout thrashing */
+    position: relative;
+}
+
+.form-group label {
+    /* Label com tamanho fixo */
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--secondary-color);
+    
+    /* Evitar layout thrashing */
+    white-space: nowrap;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    /* Inputs com tamanho fixo */
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 16px;
+    font-family: inherit;
+    background: #fff;
+    color: var(--secondary-color);
+    transition: border-color var(--animation-duration) var(--animation-timing);
+    
+    /* Evitar layout thrashing */
+    box-sizing: border-box;
+    
+    /* Otimizações de performance */
+    will-change: border-color;
+    transform: translateZ(0);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+/* ===== BOTÕES OTIMIZADOS ===== */
+.btn {
+    /* Botão com tamanho fixo */
+    display: inline-block;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all var(--animation-duration) var(--animation-timing);
+    
+    /* Evitar layout thrashing */
+    white-space: nowrap;
+    
+    /* Otimizações de performance */
+    will-change: transform, background-color;
+    transform: translateZ(0);
+}
+
+.btn-primary {
+    background: var(--primary-color);
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background: #009933;
+    transform: translateY(-2px);
+}
+
+/* ===== MODAL OTIMIZADO ===== */
+.modal {
+    /* Modal com tamanho fixo */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: var(--z-modal);
+    
+    /* Otimizações de performance */
+    will-change: opacity;
+    transform: translateZ(0);
+}
+
+.modal-content {
+    /* Conteúdo com tamanho fixo */
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    max-width: 500px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    
+    /* Evitar layout thrashing */
+    box-sizing: border-box;
+    
+    /* Otimizações de performance */
+    will-change: transform;
+    transform: translateZ(0);
+}
+
+/* ===== RESPONSIVIDADE OTIMIZADA ===== */
+@media (max-width: 768px) {
+    /* Header mobile */
+    header {
+        height: var(--mobile-header-height);
+    }
+    
+    .header-content {
+        padding: 0 15px;
+    }
+    
+    .logo {
+        width: 120px;
+        height: 30px;
+    }
+    
+    .tab-buttons {
+        gap: 10px;
+    }
+    
+    .tab-btn {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+    
+    /* Hero mobile */
+    .hero {
+        height: 100vh;
+        margin-bottom: 0;
+        min-height: 600px;
+    }
+    
+    .hero-content {
+        margin-top: 120px;
+        padding: 0 20px;
+        z-index: 2;
+    }
+    
+    .hero-text h1 {
+        font-size: 32px;
+        line-height: 1.1;
+    }
+    
+    .hero-text p {
+        font-size: 16px;
+        line-height: 1.5;
+    }
+    
+    /* Formulários mobile */
+    .form-container {
+        padding: 15px;
+    }
+    
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        font-size: 16px; /* Prevenir zoom em iOS */
+    }
+    
+    /* Modal mobile */
+    .modal-content {
+        padding: 20px;
+        width: 95%;
+        max-height: 90vh;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-text h1 {
+        font-size: 28px;
+        line-height: 1.2;
+    }
+    
+    .hero-text p {
+        font-size: 14px;
+        line-height: 1.4;
+    }
+    
+    .logo {
+        width: 100px;
+        height: 25px;
+    }
+    
+    .tab-btn {
+        padding: 6px 10px;
+        font-size: 13px;
+    }
+}
+
+/* ===== ANIMAÇÕES OTIMIZADAS ===== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px) translateZ(0);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) translateZ(0);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%) translateZ(0);
+    }
+    to {
+        transform: translateX(0) translateZ(0);
+    }
+}
+
+/* Classes de animação */
+.fade-in {
+    animation: fadeIn var(--animation-duration) var(--animation-timing);
+}
+
+.slide-in {
+    animation: slideIn var(--animation-duration) var(--animation-timing);
+}
+
+/* ===== UTILITÁRIOS OTIMIZADOS ===== */
+.sr-only {
+    /* Screen reader only - não afeta layout */
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+}
+
+.hidden {
+    /* Esconder sem afetar layout */
+    display: none !important;
+}
+
+.visible {
+    /* Mostrar sem afetar layout */
+    display: block !important;
+}
+
+/* ===== OTIMIZAÇÕES DE PERFORMANCE ===== */
+/* Forçar hardware acceleration em elementos críticos */
+.hero,
+.video-bg,
+.logo img,
+.btn,
+.modal {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+/* Prevenir layout shifts em imagens */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Otimizar fontes */
+@font-face {
+    font-family: 'Montserrat';
+    src: url('assets/fonts/Montserrat-Regular.woff2') format('woff2');
+    font-display: swap;
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('assets/fonts/Montserrat-Medium.woff2') format('woff2');
+    font-display: swap;
+    font-weight: 500;
+    font-style: normal;
+}
+
+/* ===== DEBUGGING ===== */
+/* Classe para identificar elementos que causam layout shifts */
+.layout-shift-source {
+    outline: 2px solid red !important;
+    background: rgba(255, 0, 0, 0.1) !important;
+}
+
+/* ===== PRINT STYLES ===== */
+@media print {
+    /* Esconder elementos desnecessários na impressão */
+    .video-bg-wrapper,
+    .modal,
+    .btn {
+        display: none !important;
+    }
+    
+    /* Otimizar para impressão */
+    body {
+        background: white !important;
+        color: black !important;
+    }
+    
+    .hero {
+        height: auto !important;
+        background: white !important;
+    }
+    
+    .hero-text h1,
+    .hero-text p {
+        color: black !important;
+        text-shadow: none !important;
+    }
+} 
