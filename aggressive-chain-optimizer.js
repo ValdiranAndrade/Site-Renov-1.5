@@ -75,8 +75,13 @@ function aggressiveChainOptimization(htmlContent) {
     
     optimized = optimized.replace('</head>', fontLoader + '</head>');
     
-    // 10. Remover preloads de fontes (já carregadas via JS)
-    optimized = optimized.replace(/<link rel="preload"[^>]*as="font"[^>]*>/g, '');
+    // 10. Manter preloads de fontes críticas com crossorigin
+    optimized = optimized.replace(/<link rel="preload"[^>]*as="font"[^>]*>/g, (match) => {
+        if (match.includes('Montserrat-Regular.woff2')) {
+            return '<link rel="preload" href="assets/fonts/Montserrat-Regular.woff2?v=1.6.0" as="font" type="font/woff2" crossorigin>';
+        }
+        return match; // Manter outros preloads de fontes
+    });
     
     return optimized;
 }

@@ -41,6 +41,7 @@
     
     <!-- Critical resources only - Minimal chain -->
     <link rel="preload" href="assets/images/Renov-Logo.webp?v=1.6.0" as="image" fetchpriority="high" type="image/webp">
+    <link rel="preload" href="assets/fonts/Montserrat-Regular.woff2?v=1.6.0" as="font" type="font/woff2" crossorigin>
     
     <!-- Font optimized CSS -->
     <link rel="stylesheet" href="font-optimized.css?v=1.6.0">
@@ -78,6 +79,7 @@
       .tab-btn{height:40px!important;min-height:40px!important;display:inline-flex!important;align-items:center!important;justify-content:center!important}
       .header-content{height:80px!important;min-height:80px!important;display:flex!important;align-items:center!important}
       .social-links{height:auto!important;min-height:40px!important;display:flex!important;align-items:center!important}
+      .parceiro-item img{max-width:120px!important;height:auto!important}
       
       /* Mobile LCP optimizations - Ultra-compressed */
       @media (max-width:768px){.hero{height:100vh;margin-bottom:0;min-height:600px}.hero-content{margin-top:120px;padding:0 20px;z-index:2}.hero-text h1{font-size:32px;line-height:1.1;font-weight:700;color:#fff!important;text-shadow:2px 2px 4px rgba(0,0,0,0.8);margin-bottom:16px}.hero-text p{font-size:16px;line-height:1.5;color:#fff!important;text-shadow:1px 1px 2px rgba(0,0,0,0.7)}.header-content{padding:0.5rem 1rem;background:rgba(255,255,255,0.95);backdrop-filter:blur(10px)}.logo img{width:120px;height:30px}.hero-text{max-width:100%;padding:0;margin:0}.parceiro-item img{max-width:80px!important;height:auto!important}.diferenciais-grid{grid-template-columns:1fr!important;gap:1rem!important}.parceiros{padding:40px 0!important}.diferenciais{padding:40px 0!important}}
@@ -100,9 +102,6 @@
       
       <!-- Font Awesome CSS - Carregamento direto para ícones imediatos -->
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-      
-      <!-- Error Fixer - Sistema para resolver erros de console e otimizar performance -->
-      <script src="error-fixer.js?v=1.6.0"></script>
       
       <!-- CLS Optimizer - Sistema completo para otimizar Cumulative Layout Shift -->
       <script src="cls-optimizer.js?v=1.6.0"></script>
