@@ -57,6 +57,7 @@
     
     <title>Renov - Sua Troca Inteligente</title>
     <link rel="stylesheet" href="styles.css?v=1.6.0">
+    <link rel="stylesheet" href="accessibility-contrast.css?v=1.6.0">
     <!-- Font Awesome - Preload e fallback para performance e renderização imediata dos ícones -->
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" fetchpriority="low">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'">
@@ -717,12 +718,12 @@
                     
                     <div class="simples-bem-feito-container" style="margin-left:-280px; margin-bottom:40px; padding: 100px; background: #f8f9fa url('assets/images/simples.webp') no-repeat center center; background-size: cover; border-radius: 12px; width: 1300px; min-height: 500px; text-align: left;">
                         <h2 style="font-size:2.5rem;font-weight:700;margin-bottom:1.5rem;color:#008d36; text-align: left;">Simples e Bem Feito</h2>
-                        <p style="font-size:1rem;line-height:1.5;color:#222;margin:0;padding:0;text-align:left;max-width:100%;word-break:break-word;">Simples e bem feito não significa básico. Significa inteligente.<br>Significa criar processos ágeis, acessíveis e confiáveis,<br>funcionam de verdade para quem está na ponta: o varejo, o cliente, o parceiro.</p>
+                                                    <p style="font-size:1rem;line-height:1.5;color:#000;margin:0;padding:0;text-align:left;max-width:100%;word-break:break-word;">Simples e bem feito não significa básico. Significa inteligente.<br>Significa criar processos ágeis, acessíveis e confiáveis,<br>funcionam de verdade para quem está na ponta: o varejo, o cliente, o parceiro.</p>
                     </div>
                     <section>
                         <div class="simples-bem-feito-container" style="margin-left:-280px; margin-bottom:40px; padding: 100px; background: #f8f9fa url('assets/images/impacto-positivo.webp') no-repeat center center; background-size: cover; border-radius: 12px; width: 1300px; min-height: 500px; text-align: left;">
                             <h2 style="font-size:2.5rem;font-weight:700;margin-bottom:1.5rem;color:#008d36; text-align: left;">Impacto Positivo</h2>
-                            <p style="font-size:1rem;line-height:1.5;color:#222;margin:0;padding:0;text-align:left;max-width:100%;word-break:break-word;">Nosso compromisso vai além da inovação. Atuamos para promover<br>a inclusão digital, reduzir o desperdício eletrônico e fortalecer a economia circular.<br>Criamos soluções que conectam tecnologia e responsabilidade,<br>sempre com o foco em transformar desafios em progresso real.</p>
+                            <p style="font-size:1rem;line-height:1.5;color:#000;margin:0;padding:0;text-align:left;max-width:100%;word-break:break-word;">Nosso compromisso vai além da inovação. Atuamos para promover<br>a inclusão digital, reduzir o desperdício eletrônico e fortalecer a economia circular.<br>Criamos soluções que conectam tecnologia e responsabilidade,<br>sempre com o foco em transformar desafios em progresso real.</p>
                         </div>
                     </section>
                     <section>
@@ -789,7 +790,7 @@
             <section id="contato" class="tab-content">
                 <div class="contato-l5-wrapper" style="width:100vw;height:100vh;margin:0;padding:40px 24px 32px 24px;background:url('assets/images/trabalhe-conosco.webp') center center/cover no-repeat;border-radius:0;box-shadow:none;position:relative;left:50%;transform:translateX(-50%);">
                     <h1 style="font-size:2.5rem;font-weight:800;color:#008d36;margin-bottom:8px;margin-left:300px;">Fale com a Renov</h1>
-                    <p style="font-size:1.2rem;color:#222;margin-bottom:32px;margin-left:300px;">Preencha o formulário abaixo e nossa equipe entrará em contato com você!</p>
+                    <p style="font-size:1.2rem;color:#000;margin-bottom:32px;margin-left:300px;">Preencha o formulário abaixo e nossa equipe entrará em contato com você!</p>
                     <div style="display:flex;flex-wrap:wrap;gap:40px;align-items:flex-start;margin-left:300px;">
                         <!-- Formulário -->
                         <div style="display:flex;flex-direction:column;flex:1 1 320px;min-width:300px;">
@@ -850,34 +851,34 @@
     <!-- Navegação central -->
     <div style="flex:2 1 520px;min-width:320px;display:flex;justify-content:center;gap:32px;">
       <div style="display:flex;flex-direction:column;gap:12px;min-width:120px;">
-        <span style="font-weight:700;font-size:0.95rem;color:#000;margin-bottom:8px;">Home</span>
-        <a href="#como-funciona" onclick="openTab('home');document.getElementById('como-funciona').scrollIntoView({behavior: 'smooth'});" style="color:#000;text-decoration:none;font-size:0.95rem;">Solução</a>
-        <a href="#home" onclick="openTab('home');setTimeout(function(){document.querySelector('.ai-hero-title').scrollIntoView({behavior: 'smooth'});}, 200);" style="color:#000;text-decoration:none;font-size:0.95rem;">IA</a>
-        <a href="#parceiros" onclick="openTab('home');document.getElementById('parceiros').scrollIntoView({behavior: 'smooth'});" style="color:#000;text-decoration:none;font-size:0.95rem;">Parceiros</a>
+        <span style="font-weight:700;font-size:0.95rem;color:#fff;margin-bottom:8px;">Home</span>
+        <a href="#como-funciona" onclick="openTab('home');document.getElementById('como-funciona').scrollIntoView({behavior: 'smooth'});" style="color:#fff;text-decoration:none;font-size:0.95rem;">Solução</a>
+        <a href="#home" onclick="openTab('home');setTimeout(function(){document.querySelector('.ai-hero-title').scrollIntoView({behavior: 'smooth'});}, 200);" style="color:#fff;text-decoration:none;font-size:0.95rem;">IA</a>
+        <a href="#parceiros" onclick="openTab('home');document.getElementById('parceiros').scrollIntoView({behavior: 'smooth'});" style="color:#fff;text-decoration:none;font-size:0.95rem;">Parceiros</a>
       </div>
       <div style="display:flex;flex-direction:column;gap:12px;min-width:120px;margin-right:24px;">
-        <span style="font-weight:700;font-size:0.95rem;color:#000;margin-bottom:8px;">Sobre Nós</span>
-        <a href="#sobre" onclick="openTab('sobre');document.querySelector('.impacto-item img[alt=\'Sustentabilidade\']').scrollIntoView({behavior: 'smooth'});" style="color:#000;text-decoration:none;font-size:0.95rem;">Sustentabilidade</a>
+        <span style="font-weight:700;font-size:0.95rem;color:#fff;margin-bottom:8px;">Sobre Nós</span>
+        <a href="#sobre" onclick="openTab('sobre');document.querySelector('.impacto-item img[alt=\'Sustentabilidade\']').scrollIntoView({behavior: 'smooth'});" style="color:#fff;text-decoration:none;font-size:0.95rem;">Sustentabilidade</a>
       </div>
       <div style="display:flex;flex-direction:column;gap:12px;min-width:120px;margin-right:24px;">
-        <span style="font-weight:700;font-size:0.95rem;color:#000;margin-bottom:8px;white-space:nowrap;">Trabalhe Conosco</span>
-        <a href="#trabalhe" onclick="openTab('trabalhe');document.querySelector('.trabalhe-content').scrollIntoView({behavior: 'smooth'});" style="color:#000;text-decoration:none;font-size:0.95rem;">Benefícios</a>
-        <a href="#trabalhe" onclick="openTab('trabalhe');document.querySelector('.contato-rh-renov').scrollIntoView({behavior: 'smooth'});" style="color:#000;text-decoration:none;font-size:0.95rem;">Contato RH</a>
+        <span style="font-weight:700;font-size:0.95rem;color:#fff;margin-bottom:8px;white-space:nowrap;">Trabalhe Conosco</span>
+        <a href="#trabalhe" onclick="openTab('trabalhe');document.querySelector('.trabalhe-content').scrollIntoView({behavior: 'smooth'});" style="color:#fff;text-decoration:none;font-size:0.95rem;">Benefícios</a>
+        <a href="#trabalhe" onclick="openTab('trabalhe');document.querySelector('.contato-rh-renov').scrollIntoView({behavior: 'smooth'});" style="color:#fff;text-decoration:none;font-size:0.95rem;">Contato RH</a>
       </div>
       <div style="display:flex;flex-direction:column;gap:12px;min-width:120px;margin-right:24px;">
-        <span style="font-weight:700;font-size:0.95rem;color:#000;margin-bottom:8px;">Fale Conosco</span>
-        <a href="#contato" onclick="openTab('contato');" style="color:#000;text-decoration:none;font-size:0.95rem;">Atendimento</a>
+        <span style="font-weight:700;font-size:0.95rem;color:#fff;margin-bottom:8px;">Fale Conosco</span>
+        <a href="#contato" onclick="openTab('contato');" style="color:#fff;text-decoration:none;font-size:0.95rem;">Atendimento</a>
       </div>
     </div>
     <!-- Contato à direita -->
     <div style="flex:1 1 220px;min-width:180px;display:flex;flex-direction:column;align-items:flex-start;gap:18px;padding-left:0;margin-left:40px;">
       <div style="display:flex;align-items:flex-start;gap:10px;font-size:1rem;margin-left:0;">
         <i class="fas fa-map-marker-alt" style="color:#00b140;margin-top:6px;"></i>
-        <span style="color:#000;text-align:left;">R. Luigi Galvani, 200<br>São Paulo - SP</span>
+        <span style="color:#fff;text-align:left;">R. Luigi Galvani, 200<br>São Paulo - SP</span>
       </div>
       <div style="display:flex;align-items:flex-start;gap:10px;font-size:1rem;margin-left:0;">
         <i class="fas fa-phone" style="color:#00b140;margin-top:6px;"></i>
-        <span style="color:#000;text-align:left;">(11) 5194-2988</span>
+        <span style="color:#fff;text-align:left;">(11) 5194-2988</span>
       </div>
     </div>
   </div>
@@ -889,6 +890,7 @@
     <script src="script.js?v=1.6.0" fetchpriority="high"></script>
     <script src="performance-optimizer.js?v=1.6.0"></script>
     <script src="mobile-performance-optimizer.js?v=1.6.0"></script>
+    <script src="accessibility-enhancements.js?v=1.6.0"></script>
     <script>
       // Registro do Service Worker para cache offline
       if ('serviceWorker' in navigator) {
