@@ -50,8 +50,9 @@
     
     <title>Renov - Sua Troca Inteligente</title>
     <link rel="stylesheet" href="styles.css?v=1.6.0">
-    <!-- Font Awesome - Deferred loading for better performance -->
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" fetchpriority="low" onload="this.onload=null;this.rel='stylesheet'">
+    <!-- Font Awesome - Preload e fallback para performance e renderização imediata dos ícones -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" fetchpriority="low">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
     
     <!-- Critical CSS for LCP optimization -->
