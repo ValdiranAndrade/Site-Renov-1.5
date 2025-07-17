@@ -1,0 +1,466 @@
+/* ========================================
+   MELHORIAS DE ACESSIBILIDADE - MOBILE
+   Baseado nas recomendações do PageSpeed Insights
+   ======================================== */
+
+/* 1. MELHORAR CONTRASTE DE CORES */
+:root {
+  --primary-green: #00b140;
+  --primary-green-dark: #008d36;
+  --text-dark: #222222;
+  --text-light: #ffffff;
+  --background-light: #f8f9fa;
+  --border-color: #e0e0e0;
+  --focus-color: #0066cc;
+  --error-color: #d32f2f;
+  --success-color: #2e7d32;
+}
+
+/* 2. GARANTIR ÁREA DE TOQUE MÍNIMA PARA MOBILE */
+button, 
+.tab-btn, 
+.btn-parceiro, 
+.btn-vagas,
+a[role="button"],
+input[type="submit"],
+input[type="button"] {
+  min-height: 44px !important;
+  min-width: 44px !important;
+  padding: 12px 16px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+}
+
+/* 3. MELHORAR CONTRASTE DE TEXTO */
+.hero-text h1,
+.hero-text h2,
+.hero-text p {
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.8) !important;
+  color: var(--text-light) !important;
+}
+
+/* 4. FOCUS VISIBLE PARA TODOS OS ELEMENTOS INTERATIVOS */
+button:focus,
+.tab-btn:focus,
+.btn-parceiro:focus,
+.btn-vagas:focus,
+a:focus,
+input:focus,
+textarea:focus,
+select:focus {
+  outline: 3px solid var(--focus-color) !important;
+  outline-offset: 2px !important;
+  border-radius: 4px !important;
+}
+
+/* 5. MELHORAR LEGIBILIDADE EM MOBILE */
+@media (max-width: 768px) {
+  body {
+    font-size: 16px !important; /* Previne zoom automático no iOS */
+    line-height: 1.6 !important;
+  }
+  
+  h1 {
+    font-size: 2.5rem !important;
+    line-height: 1.2 !important;
+    font-weight: 700 !important;
+  }
+  
+  h2 {
+    font-size: 2rem !important;
+    line-height: 1.3 !important;
+    font-weight: 600 !important;
+  }
+  
+  h3 {
+    font-size: 1.5rem !important;
+    line-height: 1.4 !important;
+    font-weight: 600 !important;
+  }
+  
+  p {
+    font-size: 1rem !important;
+    line-height: 1.6 !important;
+  }
+  
+  /* Aumentar espaçamento entre elementos clicáveis */
+  .tab-buttons {
+    gap: 8px !important;
+  }
+  
+  .tab-btn {
+    padding: 12px 16px !important;
+    font-size: 1rem !important;
+  }
+  
+  /* Melhorar contraste de fundo no header */
+  .header-content {
+    background: rgba(255,255,255,0.98) !important;
+    backdrop-filter: blur(10px) !important;
+  }
+}
+
+/* 6. MELHORAR ACESSIBILIDADE DE FORMULÁRIOS */
+input, 
+textarea, 
+select {
+  font-size: 16px !important; /* Previne zoom no iOS */
+  padding: 12px 16px !important;
+  border: 2px solid var(--border-color) !important;
+  border-radius: 8px !important;
+  background: var(--text-light) !important;
+  color: var(--text-dark) !important;
+  min-height: 44px !important;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--focus-color) !important;
+  box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1) !important;
+}
+
+/* 7. MELHORAR CONTRASTE DE LINKS */
+a {
+  color: var(--focus-color) !important;
+  text-decoration: underline !important;
+  text-underline-offset: 2px !important;
+}
+
+a:hover,
+a:focus {
+  color: #004499 !important;
+  text-decoration-thickness: 2px !important;
+}
+
+/* 8. MELHORAR ACESSIBILIDADE DE IMAGENS */
+img {
+  max-width: 100% !important;
+  height: auto !important;
+}
+
+img[alt=""] {
+  border: 2px dashed var(--error-color) !important;
+}
+
+/* 9. MELHORAR CONTRASTE DE BOTÕES */
+.btn-parceiro,
+.btn-vagas,
+button[type="submit"] {
+  background: var(--primary-green) !important;
+  color: var(--text-light) !important;
+  border: 2px solid var(--primary-green) !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+  transition: all 0.2s ease !important;
+}
+
+.btn-parceiro:hover,
+.btn-vagas:hover,
+button[type="submit"]:hover {
+  background: var(--primary-green-dark) !important;
+  border-color: var(--primary-green-dark) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* 10. MELHORAR ACESSIBILIDADE DE VÍDEOS */
+video {
+  max-width: 100% !important;
+  height: auto !important;
+}
+
+/* 11. MELHORAR CONTRASTE DE ÍCONES */
+.social-links a {
+  color: var(--text-dark) !important;
+  font-size: 1.5rem !important;
+  padding: 8px !important;
+  border-radius: 50% !important;
+  transition: all 0.2s ease !important;
+}
+
+.social-links a:hover,
+.social-links a:focus {
+  color: var(--primary-green) !important;
+  background: rgba(0, 177, 64, 0.1) !important;
+}
+
+/* 12. MELHORAR ACESSIBILIDADE DE NAVEGAÇÃO */
+.main-nav {
+  position: relative !important;
+  z-index: 100 !important;
+}
+
+.tab-buttons {
+  display: flex !important;
+  gap: 8px !important;
+  flex-wrap: wrap !important;
+}
+
+.tab-btn {
+  background: transparent !important;
+  border: 2px solid transparent !important;
+  color: var(--text-dark) !important;
+  font-weight: 500 !important;
+  transition: all 0.2s ease !important;
+  position: relative !important;
+}
+
+.tab-btn:hover,
+.tab-btn:focus {
+  background: rgba(0, 177, 64, 0.1) !important;
+  border-color: var(--primary-green) !important;
+  color: var(--primary-green) !important;
+}
+
+.tab-btn.active {
+  background: var(--primary-green) !important;
+  color: var(--text-light) !important;
+  border-color: var(--primary-green) !important;
+}
+
+/* 13. MELHORAR ACESSIBILIDADE DE CARDS */
+.diferencial-card,
+.parceiro-item,
+.impacto-item {
+  border: 1px solid var(--border-color) !important;
+  border-radius: 12px !important;
+  padding: 24px !important;
+  background: var(--text-light) !important;
+  transition: all 0.2s ease !important;
+}
+
+.diferencial-card:hover,
+.parceiro-item:hover,
+.impacto-item:hover {
+  border-color: var(--primary-green) !important;
+  box-shadow: 0 4px 12px rgba(0, 177, 64, 0.1) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* 14. MELHORAR CONTRASTE DE TEXTOS PEQUENOS */
+small,
+.footer-bottom,
+.copyright {
+  color: #666666 !important;
+  font-size: 0.875rem !important;
+  line-height: 1.5 !important;
+}
+
+/* 15. MELHORAR ACESSIBILIDADE DE LISTAS */
+ul, ol {
+  padding-left: 1.5rem !important;
+  margin: 1rem 0 !important;
+}
+
+li {
+  margin-bottom: 0.5rem !important;
+  line-height: 1.6 !important;
+}
+
+/* 16. MELHORAR CONTRASTE DE PLACEHOLDERS */
+input::placeholder,
+textarea::placeholder {
+  color: #999999 !important;
+  opacity: 1 !important;
+}
+
+/* 17. MELHORAR ACESSIBILIDADE DE ANIMAÇÕES */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* 18. MELHORAR CONTRASTE DE ESTADOS DE ERRO E SUCESSO */
+.error {
+  color: var(--error-color) !important;
+  border-color: var(--error-color) !important;
+}
+
+.success {
+  color: var(--success-color) !important;
+  border-color: var(--success-color) !important;
+}
+
+/* 19. MELHORAR ACESSIBILIDADE DE SKIP LINKS */
+.skip-link {
+  position: absolute !important;
+  top: -40px !important;
+  left: 6px !important;
+  background: var(--primary-green) !important;
+  color: var(--text-light) !important;
+  padding: 8px 16px !important;
+  text-decoration: none !important;
+  border-radius: 4px !important;
+  z-index: 1000 !important;
+  transition: top 0.2s ease !important;
+}
+
+.skip-link:focus {
+  top: 6px !important;
+}
+
+/* 20. MELHORAR CONTRASTE DE ELEMENTOS DESABILITADOS */
+button:disabled,
+input:disabled,
+textarea:disabled,
+select:disabled {
+  opacity: 0.6 !important;
+  cursor: not-allowed !important;
+  background: #f5f5f5 !important;
+  color: #999999 !important;
+}
+
+/* 21. MELHORAR ACESSIBILIDADE DE MODAIS */
+.modal {
+  background: rgba(0, 0, 0, 0.8) !important;
+  z-index: 1000 !important;
+}
+
+.modal-content {
+  background: var(--text-light) !important;
+  border-radius: 12px !important;
+  padding: 24px !important;
+  max-width: 90vw !important;
+  max-height: 90vh !important;
+  overflow-y: auto !important;
+}
+
+/* 22. MELHORAR CONTRASTE DE TEXTO SOBRE IMAGENS */
+.hero-text,
+.ai-hero-content {
+  background: rgba(0, 0, 0, 0.6) !important;
+  padding: 24px !important;
+  border-radius: 8px !important;
+  backdrop-filter: blur(4px) !important;
+}
+
+/* 23. MELHORAR ACESSIBILIDADE DE SLIDERS */
+.slider-track {
+  scroll-behavior: smooth !important;
+}
+
+/* 24. MELHORAR CONTRASTE DE ELEMENTOS DE NAVEGAÇÃO */
+.nav-button {
+  background: rgba(255, 255, 255, 0.9) !important;
+  border: 2px solid var(--primary-green) !important;
+  color: var(--primary-green) !important;
+  border-radius: 50% !important;
+  width: 48px !important;
+  height: 48px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+}
+
+.nav-button:hover,
+.nav-button:focus {
+  background: var(--primary-green) !important;
+  color: var(--text-light) !important;
+}
+
+/* 25. MELHORAR ACESSIBILIDADE DE FOOTER */
+footer {
+  background: var(--text-dark) !important;
+  color: var(--text-light) !important;
+}
+
+footer a {
+  color: #cccccc !important;
+}
+
+footer a:hover,
+footer a:focus {
+  color: var(--primary-green) !important;
+}
+
+/* 26. MELHORAR CONTRASTE DE ELEMENTOS DE CARREGAMENTO */
+.loading {
+  border: 3px solid #f3f3f3 !important;
+  border-top: 3px solid var(--primary-green) !important;
+  border-radius: 50% !important;
+  width: 24px !important;
+  height: 24px !important;
+  animation: spin 1s linear infinite !important;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* 27. MELHORAR ACESSIBILIDADE DE TOOLTIPS */
+[data-tooltip] {
+  position: relative !important;
+}
+
+[data-tooltip]:hover::after {
+  content: attr(data-tooltip) !important;
+  position: absolute !important;
+  bottom: 100% !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  background: var(--text-dark) !important;
+  color: var(--text-light) !important;
+  padding: 8px 12px !important;
+  border-radius: 4px !important;
+  font-size: 0.875rem !important;
+  white-space: nowrap !important;
+  z-index: 1000 !important;
+}
+
+/* 28. MELHORAR CONTRASTE DE ELEMENTOS DE PROGRESSO */
+progress {
+  width: 100% !important;
+  height: 8px !important;
+  border-radius: 4px !important;
+  background: #f0f0f0 !important;
+}
+
+progress::-webkit-progress-bar {
+  background: #f0f0f0 !important;
+  border-radius: 4px !important;
+}
+
+progress::-webkit-progress-value {
+  background: var(--primary-green) !important;
+  border-radius: 4px !important;
+}
+
+/* 29. MELHORAR ACESSIBILIDADE DE TABELAS */
+table {
+  border-collapse: collapse !important;
+  width: 100% !important;
+  margin: 1rem 0 !important;
+}
+
+th, td {
+  border: 1px solid var(--border-color) !important;
+  padding: 12px !important;
+  text-align: left !important;
+}
+
+th {
+  background: var(--background-light) !important;
+  font-weight: 600 !important;
+}
+
+/* 30. MELHORAR CONTRASTE DE ELEMENTOS DE SELEÇÃO */
+::selection {
+  background: var(--primary-green) !important;
+  color: var(--text-light) !important;
+}
+
+::-moz-selection {
+  background: var(--primary-green) !important;
+  color: var(--text-light) !important;
+} 

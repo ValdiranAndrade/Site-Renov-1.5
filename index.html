@@ -42,11 +42,11 @@
     <!-- Ultra-critical resources for LCP - Minimal chain -->
     <link rel="preload" href="assets/images/Renov-Logo.webp?v=1.6.0" as="image" fetchpriority="high" type="image/webp" crossorigin="anonymous">
     <link rel="preload" href="assets/fonts/Montserrat-Regular.woff2" as="font" type="font/woff2" crossorigin fetchpriority="high">
-    <link rel="preload" href="styles-optimized.css?v=1.7.0" as="style" fetchpriority="high" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="styles-optimized.css?v=1.7.0"></noscript>
+    <link rel="preload" href="styles.css?v=1.6.0" as="style" fetchpriority="high" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="styles.css?v=1.6.0"></noscript>
     
     <!-- High priority resources -->
-    <link rel="preload" href="script-optimized.js?v=1.7.0" as="script" fetchpriority="high">
+    <link rel="preload" href="script.js?v=1.6.0" as="script" fetchpriority="high">
     
     <!-- Deferred resources - Reduced chain -->
     <link rel="preload" href="assets/video/bg-video.mp4.mp4?v=1.6.0" as="video" type="video/mp4" media="(min-width: 768px)" fetchpriority="medium">
@@ -56,7 +56,8 @@
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin fetchpriority="low">
     
     <title>Renov - Sua Troca Inteligente</title>
-    <link rel="stylesheet" href="styles-optimized.css?v=1.7.0">
+    <link rel="stylesheet" href="styles.css?v=1.6.0">
+    <link rel="stylesheet" href="accessibility-improvements.css?v=1.6.0">
     <!-- Font Awesome - Preload e fallback para performance e renderização imediata dos ícones -->
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" fetchpriority="low">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'">
@@ -94,9 +95,13 @@
     </style>
 </head>
 <body>
+    <!-- Skip Links para Acessibilidade -->
+    <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
+    <a href="#main-navigation" class="skip-link">Pular para a navegação</a>
+    
     <div class="page-wrapper">
         <!-- Header com Logo e Navegação -->
-    <header>
+    <header role="banner">
             <div class="header-content">
             <div class="logo">
                 <a href="#" onclick="openTab('home'); return false;" style="text-decoration: none; cursor: pointer;">
@@ -106,26 +111,26 @@
                     </picture>
                 </a>
             </div>
-                <nav class="main-nav">
-                    <div class="tab-buttons">
-                        <button class="tab-btn active" onclick="openTab('home')" style="color:#000!important;">Home</button>
-                        <button class="tab-btn" onclick="openTab('sobre')" style="color:#000!important;">Sobre Nós</button>
-                        <button class="tab-btn" onclick="openTab('trabalhe')" style="color:#000!important;">Trabalhe Conosco</button>
-                        <button class="tab-btn" onclick="openTab('contato')" style="color:#000!important;">Fale Conosco</button>
+                <nav class="main-nav" id="main-navigation" role="navigation" aria-label="Navegação principal">
+                    <div class="tab-buttons" role="tablist" aria-label="Seções do site">
+                        <button class="tab-btn active" onclick="openTab('home')" role="tab" aria-selected="true" aria-controls="home" style="color:#000!important;">Home</button>
+                        <button class="tab-btn" onclick="openTab('sobre')" role="tab" aria-selected="false" aria-controls="sobre" style="color:#000!important;">Sobre Nós</button>
+                        <button class="tab-btn" onclick="openTab('trabalhe')" role="tab" aria-selected="false" aria-controls="trabalhe" style="color:#000!important;">Trabalhe Conosco</button>
+                        <button class="tab-btn" onclick="openTab('contato')" role="tab" aria-selected="false" aria-controls="contato" style="color:#000!important;">Fale Conosco</button>
                     </div>
                 </nav>
-            <div class="social-links">
-                <a href="https://www.instagram.com/renovsmart" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.linkedin.com/company/renovsmart/posts/?feedView=all" target="_blank"><i class="fab fa-linkedin"></i></a>
-                <a href="https://api.whatsapp.com/send?phone=551151942988&text=Olá! Gostaria de saber mais sobre a Renov." target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <div class="social-links" role="complementary" aria-label="Redes sociais">
+                <a href="https://www.instagram.com/renovsmart" target="_blank" aria-label="Siga-nos no Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                <a href="https://www.linkedin.com/company/renovsmart/posts/?feedView=all" target="_blank" aria-label="Siga-nos no LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+                <a href="https://api.whatsapp.com/send?phone=551151942988&text=Olá! Gostaria de saber mais sobre a Renov." target="_blank" aria-label="Entre em contato via WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
             </div>
             </div>
     </header>
 
         <!-- Conteúdo das Abas -->
-    <main>
+    <main id="main-content" role="main">
             <!-- Aba Home -->
-            <section id="home" class="tab-content active">
+            <section id="home" class="tab-content active" role="tabpanel" aria-labelledby="home-tab">
                 <section class="hero">
                   <div class="video-bg-wrapper">
                     <video autoplay muted loop playsinline class="video-bg" preload="auto">
@@ -794,10 +799,23 @@
                         <!-- Formulário -->
                         <div style="display:flex;flex-direction:column;flex:1 1 320px;min-width:300px;">
                             <form action="https://formspree.io/f/xovlqvwp" method="POST" id="form-contato" style="display:flex;flex-direction:column;gap:18px;">
-                                <input type="text" name="nome" placeholder="Seu nome" required style="padding:12px 16px;border:1px solid #ccc;border-radius:8px;font-size:1rem;">
-                                <input type="email" name="email" placeholder="Seu e-mail" required style="padding:12px 16px;border:1px solid #ccc;border-radius:8px;font-size:1rem;">
-                                <input type="tel" name="telefone" placeholder="Seu telefone" style="padding:12px 16px;border:1px solid #ccc;border-radius:8px;font-size:1rem;">
-                                <textarea name="mensagem" placeholder="Sua mensagem" rows="4" required style="padding:12px 16px;border:1px solid #ccc;border-radius:8px;font-size:1rem;"></textarea>
+                                <div>
+                                    <label for="nome" class="sr-only">Nome</label>
+                                    <input type="text" id="nome" name="nome" placeholder="Seu nome" required aria-required="true" style="padding:12px 16px;border:1px solid #ccc;border-radius:8px;font-size:1rem;">
+                                </div>
+                                <div>
+                                    <label for="email" class="sr-only">E-mail</label>
+                                    <input type="email" id="email" name="email" placeholder="Seu e-mail" required aria-required="true" style="padding:12px 16px;border:1px solid #ccc;border-radius:8px;font-size:1rem;">
+                                </div>
+                                <div>
+                                    <label for="telefone" class="sr-only">Telefone</label>
+                                    <input type="tel" id="telefone" name="telefone" placeholder="Seu telefone" aria-describedby="telefone-help" style="padding:12px 16px;border:1px solid #ccc;border-radius:8px;font-size:1rem;">
+                                    <small id="telefone-help" class="sr-only">Formato: (11) 99999-9999</small>
+                                </div>
+                                <div>
+                                    <label for="mensagem" class="sr-only">Mensagem</label>
+                                    <textarea id="mensagem" name="mensagem" placeholder="Sua mensagem" rows="4" required aria-required="true" style="padding:12px 16px;border:1px solid #ccc;border-radius:8px;font-size:1rem;"></textarea>
+                                </div>
                                 <input type="hidden" name="_replyto" value="">
                                 <button type="submit" style="background:#00b140 !important;color:#fff !important;font-size:1rem !important;font-weight:600 !important;padding:10px 8px !important;border:none !important;border-radius:32px !important;cursor:pointer !important;transition:background 0.2s !important;">Enviar mensagem</button>
                             </form>
@@ -833,7 +851,7 @@
         </main>
     </div>
 
-    <footer style="background:#181818;color:#fff;padding:0;border:none;">
+    <footer style="background:#181818;color:#fff;padding:0;border:none;" role="contentinfo">
   <div style="max-width:1200px;margin:0 auto;padding:48px 32px 0 32px;display:flex;align-items:flex-start;justify-content:space-between;gap:48px;flex-wrap:wrap;">
     <!-- Logo e social -->
     <div style="flex:1 1 220px;min-width:180px;display:flex;flex-direction:column;align-items:flex-start;gap:24px;">
@@ -886,9 +904,10 @@
   </div>
 </footer>
 
-    <script src="script-optimized.js?v=1.7.0" fetchpriority="high"></script>
+    <script src="script.js?v=1.6.0" fetchpriority="high"></script>
     <script src="performance-optimizer.js?v=1.6.0"></script>
     <script src="mobile-performance-optimizer.js?v=1.6.0"></script>
+    <script src="accessibility-enhancements.js?v=1.6.0"></script>
     <script>
       // Registro do Service Worker para cache offline
       if ('serviceWorker' in navigator) {
