@@ -84,6 +84,9 @@
       /* Fallback fonts for immediate display */
       body{font-family:'Montserrat',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,sans-serif}
       
+      /* Screen reader only text - Accessibility */
+      .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+      
       /* Mobile LCP optimizations - Ultra-compressed */
       @media (max-width:768px){.hero{height:100vh;margin-bottom:0;min-height:600px}.hero-content{margin-top:120px;padding:0 20px;z-index:2}.hero-text h1{font-size:32px;line-height:1.1;font-weight:700;color:#fff!important;text-shadow:2px 2px 4px rgba(0,0,0,0.8);margin-bottom:16px}.hero-text p{font-size:16px;line-height:1.5;color:#fff!important;text-shadow:1px 1px 2px rgba(0,0,0,0.7)}.header-content{padding:0.5rem 1rem;background:rgba(255,255,255,0.95);backdrop-filter:blur(10px)}.logo img{width:120px;height:30px}.hero-text{max-width:100%;padding:0;margin:0}.parceiro-item img{max-width:80px!important;height:auto!important}.diferenciais-grid{grid-template-columns:1fr!important;gap:1rem!important}.parceiros{padding:40px 0!important}.diferenciais{padding:40px 0!important}}
       @media (max-width:480px){.hero-text h1{font-size:28px;line-height:1.2}.hero-text p{font-size:14px;line-height:1.4}.logo img{width:100px;height:25px}.parceiro-item img{max-width:60px!important}}
@@ -137,9 +140,45 @@
                     </div>
                 </nav>
             <div class="social-links" style="display:flex;gap:16px;margin-top:-5px;margin-left:10px;">
-                <a href="https://www.instagram.com/renovsmart" target="_blank" style="color:#000;font-size:1.5rem;transition:color 0.2s;" onmouseover="this.style.color='#00b140'" onmouseout="this.style.color='#000'"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.linkedin.com/company/renovsmart/posts/?feedView=all" target="_blank" style="color:#000;font-size:1.5rem;transition:color 0.2s;" onmouseover="this.style.color='#00b140'" onmouseout="this.style.color='#000'"><i class="fab fa-linkedin"></i></a>
-                <a href="https://api.whatsapp.com/send?phone=551151942988&text=Olá! Gostaria de saber mais sobre a Renov." target="_blank" style="color:#000;font-size:1.5rem;transition:color 0.2s;" onmouseover="this.style.color='#00b140'" onmouseout="this.style.color='#000'"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://www.instagram.com/renovsmart" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   aria-label="Siga a Renov no Instagram - Abre em nova aba"
+                   title="Siga a Renov no Instagram"
+                   style="color:#000;font-size:1.5rem;transition:color 0.2s;text-decoration:none;outline:2px solid transparent;outline-offset:2px;" 
+                   onmouseover="this.style.color='#00b140'" 
+                   onmouseout="this.style.color='#000'"
+                   onfocus="this.style.outline='2px solid #00b140'"
+                   onblur="this.style.outline='2px solid transparent'">
+                    <i class="fab fa-instagram" aria-hidden="true"></i>
+                    <span class="sr-only">Instagram</span>
+                </a>
+                <a href="https://www.linkedin.com/company/renovsmart/posts/?feedView=all" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   aria-label="Conecte-se com a Renov no LinkedIn - Abre em nova aba"
+                   title="Conecte-se com a Renov no LinkedIn"
+                   style="color:#000;font-size:1.5rem;transition:color 0.2s;text-decoration:none;outline:2px solid transparent;outline-offset:2px;" 
+                   onmouseover="this.style.color='#00b140'" 
+                   onmouseout="this.style.color='#000'"
+                   onfocus="this.style.outline='2px solid #00b140'"
+                   onblur="this.style.outline='2px solid transparent'">
+                    <i class="fab fa-linkedin" aria-hidden="true"></i>
+                    <span class="sr-only">LinkedIn</span>
+                </a>
+                <a href="https://api.whatsapp.com/send?phone=551151942988&text=Olá! Gostaria de saber mais sobre a Renov." 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   aria-label="Entre em contato com a Renov via WhatsApp - Abre em nova aba"
+                   title="Entre em contato com a Renov via WhatsApp"
+                   style="color:#000;font-size:1.5rem;transition:color 0.2s;text-decoration:none;outline:2px solid transparent;outline-offset:2px;" 
+                   onmouseover="this.style.color='#00b140'" 
+                   onmouseout="this.style.color='#000'"
+                   onfocus="this.style.outline='2px solid #00b140'"
+                   onblur="this.style.outline='2px solid transparent'">
+                    <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                    <span class="sr-only">WhatsApp</span>
+                </a>
             </div>
             </div>
     </header>
@@ -864,9 +903,45 @@
         <img src='assets/images/Renov-Logo.webp?v=1.6.0' alt='Renov - Sua Troca Inteligente' style='width:130px;filter:brightness(1.1);margin-top:-10px;' loading="lazy" decoding="async">
       </picture>
       <div class="social-links" style="display:flex;gap:16px;margin-top:-5px;margin-left:10px;">
-        <a href="https://www.instagram.com/renovsmart" target="_blank" style="color:#000;font-size:1.5rem;transition:color 0.2s;" onmouseover="this.style.color='#00b140'" onmouseout="this.style.color='#000'"><i class="fab fa-instagram"></i></a>
-        <a href="https://www.linkedin.com/company/renovsmart/posts/?feedView=all" target="_blank" style="color:#000;font-size:1.5rem;transition:color 0.2s;" onmouseover="this.style.color='#00b140'" onmouseout="this.style.color='#000'"><i class="fab fa-linkedin"></i></a>
-        <a href="https://api.whatsapp.com/send?phone=551151942988&text=Olá! Gostaria de saber mais sobre a Renov." target="_blank" style="color:#000;font-size:1.5rem;transition:color 0.2s;" onmouseover="this.style.color='#00b140'" onmouseout="this.style.color='#000'"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://www.instagram.com/renovsmart" 
+           target="_blank" 
+           rel="noopener noreferrer"
+           aria-label="Siga a Renov no Instagram - Abre em nova aba"
+           title="Siga a Renov no Instagram"
+           style="color:#000;font-size:1.5rem;transition:color 0.2s;text-decoration:none;outline:2px solid transparent;outline-offset:2px;" 
+           onmouseover="this.style.color='#00b140'" 
+           onmouseout="this.style.color='#000'"
+           onfocus="this.style.outline='2px solid #00b140'"
+           onblur="this.style.outline='2px solid transparent'">
+            <i class="fab fa-instagram" aria-hidden="true"></i>
+            <span class="sr-only">Instagram</span>
+        </a>
+        <a href="https://www.linkedin.com/company/renovsmart/posts/?feedView=all" 
+           target="_blank" 
+           rel="noopener noreferrer"
+           aria-label="Conecte-se com a Renov no LinkedIn - Abre em nova aba"
+           title="Conecte-se com a Renov no LinkedIn"
+           style="color:#000;font-size:1.5rem;transition:color 0.2s;text-decoration:none;outline:2px solid transparent;outline-offset:2px;" 
+           onmouseover="this.style.color='#00b140'" 
+           onmouseout="this.style.color='#000'"
+           onfocus="this.style.outline='2px solid #00b140'"
+           onblur="this.style.outline='2px solid transparent'">
+            <i class="fab fa-linkedin" aria-hidden="true"></i>
+            <span class="sr-only">LinkedIn</span>
+        </a>
+        <a href="https://api.whatsapp.com/send?phone=551151942988&text=Olá! Gostaria de saber mais sobre a Renov." 
+           target="_blank" 
+           rel="noopener noreferrer"
+           aria-label="Entre em contato com a Renov via WhatsApp - Abre em nova aba"
+           title="Entre em contato com a Renov via WhatsApp"
+           style="color:#000;font-size:1.5rem;transition:color 0.2s;text-decoration:none;outline:2px solid transparent;outline-offset:2px;" 
+           onmouseover="this.style.color='#00b140'" 
+           onmouseout="this.style.color='#000'"
+           onfocus="this.style.outline='2px solid #00b140'"
+           onblur="this.style.outline='2px solid transparent'">
+            <i class="fab fa-whatsapp" aria-hidden="true"></i>
+            <span class="sr-only">WhatsApp</span>
+        </a>
       </div>
     </div>
     <!-- Navegação central -->
