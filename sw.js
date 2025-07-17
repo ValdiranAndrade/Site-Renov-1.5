@@ -1,39 +1,39 @@
-const CACHE_VERSION = '1.5.9';
+const CACHE_VERSION = '1.6.0';
 const CACHE_NAME = `renov-cache-v${CACHE_VERSION}`;
 
 // Detectar se é dispositivo mobile
 const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
-// Configurações mobile otimizadas - Reduzidas cadeias
+// Ultra-optimized mobile config for LCP - Minimal critical path
 const MOBILE_CONFIG = {
-  // Cache otimizado para mobile
-  maxCacheSize: isMobile ? 30 * 1024 * 1024 : 100 * 1024 * 1024, // 30MB vs 100MB
+  // Reduced cache for faster LCP
+  maxCacheSize: isMobile ? 20 * 1024 * 1024 : 100 * 1024 * 1024, // 20MB vs 100MB
   cacheStrategy: isMobile ? 'cache-first' : 'stale-while-revalidate',
   
-  // Recursos críticos mobile - Minimal chain
+  // Ultra-critical resources - Minimal chain
   criticalResources: [
     '/',
     '/index.html',
     '/styles.css',
     '/script.js',
-    '/assets/images/Renov-Logo.webp',
-    '/assets/fonts/Montserrat-Regular.woff2'
+    '/assets/images/Renov-Logo.webp'
   ],
   
-  // LCP mobile optimization
+  // LCP ultra-optimization
   lcpOptimization: {
-    criticalElements: ['.hero-text h1', '.logo img', '.video-bg'],
+    criticalElements: ['.hero-text h1', '.logo img'],
     deferNonCritical: true,
     fontDisplay: 'swap',
-    // Mobile-specific optimizations
+    // Ultra-mobile optimizations
     reduceAnimations: true,
-    optimizeImages: true
+    optimizeImages: true,
+    minimizeRequests: true
   }
 };
 
-// Estratégias de cache mobile otimizadas - Reduzidas cadeias
+// Ultra-optimized cache strategies for LCP - Minimal critical path
 const CACHE_STRATEGIES = {
-  // Recursos críticos mobile - Minimal chain
+  // Ultra-critical resources - Minimal chain
   CRITICAL: {
     name: 'critical',
     urls: [
@@ -41,14 +41,13 @@ const CACHE_STRATEGIES = {
       '/index.html',
       '/styles.css',
       '/script.js',
-      '/assets/images/Renov-Logo.webp',
-      '/assets/fonts/Montserrat-Regular.woff2'
+      '/assets/images/Renov-Logo.webp'
     ],
     strategy: 'cache-first',
     maxAge: 31536000 // 1 ano
   },
   
-  // Recursos estáticos - Otimizados para mobile
+  // Static resources - Ultra-optimized for mobile
   STATIC: {
     name: 'static',
     urls: [
@@ -67,25 +66,25 @@ const CACHE_STRATEGIES = {
       '/assets/icons/esg-icon.webp'
     ],
     strategy: 'cache-first',
-    maxAge: isMobile ? 604800 : 2592000 // 7 dias mobile vs 30 dias desktop
+    maxAge: isMobile ? 302400 : 2592000 // 3.5 dias mobile vs 30 dias desktop
   },
   
-  // Recursos externos - Deferred loading
+  // External resources - Ultra-deferred
   EXTERNAL: {
     name: 'external',
     urls: [
       'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css'
     ],
     strategy: 'stale-while-revalidate',
-    maxAge: isMobile ? 43200 : 86400 // 12h mobile vs 24h desktop
+    maxAge: isMobile ? 21600 : 86400 // 6h mobile vs 24h desktop
   },
   
-  // Recursos dinâmicos - Network first
+  // Dynamic resources - Ultra-fast
   DYNAMIC: {
     name: 'dynamic',
     urls: [],
     strategy: 'network-first',
-    maxAge: isMobile ? 1800 : 3600 // 30min mobile vs 1h desktop
+    maxAge: isMobile ? 900 : 3600 // 15min mobile vs 1h desktop
   }
 };
 

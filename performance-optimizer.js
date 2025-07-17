@@ -104,7 +104,7 @@
     
 })(); 
 
-// Performance Optimizer for Mobile - Reduce Critical Request Chains
+// Ultra Performance Optimizer for LCP - Minimal Critical Path
 (function() {
     'use strict';
     
@@ -112,91 +112,78 @@
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
     
     if (isMobile) {
-        // Optimize partner logos loading - Reduce request chains
-        const optimizePartnerLogos = () => {
+        // Ultra-optimize partner logos - Minimal overhead
+        const ultraOptimizeLogos = () => {
             const partnerImages = document.querySelectorAll('.parceiro-item img');
             partnerImages.forEach(img => {
-                // Set low priority for all partner logos
                 img.setAttribute('fetchpriority', 'low');
                 img.setAttribute('loading', 'lazy');
                 img.setAttribute('decoding', 'async');
-                
-                // Reduce image quality for mobile if needed
                 if (window.innerWidth <= 480) {
-                    img.style.maxWidth = '80px';
-                    img.style.height = 'auto';
+                    img.style.cssText = 'max-width:80px;height:auto';
                 }
             });
         };
         
-        // Optimize FAQ images loading
-        const optimizeFAQImages = () => {
-            const faqImages = document.querySelectorAll('.resposta-card img.avatar');
-            faqImages.forEach(img => {
+        // Ultra-optimize FAQ images - Single operation
+        const ultraOptimizeFAQ = () => {
+            document.querySelectorAll('.resposta-card img.avatar').forEach(img => {
                 img.setAttribute('fetchpriority', 'low');
                 img.setAttribute('loading', 'lazy');
                 img.setAttribute('decoding', 'async');
             });
         };
         
-        // Optimize non-critical images
-        const optimizeNonCriticalImages = () => {
-            const nonCriticalImages = document.querySelectorAll('img[loading="lazy"]');
-            nonCriticalImages.forEach(img => {
-                if (!img.hasAttribute('fetchpriority')) {
-                    img.setAttribute('fetchpriority', 'low');
-                }
+        // Ultra-optimize non-critical - Batch operation
+        const ultraOptimizeNonCritical = () => {
+            document.querySelectorAll('img[loading="lazy"]:not([fetchpriority])').forEach(img => {
+                img.setAttribute('fetchpriority', 'low');
             });
         };
         
-        // Execute optimizations when DOM is ready
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', () => {
-                optimizePartnerLogos();
-                optimizeFAQImages();
-                optimizeNonCriticalImages();
-            });
-        } else {
-            optimizePartnerLogos();
-            optimizeFAQImages();
-            optimizeNonCriticalImages();
-        }
+        // Execute optimizations - Minimal delay
+        const executeOptimizations = () => {
+            ultraOptimizeLogos();
+            ultraOptimizeFAQ();
+            ultraOptimizeNonCritical();
+        };
         
-        // Reduce animation complexity for mobile
-        document.documentElement.style.setProperty('--animation-duration', '0.15s');
-        document.documentElement.style.setProperty('--transition-duration', '0.15s');
+        // Immediate execution for LCP
+        document.readyState === 'loading' 
+            ? document.addEventListener('DOMContentLoaded', executeOptimizations, {once: true})
+            : executeOptimizations();
         
-        // Optimize scroll performance
+        // Ultra-reduced animations
+        document.documentElement.style.setProperty('--animation-duration', '0.1s');
+        document.documentElement.style.setProperty('--transition-duration', '0.1s');
+        
+        // Ultra-optimized scroll - Minimal overhead
         let ticking = false;
-        const optimizeScroll = () => {
+        const ultraScrollOptimize = () => {
             if (!ticking) {
-                requestAnimationFrame(() => {
-                    // Scroll optimizations here if needed
-                    ticking = false;
-                });
+                requestAnimationFrame(() => { ticking = false; });
                 ticking = true;
             }
         };
         
-        // Add passive scroll listeners
-        document.addEventListener('scroll', optimizeScroll, { passive: true });
-        document.addEventListener('touchmove', optimizeScroll, { passive: true });
+        // Passive listeners - Minimal chain
+        ['scroll', 'touchmove'].forEach(event => {
+            document.addEventListener(event, ultraScrollOptimize, { passive: true });
+        });
     }
     
-    // Global performance optimizations
-    const globalOptimizations = () => {
-        // Preload critical resources only
-        const criticalResources = [
+    // Global ultra-optimizations
+    const globalUltraOptimizations = () => {
+        // Ultra-critical resources only
+        const ultraCriticalResources = [
             'assets/images/Renov-Logo.webp',
-            'assets/fonts/Montserrat-Regular.woff2',
             'styles.css',
             'script.js'
         ];
         
-        // Defer non-critical resources
-        const deferResources = () => {
-            const nonCritical = document.querySelectorAll('link[fetchpriority="low"], img[fetchpriority="low"]');
-            nonCritical.forEach(resource => {
+        // Ultra-defer non-critical
+        const ultraDeferResources = () => {
+            document.querySelectorAll('link[fetchpriority="low"], img[fetchpriority="low"]').forEach(resource => {
                 if (resource.tagName === 'LINK') {
                     resource.setAttribute('media', 'print');
                     resource.setAttribute('onload', "this.media='all'");
@@ -204,11 +191,11 @@
             });
         };
         
-        // Execute after page load
-        window.addEventListener('load', deferResources);
+        // Execute after load - Minimal delay
+        window.addEventListener('load', ultraDeferResources, {once: true});
     };
     
-    // Initialize optimizations
-    globalOptimizations();
+    // Initialize ultra-optimizations
+    globalUltraOptimizations();
     
 })(); 
