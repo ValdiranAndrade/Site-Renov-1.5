@@ -53,32 +53,36 @@
     
     <title>Renov - Sua Troca Inteligente</title>
     
-          <!-- Critical CSS for FCP, Speed Index & LCP optimization -->
+          <!-- Ultra-Critical CSS for FCP & LCP optimization -->
       <style>
-      /* Ultra-critical CSS for FCP/LCP optimization - Minimal chain */
-      .logo img{width:160px;height:40px;object-fit:contain;display:block;max-width:100%;contain:layout style paint}
+      /* Ultra-critical CSS for FCP/LCP - Minimal and optimized */
+      .logo img{width:160px;height:40px;object-fit:contain;display:block;max-width:100%;contain:layout style paint;will-change:transform;transform:translateZ(0)}
       .header-content{display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem;max-width:1200px;margin:0 auto;position:relative;z-index:10;contain:layout}
       .hero{position:relative;width:100vw;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw;height:140vh;display:flex;align-items:flex-start;overflow:hidden;margin-top:0!important;margin-bottom:-350px;background:#000;contain:layout style paint}
       .hero-content{position:relative;z-index:1;width:100%;max-width:1200px;margin:0 auto;padding:0 5%;margin-top:300px;contain:layout}
-      .hero-text h1{font-size:48px;line-height:1.05;margin-bottom:24px;color:#fff;font-weight:700;text-align:left;text-shadow:2px 2px 4px rgba(0,0,0,0.8);contain:layout style paint}
-      .hero-text p{color:#fff;font-size:18px;line-height:1.5;margin:0;text-shadow:1px 1px 2px rgba(0,0,0,0.7);contain:layout style paint}
+      .hero-text h1{font-size:48px;line-height:1.05;margin-bottom:24px;color:#fff;font-weight:700;text-align:left;text-shadow:2px 2px 4px rgba(0,0,0,0.8);contain:layout style paint;will-change:transform;transform:translateZ(0)}
+      .hero-text p{color:#fff;font-size:18px;line-height:1.5;margin:0;text-shadow:1px 1px 2px rgba(0,0,0,0.7);contain:layout style paint;will-change:transform;transform:translateZ(0)}
       .video-bg-wrapper{position:absolute;top:0;left:0;width:100vw;height:100%;z-index:0;overflow:hidden;pointer-events:none;transform:translateY(-300px);display:block!important;contain:layout style paint}
       .video-bg{position:absolute;top:0;left:50%;width:100vw;height:100%;min-width:100vw;min-height:100%;object-fit:cover;transform:translateX(-50%);opacity:1!important;visibility:visible!important;contain:layout style paint}
       
-      /* Social icons optimization */
+      /* Social icons - optimized for FCP */
       .social-links{display:flex!important;gap:16px!important;margin-top:-5px!important;margin-left:10px!important;contain:layout}
       .social-links a{color:#000!important;font-size:1.5rem!important;transition:color 0.2s!important;display:inline-block!important;visibility:visible!important;opacity:1!important;contain:layout style paint}
       .social-links i{display:inline-block!important;visibility:visible!important;opacity:1!important;font-style:normal!important;contain:layout style paint}
       .fab{font-family:"Font Awesome 6 Brands"!important;font-weight:400!important;display:inline-block!important;visibility:visible!important;opacity:1!important;contain:layout style paint}
       .fas{font-family:"Font Awesome 6 Free"!important;font-weight:900!important;display:inline-block!important;visibility:visible!important;opacity:1!important;contain:layout style paint}
       
-      /* Hardware acceleration for animations */
-      .hero-text h1,.hero-text p,.logo img{will-change:transform;transform:translateZ(0)}
+      /* Prevent layout shifts - critical for LCP */
+      .logo{min-width:160px;min-height:40px;contain:layout}
+      .hero-text{min-height:200px;contain:layout}
+      .social-links{min-width:120px;min-height:24px;contain:layout}
       
-      /* Prevent layout shifts */
-      .logo{min-width:160px;min-height:40px}
-      .hero-text{min-height:200px}
-      .social-links{min-width:120px;min-height:24px}
+      /* Font loading optimization */
+      @font-face{font-family:'Montserrat';src:url('assets/fonts/Montserrat-Regular.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+      @font-face{font-family:'Montserrat';src:url('assets/fonts/Montserrat-Medium.woff2') format('woff2');font-weight:500;font-style:normal;font-display:swap}
+      
+      /* Fallback fonts for immediate display */
+      body{font-family:'Montserrat',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,sans-serif}
       
       /* Mobile LCP optimizations - Ultra-compressed */
       @media (max-width:768px){.hero{height:100vh;margin-bottom:0;min-height:600px}.hero-content{margin-top:120px;padding:0 20px;z-index:2}.hero-text h1{font-size:32px;line-height:1.1;font-weight:700;color:#fff!important;text-shadow:2px 2px 4px rgba(0,0,0,0.8);margin-bottom:16px}.hero-text p{font-size:16px;line-height:1.5;color:#fff!important;text-shadow:1px 1px 2px rgba(0,0,0,0.7)}.header-content{padding:0.5rem 1rem;background:rgba(255,255,255,0.95);backdrop-filter:blur(10px)}.logo img{width:120px;height:30px}.hero-text{max-width:100%;padding:0;margin:0}.parceiro-item img{max-width:80px!important;height:auto!important}.diferenciais-grid{grid-template-columns:1fr!important;gap:1rem!important}.parceiros{padding:40px 0!important}.diferenciais{padding:40px 0!important}}
@@ -102,8 +106,8 @@
       <!-- Font Awesome CSS - Carregamento direto para ícones imediatos -->
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
       
-      <!-- FCP, Speed Index & LCP Optimizer - Sistema avançado de otimização para métricas críticas -->
-      <script src="fcp-speed-lcp-optimizer.js?v=1.6.0"></script>
+      <!-- FCP & LCP Advanced Optimizer - Sistema de otimização avançada para FCP e LCP -->
+      <script src="fcp-lcp-advanced-optimizer.js?v=1.6.0"></script>
       
       <!-- Request Chain Optimizer - Sistema avançado de otimização de cadeias de solicitação -->
       <script src="request-chain-optimizer.js?v=1.6.0" defer></script>
@@ -146,15 +150,15 @@
             <section id="home" class="tab-content active">
                 <section class="hero">
                   <div class="video-bg-wrapper">
-                    <video autoplay muted loop playsinline class="video-bg" preload="metadata" data-critical="true">
+                    <video autoplay muted loop playsinline class="video-bg" preload="metadata" data-critical="true" data-lcp-candidate="true">
                       <source src="assets/video/bg-video.mp4.mp4?v=1.6.0" type="video/mp4">
                       Seu navegador não suporta vídeo em HTML5.
                     </video>
                   </div>
                     <div class="hero-content">
                         <div class="hero-text">
-                            <h1 style="font-size: 48px; line-height: 1.05; margin-bottom: 24px; color: #fff; font-weight: 700; text-align: left; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">Potencialize<br>suas vendas com<br>Trade-in Inteligente</h1>
-                            <p style="color: #fff; font-size: 18px; line-height: 1.5; margin: 0; text-shadow: 1px 1px 2px rgba(0,0,0,0.7);">A plataforma Renov transforma dispositivos usados em oportunidades de venda para sua empresa. Ofereça aos seus clientes a possibilidade de usar seus aparelhos antigos como forma de pagamento e aumente suas conversões de forma inteligente.</p>
+                            <h1 style="font-size: 48px; line-height: 1.05; margin-bottom: 24px; color: #fff; font-weight: 700; text-align: left; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);" data-lcp-candidate="true">Potencialize<br>suas vendas com<br>Trade-in Inteligente</h1>
+                            <p style="color: #fff; font-size: 18px; line-height: 1.5; margin: 0; text-shadow: 1px 1px 2px rgba(0,0,0,0.7);" data-lcp-candidate="true">A plataforma Renov transforma dispositivos usados em oportunidades de venda para sua empresa. Ofereça aos seus clientes a possibilidade de usar seus aparelhos antigos como forma de pagamento e aumente suas conversões de forma inteligente.</p>
                         </div>
                     </div>
                 </section>
