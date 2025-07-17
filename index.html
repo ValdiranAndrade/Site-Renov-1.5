@@ -41,7 +41,8 @@
     
     <!-- Critical resources only - Minimal chain -->
     <link rel="preload" href="assets/images/Renov-Logo.webp?v=1.6.0" as="image" fetchpriority="high" type="image/webp">
-    <link rel="preload" href="assets/fonts/Montserrat-Regular.woff2?v=1.6.0" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="assets/fonts/Montserrat-Regular.woff2" as="font" type="font/woff2" crossorigin fetchpriority="high">
+    <link rel="preload" href="assets/fonts/Montserrat-Medium.woff2" as="font" type="font/woff2" crossorigin fetchpriority="high">
     
     <!-- Font optimized CSS -->
     <link rel="stylesheet" href="font-optimized.css?v=1.6.0">
@@ -52,34 +53,32 @@
     
     <title>Renov - Sua Troca Inteligente</title>
     
-          <!-- Critical CSS for LCP optimization -->
+          <!-- Critical CSS for FCP, Speed Index & LCP optimization -->
       <style>
-      /* Ultra-critical CSS for LCP optimization - Minimal chain */
-      .logo img{width:160px;height:40px;object-fit:contain;display:block;max-width:100%}
-      .header-content{display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem;max-width:1200px;margin:0 auto;position:relative;z-index:10}
-      .hero{position:relative;width:100vw;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw;height:140vh;display:flex;align-items:flex-start;overflow:hidden;margin-top:0!important;margin-bottom:-350px;background:#000}
-      .hero-content{position:relative;z-index:1;width:100%;max-width:1200px;margin:0 auto;padding:0 5%;margin-top:300px}
-      .video-bg-wrapper{position:absolute;top:0;left:0;width:100vw;height:100%;z-index:0;overflow:hidden;pointer-events:none;transform:translateY(-300px);display:block!important}
-      .video-bg{position:absolute;top:0;left:50%;width:100vw;height:100%;min-width:100vw;min-height:100%;object-fit:cover;transform:translateX(-50%);opacity:1!important;visibility:visible!important}
+      /* Ultra-critical CSS for FCP/LCP optimization - Minimal chain */
+      .logo img{width:160px;height:40px;object-fit:contain;display:block;max-width:100%;contain:layout style paint}
+      .header-content{display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem;max-width:1200px;margin:0 auto;position:relative;z-index:10;contain:layout}
+      .hero{position:relative;width:100vw;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw;height:140vh;display:flex;align-items:flex-start;overflow:hidden;margin-top:0!important;margin-bottom:-350px;background:#000;contain:layout style paint}
+      .hero-content{position:relative;z-index:1;width:100%;max-width:1200px;margin:0 auto;padding:0 5%;margin-top:300px;contain:layout}
+      .hero-text h1{font-size:48px;line-height:1.05;margin-bottom:24px;color:#fff;font-weight:700;text-align:left;text-shadow:2px 2px 4px rgba(0,0,0,0.8);contain:layout style paint}
+      .hero-text p{color:#fff;font-size:18px;line-height:1.5;margin:0;text-shadow:1px 1px 2px rgba(0,0,0,0.7);contain:layout style paint}
+      .video-bg-wrapper{position:absolute;top:0;left:0;width:100vw;height:100%;z-index:0;overflow:hidden;pointer-events:none;transform:translateY(-300px);display:block!important;contain:layout style paint}
+      .video-bg{position:absolute;top:0;left:50%;width:100vw;height:100%;min-width:100vw;min-height:100%;object-fit:cover;transform:translateX(-50%);opacity:1!important;visibility:visible!important;contain:layout style paint}
       
-      /* Garantir que os ícones sociais sejam sempre visíveis */
-      .social-links{display:flex!important;gap:16px!important;margin-top:-5px!important;margin-left:10px!important}
-      .social-links a{color:#000!important;font-size:1.5rem!important;transition:color 0.2s!important;display:inline-block!important;visibility:visible!important;opacity:1!important}
-      .social-links i{display:inline-block!important;visibility:visible!important;opacity:1!important;font-style:normal!important}
-      .fab{font-family:"Font Awesome 6 Brands"!important;font-weight:400!important;display:inline-block!important;visibility:visible!important;opacity:1!important}
-      .fas{font-family:"Font Awesome 6 Free"!important;font-weight:900!important;display:inline-block!important;visibility:visible!important;opacity:1!important}
+      /* Social icons optimization */
+      .social-links{display:flex!important;gap:16px!important;margin-top:-5px!important;margin-left:10px!important;contain:layout}
+      .social-links a{color:#000!important;font-size:1.5rem!important;transition:color 0.2s!important;display:inline-block!important;visibility:visible!important;opacity:1!important;contain:layout style paint}
+      .social-links i{display:inline-block!important;visibility:visible!important;opacity:1!important;font-style:normal!important;contain:layout style paint}
+      .fab{font-family:"Font Awesome 6 Brands"!important;font-weight:400!important;display:inline-block!important;visibility:visible!important;opacity:1!important;contain:layout style paint}
+      .fas{font-family:"Font Awesome 6 Free"!important;font-weight:900!important;display:inline-block!important;visibility:visible!important;opacity:1!important;contain:layout style paint}
       
-      /* CLS Critical CSS - Prevenir layout shifts */
-      img{max-width:100%!important;height:auto!important;display:block!important;aspect-ratio:auto!important}
-      video{max-width:100%!important;height:auto!important;aspect-ratio:16/9!important}
-      iframe{max-width:100%!important;height:auto!important;aspect-ratio:16/9!important}
-      .container,.wrapper,.section{width:100%!important;box-sizing:border-box!important}
-      input,textarea,select{height:48px!important;min-height:48px!important;font-size:16px!important;padding:12px 16px!important;box-sizing:border-box!important}
-      .btn{height:48px!important;min-height:48px!important;display:inline-flex!important;align-items:center!important;justify-content:center!important}
-      .tab-btn{height:40px!important;min-height:40px!important;display:inline-flex!important;align-items:center!important;justify-content:center!important}
-      .header-content{height:80px!important;min-height:80px!important;display:flex!important;align-items:center!important}
-      .social-links{height:auto!important;min-height:40px!important;display:flex!important;align-items:center!important}
-      .parceiro-item img{max-width:120px!important;height:auto!important}
+      /* Hardware acceleration for animations */
+      .hero-text h1,.hero-text p,.logo img{will-change:transform;transform:translateZ(0)}
+      
+      /* Prevent layout shifts */
+      .logo{min-width:160px;min-height:40px}
+      .hero-text{min-height:200px}
+      .social-links{min-width:120px;min-height:24px}
       
       /* Mobile LCP optimizations - Ultra-compressed */
       @media (max-width:768px){.hero{height:100vh;margin-bottom:0;min-height:600px}.hero-content{margin-top:120px;padding:0 20px;z-index:2}.hero-text h1{font-size:32px;line-height:1.1;font-weight:700;color:#fff!important;text-shadow:2px 2px 4px rgba(0,0,0,0.8);margin-bottom:16px}.hero-text p{font-size:16px;line-height:1.5;color:#fff!important;text-shadow:1px 1px 2px rgba(0,0,0,0.7)}.header-content{padding:0.5rem 1rem;background:rgba(255,255,255,0.95);backdrop-filter:blur(10px)}.logo img{width:120px;height:30px}.hero-text{max-width:100%;padding:0;margin:0}.parceiro-item img{max-width:80px!important;height:auto!important}.diferenciais-grid{grid-template-columns:1fr!important;gap:1rem!important}.parceiros{padding:40px 0!important}.diferenciais{padding:40px 0!important}}
@@ -103,11 +102,8 @@
       <!-- Font Awesome CSS - Carregamento direto para ícones imediatos -->
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
       
-      <!-- CLS Optimizer - Sistema completo para otimizar Cumulative Layout Shift -->
-      <script src="cls-optimizer.js?v=1.6.0"></script>
-      
-      <!-- LCP & Speed Index Optimizer - Sistema avançado de otimização de LCP e Speed Index -->
-      <script src="lcp-speed-optimizer.js?v=1.6.0" defer></script>
+      <!-- FCP, Speed Index & LCP Optimizer - Sistema avançado de otimização para métricas críticas -->
+      <script src="fcp-speed-lcp-optimizer.js?v=1.6.0"></script>
       
       <!-- Request Chain Optimizer - Sistema avançado de otimização de cadeias de solicitação -->
       <script src="request-chain-optimizer.js?v=1.6.0" defer></script>
@@ -124,7 +120,7 @@
                 <a href="#" onclick="openTab('home'); return false;" style="text-decoration: none; cursor: pointer;">
                     <picture>
                         <source srcset="assets/images/Renov-Logo.webp?v=1.6.0" type="image/webp">
-                        <img src="assets/images/Renov-Logo.webp?v=1.6.0" alt="Renov - Sua Troca Inteligente" loading="eager" fetchpriority="high" decoding="sync" width="160" height="40">
+                        <img src="assets/images/Renov-Logo.webp?v=1.6.0" alt="Renov - Sua Troca Inteligente" loading="eager" fetchpriority="high" decoding="sync" width="160" height="40" data-critical="true">
                     </picture>
                 </a>
             </div>
@@ -150,7 +146,7 @@
             <section id="home" class="tab-content active">
                 <section class="hero">
                   <div class="video-bg-wrapper">
-                    <video autoplay muted loop playsinline class="video-bg" preload="auto">
+                    <video autoplay muted loop playsinline class="video-bg" preload="metadata" data-critical="true">
                       <source src="assets/video/bg-video.mp4.mp4?v=1.6.0" type="video/mp4">
                       Seu navegador não suporta vídeo em HTML5.
                     </video>
@@ -816,9 +812,9 @@
                         <!-- Formulário -->
                         <div style="display:flex;flex-direction:column;flex:1 1 320px;min-width:300px;">
                             <form action="https://formspree.io/f/xovlqvwp" method="POST" id="form-contato" style="display:flex;flex-direction:column;gap:18px;">
-                                <input type="text" name="nome" placeholder="Seu nome" autocomplete="name" required style="padding:12px 16px;border:1px solid #ccc;border-radius:8px;font-size:1rem;">
-                                <input type="email" name="email" placeholder="Seu e-mail" autocomplete="email" required style="padding:12px 16px;border:1px solid #ccc;border-radius:8px;font-size:1rem;">
-                                <input type="tel" name="telefone" placeholder="Seu telefone" autocomplete="tel" style="padding:12px 16px;border:1px solid #ccc;border-radius:8px;font-size:1rem;">
+                                <input type="text" name="nome" placeholder="Seu nome" required style="padding:12px 16px;border:1px solid #ccc;border-radius:8px;font-size:1rem;">
+                                <input type="email" name="email" placeholder="Seu e-mail" required style="padding:12px 16px;border:1px solid #ccc;border-radius:8px;font-size:1rem;">
+                                <input type="tel" name="telefone" placeholder="Seu telefone" style="padding:12px 16px;border:1px solid #ccc;border-radius:8px;font-size:1rem;">
                                 <textarea name="mensagem" placeholder="Sua mensagem" rows="4" required style="padding:12px 16px;border:1px solid #ccc;border-radius:8px;font-size:1rem;"></textarea>
                                 <input type="hidden" name="_replyto" value="">
                                 <button type="submit" style="background:#00b140 !important;color:#fff !important;font-size:1rem !important;font-weight:600 !important;padding:10px 8px !important;border:none !important;border-radius:32px !important;cursor:pointer !important;transition:background 0.2s !important;">Enviar mensagem</button>

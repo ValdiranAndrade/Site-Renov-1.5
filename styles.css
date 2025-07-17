@@ -2179,7 +2179,7 @@ footer {
 }
 
 .parceiro-item img {
-    max-width: 120px; /* Tamanho reduzido para melhor proporção */
+    max-width: 154px; /* Aumento de 10% de 140px */
     height: auto;
     opacity: 1;
     transition: all 0.3s ease;
@@ -2204,7 +2204,7 @@ footer {
     }
     
     .parceiro-item img {
-        max-width: 80px; /* Tamanho reduzido para mobile */
+        max-width: 110px; /* Aumento de 10% de 100px */
     }
 }
 

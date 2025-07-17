@@ -273,7 +273,7 @@ class RequestChainOptimizer {
             link.href = font.href;
             link.as = 'font';
             link.type = font.type;
-            link.crossOrigin = 'anonymous';
+            link.crossOrigin = font.crossorigin;
             link.setAttribute('data-critical', 'true');
             document.head.appendChild(link);
         });
