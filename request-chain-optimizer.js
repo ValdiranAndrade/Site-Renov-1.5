@@ -392,13 +392,12 @@ class RequestChainOptimizer {
      * Defer recursos externos
      */
     deferExternalResources() {
-        // Defer Font Awesome
+        // Font Awesome não deve ser deferido para garantir que os ícones apareçam imediatamente
         const fontAwesome = document.querySelector('link[href*="font-awesome"]');
         if (fontAwesome) {
-            fontAwesome.media = 'print';
-            fontAwesome.onload = function() {
-                this.media = 'all';
-            };
+            // Garantir que o Font Awesome seja carregado imediatamente
+            fontAwesome.media = 'all';
+            fontAwesome.removeAttribute('onload');
         }
     }
 

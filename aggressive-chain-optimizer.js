@@ -52,24 +52,13 @@ function aggressiveChainOptimization(htmlContent) {
     // 6. Deferir TODOS os scripts
     optimized = optimized.replace(/<script src="([^"]+)"[^>]*>/g, '<script src="$1" defer>');
     
-    // 7. Remover Font Awesome do head (será carregado via JS)
-    optimized = optimized.replace(/<link[^>]*font-awesome[^>]*>/g, '');
+    // 7. Font Awesome deve carregar imediatamente para garantir que os ícones apareçam
+    // Não remover o link do Font Awesome do head
+    // optimized = optimized.replace(/<link[^>]*font-awesome[^>]*>/g, '');
     
-    // 8. Adicionar carregamento de Font Awesome via JavaScript
-    const fontAwesomeLoader = `
-    <script>
-    // Load Font Awesome asynchronously
-    (function() {
-        var link = document.createElement('link');
-        link.rel = 'stylesheet';
-        link.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css';
-        document.head.appendChild(link);
-    })();
-    </script>
-    `;
-    
-    // Inserir antes do fechamento do head
-    optimized = optimized.replace('</head>', fontAwesomeLoader + '</head>');
+    // 8. Garantir que o Font Awesome seja carregado diretamente
+    optimized = optimized.replace(/<link[^>]*font-awesome[^>]*>/g, 
+        '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">');
     
     // 9. Otimizar carregamento de fontes
     const fontLoader = `

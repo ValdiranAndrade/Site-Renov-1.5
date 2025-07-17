@@ -51,8 +51,8 @@
     
     <title>Renov - Sua Troca Inteligente</title>
     
-    <!-- Critical CSS for LCP optimization -->
-    <style>
+          <!-- Critical CSS for LCP optimization -->
+      <style>
       /* Ultra-critical CSS for LCP optimization - Minimal chain */
       .logo img{width:160px;height:40px;object-fit:contain;display:block;max-width:100%}
       .header-content{display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem;max-width:1200px;margin:0 auto;position:relative;z-index:10}
@@ -60,6 +60,13 @@
       .hero-content{position:relative;z-index:1;width:100%;max-width:1200px;margin:0 auto;padding:0 5%;margin-top:300px}
       .video-bg-wrapper{position:absolute;top:0;left:0;width:100vw;height:100%;z-index:0;overflow:hidden;pointer-events:none;transform:translateY(-300px);display:block!important}
       .video-bg{position:absolute;top:0;left:50%;width:100vw;height:100%;min-width:100vw;min-height:100%;object-fit:cover;transform:translateX(-50%);opacity:1!important;visibility:visible!important}
+      
+      /* Garantir que os ícones sociais sejam sempre visíveis */
+      .social-links{display:flex!important;gap:16px!important;margin-top:-5px!important;margin-left:10px!important}
+      .social-links a{color:#000!important;font-size:1.5rem!important;transition:color 0.2s!important;display:inline-block!important;visibility:visible!important;opacity:1!important}
+      .social-links i{display:inline-block!important;visibility:visible!important;opacity:1!important;font-style:normal!important}
+      .fab{font-family:"Font Awesome 6 Brands"!important;font-weight:400!important;display:inline-block!important;visibility:visible!important;opacity:1!important}
+      .fas{font-family:"Font Awesome 6 Free"!important;font-weight:900!important;display:inline-block!important;visibility:visible!important;opacity:1!important}
       
       /* Mobile LCP optimizations - Ultra-compressed */
       @media (max-width:768px){.hero{height:100vh;margin-bottom:0;min-height:600px}.hero-content{margin-top:120px;padding:0 20px;z-index:2}.hero-text h1{font-size:32px;line-height:1.1;font-weight:700;color:#fff!important;text-shadow:2px 2px 4px rgba(0,0,0,0.8);margin-bottom:16px}.hero-text p{font-size:16px;line-height:1.5;color:#fff!important;text-shadow:1px 1px 2px rgba(0,0,0,0.7)}.header-content{padding:0.5rem 1rem;background:rgba(255,255,255,0.95);backdrop-filter:blur(10px)}.logo img{width:120px;height:30px}.hero-text{max-width:100%;padding:0;margin:0}.parceiro-item img{max-width:80px!important;height:auto!important}.diferenciais-grid{grid-template-columns:1fr!important;gap:1rem!important}.parceiros{padding:40px 0!important}.diferenciais{padding:40px 0!important}}
@@ -80,15 +87,8 @@
         #home.tab-content.active .video-bg-wrapper,#home.tab-content.active .video-bg{display:block!important;opacity:1!important;visibility:visible!important}
       </style>
       
-      <!-- Load Font Awesome asynchronously -->
-      <script>
-      (function() {
-          var link = document.createElement('link');
-          link.rel = 'stylesheet';
-          link.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css';
-          document.head.appendChild(link);
-      })();
-      </script>
+      <!-- Font Awesome CSS - Carregamento direto para ícones imediatos -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
       
       <!-- LCP & Speed Index Optimizer - Sistema avançado de otimização de LCP e Speed Index -->
       <script src="lcp-speed-optimizer.js?v=1.6.0" defer></script>
@@ -120,10 +120,10 @@
                         <button class="tab-btn" onclick="openTab('contato')" style="color:#000!important;">Fale Conosco</button>
                     </div>
                 </nav>
-            <div class="social-links">
-                <a href="https://www.instagram.com/renovsmart" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.linkedin.com/company/renovsmart/posts/?feedView=all" target="_blank"><i class="fab fa-linkedin"></i></a>
-                <a href="https://api.whatsapp.com/send?phone=551151942988&text=Olá! Gostaria de saber mais sobre a Renov." target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <div class="social-links" style="display:flex;gap:16px;margin-top:-5px;margin-left:10px;">
+                <a href="https://www.instagram.com/renovsmart" target="_blank" style="color:#000;font-size:1.5rem;transition:color 0.2s;" onmouseover="this.style.color='#00b140'" onmouseout="this.style.color='#000'"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/company/renovsmart/posts/?feedView=all" target="_blank" style="color:#000;font-size:1.5rem;transition:color 0.2s;" onmouseover="this.style.color='#00b140'" onmouseout="this.style.color='#000'"><i class="fab fa-linkedin"></i></a>
+                <a href="https://api.whatsapp.com/send?phone=551151942988&text=Olá! Gostaria de saber mais sobre a Renov." target="_blank" style="color:#000;font-size:1.5rem;transition:color 0.2s;" onmouseover="this.style.color='#00b140'" onmouseout="this.style.color='#000'"><i class="fab fa-whatsapp"></i></a>
             </div>
             </div>
     </header>
@@ -847,10 +847,10 @@
         <source srcset="assets/images/Renov-Logo.webp?v=1.6.0" type="image/webp">
         <img src='assets/images/Renov-Logo.webp?v=1.6.0' alt='Renov - Sua Troca Inteligente' style='width:130px;filter:brightness(1.1);margin-top:-10px;' loading="lazy" decoding="async">
       </picture>
-              <div class="social-links" style="display:flex;gap:16px;margin-top:-5px;margin-left:10px;">
-        <a href="https://www.instagram.com/renovsmart" target="_blank" style="color:#fff;font-size:1.5rem;transition:color 0.2s;" onmouseover="this.style.color='#00b140'" onmouseout="this.style.color='#fff'"><i class="fab fa-instagram"></i></a>
-        <a href="https://www.linkedin.com/company/renovsmart/posts/?feedView=all" target="_blank" style="color:#fff;font-size:1.5rem;transition:color 0.2s;" onmouseover="this.style.color='#00b140'" onmouseout="this.style.color='#fff'"><i class="fab fa-linkedin"></i></a>
-        <a href="https://api.whatsapp.com/send?phone=551151942988&text=Olá! Gostaria de saber mais sobre a Renov." target="_blank" style="color:#fff;font-size:1.5rem;transition:color 0.2s;" onmouseover="this.style.color='#00b140'" onmouseout="this.style.color='#fff'"><i class="fab fa-whatsapp"></i></a>
+      <div class="social-links" style="display:flex;gap:16px;margin-top:-5px;margin-left:10px;">
+        <a href="https://www.instagram.com/renovsmart" target="_blank" style="color:#000;font-size:1.5rem;transition:color 0.2s;" onmouseover="this.style.color='#00b140'" onmouseout="this.style.color='#000'"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/company/renovsmart/posts/?feedView=all" target="_blank" style="color:#000;font-size:1.5rem;transition:color 0.2s;" onmouseover="this.style.color='#00b140'" onmouseout="this.style.color='#000'"><i class="fab fa-linkedin"></i></a>
+        <a href="https://api.whatsapp.com/send?phone=551151942988&text=Olá! Gostaria de saber mais sobre a Renov." target="_blank" style="color:#000;font-size:1.5rem;transition:color 0.2s;" onmouseover="this.style.color='#00b140'" onmouseout="this.style.color='#000'"><i class="fab fa-whatsapp"></i></a>
       </div>
     </div>
     <!-- Navegação central -->

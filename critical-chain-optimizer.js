@@ -103,9 +103,9 @@ function optimizeCriticalChains(htmlContent) {
         return ''; // Remover outras fontes
     });
     
-    // 5. Deferir Font Awesome
+    // 5. Font Awesome deve carregar imediatamente para garantir que os ícones apareçam
     optimized = optimized.replace(/<link rel="stylesheet"[^>]*font-awesome[^>]*>/g, 
-        '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media=\'all\'">');
+        '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">');
     
     // 6. Otimizar carregamento de vídeo
     optimized = optimized.replace(/<link rel="preload"[^>]*as="video"[^>]*>/g, '');
