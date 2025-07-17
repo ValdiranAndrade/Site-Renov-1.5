@@ -42,6 +42,9 @@
     <!-- Critical resources only - Minimal chain -->
     <link rel="preload" href="assets/images/Renov-Logo.webp?v=1.6.0" as="image" fetchpriority="high" type="image/webp">
     
+    <!-- Font optimized CSS -->
+    <link rel="stylesheet" href="font-optimized.css?v=1.6.0">
+    
     <!-- Non-critical CSS loaded asynchronously -->
     <link rel="preload" href="styles.css?v=1.6.0" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="styles.css?v=1.6.0"></noscript>
@@ -87,15 +90,8 @@
       })();
       </script>
       
-      <!-- Load fonts asynchronously -->
-      <script>
-      (function() {
-          var font = new FontFace('Montserrat', 'url(assets/fonts/Montserrat-Regular.woff2)');
-          font.load().then(function(loadedFont) {
-              document.fonts.add(loadedFont);
-          });
-      })();
-      </script>
+      <!-- Font Optimizer - Sistema avançado de otimização de fontes -->
+      <script src="font-optimizer.js?v=1.6.0" defer></script>
 </head>
 <body>
     <div class="page-wrapper">
@@ -890,7 +886,6 @@
   </div>
 </footer>
 
-    <script src="cache-optimizer.js?v=1.6.0" defer></script>
     <script src="layout-optimizer.js?v=1.6.0" defer></script>
     <script src="script.js?v=1.6.0" defer></script>
     <script src="performance-optimizer.js?v=1.6.0" defer></script>

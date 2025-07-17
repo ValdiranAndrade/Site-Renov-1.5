@@ -1,0 +1,458 @@
+/**
+ * Font Optimized CSS - Sistema Avançado de Otimização de Fontes
+ * Implementa font-display: swap/optional para garantir texto visível e reduzir layout shifts
+ */
+
+/* ===== FONT-FACE DECLARATIONS OTIMIZADAS ===== */
+
+/* Fonte Crítica - Montserrat Regular */
+@font-face {
+    font-family: 'Montserrat';
+    src: url('assets/fonts/Montserrat-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap; /* Garante texto visível imediatamente */
+    font-synthesis: none; /* Previne síntese de fonte */
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* Fonte Importante - Montserrat Medium */
+@font-face {
+    font-family: 'Montserrat';
+    src: url('assets/fonts/Montserrat-Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap; /* Garante texto visível imediatamente */
+    font-synthesis: none;
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* Font Awesome - Fontes de Ícones */
+@font-face {
+    font-family: 'Font Awesome 6 Brands';
+    src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-brands-400.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: block; /* Bloqueia renderização até carregar (ícones) */
+    font-synthesis: none;
+}
+
+@font-face {
+    font-family: 'Font Awesome 6 Free Solid';
+    src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-solid-900.woff2') format('woff2');
+    font-weight: 900;
+    font-style: normal;
+    font-display: block; /* Bloqueia renderização até carregar (ícones) */
+    font-synthesis: none;
+}
+
+/* ===== FALLBACK FONTS OTIMIZADAS ===== */
+
+/* Fallback para sans-serif com métricas similares */
+@font-face {
+    font-family: 'Montserrat-Fallback';
+    src: local('system-ui'), local('-apple-system'), local('BlinkMacSystemFont'), local('Segoe UI'), local('Roboto'), local('sans-serif');
+    font-display: swap;
+    font-size-adjust: 0.52; /* Ajustar para métricas similares */
+    ascent-override: 90%;
+    descent-override: 20%;
+    line-gap-override: 0%;
+}
+
+/* ===== VARIÁVEIS CSS PARA FONTES ===== */
+:root {
+    /* Famílias de fontes com fallbacks otimizados */
+    --font-primary: 'Montserrat', 'Montserrat-Fallback', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-secondary: 'Montserrat', 'Montserrat-Fallback', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-icon: 'Font Awesome 6 Free Solid', 'Font Awesome 6 Brands', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    
+    /* Tamanhos de fonte otimizados */
+    --font-size-xs: 0.75rem;   /* 12px */
+    --font-size-sm: 0.875rem;  /* 14px */
+    --font-size-base: 1rem;    /* 16px */
+    --font-size-lg: 1.125rem;  /* 18px */
+    --font-size-xl: 1.25rem;   /* 20px */
+    --font-size-2xl: 1.5rem;   /* 24px */
+    --font-size-3xl: 1.875rem; /* 30px */
+    --font-size-4xl: 2.25rem;  /* 36px */
+    --font-size-5xl: 3rem;     /* 48px */
+    
+    /* Line heights otimizados */
+    --line-height-tight: 1.1;
+    --line-height-normal: 1.5;
+    --line-height-relaxed: 1.75;
+    
+    /* Font weights */
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+    
+    /* Font display strategies */
+    --font-display-swap: swap;
+    --font-display-optional: optional;
+    --font-display-block: block;
+    --font-display-fallback: fallback;
+}
+
+/* ===== RESET DE FONTES OTIMIZADO ===== */
+* {
+    font-family: var(--font-primary);
+    font-display: var(--font-display-swap);
+    font-synthesis: none;
+}
+
+html {
+    font-size: 16px; /* Base para rem */
+    font-family: var(--font-primary);
+    font-display: var(--font-display-swap);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+body {
+    font-family: var(--font-primary);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-normal);
+    font-weight: var(--font-weight-normal);
+    font-display: var(--font-display-swap);
+}
+
+/* ===== ELEMENTOS CRÍTICOS COM FONTES OTIMIZADAS ===== */
+
+/* Header e navegação */
+header {
+    font-family: var(--font-primary);
+    font-display: var(--font-display-swap);
+}
+
+.logo {
+    font-family: var(--font-primary);
+    font-weight: var(--font-weight-bold);
+    font-display: var(--font-display-swap);
+}
+
+.tab-btn {
+    font-family: var(--font-primary);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-medium);
+    font-display: var(--font-display-swap);
+    line-height: var(--line-height-tight);
+}
+
+/* Hero section - Texto crítico */
+.hero-text h1 {
+    font-family: var(--font-primary);
+    font-size: var(--font-size-5xl);
+    font-weight: var(--font-weight-bold);
+    font-display: var(--font-display-swap);
+    line-height: var(--line-height-tight);
+    font-synthesis: none;
+}
+
+.hero-text p {
+    font-family: var(--font-primary);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-normal);
+    font-display: var(--font-display-swap);
+    line-height: var(--line-height-normal);
+}
+
+/* Títulos de seção */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-primary);
+    font-weight: var(--font-weight-bold);
+    font-display: var(--font-display-swap);
+    line-height: var(--line-height-tight);
+    font-synthesis: none;
+}
+
+h1 {
+    font-size: var(--font-size-4xl);
+}
+
+h2 {
+    font-size: var(--font-size-3xl);
+}
+
+h3 {
+    font-size: var(--font-size-2xl);
+}
+
+/* Parágrafos */
+p {
+    font-family: var(--font-primary);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-normal);
+    font-display: var(--font-display-swap);
+    line-height: var(--line-height-normal);
+}
+
+/* Formulários */
+input, textarea, select, button {
+    font-family: var(--font-primary);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-normal);
+    font-display: var(--font-display-swap);
+    line-height: var(--line-height-normal);
+}
+
+/* Ícones */
+.fab, .fas, .far, .fal {
+    font-family: var(--font-icon);
+    font-display: var(--font-display-block);
+    font-synthesis: none;
+}
+
+/* ===== CLASSES UTILITÁRIAS PARA FONTES ===== */
+
+/* Tamanhos de fonte */
+.text-xs { font-size: var(--font-size-xs); }
+.text-sm { font-size: var(--font-size-sm); }
+.text-base { font-size: var(--font-size-base); }
+.text-lg { font-size: var(--font-size-lg); }
+.text-xl { font-size: var(--font-size-xl); }
+.text-2xl { font-size: var(--font-size-2xl); }
+.text-3xl { font-size: var(--font-size-3xl); }
+.text-4xl { font-size: var(--font-size-4xl); }
+.text-5xl { font-size: var(--font-size-5xl); }
+
+/* Font weights */
+.font-normal { font-weight: var(--font-weight-normal); }
+.font-medium { font-weight: var(--font-weight-medium); }
+.font-semibold { font-weight: var(--font-weight-semibold); }
+.font-bold { font-weight: var(--font-weight-bold); }
+
+/* Line heights */
+.leading-tight { line-height: var(--line-height-tight); }
+.leading-normal { line-height: var(--line-height-normal); }
+.leading-relaxed { line-height: var(--line-height-relaxed); }
+
+/* Font display strategies */
+.font-display-swap { font-display: var(--font-display-swap); }
+.font-display-optional { font-display: var(--font-display-optional); }
+.font-display-block { font-display: var(--font-display-block); }
+
+/* ===== OTIMIZAÇÕES PARA REDUZIR LAYOUT SHIFTS ===== */
+
+/* Prevenir layout shifts em elementos de texto */
+.text-content {
+    min-height: 1.2em; /* Altura mínima para texto */
+    font-display: var(--font-display-swap);
+}
+
+/* Otimizar headings para evitar layout shifts */
+h1, h2, h3, h4, h5, h6 {
+    min-height: 1.1em;
+    font-display: var(--font-display-swap);
+}
+
+/* Otimizar botões */
+.btn {
+    min-height: 2.5rem; /* Altura mínima para botões */
+    font-display: var(--font-display-swap);
+    font-synthesis: none;
+}
+
+/* Otimizar inputs */
+input, textarea, select {
+    min-height: 2.5rem;
+    font-display: var(--font-display-swap);
+    font-size: 16px; /* Prevenir zoom em iOS */
+}
+
+/* ===== ESTADOS DE CARREGAMENTO DE FONTES ===== */
+
+/* Estado inicial - fontes carregando */
+.fonts-loading {
+    font-display: var(--font-display-swap);
+}
+
+.fonts-loading * {
+    font-display: var(--font-display-swap);
+}
+
+/* Estado - fontes carregadas */
+.fonts-loaded {
+    font-display: var(--font-display-swap);
+}
+
+.fonts-loaded * {
+    font-display: var(--font-display-swap);
+}
+
+/* Estado - fontes falharam */
+.fonts-failed {
+    font-display: var(--font-display-swap);
+}
+
+.fonts-failed * {
+    font-display: var(--font-display-swap);
+}
+
+/* ===== OTIMIZAÇÕES ESPECÍFICAS PARA MOBILE ===== */
+
+@media (max-width: 768px) {
+    /* Ajustar tamanhos de fonte para mobile */
+    .hero-text h1 {
+        font-size: var(--font-size-3xl);
+        line-height: var(--line-height-tight);
+        font-display: var(--font-display-swap);
+    }
+    
+    .hero-text p {
+        font-size: var(--font-size-base);
+        line-height: var(--line-height-normal);
+        font-display: var(--font-display-swap);
+    }
+    
+    .tab-btn {
+        font-size: var(--font-size-sm);
+        font-display: var(--font-display-swap);
+    }
+    
+    /* Garantir que inputs não causem zoom */
+    input, textarea, select {
+        font-size: 16px;
+        font-display: var(--font-display-swap);
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-text h1 {
+        font-size: var(--font-size-2xl);
+        font-display: var(--font-display-swap);
+    }
+    
+    .hero-text p {
+        font-size: var(--font-size-sm);
+        font-display: var(--font-display-swap);
+    }
+}
+
+/* ===== OTIMIZAÇÕES PARA PERFORMANCE ===== */
+
+/* Forçar hardware acceleration em elementos de texto */
+.text-content,
+h1, h2, h3, h4, h5, h6,
+.btn,
+input, textarea, select {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    will-change: font-family;
+}
+
+/* Otimizar renderização de texto */
+.text-optimized {
+    text-rendering: optimizeLegibility;
+    font-feature-settings: "kern" 1, "liga" 1;
+    font-display: var(--font-display-swap);
+}
+
+/* ===== DEBUGGING E MONITORAMENTO ===== */
+
+/* Classe para identificar elementos com problemas de fonte */
+.font-layout-shift {
+    outline: 2px solid orange !important;
+    background: rgba(255, 165, 0, 0.1) !important;
+}
+
+/* Classe para elementos com fontes carregadas */
+.font-loaded {
+    outline: 2px solid green !important;
+    background: rgba(0, 255, 0, 0.1) !important;
+}
+
+/* ===== PRINT STYLES ===== */
+
+@media print {
+    /* Usar fontes do sistema para impressão */
+    * {
+        font-family: serif !important;
+        font-display: swap !important;
+    }
+    
+    /* Otimizar para impressão */
+    body {
+        font-size: 12pt;
+        line-height: 1.4;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+        font-family: serif !important;
+        font-weight: bold;
+    }
+}
+
+/* ===== ANIMAÇÕES DE FONTE ===== */
+
+/* Animação suave para troca de fontes */
+@keyframes fontSwap {
+    from {
+        opacity: 0.8;
+        transform: scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.font-swap-animation {
+    animation: fontSwap 0.3s ease-out;
+}
+
+/* ===== FONT LOADING API SUPPORT ===== */
+
+/* Estilos para quando Font Loading API está disponível */
+@supports (font-display: swap) {
+    .font-display-supported {
+        font-display: swap;
+    }
+}
+
+/* Fallback para navegadores sem suporte a font-display */
+@supports not (font-display: swap) {
+    .font-display-fallback {
+        font-display: auto;
+    }
+}
+
+/* ===== OPTIMIZAÇÕES PARA ACESSIBILIDADE ===== */
+
+/* Melhorar legibilidade para usuários com deficiência visual */
+@media (prefers-reduced-motion: reduce) {
+    .font-swap-animation {
+        animation: none;
+    }
+}
+
+/* Aumentar contraste para melhor legibilidade */
+@media (prefers-contrast: high) {
+    body {
+        font-weight: var(--font-weight-medium);
+    }
+}
+
+/* ===== FONT SYNTHESIS CONTROL ===== */
+
+/* Prevenir síntese de fontes */
+.no-font-synthesis {
+    font-synthesis: none;
+}
+
+/* Permitir síntese apenas para weight */
+.weight-synthesis {
+    font-synthesis: weight;
+}
+
+/* Permitir síntese apenas para style */
+.style-synthesis {
+    font-synthesis: style;
+}
+
+/* Permitir síntese completa */
+.full-synthesis {
+    font-synthesis: weight style;
+} 

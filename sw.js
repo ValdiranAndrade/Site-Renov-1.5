@@ -1,410 +1,374 @@
-/**
- * Service Worker - Cache Eficiente para Recursos Estáticos
- * Baseado nas recomendações do Chrome Developers: https://developer.chrome.com/docs/lighthouse/performance/uses-long-cache-ttl
- */
+const CACHE_VERSION = '1.6.0';
+const CACHE_NAME = `renov-cache-v${CACHE_VERSION}`;
 
-const CACHE_VERSION = 'v1.6.0';
-const STATIC_CACHE = `static-${CACHE_VERSION}`;
-const DYNAMIC_CACHE = `dynamic-${CACHE_VERSION}`;
-const CRITICAL_CACHE = `critical-${CACHE_VERSION}`;
+// Detectar se é dispositivo mobile
+const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
-// Recursos estáticos para cache de longo prazo (1 ano)
-const STATIC_RESOURCES = [
-    // Imagens
-    '/assets/images/Renov-Logo.webp',
-    '/assets/images/bg-como-funciona.webp',
-    '/assets/images/mobile/bg-como-funciona.webp',
-    
-    // Fontes
-    '/assets/fonts/Montserrat-Regular.woff2',
-    '/assets/fonts/Montserrat-Medium.woff2',
-    
-    // Ícones
-    '/assets/icons/avaliacao-icon.webp',
-    '/assets/icons/diagnostico-icon.webp',
-    '/assets/icons/logistica-icon.webp',
-    '/assets/icons/pagamento-icon.webp',
-    
-    // CSS e JS
+// Ultra-optimized mobile config for LCP - Minimal critical path
+const MOBILE_CONFIG = {
+  // Reduced cache for faster LCP
+  maxCacheSize: isMobile ? 15 * 1024 * 1024 : 100 * 1024 * 1024, // 15MB vs 100MB
+  cacheStrategy: isMobile ? 'cache-first' : 'stale-while-revalidate',
+  
+  // Ultra-critical resources - Minimal chain
+  criticalResources: [
+    '/',
+    '/index.html',
     '/styles.css',
     '/script.js',
-    '/layout-optimizer.js',
-    '/cache-optimizer.js',
-    '/performance-optimizer.js',
-    '/mobile-performance-optimizer.js',
-    
-    // Vídeos
-    '/assets/video/bg-video.mp4.mp4',
-    '/assets/video/bg-IA.mp4 (1).mp4',
-    
-    // Manifest
-    '/manifest.json'
-];
-
-// Recursos críticos para cache de curto prazo
-const CRITICAL_RESOURCES = [
-    '/index.html',
-    '/Sustentabilidade.html',
-    '/vagas.html',
-    '/contato-parceiros.html'
-];
-
-// Estratégias de cache
-const CACHE_STRATEGIES = {
-    // Cache First para recursos estáticos
-    STATIC_FIRST: 'static-first',
-    // Network First para recursos críticos
-    NETWORK_FIRST: 'network-first',
-    // Stale While Revalidate para recursos dinâmicos
-    STALE_WHILE_REVALIDATE: 'stale-while-revalidate'
+    '/assets/images/Renov-Logo.webp'
+  ],
+  
+  // LCP ultra-optimization
+  lcpOptimization: {
+    criticalElements: ['.hero-text h1', '.logo img'],
+    deferNonCritical: true,
+    fontDisplay: 'swap',
+    // Ultra-mobile optimizations
+    reduceAnimations: true,
+    optimizeImages: true,
+    minimizeRequests: true
+  }
 };
 
-/**
- * Instalação do Service Worker
- */
-self.addEventListener('install', (event) => {
-    console.log('🚀 Service Worker instalando...');
-    
-    event.waitUntil(
-        Promise.all([
-            // Cache de recursos estáticos
-            caches.open(STATIC_CACHE).then(cache => {
-                console.log('📦 Cacheando recursos estáticos...');
-                return cache.addAll(STATIC_RESOURCES);
-            }),
-            
-            // Cache de recursos críticos
-            caches.open(CRITICAL_CACHE).then(cache => {
-                console.log('🔥 Cacheando recursos críticos...');
-                return cache.addAll(CRITICAL_RESOURCES);
-            })
-        ]).then(() => {
-            console.log('✅ Service Worker instalado com sucesso');
-            // Ativar imediatamente
-            return self.skipWaiting();
-        }).catch(error => {
-            console.error('❌ Erro na instalação do Service Worker:', error);
-        })
-    );
+// Ultra-optimized cache strategies for LCP - Minimal critical path
+const CACHE_STRATEGIES = {
+  // Ultra-critical resources - Minimal chain
+  CRITICAL: {
+    name: 'critical',
+    urls: [
+      '/',
+      '/index.html',
+      '/styles.css',
+      '/script.js',
+      '/assets/images/Renov-Logo.webp'
+    ],
+    strategy: 'cache-first',
+    maxAge: 31536000 // 1 ano
+  },
+  
+  // Static resources - Ultra-optimized for mobile
+  STATIC: {
+    name: 'static',
+    urls: [
+      '/assets/video/bg-video.mp4.mp4',
+      '/assets/video/bg-IA.mp4 (1).mp4',
+      '/assets/images/missao.webp',
+      '/assets/images/visao.webp',
+      '/assets/images/valores.webp',
+      '/assets/images/ismael-kolling.webp',
+      '/assets/images/matheus-mundstock.webp',
+      '/assets/icons/ia-icon.webp',
+      '/assets/icons/app-icon.webp',
+      '/assets/icons/api-icon.webp',
+      '/assets/icons/logistics-icon.webp',
+      '/assets/icons/results-icon.webp',
+      '/assets/icons/esg-icon.webp'
+    ],
+    strategy: 'cache-first',
+    maxAge: isMobile ? 302400 : 2592000 // 3.5 dias mobile vs 30 dias desktop
+  },
+  
+  // External resources - Ultra-deferred
+  EXTERNAL: {
+    name: 'external',
+    urls: [
+      'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css'
+    ],
+    strategy: 'stale-while-revalidate',
+    maxAge: isMobile ? 21600 : 86400 // 6h mobile vs 24h desktop
+  },
+  
+  // Dynamic resources - Ultra-fast
+  DYNAMIC: {
+    name: 'dynamic',
+    urls: [],
+    strategy: 'network-first',
+    maxAge: isMobile ? 900 : 3600 // 15min mobile vs 1h desktop
+  }
+};
+
+// Cache de metadados para controle de versão
+const CACHE_METADATA = {
+  version: CACHE_VERSION,
+  timestamp: Date.now(),
+  strategies: CACHE_STRATEGIES
+};
+
+// Instalação do Service Worker com cache otimizado - Reduz cadeias de solicitações
+self.addEventListener('install', event => {
+  event.waitUntil(
+    // Cache crítico primeiro - instalação imediata
+    caches.open(`${CACHE_NAME}-critical`)
+      .then(cache => {
+        console.log('Instalando cache crítico...');
+        return cache.addAll(CACHE_STRATEGIES.CRITICAL.urls);
+      })
+      .then(() => {
+        // Ativação imediata para melhor performance
+        return self.skipWaiting();
+      })
+      .then(() => {
+        // Cache estático e externo em background - não bloqueia
+        return Promise.allSettled([
+          caches.open(`${CACHE_NAME}-static`)
+            .then(cache => cache.addAll(CACHE_STRATEGIES.STATIC.urls)),
+          caches.open(`${CACHE_NAME}-external`)
+            .then(cache => cache.addAll(CACHE_STRATEGIES.EXTERNAL.urls))
+        ]);
+      })
+      .then(() => {
+        console.log(`Service Worker v${CACHE_VERSION} instalado com sucesso`);
+      })
+      .catch(error => {
+        console.error('Erro na instalação do cache:', error);
+      })
+  );
 });
 
-/**
- * Ativação do Service Worker
- */
-self.addEventListener('activate', (event) => {
-    console.log('🔄 Service Worker ativando...');
-    
-    event.waitUntil(
-        caches.keys().then(cacheNames => {
-            return Promise.all(
-                cacheNames.map(cacheName => {
-                    // Remover caches antigos
-                    if (cacheName !== STATIC_CACHE && 
-                        cacheName !== DYNAMIC_CACHE && 
-                        cacheName !== CRITICAL_CACHE) {
-                        console.log('🗑️ Removendo cache antigo:', cacheName);
-                        return caches.delete(cacheName);
-                    }
-                })
-            );
-        }).then(() => {
-            console.log('✅ Service Worker ativado');
-            // Tomar controle de todas as páginas
-            return self.clients.claim();
-        })
-    );
+// Estratégia de fetch otimizada com cache inteligente
+self.addEventListener('fetch', event => {
+  const request = event.request;
+  const url = new URL(request.url);
+  
+  // Remove parâmetros de versão para cache lookup
+  const cacheKey = url.origin + url.pathname;
+  
+  // Determina a estratégia baseada no tipo de recurso
+  const strategy = getCacheStrategy(request);
+  
+  event.respondWith(handleRequest(request, cacheKey, strategy));
 });
 
-/**
- * Interceptação de requisições
- */
-self.addEventListener('fetch', (event) => {
-    const { request } = event;
-    const url = new URL(request.url);
-    
-    // Ignorar requisições não-GET
-    if (request.method !== 'GET') {
-        return;
-    }
-    
-    // Ignorar requisições para APIs externas
-    if (url.origin !== self.location.origin) {
-        return;
-    }
-    
-    // Determinar estratégia de cache baseada no tipo de recurso
-    const strategy = getCacheStrategy(url.pathname);
-    
-    event.respondWith(
-        handleRequest(request, strategy)
-    );
-});
-
-/**
- * Determinar estratégia de cache baseada no tipo de recurso
- */
-function getCacheStrategy(pathname) {
-    // Recursos estáticos
-    if (pathname.includes('/assets/') || 
-        pathname.endsWith('.css') || 
-        pathname.endsWith('.js') ||
-        pathname.endsWith('.webp') ||
-        pathname.endsWith('.woff2') ||
-        pathname.endsWith('.mp4')) {
-        return CACHE_STRATEGIES.STATIC_FIRST;
-    }
-    
-    // Recursos críticos (HTML)
-    if (pathname.endsWith('.html') || pathname === '/') {
-        return CACHE_STRATEGIES.NETWORK_FIRST;
-    }
-    
-    // Recursos dinâmicos
-    if (pathname.includes('/api/') || pathname.includes('/data/')) {
-        return CACHE_STRATEGIES.STALE_WHILE_REVALIDATE;
-    }
-    
-    // Padrão: Network First
-    return CACHE_STRATEGIES.NETWORK_FIRST;
+// Função para determinar a estratégia de cache
+function getCacheStrategy(request) {
+  const url = new URL(request.url);
+  
+  // Recursos críticos
+  if (CACHE_STRATEGIES.CRITICAL.urls.includes(url.pathname) || 
+      url.pathname === '/' || 
+      url.pathname === '/index.html') {
+    return CACHE_STRATEGIES.CRITICAL;
+  }
+  
+  // Recursos estáticos
+  if (CACHE_STRATEGIES.STATIC.urls.includes(url.pathname) ||
+      isStaticResource(request)) {
+    return CACHE_STRATEGIES.STATIC;
+  }
+  
+  // Recursos externos
+  if (url.hostname === 'cdnjs.cloudflare.com' || 
+      url.hostname === 'fonts.googleapis.com' ||
+      url.hostname === 'fonts.gstatic.com') {
+    return CACHE_STRATEGIES.EXTERNAL;
+  }
+  
+  // HTML e outros recursos dinâmicos
+  if (request.destination === 'document' || 
+      request.destination === 'script' ||
+      url.pathname.endsWith('.html')) {
+    return CACHE_STRATEGIES.DYNAMIC;
+  }
+  
+  // Padrão: cache de curto prazo
+  return CACHE_STRATEGIES.DYNAMIC;
 }
 
-/**
- * Manipular requisição baseada na estratégia
- */
-async function handleRequest(request, strategy) {
-    try {
-        switch (strategy) {
-            case CACHE_STRATEGIES.STATIC_FIRST:
-                return await cacheFirst(request, STATIC_CACHE);
-            
-            case CACHE_STRATEGIES.NETWORK_FIRST:
-                return await networkFirst(request, CRITICAL_CACHE);
-            
-            case CACHE_STRATEGIES.STALE_WHILE_REVALIDATE:
-                return await staleWhileRevalidate(request, DYNAMIC_CACHE);
-            
-            default:
-                return await networkFirst(request, DYNAMIC_CACHE);
-        }
-    } catch (error) {
-        console.error('❌ Erro ao processar requisição:', error);
-        return new Response('Erro interno', { status: 500 });
-    }
+// Função para identificar recursos estáticos
+function isStaticResource(request) {
+  const url = new URL(request.url);
+  const staticExtensions = [
+    '.css', '.js', '.png', '.jpg', '.jpeg', '.gif', '.ico', '.svg', 
+    '.webp', '.woff', '.woff2', '.ttf', '.otf', '.mp4', '.webm', '.ogg'
+  ];
+  
+  return staticExtensions.some(ext => url.pathname.includes(ext)) ||
+         request.destination === 'image' ||
+         request.destination === 'video' ||
+         request.destination === 'font';
 }
 
-/**
- * Estratégia Cache First
- * Para recursos estáticos que raramente mudam
- */
-async function cacheFirst(request, cacheName) {
-    const cache = await caches.open(cacheName);
-    const cachedResponse = await cache.match(request);
-    
+// Função principal para lidar com requisições
+async function handleRequest(request, cacheKey, strategy) {
+  const cacheName = `${CACHE_NAME}-${strategy.name}`;
+  
+  try {
+    switch (strategy.strategy) {
+      case 'cache-first':
+        return await cacheFirstStrategy(request, cacheKey, cacheName, strategy.maxAge);
+      
+      case 'network-first':
+        return await networkFirstStrategy(request, cacheKey, cacheName, strategy.maxAge);
+      
+      case 'stale-while-revalidate':
+        return await staleWhileRevalidateStrategy(request, cacheKey, cacheName, strategy.maxAge);
+      
+      default:
+        return await networkFirstStrategy(request, cacheKey, cacheName, strategy.maxAge);
+    }
+  } catch (error) {
+    console.error('Erro no handleRequest:', error);
+    // Fallback para cache ou resposta de erro
+    const cachedResponse = await caches.match(cacheKey);
     if (cachedResponse) {
-        console.log('📦 Servindo do cache:', request.url);
-        return cachedResponse;
+      return cachedResponse;
     }
-    
-    try {
-        const networkResponse = await fetch(request);
-        
-        if (networkResponse.ok) {
-            cache.put(request, networkResponse.clone());
-            console.log('💾 Cacheando novo recurso:', request.url);
-        }
-        
-        return networkResponse;
-    } catch (error) {
-        console.error('❌ Erro na rede:', error);
-        return new Response('Recurso não encontrado', { status: 404 });
-    }
+    return new Response('Erro de rede', { status: 503 });
+  }
 }
 
-/**
- * Estratégia Network First
- * Para recursos críticos que podem mudar
- */
-async function networkFirst(request, cacheName) {
-    try {
-        const networkResponse = await fetch(request);
-        
-        if (networkResponse.ok) {
-            const cache = await caches.open(cacheName);
-            cache.put(request, networkResponse.clone());
-            console.log('💾 Cacheando recurso crítico:', request.url);
-        }
-        
-        return networkResponse;
-    } catch (error) {
-        console.log('🌐 Rede indisponível, servindo do cache:', request.url);
-        
-        const cache = await caches.open(cacheName);
-        const cachedResponse = await cache.match(request);
-        
-        if (cachedResponse) {
-            return cachedResponse;
-        }
-        
-        return new Response('Recurso não disponível offline', { status: 503 });
+// Estratégia Cache-First para recursos estáticos
+async function cacheFirstStrategy(request, cacheKey, cacheName, maxAge) {
+  const cache = await caches.open(cacheName);
+  const cachedResponse = await cache.match(cacheKey);
+  
+  if (cachedResponse && !isExpired(cachedResponse, maxAge)) {
+    console.log('Serving from cache (cache-first):', cacheKey);
+    return cachedResponse;
+  }
+  
+  try {
+    const networkResponse = await fetch(request);
+    if (networkResponse && networkResponse.status === 200) {
+      const responseToCache = networkResponse.clone();
+      await cache.put(cacheKey, addCacheHeaders(responseToCache, maxAge));
+      console.log('Updated cache (cache-first):', cacheKey);
     }
+    return networkResponse;
+  } catch (error) {
+    console.log('Network failed, using cached response:', cacheKey);
+    return cachedResponse || new Response('Erro de rede', { status: 503 });
+  }
 }
 
-/**
- * Estratégia Stale While Revalidate
- * Para recursos dinâmicos
- */
-async function staleWhileRevalidate(request, cacheName) {
+// Estratégia Network-First para recursos dinâmicos
+async function networkFirstStrategy(request, cacheKey, cacheName, maxAge) {
+  try {
+    const networkResponse = await fetch(request);
+    if (networkResponse && networkResponse.status === 200) {
+      const cache = await caches.open(cacheName);
+      const responseToCache = networkResponse.clone();
+      await cache.put(cacheKey, addCacheHeaders(responseToCache, maxAge));
+      console.log('Updated cache (network-first):', cacheKey);
+    }
+    return networkResponse;
+  } catch (error) {
+    console.log('Network failed, trying cache:', cacheKey);
     const cache = await caches.open(cacheName);
-    const cachedResponse = await cache.match(request);
+    const cachedResponse = await cache.match(cacheKey);
+    return cachedResponse || new Response('Erro de rede', { status: 503 });
+  }
+}
+
+// Estratégia Stale-While-Revalidate para recursos externos
+async function staleWhileRevalidateStrategy(request, cacheKey, cacheName, maxAge) {
+  const cache = await caches.open(cacheName);
+  const cachedResponse = await cache.match(cacheKey);
+  
+  // Retorna cache imediatamente se disponível e não expirado
+  if (cachedResponse && !isExpired(cachedResponse, maxAge)) {
+    console.log('Serving from cache (stale-while-revalidate):', cacheKey);
     
-    // Retornar cache imediatamente se disponível
-    const fetchPromise = fetch(request).then(networkResponse => {
-        if (networkResponse.ok) {
-            cache.put(request, networkResponse.clone());
-            console.log('🔄 Atualizando cache:', request.url);
-        }
-        return networkResponse;
+    // Atualiza cache em background
+    fetch(request).then(async networkResponse => {
+      if (networkResponse && networkResponse.status === 200) {
+        const responseToCache = networkResponse.clone();
+        await cache.put(cacheKey, addCacheHeaders(responseToCache, maxAge));
+        console.log('Background cache update:', cacheKey);
+      }
     }).catch(error => {
-        console.error('❌ Erro ao atualizar cache:', error);
+      console.log('Background update failed:', cacheKey, error);
     });
     
-    if (cachedResponse) {
-        console.log('📦 Servindo cache desatualizado:', request.url);
-        return cachedResponse;
+    return cachedResponse;
+  }
+  
+  // Se não há cache, busca da rede
+  try {
+    const networkResponse = await fetch(request);
+    if (networkResponse && networkResponse.status === 200) {
+      const responseToCache = networkResponse.clone();
+      await cache.put(cacheKey, addCacheHeaders(responseToCache, maxAge));
+      console.log('Updated cache (stale-while-revalidate):', cacheKey);
     }
-    
-    return fetchPromise;
+    return networkResponse;
+  } catch (error) {
+    console.log('Network failed, using expired cache:', cacheKey);
+    return cachedResponse || new Response('Erro de rede', { status: 503 });
+  }
 }
 
-/**
- * Mensagens do Service Worker
- */
-self.addEventListener('message', (event) => {
-    const { type, data } = event.data;
-    
-    switch (type) {
-        case 'GET_CACHE_STATUS':
-            getCacheStatus().then(status => {
-                event.ports[0].postMessage(status);
-            });
-            break;
-        
-        case 'CLEAR_CACHE':
-            clearCache().then(() => {
-                event.ports[0].postMessage({ success: true });
-            });
-            break;
-        
-        case 'UPDATE_CACHE':
-            updateCache().then(() => {
-                event.ports[0].postMessage({ success: true });
-            });
-            break;
-        
-        default:
-            console.log('📨 Mensagem desconhecida:', type);
-    }
-});
-
-/**
- * Obter status do cache
- */
-async function getCacheStatus() {
-    const cacheNames = await caches.keys();
-    const status = {};
-    
-    for (const cacheName of cacheNames) {
-        const cache = await caches.open(cacheName);
-        const keys = await cache.keys();
-        status[cacheName] = {
-            count: keys.length,
-            size: await getCacheSize(cache)
-        };
-    }
-    
-    return status;
+// Função para verificar se o cache expirou
+function isExpired(response, maxAge) {
+  const cacheTime = response.headers.get('x-cache-time');
+  if (!cacheTime) return false;
+  
+  const age = Date.now() - parseInt(cacheTime);
+  return age > maxAge * 1000;
 }
 
-/**
- * Calcular tamanho do cache
- */
-async function getCacheSize(cache) {
-    const keys = await cache.keys();
-    let totalSize = 0;
-    
-    for (const request of keys) {
-        const response = await cache.match(request);
-        if (response) {
-            const blob = await response.blob();
-            totalSize += blob.size;
-        }
-    }
-    
-    return totalSize;
+// Função para adicionar headers de cache
+function addCacheHeaders(response, maxAge) {
+  const headers = new Headers(response.headers);
+  headers.set('x-cache-time', Date.now().toString());
+  headers.set('x-cache-max-age', maxAge.toString());
+  
+  return new Response(response.body, {
+    status: response.status,
+    statusText: response.statusText,
+    headers: headers
+  });
 }
 
-/**
- * Limpar cache
- */
-async function clearCache() {
-    const cacheNames = await caches.keys();
-    
-    for (const cacheName of cacheNames) {
-        await caches.delete(cacheName);
-        console.log('🗑️ Cache removido:', cacheName);
-    }
-}
-
-/**
- * Atualizar cache
- */
-async function updateCache() {
-    console.log('🔄 Atualizando cache...');
-    
-    // Recarregar recursos críticos
-    const cache = await caches.open(CRITICAL_CACHE);
-    
-    for (const resource of CRITICAL_RESOURCES) {
-        try {
-            const response = await fetch(resource);
-            if (response.ok) {
-                await cache.put(resource, response);
-                console.log('✅ Recurso atualizado:', resource);
+// Ativação e limpeza inteligente de caches
+self.addEventListener('activate', event => {
+  event.waitUntil(
+    Promise.all([
+      // Limpa caches antigos
+      caches.keys().then(cacheNames => {
+        return Promise.all(
+          cacheNames.map(cacheName => {
+            if (!cacheName.startsWith(CACHE_NAME)) {
+              console.log('Removendo cache antigo:', cacheName);
+              return caches.delete(cacheName);
             }
-        } catch (error) {
-            console.error('❌ Erro ao atualizar:', resource, error);
-        }
-    }
-}
-
-/**
- * Background Sync (quando suportado)
- */
-self.addEventListener('sync', (event) => {
-    if (event.tag === 'background-sync') {
-        console.log('🔄 Background sync iniciado');
-        event.waitUntil(updateCache());
-    }
+          })
+        );
+      }),
+      
+      // Ativação imediata
+      self.clients.claim()
+    ]).then(() => {
+      console.log(`Service Worker v${CACHE_VERSION} ativado`);
+    })
+  );
 });
 
-/**
- * Push notifications (quando suportado)
- */
-self.addEventListener('push', (event) => {
-    const options = {
-        body: 'Renov - Atualizações disponíveis',
-        icon: '/assets/images/Renov-Logo.webp',
-        badge: '/assets/images/Renov-Logo.webp',
-        vibrate: [100, 50, 100],
-        data: {
-            dateOfArrival: Date.now(),
-            primaryKey: 1
-        }
-    };
-    
-    event.waitUntil(
-        self.registration.showNotification('Renov', options)
-    );
-});
-
-console.log('🚀 Service Worker carregado'); 
+// Mensagens para controle de cache
+self.addEventListener('message', event => {
+  if (event.data && event.data.type === 'SKIP_WAITING') {
+    self.skipWaiting();
+  }
+  
+  if (event.data && event.data.type === 'CLEAR_CACHE') {
+    caches.keys().then(cacheNames => {
+      return Promise.all(
+        cacheNames.map(cacheName => caches.delete(cacheName))
+      );
+    }).then(() => {
+      event.ports[0].postMessage({ type: 'CACHE_CLEARED' });
+    });
+  }
+  
+  if (event.data && event.data.type === 'GET_CACHE_INFO') {
+    caches.keys().then(cacheNames => {
+      const cacheInfo = {
+        version: CACHE_VERSION,
+        timestamp: Date.now(),
+        caches: cacheNames
+      };
+      event.ports[0].postMessage({ type: 'CACHE_INFO', data: cacheInfo });
+    });
+  }
+}); 
