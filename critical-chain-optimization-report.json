@@ -1,0 +1,20 @@
+{
+  "originalChainLength": 8,
+  "optimizedChainLength": 8,
+  "reduction": 0,
+  "reductionPercentage": "0.00",
+  "optimizations": [
+    "Consolidação de CSS crítico inline",
+    "Remoção de preloads desnecessários",
+    "Otimização de carregamento de fontes",
+    "Defer de recursos não críticos",
+    "Redução de cadeias bloqueantes"
+  ],
+  "recommendations": [
+    "Implementar service worker para cache inteligente",
+    "Usar HTTP/2 Server Push para recursos críticos",
+    "Implementar resource hints (dns-prefetch, preconnect)",
+    "Otimizar ordem de carregamento de recursos",
+    "Usar CDN para recursos estáticos"
+  ]
+}

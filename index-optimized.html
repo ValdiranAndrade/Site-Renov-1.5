@@ -39,14 +39,28 @@
     <!-- DNS prefetch para recursos críticos -->
     <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
     
-    <!-- Critical resources only - Minimal chain -->
-    <link rel="preload" href="assets/images/Renov-Logo.webp?v=1.6.0" as="image" fetchpriority="high" type="image/webp">
-    
-    <!-- Non-critical CSS loaded asynchronously -->
-    <link rel="preload" href="styles.css?v=1.6.0" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <!-- Ultra-critical resources for LCP - Minimal chain -->
+    <link rel="preload" href="assets/images/Renov-Logo.webp?v=1.6.0" as="image" fetchpriority="high" type="image/webp" crossorigin="anonymous">
+    <link rel="preload" href="assets/fonts/Montserrat-Regular.woff2" as="font" type="font/woff2" crossorigin fetchpriority="high">
+    <link rel="preload" href="styles.css?v=1.6.0" as="style" fetchpriority="high" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="styles.css?v=1.6.0"></noscript>
     
+    <!-- High priority resources -->
+    <link rel="preload" href="script.js?v=1.6.0" as="script" fetchpriority="high">
+    
+    <!-- Deferred resources - Reduced chain -->
+    
+    
+    
+    
+    
+    
     <title>Renov - Sua Troca Inteligente</title>
+    <link rel="stylesheet" href="styles.css?v=1.6.0">
+    <!-- Font Awesome - Preload e fallback para performance e renderização imediata dos ícones -->
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'"></noscript>
     
     <!-- Critical CSS for LCP optimization -->
     <style>
@@ -70,32 +84,14 @@
         }
       }
       
-
+      /* Font Awesome - Deferred */
+      @font-face{font-family:'Font Awesome 6 Brands';font-style:normal;font-weight:400;font-display:swap;src:url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-brands-400.woff2') format('woff2')}
+      @font-face{font-family:'Font Awesome 6 Free Solid';font-style:normal;font-weight:900;font-display:swap;src:url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-solid-900.woff2') format('woff2')}
       
-              /* Accessibility & Video */
-        .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
-        #home.tab-content.active .video-bg-wrapper,#home.tab-content.active .video-bg{display:block!important;opacity:1!important;visibility:visible!important}
-      </style>
-      
-      <!-- Load Font Awesome asynchronously -->
-      <script>
-      (function() {
-          var link = document.createElement('link');
-          link.rel = 'stylesheet';
-          link.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css';
-          document.head.appendChild(link);
-      })();
-      </script>
-      
-      <!-- Load fonts asynchronously -->
-      <script>
-      (function() {
-          var font = new FontFace('Montserrat', 'url(assets/fonts/Montserrat-Regular.woff2)');
-          font.load().then(function(loadedFont) {
-              document.fonts.add(loadedFont);
-          });
-      })();
-      </script>
+      /* Accessibility & Video */
+      .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+      #home.tab-content.active .video-bg-wrapper,#home.tab-content.active .video-bg{display:block!important;opacity:1!important;visibility:visible!important}
+    </style>
 </head>
 <body>
     <div class="page-wrapper">
@@ -890,9 +886,9 @@
   </div>
 </footer>
 
-    <script src="script.js?v=1.6.0" defer></script>
-    <script src="performance-optimizer.js?v=1.6.0" defer></script>
-    <script src="mobile-performance-optimizer.js?v=1.6.0" defer></script>
+    <script src="script.js?v=1.6.0" fetchpriority="high"></script>
+    <script src="performance-optimizer.js?v=1.6.0"></script>
+    <script src="mobile-performance-optimizer.js?v=1.6.0"></script>
     <script>
       // Registro do Service Worker para cache offline
       if ('serviceWorker' in navigator) {

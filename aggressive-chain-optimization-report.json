@@ -1,0 +1,49 @@
+{
+  "original": {
+    "totalResources": 8,
+    "blockingResources": 5,
+    "criticalChainLength": 5,
+    "resourceTypes": {
+      "CSS": 2,
+      "JS": 3,
+      "Font": 0,
+      "Image": 1,
+      "Preload": 2
+    },
+    "optimizationScore": 60
+  },
+  "optimized": {
+    "totalResources": 8,
+    "blockingResources": 5,
+    "criticalChainLength": 5,
+    "resourceTypes": {
+      "CSS": 2,
+      "JS": 3,
+      "Font": 0,
+      "Image": 1,
+      "Preload": 2
+    },
+    "optimizationScore": 60
+  },
+  "improvements": {
+    "chainReduction": 0,
+    "scoreImprovement": 0,
+    "reductionPercentage": "0.00"
+  },
+  "optimizations": [
+    "CSS crítico consolidado inline",
+    "Remoção de preloads desnecessários",
+    "Carregamento assíncrono de CSS não crítico",
+    "Defer de todos os scripts",
+    "Carregamento assíncrono de fontes",
+    "Carregamento assíncrono do Font Awesome",
+    "Redução de recursos bloqueantes"
+  ],
+  "recommendations": [
+    "Implementar service worker para cache",
+    "Usar HTTP/2 Server Push",
+    "Implementar resource hints",
+    "Otimizar ordem de carregamento",
+    "Usar CDN para recursos estáticos"
+  ]
+}
