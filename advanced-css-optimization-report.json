@@ -1,0 +1,31 @@
+{
+  "originalSize": 92630,
+  "optimizedSize": 71889,
+  "savings": 20741,
+  "savingsPercentage": "22.39",
+  "analysis": {
+    "totalSelectors": 733,
+    "duplicateSelectors": 52,
+    "mediaQueries": 82,
+    "duplicateMediaQueries": 0,
+    "fileSize": 92630,
+    "potentialSavings": 0
+  },
+  "optimizations": [
+    "Consolidação de seletores com propriedades idênticas",
+    "Consolidação de propriedades de fonte",
+    "Consolidação de margens e paddings",
+    "Consolidação de bordas",
+    "Remoção de propriedades redundantes",
+    "Consolidação de media queries",
+    "Remoção de espaços em branco",
+    "Consolidação de cores hexadecimais",
+    "Remoção de propriedades com valores padrão"
+  ],
+  "recommendations": [
+    "Considere usar CSS custom properties (variáveis) para cores e valores repetidos",
+    "Implemente critical CSS para carregamento mais rápido",
+    "Use CSS minification em produção",
+    "Considere dividir CSS em módulos para melhor manutenção"
+  ]
+}

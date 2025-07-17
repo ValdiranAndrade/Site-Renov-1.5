@@ -115,9 +115,9 @@
                     </div>
                 </nav>
             <div class="social-links">
-                <a href="https://www.instagram.com/renovsmart" target="_blank" aria-label="Siga a Renov no Instagram - Abre em nova aba"><i class="fab fa-instagram" aria-hidden="true"></i><span class="sr-only">Instagram da Renov</span></a>
-                <a href="https://www.linkedin.com/company/renovsmart/posts/?feedView=all" target="_blank" aria-label="Conecte-se com a Renov no LinkedIn - Abre em nova aba"><i class="fab fa-linkedin" aria-hidden="true"></i><span class="sr-only">LinkedIn da Renov</span></a>
-                <a href="https://api.whatsapp.com/send?phone=551151942988&text=Olá! Gostaria de saber mais sobre a Renov." target="_blank" aria-label="Entre em contato com a Renov via WhatsApp - Abre em nova aba"><i class="fab fa-whatsapp" aria-hidden="true"></i><span class="sr-only">WhatsApp da Renov</span></a>
+                <a href="https://www.instagram.com/renovsmart" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/company/renovsmart/posts/?feedView=all" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://api.whatsapp.com/send?phone=551151942988&text=Olá! Gostaria de saber mais sobre a Renov." target="_blank"><i class="fab fa-whatsapp"></i></a>
             </div>
             </div>
     </header>
@@ -842,9 +842,9 @@
         <img src='assets/images/Renov-Logo.webp?v=1.6.0' alt='Renov - Sua Troca Inteligente' style='width:130px;filter:brightness(1.1);margin-top:-10px;' loading="lazy" decoding="async">
       </picture>
               <div class="social-links" style="display:flex;gap:16px;margin-top:-5px;margin-left:10px;">
-        <a href="https://www.instagram.com/renovsmart" target="_blank" style="color:#fff;font-size:1.5rem;transition:color 0.2s;" onmouseover="this.style.color='#00b140'" onmouseout="this.style.color='#fff'" aria-label="Siga a Renov no Instagram - Abre em nova aba"><i class="fab fa-instagram" aria-hidden="true"></i><span class="sr-only">Instagram da Renov</span></a>
-        <a href="https://www.linkedin.com/company/renovsmart/posts/?feedView=all" target="_blank" style="color:#fff;font-size:1.5rem;transition:color 0.2s;" onmouseover="this.style.color='#00b140'" onmouseout="this.style.color='#fff'" aria-label="Conecte-se com a Renov no LinkedIn - Abre em nova aba"><i class="fab fa-linkedin" aria-hidden="true"></i><span class="sr-only">LinkedIn da Renov</span></a>
-        <a href="https://api.whatsapp.com/send?phone=551151942988&text=Olá! Gostaria de saber mais sobre a Renov." target="_blank" style="color:#fff;font-size:1.5rem;transition:color 0.2s;" onmouseover="this.style.color='#00b140'" onmouseout="this.style.color='#fff'" aria-label="Entre em contato com a Renov via WhatsApp - Abre em nova aba"><i class="fab fa-whatsapp" aria-hidden="true"></i><span class="sr-only">WhatsApp da Renov</span></a>
+        <a href="https://www.instagram.com/renovsmart" target="_blank" style="color:#fff;font-size:1.5rem;transition:color 0.2s;" onmouseover="this.style.color='#00b140'" onmouseout="this.style.color='#fff'"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/company/renovsmart/posts/?feedView=all" target="_blank" style="color:#fff;font-size:1.5rem;transition:color 0.2s;" onmouseover="this.style.color='#00b140'" onmouseout="this.style.color='#fff'"><i class="fab fa-linkedin"></i></a>
+        <a href="https://api.whatsapp.com/send?phone=551151942988&text=Olá! Gostaria de saber mais sobre a Renov." target="_blank" style="color:#fff;font-size:1.5rem;transition:color 0.2s;" onmouseover="this.style.color='#00b140'" onmouseout="this.style.color='#fff'"><i class="fab fa-whatsapp"></i></a>
       </div>
     </div>
     <!-- Navegação central -->
@@ -886,8 +886,87 @@
   </div>
 </footer>
 
-    <script src="renov-optimized.js?v=1.6.0" fetchpriority="high"></script>
+    <script src="script.js?v=1.6.0" fetchpriority="high"></script>
+    <script src="performance-optimizer.js?v=1.6.0"></script>
+    <script src="mobile-performance-optimizer.js?v=1.6.0"></script>
+    <script>
+      // Registro do Service Worker para cache offline
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js?v=1.6.0')
+            .then(registration => {
+              console.log('Service Worker registrado com sucesso:', registration.scope);
+            })
+            .catch(error => {
+              console.log('Falha no registro do Service Worker:', error);
+            });
+        });
+      }
 
-
+      document.addEventListener('DOMContentLoaded', function() {
+        const items = document.querySelectorAll('.impacto-circular-item');
+        const textBox = document.getElementById('impacto-circular-text');
+        let lastActive = null;
+        items.forEach(item => {
+          item.addEventListener('mouseenter', () => {
+            if (lastActive) lastActive.classList.remove('active');
+            item.classList.add('active');
+            textBox.textContent = item.getAttribute('data-text');
+            lastActive = item;
+          });
+          item.addEventListener('mouseleave', () => {
+            item.classList.remove('active');
+            textBox.textContent = 'Passe o mouse sobre um ícone para ver o impacto.';
+            lastActive = null;
+          });
+          item.addEventListener('focus', () => {
+            if (lastActive) lastActive.classList.remove('active');
+            item.classList.add('active');
+            textBox.textContent = item.getAttribute('data-text');
+            lastActive = item;
+          });
+          item.addEventListener('blur', () => {
+            item.classList.remove('active');
+            textBox.textContent = 'Passe o mouse sobre um ícone para ver o impacto.';
+            lastActive = null;
+          });
+        });
+      });
+    </script>
+    <script>
+document.addEventListener('submit', function(e) {
+  var form = e.target;
+  if (form && form.id === 'form-contato') {
+    e.preventDefault();
+    var mensagem = document.getElementById('form-mensagem');
+    if (!mensagem) return;
+    mensagem.textContent = 'Enviando...';
+    mensagem.style.color = '#008d36';
+    var emailInput = form.querySelector('input[name="email"]');
+    var replytoInput = form.querySelector('input[name="_replyto"]');
+    if(emailInput && replytoInput) replytoInput.value = emailInput.value;
+    var data = new FormData(form);
+    fetch(form.action, {
+      method: 'POST',
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    })
+    .then(function(response) {
+      if (response.ok) {
+        mensagem.textContent = 'Mensagem enviada com sucesso! Em breve entraremos em contato.';
+        mensagem.style.color = '#008d36';
+        form.reset();
+      } else {
+        mensagem.textContent = 'Ocorreu um erro ao enviar. Por favor, tente novamente ou envie um e-mail para contato@renovsmart.com.br.';
+        mensagem.style.color = '#d32f2f';
+      }
+    })
+    .catch(function() {
+      mensagem.textContent = 'Erro de conexão. Por favor, tente novamente mais tarde.';
+      mensagem.style.color = '#d32f2f';
+    });
+  }
+}, true);
+</script>
 </body>
 </html> 

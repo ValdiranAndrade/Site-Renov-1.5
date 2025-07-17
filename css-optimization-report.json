@@ -1,0 +1,18 @@
+{
+  "originalSize": 92630,
+  "optimizedSize": 74315,
+  "savings": 18315,
+  "savingsPercentage": "19.77",
+  "redundancies": {
+    "duplicateSelectors": 1,
+    "duplicateProperties": 0,
+    "unusedMediaQueries": 0
+  },
+  "optimizations": [
+    "Consolidação de seletores similares",
+    "Remoção de propriedades duplicadas",
+    "Consolidação de media queries",
+    "Remoção de espaços em branco desnecessários",
+    "Consolidação de propriedades de fonte"
+  ]
+}
