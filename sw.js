@@ -6,11 +6,8 @@ const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/
 
 // Ultra-optimized mobile config for LCP - Minimal critical path
 const MOBILE_CONFIG = {
-  // Reduced cache for faster LCP
-  maxCacheSize: isMobile ? 15 * 1024 * 1024 : 100 * 1024 * 1024, // 15MB vs 100MB
-  cacheStrategy: isMobile ? 'cache-first' : 'stale-while-revalidate',
-  
-  // Ultra-critical resources - Minimal chain
+  maxCacheSize: 15 * 1024 * 1024, // 15MB
+  cacheStrategy: 'cache-first',
   criticalResources: [
     '/',
     '/index.html',
@@ -18,13 +15,10 @@ const MOBILE_CONFIG = {
     '/script.js',
     '/assets/images/Renov-Logo.webp'
   ],
-  
-  // LCP ultra-optimization
   lcpOptimization: {
     criticalElements: ['.hero-text h1', '.logo img'],
     deferNonCritical: true,
     fontDisplay: 'swap',
-    // Ultra-mobile optimizations
     reduceAnimations: true,
     optimizeImages: true,
     minimizeRequests: true
