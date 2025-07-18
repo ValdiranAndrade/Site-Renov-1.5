@@ -57,10 +57,16 @@
         });
         
         // Carregar CSS não crítico
-        const nonCriticalCSS = document.querySelector('link[href*="styles.css"]');
-        if (nonCriticalCSS) {
-            nonCriticalCSS.rel = 'stylesheet';
-        }
+        const cssFiles = [
+            'font-optimized.css?v=1.6.0',
+            'styles.css?v=1.6.0'
+        ];
+        cssFiles.forEach(href => {
+            const link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.href = href;
+            document.head.appendChild(link);
+        });
         
         // Carregar Font Awesome se ainda não carregado
         if (!document.querySelector('link[href*="font-awesome"]')) {
@@ -68,6 +74,14 @@
             link.rel = 'stylesheet';
             link.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css';
             document.head.appendChild(link);
+        }
+        
+        // Carregar fonte Montserrat via FontFace API
+        if ('FontFace' in window) {
+            const font = new FontFace('Montserrat', 'url(assets/fonts/Montserrat-Regular.woff2)');
+            font.load().then(function(loadedFont) {
+                document.fonts.add(loadedFont);
+            });
         }
         
         console.log('✅ Recursos não críticos carregados');
