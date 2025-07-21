@@ -534,20 +534,23 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Atualiza a posição do slider e os indicadores
     function updateSlider(index) {
-        const offset = index * (cards[0].offsetWidth + 24); // 24px é o gap
-        slider.scrollTo({
-            left: offset,
-            behavior: 'smooth'
+        // Lê o offsetWidth apenas uma vez para evitar múltiplos reflows
+        const cardWidth = cards[0].offsetWidth;
+        const offset = index * (cardWidth + 24); // 24px é o gap
+        // Usa requestAnimationFrame para garantir que a escrita ocorra de forma otimizada
+        window.requestAnimationFrame(() => {
+            slider.scrollTo({
+                left: offset,
+                behavior: 'smooth'
+            });
+            // Atualiza indicadores
+            indicators.forEach((indicator, i) => {
+                indicator.classList.toggle('active', i === index);
+            });
+            // Atualiza estado dos botões
+            prevButton.style.opacity = index === 0 ? '0.5' : '1';
+            nextButton.style.opacity = index === totalCards - 1 ? '0.5' : '1';
         });
-        
-        // Atualiza indicadores
-        indicators.forEach((indicator, i) => {
-            indicator.classList.toggle('active', i === index);
-        });
-        
-        // Atualiza estado dos botões
-        prevButton.style.opacity = index === 0 ? '0.5' : '1';
-        nextButton.style.opacity = index === totalCards - 1 ? '0.5' : '1';
     }
     
     // Event listeners para os botões de navegação
