@@ -17,7 +17,7 @@
     <!-- Mobile Performance Optimizations -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="HandheldFriendly" content="true">
     <meta name="MobileOptimized" content="width">
     
@@ -39,66 +39,38 @@
     <!-- DNS prefetch para recursos críticos -->
     <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
     
-    <!-- Emergency critical resources - Maximum priority -->
-    <link rel="preload" href="assets/images/Renov-Logo.webp?v=1.6.0" as="image" fetchpriority="high" type="image/webp" importance="high">
-    <!-- Removidos preloads de fontes para otimizar LCP -->
+    <!-- Ultra-critical resources for LCP - Minimal chain -->
+    <link rel="preload" href="assets/images/Renov-Logo.webp?v=1.6.0" as="image" fetchpriority="high" type="image/webp" crossorigin="anonymous">
+    <link rel="preload" href="assets/fonts/Montserrat-Regular.woff2" as="font" type="font/woff2" crossorigin fetchpriority="high">
+    <link rel="preload" href="styles.css?v=1.6.0" as="style" fetchpriority="high" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="styles.css?v=1.6.0"></noscript>
     
-    <!-- Font optimized CSS -->
-    <!-- <link rel="stylesheet" href="font-optimized.css?v=1.6.0"> -->
+    <!-- High priority resources -->
+    <link rel="preload" href="script.js?v=1.6.0" as="script" fetchpriority="high">
     
-    <!-- Non-critical CSS loaded asynchronously -->
-    <!-- <link rel="preload" href="styles.css?v=1.6.0" as="style" onload="this.onload=null;this.rel='stylesheet'"> -->
-    <!-- <noscript><link rel="stylesheet" href="styles.css?v=1.6.0"></noscript> -->
+    <!-- Deferred resources - Reduced chain -->
+    
+    
+    
+    
+    
     
     <title>Renov - Sua Troca Inteligente</title>
+    <link rel="stylesheet" href="styles.css?v=1.6.0">
+    <!-- Font Awesome - Preload e fallback para performance e renderização imediata dos ícones -->
     
-          <!-- Emergency CSS for LCP Critical Optimization -->
-      <style>
-      /* Ultra-minimal CSS for LCP critical optimization */
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'"></noscript>
+    
+    <!-- Critical CSS for LCP optimization -->
+    <style>
+      /* Ultra-critical CSS for LCP optimization - Minimal chain */
       .logo img{width:160px;height:40px;object-fit:contain;display:block;max-width:100%}
       .header-content{display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem;max-width:1200px;margin:0 auto;position:relative;z-index:10}
       .hero{position:relative;width:100vw;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw;height:140vh;display:flex;align-items:flex-start;overflow:hidden;margin-top:0!important;margin-bottom:-350px;background:#000}
       .hero-content{position:relative;z-index:1;width:100%;max-width:1200px;margin:0 auto;padding:0 5%;margin-top:300px}
-      .hero-text h1{font-size:48px;line-height:1.05;margin-bottom:24px;color:#fff;font-weight:700;text-align:left}
-      .hero-text p{color:#fff;font-size:18px;line-height:1.5;margin:0}
       .video-bg-wrapper{position:absolute;top:0;left:0;width:100vw;height:100%;z-index:0;overflow:hidden;pointer-events:none;transform:translateY(-300px);display:block!important}
-      
-      /* Social icons - minimal */
-      .social-links{display:flex!important;gap:16px!important;margin-top:-5px!important;margin-left:10px!important}
-      .social-links a{color:#000!important;font-size:1.5rem!important;display:inline-block!important;visibility:visible!important;opacity:1!important}
-      .social-links i{display:inline-block!important;visibility:visible!important;opacity:1!important;font-style:normal!important}
-      .fab{font-family:"Font Awesome 6 Brands"!important;font-weight:400!important;display:inline-block!important;visibility:visible!important;opacity:1!important}
-      .fas{font-family:"Font Awesome 6 Free"!important;font-weight:900!important;display:inline-block!important;visibility:visible!important;opacity:1!important}
-      
-      /* Prevent layout shifts - critical for LCP */
-      .logo{min-width:160px;min-height:40px}
-      .hero-text{min-height:200px}
-      .social-links{min-width:120px;min-height:24px}
-      
-      /* Font loading optimization */
-      @font-face{font-family:'Montserrat';src:url('assets/fonts/Montserrat-Regular.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
-      @font-face{font-family:'Montserrat';src:url('assets/fonts/Montserrat-Medium.woff2') format('woff2');font-weight:500;font-style:normal;font-display:swap}
-      
-      /* Fallback fonts for immediate display */
-      body{font-family:'Montserrat',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,sans-serif}
-      
-      /* Screen reader only text - Accessibility */
-      .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
-      
-      /* Mobile optimizations - minimal */
-      @media (max-width:768px){
-          .hero{height:100vh;margin-bottom:0;min-height:600px}
-          .hero-content{margin-top:120px;padding:0 20px;z-index:2}
-          .hero-text h1{font-size:32px;line-height:1.1}
-          .hero-text p{font-size:16px;line-height:1.5}
-          .header-content{padding:0.5rem 1rem;background:rgba(255,255,255,0.95)}
-          .logo img{width:120px;height:30px}
-      }
-      @media (max-width:480px){
-          .hero-text h1{font-size:28px;line-height:1.2}
-          .hero-text p{font-size:14px;line-height:1.4}
-          .logo img{width:100px;height:25px}
-      }
+      .video-bg{position:absolute;top:0;left:50%;width:100vw;height:100%;min-width:100vw;min-height:100%;object-fit:cover;transform:translateX(-50%);opacity:1!important;visibility:visible!important}
       
       /* Mobile LCP optimizations - Ultra-compressed */
       @media (max-width:768px){.hero{height:100vh;margin-bottom:0;min-height:600px}.hero-content{margin-top:120px;padding:0 20px;z-index:2}.hero-text h1{font-size:32px;line-height:1.1;font-weight:700;color:#fff!important;text-shadow:2px 2px 4px rgba(0,0,0,0.8);margin-bottom:16px}.hero-text p{font-size:16px;line-height:1.5;color:#fff!important;text-shadow:1px 1px 2px rgba(0,0,0,0.7)}.header-content{padding:0.5rem 1rem;background:rgba(255,255,255,0.95);backdrop-filter:blur(10px)}.logo img{width:120px;height:30px}.hero-text{max-width:100%;padding:0;margin:0}.parceiro-item img{max-width:80px!important;height:auto!important}.diferenciais-grid{grid-template-columns:1fr!important;gap:1rem!important}.parceiros{padding:40px 0!important}.diferenciais{padding:40px 0!important}}
@@ -112,24 +84,14 @@
         }
       }
       
-
+      /* Font Awesome - Deferred */
+      @font-face{font-family:'Font Awesome 6 Brands';font-style:normal;font-weight:400;font-display:swap;src:url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-brands-400.woff2') format('woff2')}
+      @font-face{font-family:'Font Awesome 6 Free Solid';font-style:normal;font-weight:900;font-display:swap;src:url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-solid-900.woff2') format('woff2')}
       
-              /* Accessibility & Video */
-        .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
-        #home.tab-content.active .video-bg-wrapper,#home.tab-content.active .video-bg{display:block!important;opacity:1!important;visibility:visible!important}
-      </style>
-      
-      <!-- Font Awesome - Carregado via JS para não bloquear LCP -->
-      <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"> -->
-      
-      <!-- LCP Emergency Optimizer - Sistema de otimização de emergência para LCP crítico -->
-      <script src="lcp-emergency-optimizer.js?v=1.6.0"></script>
-      
-      <!-- Request Chain Optimizer - Sistema avançado de otimização de cadeias de solicitação -->
-      <script src="request-chain-optimizer.js?v=1.6.0" defer></script>
-      
-      <!-- Font Optimizer - Sistema avançado de otimização de fontes -->
-      <script src="font-optimizer.js?v=1.6.0" defer></script>
+      /* Accessibility & Video */
+      .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+      #home.tab-content.active .video-bg-wrapper,#home.tab-content.active .video-bg{display:block!important;opacity:1!important;visibility:visible!important}
+    </style>
 </head>
 <body>
     <div class="page-wrapper">
@@ -139,8 +101,8 @@
             <div class="logo">
                 <a href="#" onclick="openTab('home'); return false;" style="text-decoration: none; cursor: pointer;">
                     <picture>
-                        <source srcset="assets/images/mobile/Renov-Logo.webp 480w, assets/images/Renov-Logo.webp 1200w" sizes="(max-width: 480px) 480px, 1200px" type="image/webp">
-                        <img src="assets/images/Renov-Logo.webp" alt="Renov - Sua Troca Inteligente" width="160" height="40" loading="eager" fetchpriority="high" decoding="sync" data-critical="true">
+                        <source srcset="assets/images/Renov-Logo.webp?v=1.6.0" type="image/webp">
+                        <img src="assets/images/Renov-Logo.webp?v=1.6.0" alt="Renov - Sua Troca Inteligente" loading="eager" fetchpriority="high" decoding="sync" width="160" height="40">
                     </picture>
                 </a>
             </div>
@@ -152,46 +114,10 @@
                         <button class="tab-btn" onclick="openTab('contato')" style="color:#000!important;">Fale Conosco</button>
                     </div>
                 </nav>
-            <div class="social-links" style="display:flex;gap:16px;margin-top:-5px;margin-left:10px;">
-                <a href="https://www.instagram.com/renovsmart" 
-                   target="_blank" 
-                   rel="noopener noreferrer"
-                   aria-label="Siga a Renov no Instagram - Abre em nova aba"
-                   title="Siga a Renov no Instagram"
-                   style="color:#000;font-size:1.5rem;transition:color 0.2s;text-decoration:none;outline:2px solid transparent;outline-offset:2px;" 
-                   onmouseover="this.style.color='#00b140'" 
-                   onmouseout="this.style.color='#000'"
-                   onfocus="this.style.outline='2px solid #00b140'"
-                   onblur="this.style.outline='2px solid transparent'">
-                    <i class="fab fa-instagram" aria-hidden="true"></i>
-                    <span class="sr-only">Instagram</span>
-                </a>
-                <a href="https://www.linkedin.com/company/renovsmart/posts/?feedView=all" 
-                   target="_blank" 
-                   rel="noopener noreferrer"
-                   aria-label="Conecte-se com a Renov no LinkedIn - Abre em nova aba"
-                   title="Conecte-se com a Renov no LinkedIn"
-                   style="color:#000;font-size:1.5rem;transition:color 0.2s;text-decoration:none;outline:2px solid transparent;outline-offset:2px;" 
-                   onmouseover="this.style.color='#00b140'" 
-                   onmouseout="this.style.color='#000'"
-                   onfocus="this.style.outline='2px solid #00b140'"
-                   onblur="this.style.outline='2px solid transparent'">
-                    <i class="fab fa-linkedin" aria-hidden="true"></i>
-                    <span class="sr-only">LinkedIn</span>
-                </a>
-                <a href="https://api.whatsapp.com/send?phone=551151942988&text=Olá! Gostaria de saber mais sobre a Renov." 
-                   target="_blank" 
-                   rel="noopener noreferrer"
-                   aria-label="Entre em contato com a Renov via WhatsApp - Abre em nova aba"
-                   title="Entre em contato com a Renov via WhatsApp"
-                   style="color:#000;font-size:1.5rem;transition:color 0.2s;text-decoration:none;outline:2px solid transparent;outline-offset:2px;" 
-                   onmouseover="this.style.color='#00b140'" 
-                   onmouseout="this.style.color='#000'"
-                   onfocus="this.style.outline='2px solid #00b140'"
-                   onblur="this.style.outline='2px solid transparent'">
-                    <i class="fab fa-whatsapp" aria-hidden="true"></i>
-                    <span class="sr-only">WhatsApp</span>
-                </a>
+            <div class="social-links">
+                <a href="https://www.instagram.com/renovsmart" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/company/renovsmart/posts/?feedView=all" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://api.whatsapp.com/send?phone=551151942988&text=Olá! Gostaria de saber mais sobre a Renov." target="_blank"><i class="fab fa-whatsapp"></i></a>
             </div>
             </div>
     </header>
@@ -202,25 +128,24 @@
             <section id="home" class="tab-content active">
                 <section class="hero">
                   <div class="video-bg-wrapper">
-                    <!-- Poster otimizado para LCP -->
-                    <div class="hero-bg-image" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); z-index: 0;"></div>
-                    <video autoplay muted loop playsinline class="video-bg" preload="none" data-critical="true" style="display: none;" poster="assets/images/mobile/bg-como-funciona.webp" fetchpriority="high" width="1200" height="600">
+                    <video autoplay muted loop playsinline class="video-bg" preload="auto">
                       <source src="assets/video/bg-video.mp4.mp4?v=1.6.0" type="video/mp4">
                       Seu navegador não suporta vídeo em HTML5.
                     </video>
                   </div>
                     <div class="hero-content">
                         <div class="hero-text">
-                            <h1 style="font-size: 48px; line-height: 1.05; margin-bottom: 24px; color: #fff; font-weight: 700; text-align: left; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);" data-lcp-candidate="true">Potencialize<br>suas vendas com<br>Trade-in Inteligente</h1>
-                            <p style="color: #fff; font-size: 18px; line-height: 1.5; margin: 0; text-shadow: 1px 1px 2px rgba(0,0,0,0.7);" data-lcp-candidate="true">A plataforma Renov transforma dispositivos usados em oportunidades de venda para sua empresa. Ofereça aos seus clientes a possibilidade de usar seus aparelhos antigos como forma de pagamento e aumente suas conversões de forma inteligente.</p>
+                            <h1 style="font-size: 48px; line-height: 1.05; margin-bottom: 24px; color: #fff; font-weight: 700; text-align: left; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">Potencialize<br>suas vendas com<br>Trade-in Inteligente</h1>
+                            <p style="color: #fff; font-size: 18px; line-height: 1.5; margin: 0; text-shadow: 1px 1px 2px rgba(0,0,0,0.7);">A plataforma Renov transforma dispositivos usados em oportunidades de venda para sua empresa. Ofereça aos seus clientes a possibilidade de usar seus aparelhos antigos como forma de pagamento e aumente suas conversões de forma inteligente.</p>
                         </div>
                     </div>
                 </section>
                 <section id="como-funciona" class="como-funciona">
                     <div class="como-funciona-bg">
                         <picture>
-                            <source srcset="assets/images/mobile/bg-como-funciona.webp 480w, assets/images/bg-como-funciona.webp 1200w" sizes="(max-width: 480px) 480px, 1200px" type="image/webp">
-                            <img src="assets/images/bg-como-funciona.webp?v=1.6.0" alt="Background da seção Como Funciona" loading="eager" fetchpriority="high" decoding="async" width="1200" height="600">
+                            <source srcset="assets/images/mobile/bg-como-funciona.webp?v=1.6.0" type="image/webp" media="(max-width: 768px)">
+                            <source srcset="assets/images/bg-como-funciona.webp?v=1.6.0" type="image/webp">
+                            <img src="assets/images/bg-como-funciona.webp?v=1.6.0" alt="Background da seção Como Funciona" loading="eager" fetchpriority="high" decoding="async">
                         </picture>
                     </div>
                     <div class="como-funciona-content">
@@ -916,46 +841,10 @@
         <source srcset="assets/images/Renov-Logo.webp?v=1.6.0" type="image/webp">
         <img src='assets/images/Renov-Logo.webp?v=1.6.0' alt='Renov - Sua Troca Inteligente' style='width:130px;filter:brightness(1.1);margin-top:-10px;' loading="lazy" decoding="async">
       </picture>
-      <div class="social-links" style="display:flex;gap:16px;margin-top:-5px;margin-left:10px;">
-        <a href="https://www.instagram.com/renovsmart" 
-           target="_blank" 
-           rel="noopener noreferrer"
-           aria-label="Siga a Renov no Instagram - Abre em nova aba"
-           title="Siga a Renov no Instagram"
-           style="color:#000;font-size:1.5rem;transition:color 0.2s;text-decoration:none;outline:2px solid transparent;outline-offset:2px;" 
-           onmouseover="this.style.color='#00b140'" 
-           onmouseout="this.style.color='#000'"
-           onfocus="this.style.outline='2px solid #00b140'"
-           onblur="this.style.outline='2px solid transparent'">
-            <i class="fab fa-instagram" aria-hidden="true"></i>
-            <span class="sr-only">Instagram</span>
-        </a>
-        <a href="https://www.linkedin.com/company/renovsmart/posts/?feedView=all" 
-           target="_blank" 
-           rel="noopener noreferrer"
-           aria-label="Conecte-se com a Renov no LinkedIn - Abre em nova aba"
-           title="Conecte-se com a Renov no LinkedIn"
-           style="color:#000;font-size:1.5rem;transition:color 0.2s;text-decoration:none;outline:2px solid transparent;outline-offset:2px;" 
-           onmouseover="this.style.color='#00b140'" 
-           onmouseout="this.style.color='#000'"
-           onfocus="this.style.outline='2px solid #00b140'"
-           onblur="this.style.outline='2px solid transparent'">
-            <i class="fab fa-linkedin" aria-hidden="true"></i>
-            <span class="sr-only">LinkedIn</span>
-        </a>
-        <a href="https://api.whatsapp.com/send?phone=551151942988&text=Olá! Gostaria de saber mais sobre a Renov." 
-           target="_blank" 
-           rel="noopener noreferrer"
-           aria-label="Entre em contato com a Renov via WhatsApp - Abre em nova aba"
-           title="Entre em contato com a Renov via WhatsApp"
-           style="color:#000;font-size:1.5rem;transition:color 0.2s;text-decoration:none;outline:2px solid transparent;outline-offset:2px;" 
-           onmouseover="this.style.color='#00b140'" 
-           onmouseout="this.style.color='#000'"
-           onfocus="this.style.outline='2px solid #00b140'"
-           onblur="this.style.outline='2px solid transparent'">
-            <i class="fab fa-whatsapp" aria-hidden="true"></i>
-            <span class="sr-only">WhatsApp</span>
-        </a>
+              <div class="social-links" style="display:flex;gap:16px;margin-top:-5px;margin-left:10px;">
+        <a href="https://www.instagram.com/renovsmart" target="_blank" style="color:#fff;font-size:1.5rem;transition:color 0.2s;" onmouseover="this.style.color='#00b140'" onmouseout="this.style.color='#fff'"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/company/renovsmart/posts/?feedView=all" target="_blank" style="color:#fff;font-size:1.5rem;transition:color 0.2s;" onmouseover="this.style.color='#00b140'" onmouseout="this.style.color='#fff'"><i class="fab fa-linkedin"></i></a>
+        <a href="https://api.whatsapp.com/send?phone=551151942988&text=Olá! Gostaria de saber mais sobre a Renov." target="_blank" style="color:#fff;font-size:1.5rem;transition:color 0.2s;" onmouseover="this.style.color='#00b140'" onmouseout="this.style.color='#fff'"><i class="fab fa-whatsapp"></i></a>
       </div>
     </div>
     <!-- Navegação central -->
@@ -997,10 +886,9 @@
   </div>
 </footer>
 
-          <!-- Scripts essenciais apenas -->
-      <script src="lcp-emergency-optimizer.js" defer></script>
-      <script src="script.js" defer></script>
-      <script src="load-non-critical.js" defer></script>
+    <script src="script.js?v=1.6.0" fetchpriority="high"></script>
+    <script src="performance-optimizer.js?v=1.6.0"></script>
+    <script src="mobile-performance-optimizer.js?v=1.6.0"></script>
     <script>
       // Registro do Service Worker para cache offline
       if ('serviceWorker' in navigator) {
@@ -1080,46 +968,5 @@ document.addEventListener('submit', function(e) {
   }
 }, true);
 </script>
-      <script>
-        // Carregar vídeo sob demanda após LCP
-        window.addEventListener('load', function() {
-          let lcpDone = false;
-          if ('PerformanceObserver' in window) {
-            const lcpObserver = new PerformanceObserver((list) => {
-              const entries = list.getEntries();
-              entries.forEach(entry => {
-                if (entry.entryType === 'largest-contentful-paint') {
-                  lcpDone = true;
-                  showVideo();
-                }
-              });
-            });
-            lcpObserver.observe({ entryTypes: ['largest-contentful-paint'] });
-          }
-          // Fallback: 3s
-          setTimeout(() => { if (!lcpDone) showVideo(); }, 3000);
-          function showVideo() {
-            const video = document.querySelector('.video-bg');
-            if (video) {
-              video.style.display = 'block';
-              video.style.position = 'absolute';
-              video.style.top = '0';
-              video.style.left = '50%';
-              video.style.width = '100vw';
-              video.style.height = '100%';
-              video.style.minWidth = '100vw';
-              video.style.minHeight = '100%';
-              video.style.objectFit = 'cover';
-              video.style.transform = 'translateX(-50%)';
-              video.style.opacity = '1';
-              video.style.visibility = 'visible';
-              video.style.zIndex = '0';
-              // Remover div de fundo
-              const bgDiv = document.querySelector('.hero-bg-image');
-              if (bgDiv) { bgDiv.style.display = 'none'; }
-            }
-          }
-        });
-      </script>
 </body>
 </html> 
