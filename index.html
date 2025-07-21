@@ -134,7 +134,12 @@
             <section id="home" class="tab-content active">
                 <section class="hero">
                   <div class="video-bg-wrapper">
-                    <video autoplay muted loop playsinline class="video-bg" preload="none" poster="assets/images/bg-como-funciona.webp">
+                    <picture id="hero-poster" style="display:none;">
+                      <source srcset="assets/images/mobile/bg-como-funciona.webp?v=1.6.0" type="image/webp" media="(max-width: 768px)">
+                      <source srcset="assets/images/bg-como-funciona.webp?v=1.6.0" type="image/webp">
+                      <img src="assets/images/bg-como-funciona.webp?v=1.6.0" alt="Background da seção Como Funciona" width="1200" height="400" style="width:100vw;height:100%;object-fit:cover;">
+                    </picture>
+                    <video id="hero-video" autoplay muted loop playsinline class="video-bg" preload="none" poster="assets/images/bg-como-funciona.webp">
                       <source src="assets/video/bg-video.mp4.mp4?v=1.6.0" type="video/mp4">
                       Seu navegador não suporta vídeo em HTML5.
                     </video>
@@ -946,6 +951,17 @@
             lastActive = null;
           });
         });
+      });
+
+      // Exibir apenas o poster no mobile, não carregar o vídeo
+      window.addEventListener('DOMContentLoaded', function() {
+        var isMobile = window.innerWidth <= 768;
+        var video = document.getElementById('hero-video');
+        var poster = document.getElementById('hero-poster');
+        if (isMobile && video && poster) {
+          video.parentNode.removeChild(video);
+          poster.style.display = 'block';
+        }
       });
     </script>
     <script>
