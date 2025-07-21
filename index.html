@@ -887,8 +887,6 @@
 </footer>
 
     <script src="script.js?v=1.6.0" fetchpriority="high"></script>
-    <script src="performance-optimizer.js?v=1.6.0"></script>
-    <script src="mobile-performance-optimizer.js?v=1.6.0"></script>
     <script>
       // Registro do Service Worker para cache offline
       if ('serviceWorker' in navigator) {
@@ -902,6 +900,17 @@
             });
         });
       }
+
+      // Adiar scripts de performance para após o carregamento da página (melhor LCP)
+      window.addEventListener('load', function() {
+        var s1 = document.createElement('script');
+        s1.src = 'performance-optimizer.js?v=1.6.0';
+        document.body.appendChild(s1);
+
+        var s2 = document.createElement('script');
+        s2.src = 'mobile-performance-optimizer.js?v=1.6.0';
+        document.body.appendChild(s2);
+      });
 
       document.addEventListener('DOMContentLoaded', function() {
         const items = document.querySelectorAll('.impacto-circular-item');
