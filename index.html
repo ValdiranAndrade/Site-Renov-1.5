@@ -42,11 +42,12 @@
     <!-- Ultra-critical resources for LCP - Minimal chain -->
     <link rel="preload" href="assets/images/Renov-Logo.webp?v=1.6.0" as="image" fetchpriority="high" type="image/webp" crossorigin="anonymous">
     <link rel="preload" href="assets/fonts/Montserrat-Regular.woff2" as="font" type="font/woff2" crossorigin fetchpriority="high">
-    <link rel="preload" href="styles.css?v=1.6.0" as="style" fetchpriority="high" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="styles.css?v=1.6.0"></noscript>
+    <link rel="preload" href="styles-optimized.css?v=1.6.0" as="style" fetchpriority="high" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="styles-optimized.css?v=1.6.0"></noscript>
+    <link rel="stylesheet" href="styles-optimized.css?v=1.6.0">
     
     <!-- High priority resources -->
-    <link rel="preload" href="script.js?v=1.6.0" as="script" fetchpriority="high">
+    <link rel="preload" href="script.min.js?v=1.6.0" as="script" fetchpriority="high">
     
     <!-- Deferred resources - Reduced chain -->
     
@@ -137,7 +138,7 @@
                     <picture id="hero-poster" style="display:none;">
                       <source srcset="assets/images/mobile/bg-como-funciona.webp?v=1.6.0" type="image/webp" media="(max-width: 768px)">
                       <source srcset="assets/images/bg-como-funciona.webp?v=1.6.0" type="image/webp">
-                      <img src="assets/images/bg-como-funciona.webp?v=1.6.0" alt="Background da seção Como Funciona" width="1200" height="400" style="width:100vw;height:100%;object-fit:cover;">
+                      <img src="assets/images/bg-como-funciona.webp?v=1.6.0" alt="Background da seção Como Funciona" width="1200" height="400" style="width:100vw;height:100%;object-fit:cover;" loading="lazy">
                     </picture>
                     <video id="hero-video" autoplay muted loop playsinline class="video-bg" preload="none" poster="assets/images/bg-como-funciona.webp">
                       <source src="assets/video/bg-video.mp4.mp4?v=1.6.0" type="video/mp4">
@@ -634,7 +635,7 @@
                   <div class="mvv-card" style="position:relative;flex:1 1 340px;max-width:420px;min-width:320px;height:520px;border-radius:32px;overflow:hidden;box-shadow:0 4px 32px rgba(0,0,0,0.10);display:flex;align-items:flex-start;">
                     <picture style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:1;">
                         <source srcset="assets/images/missao.webp?v=1.6.0" type="image/webp">
-                        <img src="assets/images/missao.webp?v=1.6.0" alt="Imagem representando a missão da Renov" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:1;">
+                        <img src="assets/images/missao.webp?v=1.6.0" alt="Imagem representando a missão da Renov" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:1;" loading="lazy">
                     </picture>
                     <div style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.45);z-index:2;"></div>
                     <div style="position:relative;z-index:3;padding:40px 32px 32px 32px;color:#fff;width:100%;">
@@ -647,7 +648,7 @@
                   <div class="mvv-card" style="position:relative;flex:1 1 340px;max-width:420px;min-width:320px;height:520px;border-radius:32px;overflow:hidden;box-shadow:0 4px 32px rgba(0,0,0,0.10);display:flex;align-items:flex-start;">
                     <picture style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:1;">
                         <source srcset="assets/images/visao.webp?v=1.6.0" type="image/webp">
-                        <img src="assets/images/visao.webp?v=1.6.0" alt="Imagem representando a visão da Renov" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:1;">
+                        <img src="assets/images/visao.webp?v=1.6.0" alt="Imagem representando a visão da Renov" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:1;" loading="lazy">
                     </picture>
                     <div style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(255,255,255,0.30);z-index:2;"></div>
                     <div style="position:relative;z-index:3;padding:40px 32px 32px 32px;color:#000;width:100%;">
@@ -660,7 +661,7 @@
                   <div class="mvv-card" style="position:relative;flex:1 1 340px;max-width:420px;min-width:320px;height:520px;border-radius:32px;overflow:hidden;box-shadow:0 4px 32px rgba(0,0,0,0.10);display:flex;align-items:flex-start;">
                     <picture style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:1;">
                         <source srcset="assets/images/valores.webp?v=1.6.0" type="image/webp">
-                        <img src="assets/images/valores.webp?v=1.6.0" alt="Imagem representando os valores da Renov" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:1;">
+                        <img src="assets/images/valores.webp?v=1.6.0" alt="Imagem representando os valores da Renov" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:1;" loading="lazy">
                     </picture>
                     <div style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.45);z-index:2;"></div>
                     <div style="position:relative;z-index:3;padding:40px 32px 32px 32px;color:#fff;width:100%;">
@@ -897,12 +898,12 @@
   </div>
 </footer>
 
-    <script src="script.js?v=1.6.0" fetchpriority="high"></script>
+    <script src="script.min.js?v=1.6.0" fetchpriority="high"></script>
     <script>
       // Registro do Service Worker para cache offline
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
-          navigator.serviceWorker.register('/sw.js?v=1.6.0')
+          navigator.serviceWorker.register('/sw.min.js?v=1.6.0')
             .then(registration => {
               console.log('Service Worker registrado com sucesso:', registration.scope);
             })
@@ -915,11 +916,11 @@
       // Adiar scripts de performance para após o carregamento da página (melhor LCP)
       window.addEventListener('load', function() {
         var s1 = document.createElement('script');
-        s1.src = 'performance-optimizer.js?v=1.6.0';
+        s1.src = 'performance-optimizer.min.js?v=1.6.0';
         document.body.appendChild(s1);
 
         var s2 = document.createElement('script');
-        s2.src = 'mobile-performance-optimizer.js?v=1.6.0';
+        s2.src = 'mobile-performance-optimizer.min.js?v=1.6.0';
         document.body.appendChild(s2);
       });
 
