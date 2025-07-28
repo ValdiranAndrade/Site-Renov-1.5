@@ -1,7 +1,60 @@
-# Otimizações de Performance - Site Renov
-# Configurações para melhorar Core Web Vitals
+# Renov - Mobile Redirect Configuration
+# Configuração de redirecionamento mobile para o site da Renov
 
-# Compressão Gzip
+# Habilitar rewrite engine
+RewriteEngine On
+
+# Redirecionar para HTTPS (se disponível)
+# RewriteCond %{HTTPS} off
+# RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Detecção de dispositivo móvel via User Agent
+RewriteCond %{HTTP_USER_AGENT} "android|blackberry|iphone|ipad|ipod|iemobile|opera mini|mobile|tablet" [NC]
+RewriteCond %{REQUEST_URI} !^/mobile/
+RewriteCond %{REQUEST_URI} !^/assets/
+RewriteCond %{REQUEST_URI} !^/css/
+RewriteCond %{REQUEST_URI} !^/js/
+RewriteCond %{REQUEST_URI} !^/images/
+RewriteCond %{REQUEST_URI} !^/favicon
+RewriteCond %{REQUEST_URI} !^/robots
+RewriteCond %{REQUEST_URI} !^/sitemap
+RewriteCond %{REQUEST_URI} !^/manifest
+RewriteCond %{REQUEST_URI} !^/sw
+RewriteCond %{REQUEST_URI} !^/mobile-detector
+RewriteCond %{REQUEST_URI} !^/mobile-optimizer
+RewriteCond %{REQUEST_URI} !^/mobile-optimizations
+RewriteRule ^(.*)$ /mobile/$1 [L,R=302]
+
+# Redirecionar desktop para versão principal (se estiver na mobile)
+RewriteCond %{HTTP_USER_AGENT} !"android|blackberry|iphone|ipad|ipod|iemobile|opera mini|mobile|tablet" [NC]
+RewriteCond %{REQUEST_URI} ^/mobile/
+RewriteCond %{REQUEST_URI} !^/mobile/assets/
+RewriteCond %{REQUEST_URI} !^/mobile/css/
+RewriteCond %{REQUEST_URI} !^/mobile/js/
+RewriteCond %{REQUEST_URI} !^/mobile/images/
+RewriteRule ^mobile/(.*)$ /$1 [L,R=302]
+
+# Configurações de cache para mobile
+<IfModule mod_expires.c>
+    ExpiresActive On
+    
+    # Assets estáticos
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType image/png "access plus 1 month"
+    ExpiresByType image/jpg "access plus 1 month"
+    ExpiresByType image/jpeg "access plus 1 month"
+    ExpiresByType image/gif "access plus 1 month"
+    ExpiresByType image/webp "access plus 1 month"
+    ExpiresByType image/svg+xml "access plus 1 month"
+    ExpiresByType font/woff "access plus 1 month"
+    ExpiresByType font/woff2 "access plus 1 month"
+    
+    # HTML
+    ExpiresByType text/html "access plus 1 hour"
+</IfModule>
+
+# Compressão GZIP
 <IfModule mod_deflate.c>
     AddOutputFilterByType DEFLATE text/plain
     AddOutputFilterByType DEFLATE text/html
@@ -13,98 +66,86 @@
     AddOutputFilterByType DEFLATE application/javascript
     AddOutputFilterByType DEFLATE application/x-javascript
     AddOutputFilterByType DEFLATE application/json
-    AddOutputFilterByType DEFLATE font/woff2
-    AddOutputFilterByType DEFLATE font/woff
-    AddOutputFilterByType DEFLATE font/ttf
-    AddOutputFilterByType DEFLATE image/svg+xml
 </IfModule>
 
-# Cache de longa duração para recursos estáticos
-<IfModule mod_expires.c>
-    ExpiresActive On
-    
-    # Imagens
-    ExpiresByType image/jpg "access plus 1 year"
-    ExpiresByType image/jpeg "access plus 1 year"
-    ExpiresByType image/png "access plus 1 year"
-    ExpiresByType image/gif "access plus 1 year"
-    ExpiresByType image/webp "access plus 1 year"
-    ExpiresByType image/svg+xml "access plus 1 year"
-    
-    # Vídeos
-    ExpiresByType video/mp4 "access plus 1 year"
-    ExpiresByType video/webm "access plus 1 year"
-    
-    # Fontes
-    ExpiresByType font/woff2 "access plus 1 year"
-    ExpiresByType font/woff "access plus 1 year"
-    ExpiresByType font/ttf "access plus 1 year"
-    ExpiresByType font/otf "access plus 1 year"
-    
-    # CSS e JavaScript
-    ExpiresByType text/css "access plus 1 year"
-    ExpiresByType application/javascript "access plus 1 year"
-    ExpiresByType text/javascript "access plus 1 year"
-    
-    # HTML
-    ExpiresByType text/html "access plus 1 hour"
-</IfModule>
-
-# Headers de cache para melhor performance
+# Headers de segurança
 <IfModule mod_headers.c>
-    # Cache para recursos estáticos
-    <FilesMatch "\.(css|js|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|otf|mp4|webm)$">
-        Header set Cache-Control "public, max-age=31536000, immutable"
-    </FilesMatch>
+    # Prevenir clickjacking
+    Header always append X-Frame-Options SAMEORIGIN
     
-    # Cache para HTML
-    <FilesMatch "\.(html|htm)$">
-        Header set Cache-Control "public, max-age=3600"
-    </FilesMatch>
-    
-    # Headers de segurança
+    # Prevenir MIME type sniffing
     Header always set X-Content-Type-Options nosniff
-    Header always set X-Frame-Options DENY
-    Header always set X-XSS-Protection "1; mode=block"
+    
+    # Política de segurança de conteúdo
+    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdnjs.cloudflare.com https://formspree.io; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://formspree.io;"
+    
+    # Referrer Policy
     Header always set Referrer-Policy "strict-origin-when-cross-origin"
     
-    # Headers de performance
-    Header always set Vary "Accept-Encoding"
+    # Permissions Policy
+    Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
 </IfModule>
 
-# Otimizações de MIME types
-<IfModule mod_mime.c>
-    AddType font/woff2 .woff2
-    AddType font/woff .woff
-    AddType image/webp .webp
-    AddType video/webm .webm
-</IfModule>
-
-# Redirecionamento para HTTPS (se disponível)
+# Configurações específicas para mobile
 <IfModule mod_rewrite.c>
-    RewriteEngine On
-    
-    # Forçar HTTPS (descomente se tiver SSL)
-    # RewriteCond %{HTTPS} off
-    # RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-    
-    # Remover trailing slashes
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteCond %{REQUEST_URI} (.+)/$
-    RewriteRule ^ %1 [R=301,L]
+    # Redirecionar assets para versão mobile se necessário
+    RewriteCond %{HTTP_USER_AGENT} "android|blackberry|iphone|ipad|ipod|iemobile|opera mini|mobile|tablet" [NC]
+    RewriteCond %{REQUEST_URI} ^/assets/images/mobile/
+    RewriteRule ^assets/images/mobile/(.*)$ /assets/images/mobile/$1 [L]
 </IfModule>
 
-# Otimizações de compressão
-<IfModule mod_brotli.c>
-    AddOutputFilterByType BROTLI_COMPRESS text/html text/plain text/xml text/css text/javascript application/javascript application/xml+rss application/json
-    AddOutputFilterByType BROTLI_COMPRESS font/woff2 font/woff font/ttf font/otf
+# Configurações de performance
+<IfModule mod_expires.c>
+    # Cache mais agressivo para mobile
+    <If "%{HTTP_USER_AGENT} =~ /mobile|android|iphone|ipad/i">
+        ExpiresByType text/css "access plus 1 year"
+        ExpiresByType application/javascript "access plus 1 year"
+        ExpiresByType image/png "access plus 1 year"
+        ExpiresByType image/jpg "access plus 1 year"
+        ExpiresByType image/jpeg "access plus 1 year"
+        ExpiresByType image/gif "access plus 1 year"
+        ExpiresByType image/webp "access plus 1 year"
+        ExpiresByType font/woff "access plus 1 year"
+        ExpiresByType font/woff2 "access plus 1 year"
+    </If>
 </IfModule>
 
-# Preload de recursos críticos
+# Configurações de erro
+ErrorDocument 404 /404.html
+ErrorDocument 500 /500.html
+
+# Configurações de diretório
+<IfModule mod_autoindex.c>
+    Options -Indexes
+</IfModule>
+
+# Configurações de arquivos
+<Files "*.htaccess">
+    Order allow,deny
+    Deny from all
+</Files>
+
+<Files "*.log">
+    Order allow,deny
+    Deny from all
+</Files>
+
+# Configurações de cache para Service Worker
+<IfModule mod_expires.c>
+    ExpiresByType application/javascript "access plus 1 day"
+    ExpiresByType text/javascript "access plus 1 day"
+</IfModule>
+
+# Headers para PWA
 <IfModule mod_headers.c>
-    <FilesMatch "index\.html$">
-        Header add Link "</assets/fonts/Montserrat-Regular.woff2>; rel=preload; as=font; crossorigin"
-        Header add Link "</assets/fonts/Montserrat-SemiBold.woff2>; rel=preload; as=font; crossorigin"
-        Header add Link "</assets/images/Renov-Logo.png>; rel=preload; as=image"
-    </FilesMatch>
+    <Files "manifest.json">
+        Header always set Content-Type "application/manifest+json"
+        Header always set Cache-Control "public, max-age=3600"
+    </Files>
+    
+    <Files "sw.js">
+        Header always set Cache-Control "no-cache, no-store, must-revalidate"
+        Header always set Pragma "no-cache"
+        Header always set Expires "0"
+    </Files>
 </IfModule> 

@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Renov - Sua Troca Inteligente. Plataforma de trade-in que transforma dispositivos usados em oportunidades de venda.">
+    <meta name="keywords" content="trade-in, renov, dispositivos usados, tecnologia, varejo, telefonia">
+    <meta name="author" content="Renov">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Mobile Performance Optimizations -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="HandheldFriendly" content="true">
+    <meta name="MobileOptimized" content="width">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="theme-color" content="#00b140">
+    <meta name="msapplication-TileColor" content="#00b140">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json?v=1.6.0">
+    <meta name="apple-mobile-web-app-title" content="Renov">
+    <link rel="apple-touch-icon" href="../assets/images/Renov-Logo.webp?v=1.6.0">
+    
+    <!-- Preconnect para recursos externos -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    
+    <!-- Critical CSS for Mobile LCP -->
+    <style>
+        /* Mobile-first critical CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+            background: #fff;
+        }
+
+        /* Mobile Header */
+        .mobile-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            min-height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 1rem;
+        }
+
+        .mobile-logo {
+            width: 120px;
+            height: auto;
+            max-height: 30px;
+        }
+
+        .mobile-menu-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: none;
+            border: none;
+            color: #00b140;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.75rem;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            min-width: 44px;
+            min-height: 44px;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .mobile-menu-toggle:hover,
+        .mobile-menu-toggle:focus {
+            background-color: rgba(0, 177, 64, 0.1);
+            transform: scale(1.05);
+        }
+
+        /* Mobile Navigation */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 70px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            flex-direction: column;
+            padding: 2rem 1rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            z-index: 999;
+            overflow-y: auto;
+            animation: slideInDown 0.3s ease-out;
+        }
+
+        .mobile-nav.active {
+            display: flex;
+        }
+
+        .mobile-nav-item {
+            width: 100%;
+            text-align: left;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+            font-weight: 500;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            transition: all 0.2s ease;
+            border: 1px solid transparent;
+            -webkit-tap-highlight-color: transparent;
+            background: none;
+            color: #333;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .mobile-nav-item:hover,
+        .mobile-nav-item:focus {
+            background: rgba(0, 177, 64, 0.1);
+            border-color: #00b140;
+            transform: translateX(5px);
+        }
+
+        .mobile-nav-item.active {
+            background: #00b140;
+            color: white;
+            border-color: #00b140;
+        }
+
+        @keyframes slideInDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Mobile Hero */
+        .mobile-hero {
+            height: 100vh;
+            min-height: 600px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 70px;
+        }
+
+        .mobile-hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+
+        .mobile-hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 0 1rem;
+            max-width: 90%;
+        }
+
+        .mobile-hero h1 {
+            font-size: clamp(2rem, 10vw, 2.5rem);
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: #fff;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
+
+        .mobile-hero p {
+            font-size: clamp(0.9rem, 4vw, 1rem);
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            color: #fff;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+        }
+
+        /* Mobile Sections */
+        .mobile-section {
+            padding: 3rem 1rem;
+        }
+
+        .mobile-section h2 {
+            font-size: clamp(1.8rem, 6vw, 2rem);
+            line-height: 1.3;
+            margin-bottom: 1rem;
+            text-align: center;
+            color: #333;
+        }
+
+        .mobile-section p {
+            font-size: 1rem;
+            line-height: 1.6;
+            text-align: center;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        /* Mobile Cards */
+        .mobile-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .mobile-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .mobile-card-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1rem auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mobile-card-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .mobile-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+            text-align: center;
+            color: #333;
+        }
+
+        .mobile-card p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #666;
+            text-align: center;
+        }
+
+        /* Mobile Buttons */
+        .mobile-btn {
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            border-radius: 8px;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            cursor: pointer;
+            width: 100%;
+            margin-bottom: 1rem;
+        }
+
+        .mobile-btn-primary {
+            background: #00b140;
+            color: white;
+            border-color: #00b140;
+        }
+
+        .mobile-btn-primary:hover,
+        .mobile-btn-primary:focus {
+            background: #008d36;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 177, 64, 0.3);
+        }
+
+        .mobile-btn-secondary {
+            background: transparent;
+            color: #00b140;
+            border-color: #00b140;
+        }
+
+        .mobile-btn-secondary:hover,
+        .mobile-btn-secondary:focus {
+            background: rgba(0, 177, 64, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Mobile Form */
+        .mobile-form {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .mobile-form input,
+        .mobile-form textarea,
+        .mobile-form select {
+            width: 100%;
+            padding: 1rem;
+            font-size: 16px;
+            border-radius: 8px;
+            min-height: 44px;
+            border: 2px solid #e1e5e9;
+            transition: border-color 0.3s ease;
+            margin-bottom: 1rem;
+            box-sizing: border-box;
+        }
+
+        .mobile-form input:focus,
+        .mobile-form textarea:focus,
+        .mobile-form select:focus {
+            border-color: #00b140;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(0, 177, 64, 0.1);
+        }
+
+        /* Mobile Footer */
+        .mobile-footer {
+            background: #181818;
+            color: #fff;
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+
+        .mobile-footer-logo {
+            width: 100px;
+            height: auto;
+            margin: 0 auto 1rem auto;
+            filter: brightness(1.1);
+        }
+
+        .mobile-footer-social {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .mobile-footer-social a {
+            color: #fff;
+            font-size: 1.5rem;
+            transition: color 0.2s;
+        }
+
+        .mobile-footer-social a:hover {
+            color: #00b140;
+        }
+
+        .mobile-footer-text {
+            font-size: 0.9rem;
+            color: #bbb;
+        }
+
+        /* Mobile Utilities */
+        .mobile-container {
+            max-width: 100%;
+            padding: 0 1rem;
+        }
+
+        .mobile-text-center {
+            text-align: center;
+        }
+
+        .mobile-mb-2 {
+            margin-bottom: 2rem;
+        }
+
+        .mobile-mt-2 {
+            margin-top: 2rem;
+        }
+
+        /* Mobile Loading */
+        .mobile-loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+
+        .mobile-loading.hidden {
+            display: none;
+        }
+
+        /* Mobile Accessibility */
+        .mobile-sr-only {
+            position: absolute !important;
+            width: 1px !important;
+            height: 1px !important;
+            padding: 0 !important;
+            margin: -1px !important;
+            overflow: hidden !important;
+            clip: rect(0,0,0,0) !important;
+            white-space: nowrap !important;
+            border: 0 !important;
+        }
+
+        /* Mobile Focus */
+        .mobile-nav-item:focus,
+        .mobile-btn:focus,
+        .mobile-menu-toggle:focus {
+            outline: 2px solid #00b140;
+            outline-offset: 2px;
+        }
+
+        /* Mobile Animations */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+    
+    <title>Renov - Sua Troca Inteligente</title>
+    
+    <!-- Fonts -->
+    <link rel="preload" href="../assets/fonts/Montserrat-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="mobile-loading" id="mobileLoading">
+        <div style="text-align: center;">
+            <img src="../assets/images/Renov-Logo.webp" alt="Renov" style="width: 120px; height: auto;">
+            <p style="margin-top: 1rem; color: #00b140; font-weight: 600;">Carregando...</p>
+        </div>
+    </div>
+
+    <!-- Mobile Header -->
+    <header class="mobile-header">
+        <img src="../assets/images/Renov-Logo.webp" alt="Renov - Sua Troca Inteligente" class="mobile-logo">
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Abrir menu de navegação" aria-expanded="false">
+            <i class="fas fa-bars"></i>
+        </button>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <nav class="mobile-nav" id="mobileNav">
+        <button class="mobile-nav-item" data-section="home">Home</button>
+        <button class="mobile-nav-item" data-section="sobre">Sobre Nós</button>
+        <button class="mobile-nav-item" data-section="trabalhe">Trabalhe Conosco</button>
+        <button class="mobile-nav-item" data-section="contato">Fale Conosco</button>
+    </nav>
+
+    <!-- Mobile Content -->
+    <main>
+        <!-- Home Section -->
+        <section id="home" class="mobile-section active">
+            <!-- Hero -->
+            <div class="mobile-hero">
+                <img src="../assets/images/bg-como-funciona.webp" alt="Background" class="mobile-hero-bg">
+                <div class="mobile-hero-content">
+                    <h1>Potencialize suas vendas com Trade-in Inteligente</h1>
+                    <p>A plataforma Renov transforma dispositivos usados em oportunidades de venda para sua empresa. Ofereça aos seus clientes a possibilidade de usar seus aparelhos antigos como forma de pagamento e aumente suas conversões de forma inteligente.</p>
+                    <a href="#como-funciona" class="mobile-btn mobile-btn-primary">Como Funciona</a>
+                </div>
+            </div>
+
+            <!-- Como Funciona -->
+            <div class="mobile-section" id="como-funciona">
+                <div class="mobile-container">
+                    <h2>Nossa plataforma impulsiona suas vendas</h2>
+                    <p>Conectamos sua empresa de varejo ou telefonia a uma solução completa de trade-in que facilita vendas e upgrades. Desde pequenas lojas até grandes redes, nosso processo inovador aumenta suas conversões em 4 etapas simples:</p>
+                    
+                    <div class="mobile-card">
+                        <div class="mobile-card-icon">
+                            <img src="../assets/icons/avaliacao-icon.webp" alt="Avaliação">
+                        </div>
+                        <h3>Avaliação</h3>
+                        <p>Seus clientes avaliam dispositivos usados diretamente na sua loja usando nossa tecnologia inteligente integrada.</p>
+                    </div>
+
+                    <div class="mobile-card">
+                        <div class="mobile-card-icon">
+                            <img src="../assets/icons/diagnostico-icon.webp" alt="Diagnóstico">
+                        </div>
+                        <h3>Diagnóstico</h3>
+                        <p>Nossa IA gera instantaneamente um voucher de desconto que seus clientes podem usar na compra de novos dispositivos.</p>
+                    </div>
+
+                    <div class="mobile-card">
+                        <div class="mobile-card-icon">
+                            <img src="../assets/icons/logistica-icon.webp" alt="Logística">
+                        </div>
+                        <h3>Logística</h3>
+                        <p>Cuidamos de toda a logística reversa, coletando os dispositivos usados sem gerar trabalho extra para sua equipe.</p>
+                    </div>
+
+                    <div class="mobile-card">
+                        <div class="mobile-card-icon">
+                            <img src="../assets/icons/pagamento-icon.webp" alt="Pagamento">
+                        </div>
+                        <h3>Pagamento</h3>
+                        <p>Você recebe o pagamento pelos dispositivos coletados, que são revendidos ou descartados de forma responsável pela Renov.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Diferenciais -->
+            <div class="mobile-section">
+                <div class="mobile-container">
+                    <h2>Por que escolher a Renov</h2>
+                    
+                    <div class="mobile-card">
+                        <div class="mobile-card-icon">
+                            <img src="../assets/icons/ia-icon.webp" alt="IA">
+                        </div>
+                        <h3>IA</h3>
+                        <p>IA especializada que elimina subjetividade na avaliação, garantindo processos padronizados e confiáveis em todas as suas lojas.</p>
+                    </div>
+
+                    <div class="mobile-card">
+                        <div class="mobile-card-icon">
+                            <img src="../assets/icons/app-icon.webp" alt="Velocidade">
+                        </div>
+                        <h3>Velocidade</h3>
+                        <p>Nossa solução inteligente realiza avaliações física e mecânica instantaneamente.</p>
+                    </div>
+
+                    <div class="mobile-card">
+                        <div class="mobile-card-icon">
+                            <img src="../assets/icons/api-icon.webp" alt="API">
+                        </div>
+                        <h3>API</h3>
+                        <p>Integração total com seus sistemas existentes via API, acelerando operações e mantendo segurança em todos os processos.</p>
+                    </div>
+
+                    <div class="mobile-card">
+                        <div class="mobile-card-icon">
+                            <img src="../assets/icons/logistics-icon.webp" alt="Atendimento">
+                        </div>
+                        <h3>Atendimento</h3>
+                        <p>Acreditamos na importância das equipes estarem preparadas para superar as expectativas dos clientes através de programas de treinamentos pelos especialistas Renov.</p>
+                    </div>
+
+                    <div class="mobile-card">
+                        <div class="mobile-card-icon">
+                            <img src="../assets/icons/results-icon.webp" alt="Resultados">
+                        </div>
+                        <h3>Resultados</h3>
+                        <p>Comprovado: nossos parceiros aumentam conversões, elevam ticket médio e melhoram satisfação do cliente com nossa solução completa.</p>
+                    </div>
+
+                    <div class="mobile-card">
+                        <div class="mobile-card-icon">
+                            <img src="../assets/icons/esg-icon.webp" alt="Seguro">
+                        </div>
+                        <h3>Seguro</h3>
+                        <p>Nos responsabilizamos por todo o processo de emissões das notas fiscais relacionados ao fluxo de Trade in para uma maior segurança aos Parceiros.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="mobile-section">
+                <div class="mobile-container">
+                    <h2>Pronto para impulsionar suas vendas?</h2>
+                    <a href="../contato-parceiros.html" class="mobile-btn mobile-btn-primary">Quero ser parceiro</a>
+                    <a href="../contato-parceiros.html" class="mobile-btn mobile-btn-secondary">Quero ser revenda</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sobre Section -->
+        <section id="sobre" class="mobile-section">
+            <div class="mobile-container">
+                <h2>Quem somos</h2>
+                <p>Somos uma empresa brasileira de inovação tecnológica focada em soluções inteligentes de trade-in para o varejo e o mercado de eletrônicos. Utilizando inteligência artificial e automação, tornamos o processo de avaliação e troca de dispositivos usados mais rápido, preciso e acessível.</p>
+                
+                <div class="mobile-card">
+                    <div class="mobile-card-icon">
+                        <img src="../assets/icons/sustentabilidade.webp" alt="Sustentabilidade">
+                    </div>
+                    <h3>Sustentabilidade</h3>
+                    <p>Posicione sua empresa como sustentável ao oferecer alternativas conscientes aos seus clientes.</p>
+                </div>
+
+                <div class="mobile-card">
+                    <div class="mobile-card-icon">
+                        <img src="../assets/icons/economia-circular-icon.webp" alt="Economia Circular">
+                    </div>
+                    <h3>Economia Circular</h3>
+                    <p>Seu negócio participa ativamente da economia circular, agregando valor à marca.</p>
+                </div>
+
+                <div class="mobile-card">
+                    <div class="mobile-card-icon">
+                        <img src="../assets/icons/responsabilidade-ambiental.webp" alt="Responsabilidade Ambiental">
+                    </div>
+                    <h3>Responsabilidade Ambiental</h3>
+                    <p>Fortaleça os pilares ESG da sua empresa com reciclagem tecnológica responsável.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trabalhe Section -->
+        <section id="trabalhe" class="mobile-section">
+            <div class="mobile-container">
+                <h2>Junte-se à Nossa Equipe</h2>
+                <p>Descubra oportunidades incríveis para fazer parte da revolução no varejo de tecnologia</p>
+                
+                <div class="mobile-card">
+                    <h3>Simples e Bem Feito</h3>
+                    <p>Simples e bem feito não significa básico. Significa inteligente. Significa criar processos ágeis, acessíveis e confiáveis, funcionam de verdade para quem está na ponta: o varejo, o cliente, o parceiro.</p>
+                </div>
+
+                <div class="mobile-card">
+                    <h3>Impacto Positivo</h3>
+                    <p>Nosso compromisso vai além da inovação. Atuamos para promover a inclusão digital, reduzir o desperdício eletrônico e fortalecer a economia circular.</p>
+                </div>
+
+                <div class="mobile-card">
+                    <h3>Benefícios</h3>
+                    <p>Oferecemos uma série de benefícios para cuidar de você e sua família.</p>
+                </div>
+
+                <a href="../vagas.html" class="mobile-btn mobile-btn-primary">Ver vagas disponíveis</a>
+            </div>
+        </section>
+
+        <!-- Contato Section -->
+        <section id="contato" class="mobile-section">
+            <div class="mobile-container">
+                <h2>Fale com a Renov</h2>
+                <p>Preencha o formulário abaixo e nossa equipe entrará em contato com você!</p>
+                
+                <form class="mobile-form" action="https://formspree.io/f/xovlqvwp" method="POST">
+                    <input type="text" name="nome" placeholder="Seu nome" required>
+                    <input type="email" name="email" placeholder="Seu e-mail" required>
+                    <input type="tel" name="telefone" placeholder="Seu telefone">
+                    <textarea name="mensagem" placeholder="Sua mensagem" rows="4" required></textarea>
+                    <button type="submit" class="mobile-btn mobile-btn-primary">Enviar mensagem</button>
+                </form>
+
+                <div class="mobile-card">
+                    <h3>Informações de Contato</h3>
+                    <p><i class="fas fa-phone"></i> (11) 5102-2950</p>
+                    <p><i class="fas fa-envelope"></i> contato@renovsmart.com.br</p>
+                    <p><i class="fas fa-map-marker-alt"></i> R. Luigi Galvani, 200<br>São Paulo - SP</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Mobile Footer -->
+    <footer class="mobile-footer">
+        <img src="../assets/images/Renov-Logo.webp" alt="Renov" class="mobile-footer-logo">
+        <div class="mobile-footer-social">
+            <a href="https://www.instagram.com/renovsmart" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/company/renovsmart/posts/?feedView=all" target="_blank"><i class="fab fa-linkedin"></i></a>
+        </div>
+        <p class="mobile-footer-text">&copy; 2024 Renov. Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- Mobile JavaScript -->
+    <script>
+        // Mobile-specific JavaScript
+        (function() {
+            'use strict';
+
+            // DOM Elements
+            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+            const mobileNav = document.getElementById('mobileNav');
+            const mobileNavItems = document.querySelectorAll('.mobile-nav-item');
+            const sections = document.querySelectorAll('.mobile-section');
+            const mobileLoading = document.getElementById('mobileLoading');
+
+            // Hide loading screen
+            window.addEventListener('load', () => {
+                setTimeout(() => {
+                    mobileLoading.classList.add('hidden');
+                }, 1000);
+            });
+
+            // Mobile menu functionality
+            let isMenuOpen = false;
+
+            const toggleMenu = () => {
+                isMenuOpen = !isMenuOpen;
+                mobileNav.classList.toggle('active', isMenuOpen);
+                mobileMenuToggle.setAttribute('aria-expanded', isMenuOpen.toString());
+                
+                const icon = mobileMenuToggle.querySelector('i');
+                icon.className = isMenuOpen ? 'fas fa-times' : 'fas fa-bars';
+                mobileMenuToggle.setAttribute('aria-label', isMenuOpen ? 'Fechar menu' : 'Abrir menu');
+
+                // Prevent body scroll when menu is open
+                document.body.style.overflow = isMenuOpen ? 'hidden' : '';
+            };
+
+            // Event listeners
+            mobileMenuToggle.addEventListener('click', toggleMenu);
+            mobileMenuToggle.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    toggleMenu();
+                }
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (isMenuOpen && !mobileNav.contains(e.target) && !mobileMenuToggle.contains(e.target)) {
+                    toggleMenu();
+                }
+            });
+
+            // Close menu on Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && isMenuOpen) {
+                    toggleMenu();
+                }
+            });
+
+            // Navigation functionality
+            mobileNavItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const targetSection = item.getAttribute('data-section');
+                    
+                    // Update active states
+                    mobileNavItems.forEach(navItem => navItem.classList.remove('active'));
+                    sections.forEach(section => section.classList.remove('active'));
+                    
+                    item.classList.add('active');
+                    document.getElementById(targetSection).classList.add('active');
+                    
+                    // Close menu
+                    if (isMenuOpen) {
+                        setTimeout(toggleMenu, 100);
+                    }
+                });
+            });
+
+            // Form handling
+            const form = document.querySelector('.mobile-form');
+            if (form) {
+                form.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    
+                    const formData = new FormData(form);
+                    const submitBtn = form.querySelector('button[type="submit"]');
+                    const originalText = submitBtn.textContent;
+                    
+                    submitBtn.textContent = 'Enviando...';
+                    submitBtn.disabled = true;
+                    
+                    fetch(form.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: { 'Accept': 'application/json' }
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            alert('Mensagem enviada com sucesso! Em breve entraremos em contato.');
+                            form.reset();
+                        } else {
+                            alert('Ocorreu um erro ao enviar. Por favor, tente novamente.');
+                        }
+                    })
+                    .catch(() => {
+                        alert('Erro de conexão. Por favor, tente novamente mais tarde.');
+                    })
+                    .finally(() => {
+                        submitBtn.textContent = originalText;
+                        submitBtn.disabled = false;
+                    });
+                });
+            }
+
+            // Touch feedback
+            const buttons = document.querySelectorAll('.mobile-btn, .mobile-nav-item');
+            buttons.forEach(button => {
+                button.addEventListener('touchstart', function() {
+                    this.style.transform = 'scale(0.95)';
+                    if ('vibrate' in navigator) {
+                        navigator.vibrate(10);
+                    }
+                });
+                
+                button.addEventListener('touchend', function() {
+                    this.style.transform = 'scale(1)';
+                });
+                
+                button.addEventListener('touchcancel', function() {
+                    this.style.transform = 'scale(1)';
+                });
+            });
+
+            // Smooth scrolling
+            const smoothScroll = (target) => {
+                const element = document.querySelector(target);
+                if (element) {
+                    element.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            };
+
+            // Handle anchor links
+            document.addEventListener('click', (e) => {
+                if (e.target.matches('a[href^="#"]')) {
+                    e.preventDefault();
+                    smoothScroll(e.target.getAttribute('href'));
+                }
+            });
+
+            // Performance optimizations
+            const optimizePerformance = () => {
+                // Lazy load images
+                const images = document.querySelectorAll('img');
+                if ('loading' in HTMLImageElement.prototype) {
+                    images.forEach(img => {
+                        img.loading = 'lazy';
+                    });
+                }
+
+                // Optimize scroll performance
+                let ticking = false;
+                const updateScroll = () => {
+                    const scrollTop = window.pageYOffset;
+                    const header = document.querySelector('.mobile-header');
+                    
+                    if (scrollTop > 100) {
+                        header.style.background = 'rgba(255, 255, 255, 0.95)';
+                        header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+                    } else {
+                        header.style.background = 'rgba(255, 255, 255, 0.95)';
+                        header.style.boxShadow = 'none';
+                    }
+                    ticking = false;
+                };
+
+                window.addEventListener('scroll', () => {
+                    if (!ticking) {
+                        requestAnimationFrame(updateScroll);
+                        ticking = true;
+                    }
+                });
+            };
+
+            // Initialize performance optimizations
+            optimizePerformance();
+
+            // Handle orientation changes
+            window.addEventListener('orientationchange', () => {
+                setTimeout(() => {
+                    window.dispatchEvent(new Event('resize'));
+                }, 100);
+            });
+
+        })();
+    </script>
+</body>
+</html> 
