@@ -204,7 +204,8 @@ form.addEventListener('submit', (e) => {
     `;
     // Adicionar modal ao body
     document.body.insertAdjacentHTML('beforeend', modalHTML);
-    // Adicionar estilos do modal
+    // Adicionar estilos do modal apenas uma vez
+    if (!modalStyleInjected) {
     const style = document.createElement('style');
     style.textContent = `
         .modal {
@@ -235,6 +236,8 @@ form.addEventListener('submit', (e) => {
         }
     `;
     document.head.appendChild(style);
+        modalStyleInjected = true;
+    }
 });
 }
 
@@ -258,6 +261,15 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 }); 
+
+// Função debounce para otimizar eventos de resize
+function debounce(fn, delay) {
+  let timer;
+  return function(...args) {
+    clearTimeout(timer);
+    timer = setTimeout(() => fn.apply(this, args), delay);
+  };
+}
 
 // Adiciona pontos no mapa
 document.addEventListener('DOMContentLoaded', function() {
@@ -284,13 +296,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const mapaBrasil = document.querySelector('.mapa-brasil');
     if (mapaBrasil) {
+        const fragment = document.createDocumentFragment();
         mapaPontos.forEach(ponto => {
             const pontoDot = document.createElement('div');
             pontoDot.className = 'mapa-ponto';
             pontoDot.style.left = `${ponto.x}%`;
             pontoDot.style.top = `${ponto.y}%`;
-            mapaBrasil.appendChild(pontoDot);
+            fragment.appendChild(pontoDot);
         });
+        mapaBrasil.appendChild(fragment);
     }
 });
 
@@ -577,13 +591,9 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Atualiza o slider quando a janela é redimensionada
-    let resizeTimeout;
-    window.addEventListener('resize', () => {
-        clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(() => {
+    window.addEventListener('resize', debounce(() => {
             updateSlider(currentIndex);
-        }, 100);
-    });
+    }, 150));
     
     // Inicializa o slider
     updateSlider(0);

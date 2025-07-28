@@ -2,72 +2,53 @@
   "name": "Renov - Sua Troca Inteligente",
   "short_name": "Renov",
   "description": "Plataforma de trade-in que transforma dispositivos usados em oportunidades de venda",
-  "version": "1.5.7",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#00b140",
   "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "pt-BR",
+  "categories": ["business", "finance", "productivity"],
   "icons": [
     {
-      "src": "assets/images/Renov-Logo.webp?v=1.5.7",
-      "sizes": "72x72",
-      "type": "image/webp",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "assets/images/Renov-Logo.webp?v=1.5.7",
-      "sizes": "96x96",
-      "type": "image/webp",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "assets/images/Renov-Logo.webp?v=1.5.7",
-      "sizes": "128x128",
-      "type": "image/webp",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "assets/images/Renov-Logo.webp?v=1.5.7",
-      "sizes": "144x144",
-      "type": "image/webp",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "assets/images/Renov-Logo.webp?v=1.5.7",
-      "sizes": "152x152",
-      "type": "image/webp",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "assets/images/Renov-Logo.webp?v=1.5.7",
+      "src": "assets/images/Renov-Logo.webp",
       "sizes": "192x192",
       "type": "image/webp",
       "purpose": "any maskable"
     },
     {
-      "src": "assets/images/Renov-Logo.webp?v=1.5.7",
-      "sizes": "384x384",
-      "type": "image/webp",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "assets/images/Renov-Logo.webp?v=1.5.7",
+      "src": "assets/images/Renov-Logo.webp",
       "sizes": "512x512",
       "type": "image/webp",
       "purpose": "any maskable"
     }
   ],
-  "categories": ["business", "productivity", "utilities"],
-  "lang": "pt-BR",
-  "dir": "ltr",
+  "shortcuts": [
+    {
+      "name": "Fale Conosco",
+      "short_name": "Contato",
+      "description": "Entre em contato com a Renov",
+      "url": "/contato-parceiros.html",
+      "icons": [
+        {
+          "src": "assets/icons/api-icon.webp",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "assets/images/Renov-Logo.webp",
+      "sizes": "1280x720",
+      "type": "image/webp",
+      "form_factor": "wide"
+    }
+  ],
   "prefer_related_applications": false,
   "related_applications": [],
-  "scope": "/",
-  "cache_strategy": "cache-first",
-  "cache_optimization": {
-    "estimated_savings": "23.518 KiB",
-    "compression_ratio": "70%",
-    "load_time_improvement": "60%"
+  "edge_side_panel": {
+    "preferred_width": 400
   }
 } 

@@ -58,6 +58,7 @@
     
     <title>Renov - Sua Troca Inteligente</title>
     <link rel="stylesheet" href="styles.css?v=1.6.0">
+    <link rel="stylesheet" href="mobile-optimizations.css?v=1.6.0">
     <!-- Font Awesome - Preload e fallback para performance e renderização imediata dos ícones -->
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'">
@@ -124,7 +125,6 @@
             <div class="social-links">
                 <a href="https://www.instagram.com/renovsmart" target="_blank"><i class="fab fa-instagram"></i></a>
                 <a href="https://www.linkedin.com/company/renovsmart/posts/?feedView=all" target="_blank"><i class="fab fa-linkedin"></i></a>
-                <a href="https://api.whatsapp.com/send?phone=551151942988&text=Olá! Gostaria de saber mais sobre a Renov." target="_blank"><i class="fab fa-whatsapp"></i></a>
             </div>
             </div>
     </header>
@@ -195,7 +195,7 @@
                         <div class="novo-bg" style="background-image: url('assets/icons/pagamento-icon.webp');" loading="lazy" decoding="async"></div>
                         <div class="novo-conteudo">
                             <h2 class="novo-titulo">Pagamento</h2>
-                            <p class="novo-descricao">Você recebe o pagamento pelos dispositivos coletados, que são revendidos ou descartados de forma responsável pela Renovsmart.</p>
+                            <p class="novo-descricao">Você recebe o pagamento pelos dispositivos coletados, que são revendidos ou descartados de forma responsável pela Renov.</p>
                         </div>
                     </section>
                 </div>
@@ -213,6 +213,7 @@
                             </div>
                             <div class="ai-hero-content">
                                 <h2 class="ai-hero-title">Tecnologia que vende por você</h2>
+                                <p style="font-size: 1.1rem; color: #fff; text-align: left; margin-top: 1rem; text-shadow: 1px 1px 2px rgba(0,0,0,0.8); line-height: 1.4;">Chega de erros de avaliação em seu PDV. Nossa IA minimiza erros humanos na avaliação estética e mecânica e o voucher de desconto reflete o valor real de mercado.</p>
                             </div>
                         </section>
                         <!-- Texto explicativo após o vídeo -->
@@ -236,16 +237,16 @@
                                 <h3 class="diferencial-title">IA</h3>
                                 <p class="diferencial-text">IA especializada que elimina subjetividade na avaliação, garantindo processos padronizados e confiáveis em todas as suas lojas.</p>
                             </div>
-                            <!-- Aplicativo -->
+                            <!-- Velocidade -->
                             <div class="diferencial-card">
                                                             <div class="diferencial-icon">
                                 <picture>
                                     <source srcset="assets/icons/app-icon.webp?v=1.6.0" type="image/webp">
-                                    <img src="assets/icons/app-icon.webp?v=1.6.0" alt="Ícone de Aplicativo Mobile" loading="lazy" decoding="async">
+                                    <img src="assets/icons/app-icon.webp?v=1.6.0" alt="Ícone de Velocidade" loading="lazy" decoding="async">
                                 </picture>
                             </div>
-                                <h3 class="diferencial-title">Aplicativo</h3>
-                                <p class="diferencial-text">Aplicativo completo que realiza mais de 50 testes funcionais, proporcionando diagnóstico profissional sem necessidade de conhecimento técnico da sua equipe.</p>
+                                <h3 class="diferencial-title">Velocidade</h3>
+                                <p class="diferencial-text">Nossa solução inteligente realiza avaliações física e mecânica instantaneamente.</p>
                             </div>
                             <!-- API -->
                             <div class="diferencial-card">
@@ -258,16 +259,16 @@
                                 <h3 class="diferencial-title">API</h3>
                                 <p class="diferencial-text">Integração total com seus sistemas existentes via API, acelerando operações e mantendo segurança em todos os processos.</p>
                             </div>
-                            <!-- Logística -->
+                            <!-- Atendimento -->
                             <div class="diferencial-card">
                                                             <div class="diferencial-icon">
                                 <picture>
                                     <source srcset="assets/icons/logistics-icon.webp?v=1.6.0" type="image/webp">
-                                    <img src="assets/icons/logistics-icon.webp?v=1.6.0" alt="Ícone de Logística e Distribuição" loading="lazy" decoding="async">
+                                    <img src="assets/icons/logistics-icon.webp?v=1.6.0" alt="Ícone de Atendimento" loading="lazy" decoding="async">
                                 </picture>
                             </div>
-                                <h3 class="diferencial-title">Logística</h3>
-                                <p class="diferencial-text">Operação nacional com soluções logísticas personalizadas para cada tipo de negócio, desde lojas individuais até grandes redes.</p>
+                                <h3 class="diferencial-title">Atendimento</h3>
+                                <p class="diferencial-text">Acreditamos na importância das equipes estarem preparadas para superar as expectativas dos clientes através de programas de treinamentos pelos especialistas Renov.</p>
                             </div>
                             <!-- Resultados -->
                             <div class="diferencial-card">
@@ -288,8 +289,8 @@
                                     <img src="assets/icons/esg-icon.webp?v=1.6.0" alt="Ícone de ESG e Sustentabilidade" loading="lazy" decoding="async">
                                 </picture>
                             </div>
-                                <h3 class="diferencial-title">ESG</h3>
-                                <p class="diferencial-text">Fortaleça a política ESG da sua empresa: cada trade-in realizado contribui para economia circular e redução do impacto ambiental.</p>
+                                <h3 class="diferencial-title">Seguro</h3>
+                                <p class="diferencial-text">Nos responsabilizamos por todo o processo de emissões das notas fiscais relacionados ao fluxo de Trade in para uma maior segurança aos Parceiros.</p>
                             </div>
                         </div>
                     </div>
@@ -439,7 +440,7 @@
                   <div class="parceiro-experiencia-card parceiro-revenda-bg">
                     <div class="parceiro-experiencia-info">
                       <h3>Lojas e Revendas</h3>
-                      <p style="color: #fff;">Implantação rápida e suporte dedicado para potencializar vendas da sua loja.</p>
+                                              <p style="color: #fff; min-height: 80px; display: flex; align-items: center;">Sou especialista em revendas de usados e gostaria de ser parceiro.</p>
                       <a href="contato-parceiros.html" class="btn-parceiro" target="_blank" style="border:2px solid #fff!important;">Quero ser revenda</a>
                     </div>
                     <div class="parceiro-experiencia-img"></div>
@@ -453,78 +454,78 @@
                         <div class="respostas-slider" role="region" aria-label="Perguntas frequentes sobre a Renov">
                             <!-- Card 1 -->
                             <div class="resposta-card">
-                                <h3>Como saber se o dispositivo é aceito no Trade-in Renov?</h3>
+                                <h3>Como funciona o programa de trade‑in para minha loja e rede?</h3>
                                 <div class="resposta-content">
                                     <div class="especialista">
                                         <img src="assets/images/especialista1.webp" alt="Especialista Renov" class="avatar" loading="lazy">
                                     </div>
-                                    <p>Através do <a href="https://app.renovsmart.com.br" target="_blank">https://app.renovsmart.com.br</a> você consegue iniciar a avaliação digitando o IMEI do aparelho, caso ele seja cadastrado você poderá dar continuidade na avaliação, caso o dispositivo não seja aceito, aparecerá uma notificação sinalizando que ele não está cadastrado para avaliação.</p>
+                                    <p>O cliente chega com seu aparelho usado, ele é avaliado com IA em nossa solução inteligente. Um voucher de desconto é gerado na hora para a compra do novo em seu ponto de venda. Os aparelhos usados são coletados pela nossa logística e gerenciados fiscalmente pela Renov.</p>
                                 </div>
                             </div>
 
                             <!-- Card 2 -->
                             <div class="resposta-card">
-                                <h3>Posso aceitar um dispositivo que não está no Programa Trade-in?</h3>
+                                <h3>Quais categorias vocês aceitam?</h3>
                                 <div class="resposta-content">
                                     <div class="especialista">
                                         <img src="assets/images/especialista2.webp" alt="Especialista Renov" class="avatar" loading="lazy">
                                     </div>
-                                    <p>Não, no programa Trade-in são aceitos dispositivos fabricados nos últimos 5 anos.</p>
+                                    <p>Aceitamos smartphones Android, iPhones, Consoles de Video Game, Tablets, Apple Watches e Notebooks. Várias novidades a caminho.</p>
                                 </div>
                             </div>
 
                             <!-- Card 3 -->
                             <div class="resposta-card">
-                                <h3>Posso aceitar um dispositivo que não liga?</h3>
+                                <h3>Como ocorre a integração técnica?</h3>
                                 <div class="resposta-content">
                                     <div class="especialista">
                                         <img src="assets/images/matheus-mundstock.webp" alt="Especialista Renov" class="avatar" loading="lazy">
                                     </div>
-                                    <p>Não, justamente porque o processo de diagnóstico inteligente necessita do dispositivo em pleno funcionamento.</p>
+                                    <p>Fornecemos APIs documentadas que permitem integração com seu ERP, PDV ou sistema de e‑commerce. O onboarding técnico é acompanhado pelo nosso time de TI.</p>
                                 </div>
                             </div>
 
                             <!-- Card 4 -->
                             <div class="resposta-card">
-                                <h3>Caso tenha alguma dúvida ou problema na ferramenta Renov Smart, o que faço?</h3>
+                                <h3>E a logística? Como funciona o recolhimento dos aparelhos usados?</h3>
                                 <div class="resposta-content">
                                     <div class="especialista">
                                         <img src="assets/images/ismael-kolling.webp" alt="Especialista Renov" class="avatar" loading="lazy">
                                     </div>
-                                    <p>Simples, pode acionar pelo whatsapp presente na tela de login, a ferramenta possui um atendimento automatizado e também pelo Especialista da Renov.</p>
+                                    <p>Dispomos de uma rede logística nacional de transportadoras parceiras. A coleta ocorre de forma periódica alinhada com cada Parceiro.</p>
                                 </div>
                             </div>
 
                             <!-- Card 5 -->
                             <div class="resposta-card">
-                                <h3>Aceitamos dispositivos comprados no exterior?</h3>
+                                <h3>Como funciona a questão fiscal?</h3>
                                 <div class="resposta-content">
                                     <div class="especialista">
                                         <img src="assets/images/especialista1.webp" alt="Especialista Renov" class="avatar" loading="lazy">
                                     </div>
-                                    <p>Sim, o nosso programa de Trade in aceita os dispositivos adquiridos no Exterior.</p>
+                                    <p>Emitimos todas as notas fiscais de entrada e saída, garantindo total conformidade legal. Você não precisa se preocupar com burocracia desse fluxo.</p>
                                 </div>
                             </div>
 
                             <!-- Card 6 -->
                             <div class="resposta-card">
-                                <h3>Preciso devolver os acessórios para receber o valor integral do voucher?</h3>
+                                <h3>E a capacitação da minha equipe?</h3>
                                 <div class="resposta-content">
                                     <div class="especialista">
                                         <img src="assets/images/especialista2.webp" alt="Especialista Renov" class="avatar" loading="lazy">
                                     </div>
-                                    <p>Não é necessário a entrega de nenhum item adicional, apenas o dispositivo.</p>
+                                    <p>Oferecemos treinamentos presenciais ou online com certificação da Renov. Os módulos incluem operação da solução, atendimento ao cliente, fluxos fiscais, logísticos e gestão de vouchers.</p>
                                 </div>
                             </div>
 
                             <!-- Card 7 -->
                             <div class="resposta-card">
-                                <h3>A Renov aceita dispositivos com a tela quebrada?</h3>
+                                <h3>Como garantir a segurança e transparência no valor para o cliente?</h3>
                                 <div class="resposta-content">
                                     <div class="especialista">
                                         <img src="assets/images/matheus-mundstock.webp" alt="Especialista Renov" class="avatar" loading="lazy">
                                     </div>
-                                    <p>Aceitamos desde que o aparelho ligue para realizamos a avaliação Trade-in.</p>
+                                    <p>A IA minimiza erros humanos na avaliação estética e mecânica, e o voucher reflete o valor real de mercado. Todo processo é rastreável e auditável.</p>
                                 </div>
                             </div>
 
@@ -586,7 +587,7 @@
                   </div>
                 </div>
               </section>
-              <p style="font-size:1.1rem;font-weight:400;line-height:1.4;text-align:left;color:#000;margin:48px auto 24px 350px;max-width:900px;">
+              <p style="font-size:1.1rem;font-weight:400;line-height:1.4;text-align:left;color:#000;margin:48px auto 24px 450px;max-width:900px;margin-top:50px;">
   <span style="display:block;font-weight:700;font-size:2rem;text-align:left;margin-bottom:12px;">Quem somos</span>
   Somos uma empresa brasileira de inovação tecnológica focada em soluções inteligentes de trade-in para o varejo e o mercado de eletrônicos. Utilizando inteligência artificial e automação, tornamos o processo de avaliação e troca de dispositivos usados mais rápido, preciso e acessível — transformando smartphones, tablets e outros eletrônicos usados em oportunidades de negócio e inclusão digital.
 </p>
@@ -686,9 +687,12 @@
                 <section class="fundadores">
   <div class="fundadores-container">
     <h2 style="color:#000 !important;text-align:left;margin-left:50px;">Nossos fundadores</h2>
-    <p class="fundadores-intro" style="color:#000;text-align:left;margin-left:46px;">
-      Com mais de 20 anos de experiência a frente de grandes marcas multinacionais e inovadoras no varejo, sendo pioneiros na introdução do Trade-in no Brasil em 2012.
-    </p>
+          <p class="fundadores-intro" style="color:#000;text-align:left;margin-left:46px;">
+       Com trajetórias complementares e mais de duas décadas de atuação no setor varejista e de tecnologia, Ismael Kolling e Matheus Mundstock são os nomes por trás da criação da Renov. Visionários e empreendedores de essência, foram responsáveis por introduzir o conceito de Trade-in estruturado no varejo brasileiro ainda em 2012, antecipando tendências que hoje moldam a nova economia circular.<br><br>
+       Apaixonados por inovação com propósito, ambos enxergaram no ciclo de vida dos dispositivos móveis uma oportunidade de transformar descarte em valor, gerando impacto econômico, ambiental e social. Foi assim que criaram a Renov — uma empresa que nasceu com o compromisso de reduzir a obsolescência programada, promover o reuso inteligente de tecnologia e tornar o consumo mais acessível e sustentável.<br><br>
+       Sob sua direção, a Renov consolidou-se como referência em soluções de trade-in no Brasil, conectando grandes varejistas à tecnologia proprietária de avaliação automatizada e logística reversa com rastreabilidade fiscal.<br><br>
+       Mais do que fundadores, são líderes movidos por propósito: empoderar pessoas e empresas a fazerem escolhas mais inteligentes e responsáveis — hoje e no futuro.
+      </p>
     <div class="fundadores-grid">
       <div class="fundador-card">
         <div class="fundador-foto-wrapper">
@@ -740,7 +744,7 @@
                     </section>
                     <section>
                         <div class="simples-bem-feito-container" style="margin-left:-280px; margin-bottom:40px; padding: 100px; background: #f8f9fa url('assets/images/vagas.webp') no-repeat center center; background-size: cover; border-radius: 12px; width: 1300px; min-height: 250px; text-align: left;">
-                            <h2 style="font-size:2.5rem;font-weight:700;margin-bottom:1.5rem;color:#008d36; text-align: left;">inscreva-se agora para<br>entrar para nossa equipe</h2>
+                            <h2 style="font-size:2.5rem;font-weight:700;margin-bottom:1.5rem;color:#008d36; text-align: left;">Venha fazer parte do nosso Time</h2>
                             <div style="text-align:left;margin-top:32px;">
                                 <a href="vagas.html" class="btn-vagas" style="display:inline-block;background:#00b140;color:#fff;font-size:1rem;font-weight:600;padding:10px 22px;border-radius:32px;text-decoration:none;transition:background 0.2s;border:2px solid #00b140;">Ver vagas disponíveis</a>
                             </div>
@@ -822,7 +826,7 @@
                                 <i class="fas fa-phone" style="font-size:2.4rem;color:#008d36;"></i>
                                 <div>
                                     <div style="font-weight:700;font-size:1.5rem;">Telefone</div>
-                                    <div style="font-size:1.25rem;">(11) 5194-2988</div>
+                                    <div style="font-size:1.25rem;">(11) 5102-2950</div>
                                 </div>
                             </div>
                             <div style="display:flex;align-items:center;gap:18px;">
@@ -854,10 +858,9 @@
         <source srcset="assets/images/Renov-Logo.webp?v=1.6.0" type="image/webp">
         <img src='assets/images/Renov-Logo.webp?v=1.6.0' alt='Renov - Sua Troca Inteligente' style='width:130px;filter:brightness(1.1);margin-top:-10px;' loading="lazy" decoding="async">
       </picture>
-              <div class="social-links" style="display:flex;gap:16px;margin-top:-5px;margin-left:10px;">
+              <div class="social-links" style="display:flex;gap:16px;margin-top:-5px;margin-left:30px;">
         <a href="https://www.instagram.com/renovsmart" target="_blank" style="color:#fff;font-size:1.5rem;transition:color 0.2s;" onmouseover="this.style.color='#00b140'" onmouseout="this.style.color='#fff'"><i class="fab fa-instagram"></i></a>
         <a href="https://www.linkedin.com/company/renovsmart/posts/?feedView=all" target="_blank" style="color:#fff;font-size:1.5rem;transition:color 0.2s;" onmouseover="this.style.color='#00b140'" onmouseout="this.style.color='#fff'"><i class="fab fa-linkedin"></i></a>
-        <a href="https://api.whatsapp.com/send?phone=551151942988&text=Olá! Gostaria de saber mais sobre a Renov." target="_blank" style="color:#fff;font-size:1.5rem;transition:color 0.2s;" onmouseover="this.style.color='#00b140'" onmouseout="this.style.color='#fff'"><i class="fab fa-whatsapp"></i></a>
       </div>
     </div>
     <!-- Navegação central -->
@@ -890,7 +893,7 @@
       </div>
       <div style="display:flex;align-items:flex-start;gap:10px;font-size:1rem;margin-left:0;">
         <i class="fas fa-phone" style="color:#00b140;margin-top:6px;"></i>
-        <span style="color:#000;text-align:left;">(11) 5194-2988</span>
+        <span style="color:#000;text-align:left;">(11) 5102-2950</span>
       </div>
     </div>
   </div>
@@ -900,6 +903,7 @@
 </footer>
 
     <script src="script.min.js?v=1.6.0" fetchpriority="high"></script>
+    <script src="mobile-optimizer.js?v=1.6.0"></script>
     <script>
       // Registro do Service Worker para cache offline
       if ('serviceWorker' in navigator) {
