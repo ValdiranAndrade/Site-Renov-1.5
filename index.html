@@ -58,7 +58,8 @@
     
     <title>Renov - Sua Troca Inteligente</title>
     <link rel="stylesheet" href="styles.css?v=1.6.0">
-    <link rel="stylesheet" href="mobile-optimizations.css?v=1.6.0">
+    
+
     <!-- Font Awesome - Preload e fallback para performance e renderização imediata dos ícones -->
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'">
@@ -89,6 +90,23 @@
         .video-bg-wrapper, .video-bg {
           height: 100% !important;
           min-height: 100% !important;
+        }
+        /* Força o vídeo a aparecer no mobile */
+        .video-bg, #hero-video {
+          display: block !important;
+          opacity: 1 !important;
+          visibility: visible !important;
+          width: 100vw !important;
+          height: 100% !important;
+          min-width: 100vw !important;
+          min-height: 100% !important;
+          object-fit: cover !important;
+          position: absolute !important;
+          top: 0 !important;
+          left: 50% !important;
+          transform: translateX(-50%) !important;
+          z-index: 0 !important;
+          background: transparent !important;
         }
       }
       
@@ -126,6 +144,40 @@
                 <a href="https://www.instagram.com/renovsmart" target="_blank"><i class="fab fa-instagram"></i></a>
                 <a href="https://www.linkedin.com/company/renovsmart/posts/?feedView=all" target="_blank"><i class="fab fa-linkedin"></i></a>
             </div>
+            
+            <!-- Menu Mobile -->
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <!-- Menu Mobile Overlay -->
+        <div class="mobile-menu-overlay">
+            <div class="mobile-menu-content">
+                <div class="mobile-menu-header">
+                    <div class="logo">
+                        <a href="#" onclick="openTab('home'); closeMobileMenu(); return false;">
+                            <img src="assets/images/Renov-Logo.webp?v=1.6.0" alt="Renov - Sua Troca Inteligente" width="120" height="30">
+                        </a>
+                    </div>
+                    <button class="mobile-menu-close" onclick="closeMobileMenu()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <nav class="mobile-nav">
+                    <a href="#" onclick="openTab('home'); closeMobileMenu(); return false;" class="mobile-nav-item active">Home</a>
+                    <a href="#" onclick="openTab('sobre'); closeMobileMenu(); return false;" class="mobile-nav-item">Sobre Nós</a>
+                    <a href="#" onclick="openTab('trabalhe'); closeMobileMenu(); return false;" class="mobile-nav-item">Trabalhe Conosco</a>
+                    <a href="#" onclick="openTab('contato'); closeMobileMenu(); return false;" class="mobile-nav-item">Fale Conosco</a>
+                </nav>
+                <div class="mobile-social-links">
+                    <a href="https://www.instagram.com/renovsmart" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/company/renovsmart/posts/?feedView=all" target="_blank"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
             </div>
     </header>
 
@@ -135,12 +187,11 @@
             <section id="home" class="tab-content active">
                 <section class="hero">
                   <div class="video-bg-wrapper">
-                    <picture id="hero-poster" style="display:none;">
-                      <source srcset="assets/images/mobile/bg-como-funciona.webp?v=1.6.0" type="image/webp" media="(max-width: 768px)">
-                      <source srcset="assets/images/bg-como-funciona.webp?v=1.6.0" type="image/webp">
-                      <img src="assets/images/bg-como-funciona.webp?v=1.6.0" alt="Background da seção Como Funciona" width="1200" height="400" style="width:100vw;height:100%;object-fit:cover;" loading="lazy">
-                    </picture>
-                    <video id="hero-video" autoplay muted loop playsinline class="video-bg" preload="none" poster="assets/images/bg-como-funciona.webp">
+                    <!-- Background para mobile -->
+                    <div class="mobile-bg" style="position: absolute; top: 0; left: 0; width: 100vw; height: 100%; min-width: 100vw; min-height: 100%; background-image: url('assets/images/bg-como-funciona.webp'); background-size: cover; background-position: center; background-repeat: no-repeat; z-index: 0; display: none;"></div>
+                    
+                    <!-- Vídeo para desktop -->
+                    <video id="hero-video" autoplay muted loop playsinline class="video-bg desktop-video" preload="auto" poster="assets/images/bg-como-funciona.webp">
                       <source src="assets/video/bg-video.mp4.webm?v=1.6.0" type="video/webm">
                       <source src="assets/video/bg-video.mp4.mp4?v=1.6.0" type="video/mp4">
                       Seu navegador não suporta o elemento de vídeo.
@@ -213,7 +264,7 @@
                             </div>
                             <div class="ai-hero-content">
                                 <h2 class="ai-hero-title">Tecnologia que vende por você</h2>
-                                <p style="font-size: 1.1rem; color: #fff; text-align: left; margin-top: 1rem; text-shadow: 1px 1px 2px rgba(0,0,0,0.8); line-height: 1.4;">Chega de erros de avaliação em seu PDV. Nossa IA minimiza erros humanos na avaliação estética e mecânica e o voucher de desconto reflete o valor real de mercado.</p>
+                                <p>Chega de erros de avaliação em seu PDV. Nossa IA minimiza erros humanos na avaliação estética e mecânica e o voucher de desconto reflete o valor real de mercado.</p>
                             </div>
                         </section>
                         <!-- Texto explicativo após o vídeo -->
@@ -903,9 +954,6 @@
 </footer>
 
     <script src="script.min.js?v=1.6.0" fetchpriority="high"></script>
-    <script src="mobile-optimizer.js?v=1.6.0"></script>
-    <script src="mobile-detector.js?v=1.6.0"></script>
-    <script src="mobile-redirect.js?v=1.6.0"></script>
     <script>
       // Registro do Service Worker para cache offline
       if ('serviceWorker' in navigator) {

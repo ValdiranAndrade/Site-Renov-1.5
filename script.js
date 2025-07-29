@@ -850,4 +850,134 @@ document.addEventListener('DOMContentLoaded', async () => {
   setTimeout(() => {
     cacheManager.getCacheInfo();
   }, 1000);
-}); 
+  
+  // Inicializa menu mobile
+  initMobileMenu();
+  
+  // Força o carregamento do vídeo no mobile
+  forceVideoLoad();
+  
+  // Verificação adicional para mobile
+  if (window.innerWidth <= 940) {
+    setTimeout(() => {
+      const video = document.getElementById('hero-video');
+      if (video) {
+        video.style.cssText = `
+          display: block !important;
+          opacity: 1 !important;
+          visibility: visible !important;
+          width: 100vw !important;
+          height: 100% !important;
+          min-width: 100vw !important;
+          min-height: 100% !important;
+          object-fit: cover !important;
+          position: absolute !important;
+          top: 0 !important;
+          left: 50% !important;
+          transform: translateX(-50%) !important;
+          z-index: 0 !important;
+          background: transparent !important;
+        `;
+      }
+    }, 500);
+  }
+});
+
+// Funções do Menu Mobile
+function initMobileMenu() {
+  const mobileToggle = document.querySelector('.mobile-menu-toggle');
+  const mobileOverlay = document.querySelector('.mobile-menu-overlay');
+  
+  if (mobileToggle && mobileOverlay) {
+    mobileToggle.addEventListener('click', openMobileMenu);
+  }
+}
+
+function openMobileMenu() {
+  const mobileToggle = document.querySelector('.mobile-menu-toggle');
+  const mobileOverlay = document.querySelector('.mobile-menu-overlay');
+  
+  if (mobileToggle && mobileOverlay) {
+    mobileToggle.classList.add('active');
+    mobileOverlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+}
+
+function closeMobileMenu() {
+  const mobileToggle = document.querySelector('.mobile-menu-toggle');
+  const mobileOverlay = document.querySelector('.mobile-menu-overlay');
+  
+  if (mobileToggle && mobileOverlay) {
+    mobileToggle.classList.remove('active');
+    mobileOverlay.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+}
+
+// Fechar menu ao clicar fora dele
+document.addEventListener('click', (e) => {
+  const mobileOverlay = document.querySelector('.mobile-menu-overlay');
+  const mobileToggle = document.querySelector('.mobile-menu-toggle');
+  
+  if (mobileOverlay && mobileOverlay.classList.contains('active')) {
+    if (!mobileOverlay.contains(e.target) && !mobileToggle.contains(e.target)) {
+      closeMobileMenu();
+    }
+  }
+});
+
+// Fechar menu ao pressionar ESC
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    closeMobileMenu();
+  }
+});
+
+// Força o carregamento do vídeo no mobile
+function forceVideoLoad() {
+  const video = document.getElementById('hero-video');
+  if (video) {
+    // Força o carregamento do vídeo
+    video.load();
+    
+    // Garante que o vídeo seja visível imediatamente
+    video.style.cssText = `
+      display: block !important;
+      opacity: 1 !important;
+      visibility: visible !important;
+      width: 100vw !important;
+      height: 100% !important;
+      min-width: 100vw !important;
+      min-height: 100% !important;
+      object-fit: cover !important;
+      position: absolute !important;
+      top: 0 !important;
+      left: 50% !important;
+      transform: translateX(-50%) !important;
+      z-index: 0 !important;
+      background: transparent !important;
+    `;
+    
+    // Tenta reproduzir o vídeo após um pequeno delay
+    setTimeout(() => {
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(error => {
+          console.log('Vídeo não pôde ser reproduzido automaticamente:', error);
+          // Mesmo com erro, mantém o vídeo visível
+          video.style.display = 'block';
+          video.style.opacity = '1';
+          video.style.visibility = 'visible';
+        });
+      }
+    }, 100);
+    
+    // Adiciona listener para garantir que o vídeo seja visível quando carregado
+    video.addEventListener('loadeddata', () => {
+      video.style.display = 'block';
+      video.style.opacity = '1';
+      video.style.visibility = 'visible';
+    });
+  }
+} 

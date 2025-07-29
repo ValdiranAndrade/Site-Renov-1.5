@@ -76,14 +76,6 @@
             document.head.appendChild(link);
         }
         
-        // Carregar fonte Montserrat via FontFace API
-        if ('FontFace' in window) {
-            const font = new FontFace('Montserrat', 'url(assets/fonts/Montserrat-Regular.woff2)');
-            font.load().then(function(loadedFont) {
-                document.fonts.add(loadedFont);
-            });
-        }
-        
         console.log('✅ Recursos não críticos carregados');
     }
 })(); 

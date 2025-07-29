@@ -8,7 +8,7 @@
     <link rel="preconnect" href="fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="mobile-optimizations.css">
+    <link rel="stylesheet" href="styles-optimized.css">
     <style>
         * {
             margin: 0;
@@ -301,7 +301,7 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <img src="assets/images/Renov-Logo.webp" alt="Renov">
+                    <img src="assets/images/Renov-Logo.webp" alt="Renov" loading="lazy">
                 </div>
                 <a href="index.html" class="back-button">
                     <i class="fas fa-arrow-left"></i> Voltar ao Site
@@ -392,7 +392,7 @@
                         </div>
                         <div class="info-content">
                             <h3>Telefone</h3>
-                            <p><a href="tel:+551151942988">(11) 5194-2988</a></p>
+                            <p><a href="tel:+551151022950">(11) 5102-2950</a></p>
                         </div>
                     </div>
 
@@ -426,11 +426,10 @@
   <div style="max-width:1200px;margin:0 auto;padding:48px 32px 0 32px;display:flex;align-items:flex-start;justify-content:space-between;gap:48px;flex-wrap:wrap;">
     <!-- Logo e social -->
     <div style="flex:1 1 220px;min-width:180px;display:flex;flex-direction:column;align-items:flex-start;gap:24px;">
-      <img src='assets/images/Renov-Logo.webp' alt='Renov - Sua Troca Inteligente' style='width:130px;filter:brightness(1.1);margin-top:-10px;'>
+      <img src='assets/images/Renov-Logo.webp' alt='Renov - Sua Troca Inteligente' style='width:130px;filter:brightness(1.1);margin-top:-10px;' loading="lazy">
               <div class="social-links" style="display:flex;gap:16px;margin-top:-5px;margin-left:10px;">
         <a href="https://www.instagram.com/renovsmart" target="_blank" style="color:#000;font-size:1.5rem;transition:color 0.2s;" onmouseover="this.style.color='#00b140'" onmouseout="this.style.color='#000'"><i class="fab fa-instagram"></i></a>
         <a href="https://www.linkedin.com/company/renovsmart/posts/?feedView=all" target="_blank" style="color:#000;font-size:1.5rem;transition:color 0.2s;" onmouseover="this.style.color='#00b140'" onmouseout="this.style.color='#000'"><i class="fab fa-linkedin"></i></a>
-        <a href="https://api.whatsapp.com/send?phone=551151942988&text=Olá! Gostaria de saber mais sobre a Renov." target="_blank" style="color:#000;font-size:1.5rem;transition:color 0.2s;" onmouseover="this.style.color='#00b140'" onmouseout="this.style.color='#000'"><i class="fab fa-whatsapp"></i></a>
       </div>
     </div>
     <!-- Navegação central -->
@@ -463,7 +462,7 @@
       </div>
       <div style="display:flex;align-items:flex-start;gap:10px;font-size:1rem;margin-left:0;">
         <i class="fas fa-phone" style="color:#00b140;margin-top:6px;"></i>
-        <span style="color:#000;text-align:left;">(11) 5194-2988</span>
+        <span style="color:#000;text-align:left;">(11) 5102-2950</span>
       </div>
     </div>
   </div>
@@ -472,7 +471,7 @@
   </div>
 </footer>
 
-    <script src="mobile-optimizer.js"></script>
+    <script src="script.min.js?v=1.6.0"></script>
     <script>
         // Form submission handling with Formspree
         document.getElementById('contactForm').addEventListener('submit', function(e) {
