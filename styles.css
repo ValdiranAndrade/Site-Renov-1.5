@@ -2745,54 +2745,96 @@ header, .header-content, .main-nav, .tab-btn, .logo, .social-links a, .hero-cont
 }
 
 @media (max-width: 768px) {
+    .como-funciona {
+        min-height: auto;
+        padding-top: 0px;
+        display: flex;
+        flex-direction: column;
+        background: #fff;
+    }
+    
+    .como-funciona-bg {
+        order: 2;
+        margin-top: 80px;
+        position: relative;
+        z-index: 1;
+    }
+    
+    .como-funciona-content {
+        order: 1;
+        position: relative;
+        z-index: 3;
+        padding: 0px 5% 5px;
+        margin-top: 0;
+        background: #fff;
+    }
+    
     .como-funciona-texto {
         padding: 0;
         margin: 0;
-        background: none;
+        background: #fff;
         max-width: 100%;
+        position: relative;
+        z-index: 3;
     }
 
     .como-funciona-texto h2 {
         font-size: 32px;
         white-space: normal !important;
         line-height: 1.2;
-        margin-bottom: 20px;
+        margin-bottom: 15px;
+        color: #000;
     }
 
     .como-funciona-texto p {
         font-size: 16px;
         line-height: 1.5;
-    }
-    
-    .como-funciona-content {
-        padding: 40px 5% 20px;
-    }
-    
-    .como-funciona {
-        min-height: 500px;
-        padding-top: 20px;
+        color: #000;
     }
 }
 
 @media (max-width: 480px) {
+    .como-funciona {
+        min-height: auto;
+        padding-top: 0px;
+        display: flex;
+        flex-direction: column;
+        background: #fff;
+    }
+    
+    .como-funciona-bg {
+        order: 2;
+        margin-top: 70px;
+        position: relative;
+        z-index: 1;
+    }
+    
+    .como-funciona-content {
+        order: 1;
+        position: relative;
+        z-index: 3;
+        padding: 0px 5% 3px;
+        margin-top: 0;
+        background: #fff;
+    }
+    
     .como-funciona-texto h2 {
         font-size: 28px;
         line-height: 1.1;
-        margin-bottom: 15px;
+        margin-bottom: 10px;
+        color: #000;
     }
 
     .como-funciona-texto p {
         font-size: 14px;
         line-height: 1.4;
+        color: #000;
     }
     
-    .como-funciona-content {
-        padding: 30px 5% 15px;
-    }
-    
-    .como-funciona {
-        min-height: 400px;
-        padding-top: 15px;
+    .como-funciona-texto {
+        position: relative;
+        z-index: 3;
+        background: #fff;
     }
 }
 
@@ -3542,20 +3584,159 @@ header::before, header::after,
     line-height: 1.2;
     margin-top: 0;
 }
+/* Textos mobile (fora dos containers) */
+.avaliacao-texto-mobile,
+.diagnostico-texto-mobile,
+.pagamento-texto-mobile,
+.novo-texto-mobile {
+    display: none;
+}
+
+.avaliacao-titulo-mobile,
+.diagnostico-titulo-mobile,
+.pagamento-titulo-mobile,
+.novo-titulo-mobile {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.avaliacao-descricao-mobile,
+.diagnostico-descricao-mobile,
+.pagamento-descricao-mobile,
+.novo-descricao-mobile {
+    font-size: 0.95rem;
+    color: #000;
+    line-height: 1.4;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+/* Reduzir margem específica do Diagnóstico */
+.diagnostico-descricao-mobile {
+    margin-bottom: 7px;
+}
+
+/* Reduzir margem específica da Logística */
+.pagamento-descricao-mobile {
+    margin-bottom: 7px;
+}
+
+/* Reduzir margem específica do Pagamento */
+.novo-descricao-mobile {
+    margin-bottom: 0px;
+}
+
+/* Diminuir margem específica da Avaliação */
+.avaliacao-descricao-mobile {
+    margin-bottom: -8px;
+}
+
 @media (max-width: 600px) {
-    .avaliacao-container {
+    /* Mostrar textos mobile */
+    .avaliacao-texto-mobile,
+    .diagnostico-texto-mobile,
+    .pagamento-texto-mobile,
+    .novo-texto-mobile {
+        display: block;
+        padding: 20px 4vw 0 4vw;
+        background: #fff;
+        margin-bottom: 0;
+    }
+    
+    /* Mover texto da Avaliação 10px para a direita */
+    .avaliacao-texto-mobile {
+        padding-left: calc(4vw + 10px);
+    }
+    
+    /* Mover texto do Diagnóstico 10px para a direita */
+    .diagnostico-texto-mobile {
+        padding-left: calc(4vw + 10px);
+    }
+    
+    /* Mover texto da Logística 10px para a direita */
+    .pagamento-texto-mobile {
+        padding-left: calc(4vw + 10px);
+    }
+    
+    /* Mover texto do Pagamento 10px para a direita */
+    .novo-texto-mobile {
+        padding-left: calc(4vw + 10px);
+    }
+    
+    /* Esconder textos dentro dos containers */
+    .avaliacao-conteudo,
+    .diagnostico-conteudo,
+    .pagamento-conteudo,
+    .novo-conteudo {
+        display: none;
+    }
+    
+    /* Esconder especificamente o texto do Diagnóstico dentro do container */
+    .diagnostico-container .diagnostico-titulo,
+    .diagnostico-container .diagnostico-descricao {
+        display: none !important;
+    }
+    
+    /* Garantir que o conteúdo do Diagnóstico não apareça */
+    .diagnostico-container .diagnostico-conteudo {
+        display: none !important;
+    }
+    
+    /* Esconder especificamente o texto da Logística dentro do container */
+    .pagamento-container .pagamento-titulo,
+    .pagamento-container .pagamento-descricao {
+        display: none !important;
+    }
+    
+    /* Garantir que o conteúdo da Logística não apareça */
+    .pagamento-container .pagamento-conteudo {
+        display: none !important;
+    }
+    
+    /* Esconder especificamente o texto do Pagamento dentro do container */
+    .novo-container .novo-titulo,
+    .novo-container .novo-descricao {
+        display: none !important;
+    }
+    
+    /* Garantir que o conteúdo do Pagamento não apareça */
+    .novo-container .novo-conteudo {
+        display: none !important;
+    }
+    
+    /* Ajustar containers para mostrar apenas as imagens */
+    .avaliacao-container,
+    .diagnostico-container,
+    .pagamento-container,
+    .novo-container {
         max-width: 98vw;
-        min-height: 420px;
-        height: 420px;
+        min-height: 300px;
+        height: 300px;
+        background: #000;
+        border-radius: 12px;
+        box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+        padding: 0;
+        margin: 0 0 20px 0;
+        overflow: hidden;
     }
-    .avaliacao-conteudo {
-        padding: 24px 4vw 0 4vw;
+    
+    /* Diminuir margem específica do container da Avaliação */
+    .avaliacao-container {
+        margin-top: -5px;
     }
-    .avaliacao-titulo {
-        font-size: 1.3rem;
-    }
-    .avaliacao-descricao {
-        font-size: 0.95rem;
+    
+    .avaliacao-bg,
+    .diagnostico-bg,
+    .pagamento-bg,
+    .novo-bg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 12px;
     }
 }
 
@@ -3603,6 +3784,8 @@ header::before, header::after,
         max-width: 96vw;
         min-width: 0;
     }
+    
+
 }
 
 .diagnostico-container {
@@ -4177,7 +4360,7 @@ header::before, header::after,
   flex: 1 1 0;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: flex-end;
   align-items: flex-start;
   padding: 300px 40px 40px 40px;
   background: none;
@@ -4227,13 +4410,27 @@ header::before, header::after,
 @media (max-width: 600px) {
   .parceiro-experiencia {
     padding: 32px 0;
+    flex-direction: column;
+    gap: 24px;
   }
   .parceiro-experiencia-card {
     border-radius: 18px;
+    width: 100%;
+    max-width: 98vw;
+    position: relative;
+    overflow: hidden;
+  }
+  .parceiro-experiencia-info {
+    justify-content: flex-end;
+    padding: 20px 20px 0px 20px;
+    margin-top: auto;
   }
   .parceiro-experiencia-info h3 {
     font-size: 1.3rem;
     margin-bottom: 18px;
+  }
+  .parceiro-experiencia-info p {
+    margin-bottom: 15px;
   }
   .btn-parceiro {
     font-size: 1rem;
@@ -5445,5 +5642,11 @@ img[loading="lazy"].loaded { filter: none; }
     
     .mobile-bg {
         display: none !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .ai-hero-content {
+        top: 40%; /* move para cima */
     }
 }
