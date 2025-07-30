@@ -98,9 +98,9 @@ section h2 span {
 /* Ajuste responsivo para telas pequenas */
 @media (max-width: 768px) {
     .hero {
-        margin-top: 120px; /* Mais espaço para o cabeçalho em mobile */
-        height: 100vh;
-        max-height: 600px;
+        margin-top: 0 !important; /* Mesma margem que desktop */
+        height: 100vh !important;
+        max-height: 600px !important;
     }
     
     /* Garantir área de toque mínima para botões */
@@ -176,7 +176,7 @@ section h2 span {
 
 @media (max-width: 480px) {
     .hero {
-        margin-top: 100px; /* Ajuste para telas muito pequenas */
+        margin-top: 0 !important; /* Mesma margem que desktop */
     }
     
     /* Ajustes específicos para telas muito pequenas */
@@ -397,7 +397,7 @@ footer {
     }
 
 .footer-info p {
-    font-size: 1rem !important;
+    font-size: 0.9rem !important;
     color: #666;
     margin: 0 0 4px 0 !important;
 }
@@ -406,7 +406,7 @@ footer {
     text-align: center;
     padding-top: 0px;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
-    font-size: 0.95rem !important;
+    font-size: 0.85rem !important;
     line-height: 1.33337;
     font-weight: 400;
     letter-spacing: -.01em;
@@ -489,6 +489,18 @@ footer {
     .footer-info img {
         height: 100px;
     }
+    
+    .footer-info p {
+        font-size: 0.85rem !important;
+    }
+    
+    .footer-bottom {
+        font-size: 0.8rem !important;
+    }
+    
+    .footer-info .social-links a {
+        font-size: 1.2rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -517,6 +529,18 @@ footer {
 
     .footer-info img {
         height: 80px;
+    }
+    
+    .footer-info p {
+        font-size: 0.8rem !important;
+    }
+    
+    .footer-bottom {
+        font-size: 0.75rem !important;
+    }
+    
+    .footer-info .social-links a {
+        font-size: 1.1rem;
     }
 }
 
@@ -1583,7 +1607,7 @@ footer {
     justify-content: center;
     align-items: center;
     gap: 20px;
-    padding: 20px;
+    padding: 10px;
     background-color: #fff;
     border-bottom: 2px solid #eee;
     margin-bottom: 30px;
@@ -3111,7 +3135,7 @@ header, .header-content, .main-nav, .tab-btn, .logo, .social-links a, .hero-cont
 
 
 .respostas-rapidas {
-    padding: 80px 0;
+    padding: 60px 0;
     background-color: #f5f5f7;
     position: relative;
     overflow: hidden;
@@ -3125,7 +3149,7 @@ header, .header-content, .main-nav, .tab-btn, .logo, .social-links a, .hero-cont
 }
 
 .respostas-container h2 {
-    font-size: 48px;
+    font-size: 32px;
     line-height: 1.1;
     margin-bottom: 48px;
     color: #000;
@@ -3238,6 +3262,10 @@ header, .header-content, .main-nav, .tab-btn, .logo, .social-links a, .hero-cont
 }
 
 @media (max-width: 768px) {
+    .respostas-rapidas {
+        padding: 40px 0;
+    }
+    
     .respostas-container h2 {
         font-size: 32px;
         margin-bottom: 32px;
@@ -3254,12 +3282,25 @@ header, .header-content, .main-nav, .tab-btn, .logo, .social-links a, .hero-cont
 
     .resposta-content {
         flex-direction: column;
-        align-items: center;
-        text-align: center;
+        align-items: flex-start;
+        text-align: left;
     }
 
     .nav-button {
-        display: none;
+        display: flex;
+        width: 40px;
+        height: 40px;
+        background: rgba(255, 255, 255, 0.95);
+        border: 1px solid #e0e0e0;
+    }
+    .nav-button.prev {
+        left: 10px;
+    }
+    .nav-button.next {
+        right: 10px;
+    }
+    .nav-button i {
+        font-size: 16px;
     }
 }
 
@@ -3328,6 +3369,8 @@ header, .header-content, .main-nav, .tab-btn, .logo, .social-links a, .hero-cont
   width: 100% !important;
   background: transparent !important;
   box-shadow: none !important;
+  position: relative !important;
+  z-index: 100 !important;
 }
 
 #sobre .hero-text {
@@ -3335,6 +3378,9 @@ header, .header-content, .main-nav, .tab-btn, .logo, .social-links a, .hero-cont
   margin: 0 !important;
   padding: 0 0 0 0 !important;
   max-width: none !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
 }
 
 #sobre .hero-text h2 {
@@ -3347,11 +3393,501 @@ header, .header-content, .main-nav, .tab-btn, .logo, .social-links a, .hero-cont
 
 @media (max-width: 768px) {
   #sobre .hero-content {
-    max-width: 95vw;
-    padding: 0 8px;
+    max-width: 90vw;
+    padding: 20px;
+    min-height: 100vh !important;
+    display: flex !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    z-index: 100 !important;
+    position: relative !important;
+    padding-top: 120px !important;
+    padding-bottom: 40px !important;
+    margin-left: 425px !important;
+    transform: translateX(425px) translateY(100px) !important;
   }
   #sobre .hero-text h2 {
-    font-size: 2.1rem;
+    font-size: 0.8rem;
+    color: #000 !important;
+    text-shadow: none !important;
+    z-index: 20 !important;
+    position: relative !important;
+    margin-bottom: 15px !important;
+    line-height: 1.2 !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    transform: translateY(100px) !important;
+  }
+  #sobre .hero-text p {
+    color: #000 !important;
+    text-shadow: none !important;
+    z-index: 20 !important;
+    position: relative !important;
+    font-size: 0.6rem !important;
+    line-height: 1.5 !important;
+    margin-bottom: 12px !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    transform: translateY(100px) !important;
+  }
+  
+  #sobre .hero-text h1 {
+    transform: translateY(100px) !important;
+  }
+  
+  /* Regra mais específica para garantir que o texto seja movido */
+  @media (max-width: 768px) {
+    #sobre .hero-content .hero-text h1[style*="font-size"] {
+      transform: translateY(100px) !important;
+      margin-top: 100px !important;
+    }
+    
+    /* Melhorar a legibilidade do texto dividido em mobile */
+    #sobre .hero-content p {
+      line-height: 1.6 !important;
+      word-spacing: 0.5px !important;
+      letter-spacing: 0.2px !important;
+    }
+    
+    /* Corrigir o texto "Quem somos" que está sendo cortado em mobile */
+    .quem-somos-text {
+      margin: 20px auto 24px 20px !important;
+      max-width: calc(100vw - 40px) !important;
+      padding: 0 20px !important;
+      overflow: visible !important;
+      position: relative !important;
+      z-index: 10 !important;
+    }
+    
+    .quem-somos-text span {
+      font-size: 1.5rem !important;
+      margin-bottom: 15px !important;
+      display: block !important;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .quem-somos-text {
+      margin: 15px auto 20px 15px !important;
+      max-width: calc(100vw - 30px) !important;
+      padding: 0 15px !important;
+    }
+    
+    .quem-somos-text span {
+      font-size: 1.3rem !important;
+      margin-bottom: 12px !important;
+    }
+  }
+  
+  /* Mover o texto "Potencialize suas vendas" -20px na versão mobile */
+  @media (max-width: 768px) {
+    .trade-in-hero {
+      transform: translateX(-20px) translateY(-200px) !important;
+    }
+    
+    /* Corrigir layout da seção Trabalhe Conosco no mobile */
+    #trabalhe .trabalhe-conosco h1 {
+      margin-left: 10px !important;
+      text-align: left !important;
+      font-size: 2.5rem !important;
+      transform: translateX(10px) !important;
+    }
+    
+    #trabalhe .trabalhe-conosco p {
+      margin-left: 10px !important;
+      text-align: left !important;
+      margin-bottom: 40px !important;
+      transform: translateX(10px) !important;
+    }
+    
+    /* Alinhar texto descritivo com o título "Simples e Bem Feito" */
+    #trabalhe .simples-bem-feito-container h2 {
+      margin-left: 0 !important;
+      text-align: left !important;
+      padding-left: 0 !important;
+    }
+    
+    #trabalhe .simples-bem-feito-container p {
+      margin-left: 0 !important;
+      text-align: left !important;
+      padding-left: 0 !important;
+    }
+    
+    /* Garantir alinhamento à esquerda para todos os textos do container */
+    #trabalhe .simples-bem-feito-container {
+      text-align: left !important;
+    }
+    
+    #trabalhe .simples-bem-feito-container * {
+      text-align: left !important;
+    }
+    
+    /* Alinhamento uniforme para título e texto descritivo */
+    #trabalhe .simples-bem-feito-container h2,
+    #trabalhe .simples-bem-feito-container p {
+      text-align: left !important;
+      margin-left: 0 !important;
+      padding-left: 0 !important;
+      transform: none !important;
+    }
+    
+    /* Garantir que o container não tenha margens que afetem o alinhamento */
+    #trabalhe .simples-bem-feito-container {
+      margin-left: 0 !important;
+      padding-left: 20px !important;
+      padding-right: 20px !important;
+    }
+    
+    #trabalhe .simples-bem-feito-container {
+      margin-left: 0 !important;
+      width: calc(100vw - 40px) !important;
+      padding: 40px 20px !important;
+      min-height: 300px !important;
+    }
+    
+    #trabalhe .trabalhe-grid {
+      width: calc(50vw - 30px) !important;
+      min-height: 200px !important;
+      height: 200px !important;
+      margin-bottom: 15px !important;
+    }
+    
+    /* Garantir que todos os containers sejam visíveis em duas colunas */
+    #trabalhe div[style*="display:flex"] {
+      display: flex !important;
+      flex-wrap: wrap !important;
+      justify-content: center !important;
+      gap: 15px !important;
+      margin-bottom: 20px !important;
+      max-width: 100% !important;
+    }
+    
+    /* Forçar layout de duas colunas */
+    #trabalhe .trabalhe-grid {
+      flex: 0 0 calc(50% - 15px) !important;
+      max-width: calc(50% - 15px) !important;
+    }
+    
+    #trabalhe .contato-rh-renov {
+      margin-left: 20px !important;
+      flex-direction: column !important;
+      text-align: center !important;
+      gap: 20px !important;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    #trabalhe .trabalhe-conosco h1 {
+      font-size: 2rem !important;
+    }
+    
+    #trabalhe .simples-bem-feito-container {
+      width: calc(100vw - 20px) !important;
+      padding: 30px 15px !important;
+      min-height: 250px !important;
+      margin-left: 0 !important;
+    }
+    
+    /* Alinhamento uniforme para telas menores */
+    #trabalhe .simples-bem-feito-container h2,
+    #trabalhe .simples-bem-feito-container p {
+      text-align: left !important;
+      margin-left: 0 !important;
+      padding-left: 0 !important;
+      transform: none !important;
+    }
+    
+    #trabalhe .trabalhe-grid {
+      width: calc(50vw - 20px) !important;
+      min-height: 150px !important;
+      height: 150px !important;
+      margin-bottom: 10px !important;
+    }
+    
+    /* Garantir que todos os containers sejam visíveis em duas colunas em telas menores */
+    #trabalhe div[style*="display:flex"] {
+      display: flex !important;
+      flex-wrap: wrap !important;
+      justify-content: center !important;
+      gap: 10px !important;
+      margin-bottom: 15px !important;
+      max-width: 100% !important;
+    }
+    
+    /* Forçar layout de duas colunas em telas menores */
+    #trabalhe .trabalhe-grid {
+      flex: 0 0 calc(50% - 10px) !important;
+      max-width: calc(50% - 10px) !important;
+    }
+    
+    /* Centralizar texto dos benefícios em telas menores */
+    #trabalhe .trabalhe-grid h3 {
+      text-align: center !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      height: 100% !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      font-size: 0.9rem !important;
+    }
+    
+    /* Mover o texto "Vale Alimentação/Refeição" em -60px em telas menores */
+    #trabalhe .trabalhe-grid:first-child h3,
+    #trabalhe section.trabalhe-grid:first-of-type h3,
+    #trabalhe .vale-alimentacao h3 {
+      transform: translateY(-60px) translateX(-20px) !important;
+      line-height: 1.1 !important;
+      white-space: normal !important;
+      margin-top: -10px !important;
+    }
+    
+    /* Mover todos os textos dos benefícios em -20px para a esquerda em telas menores */
+    #trabalhe .trabalhe-grid h3 {
+      transform: translateX(-20px) !important;
+    }
+    
+    /* Regra com máxima especificidade para todos os benefícios em telas menores */
+    body #trabalhe .trabalhe-grid h3 {
+      transform: translateX(-20px) !important;
+    }
+    
+    /* Regra com máxima especificidade usando html body para todos os benefícios em telas menores */
+    html body #trabalhe .trabalhe-grid h3 {
+      transform: translateX(-20px) !important;
+    }
+    
+    /* Regra com máxima especificidade e !important para forçar o movimento em telas menores */
+    html body #trabalhe .trabalhe-grid h3[style*="text-align"] {
+      transform: translateX(-20px) !important;
+    }
+    
+    /* Regra com máxima especificidade para sobrescrever qualquer regra conflitante em telas menores */
+    html body #trabalhe .trabalhe-grid h3[style*="grid-column"] {
+      transform: translateX(-20px) !important;
+    }
+    
+    /* Regra com máxima especificidade para sobrescrever qualquer regra conflitante em telas menores */
+    html body #trabalhe .trabalhe-grid h3[style*="color"] {
+      transform: translateX(-20px) !important;
+    }
+    
+    /* Regra final com máxima especificidade para garantir que funcione em telas menores */
+    html body #trabalhe .trabalhe-grid h3[style*="font-size"] {
+      transform: translateX(-20px) !important;
+    }
+    
+    /* Regra final com máxima especificidade para garantir que funcione em telas menores */
+    html body #trabalhe .trabalhe-grid h3[style*="font-weight"] {
+      transform: translateX(-20px) !important;
+    }
+    
+    /* Regra final com máxima especificidade para garantir que funcione em telas menores */
+    html body #trabalhe .trabalhe-grid h3[style*="margin"] {
+      transform: translateX(-20px) !important;
+    }
+    
+    /* Regra final com máxima especificidade para garantir que funcione em telas menores */
+    html body #trabalhe .trabalhe-grid h3[style*="text-shadow"] {
+      transform: translateX(-20px) !important;
+    }
+    
+    /* Garantir que a seção de benefícios tenha espaço suficiente */
+    #trabalhe .trabalhe-content {
+      padding-bottom: 50px !important;
+      overflow: visible !important;
+    }
+    
+    /* Garantir que o container pai tenha altura suficiente para todos os benefícios */
+    #trabalhe {
+      min-height: auto !important;
+      padding-bottom: 100px !important;
+    }
+    
+    /* Centralização geral dos textos dos benefícios */
+    #trabalhe .trabalhe-grid h3 {
+      text-align: center !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      height: 100% !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      word-wrap: break-word !important;
+      hyphens: auto !important;
+    }
+    
+    /* Mover o texto "Vale Alimentação/Refeição" em -60px */
+    #trabalhe .trabalhe-grid:first-child h3,
+    #trabalhe div[style*="display:flex"]:first-child .trabalhe-grid:first-child h3,
+    #trabalhe .trabalhe-grid:nth-child(1) h3 {
+      transform: translateY(-60px) translateX(-20px) !important;
+      line-height: 1.2 !important;
+      white-space: normal !important;
+      margin-top: -10px !important;
+    }
+    
+    /* Mover todos os textos dos benefícios em -20px para a esquerda */
+    #trabalhe .trabalhe-grid h3 {
+      transform: translateX(-20px) !important;
+    }
+    
+    /* Regra com máxima especificidade para todos os benefícios */
+    body #trabalhe .trabalhe-grid h3 {
+      transform: translateX(-20px) !important;
+    }
+    
+    /* Regra com máxima especificidade usando html body para todos os benefícios */
+    html body #trabalhe .trabalhe-grid h3 {
+      transform: translateX(-20px) !important;
+    }
+    
+    /* Regra com máxima especificidade e !important para forçar o movimento */
+    html body #trabalhe .trabalhe-grid h3[style*="text-align"] {
+      transform: translateX(-20px) !important;
+    }
+    
+    /* Regra com máxima especificidade para sobrescrever qualquer regra conflitante */
+    html body #trabalhe .trabalhe-grid h3[style*="grid-column"] {
+      transform: translateX(-20px) !important;
+    }
+    
+    /* Regra com máxima especificidade para sobrescrever qualquer regra conflitante */
+    html body #trabalhe .trabalhe-grid h3[style*="color"] {
+      transform: translateX(-20px) !important;
+    }
+    
+    /* Regra final com máxima especificidade para garantir que funcione */
+    html body #trabalhe .trabalhe-grid h3[style*="font-size"] {
+      transform: translateX(-20px) !important;
+    }
+    
+    /* Regra final com máxima especificidade para garantir que funcione */
+    html body #trabalhe .trabalhe-grid h3[style*="font-weight"] {
+      transform: translateX(-20px) !important;
+    }
+    
+    /* Regra final com máxima especificidade para garantir que funcione */
+    html body #trabalhe .trabalhe-grid h3[style*="margin"] {
+      transform: translateX(-20px) !important;
+    }
+    
+    /* Regra final com máxima especificidade para garantir que funcione */
+    html body #trabalhe .trabalhe-grid h3[style*="text-shadow"] {
+      transform: translateX(-20px) !important;
+    }
+    
+    /* Regra mais específica para garantir que funcione */
+    #trabalhe section.trabalhe-grid:first-of-type h3 {
+      transform: translateY(-60px) translateX(-20px) !important;
+      margin-top: -10px !important;
+    }
+    
+    /* Regra com máxima especificidade */
+    body #trabalhe section.trabalhe-grid:first-of-type h3 {
+      transform: translateY(-60px) translateX(-20px) !important;
+      margin-top: -10px !important;
+    }
+    
+    /* Regra específica para a classe vale-alimentacao */
+    #trabalhe .vale-alimentacao h3 {
+      transform: translateY(-60px) translateX(-20px) !important;
+      margin-top: -10px !important;
+    }
+    
+    /* Regra com máxima especificidade para a classe */
+    body #trabalhe .vale-alimentacao h3 {
+      transform: translateY(-60px) translateX(-20px) !important;
+      margin-top: -10px !important;
+    }
+    
+    /* Layout consistente de duas colunas para todos os tamanhos de tela */
+    @media (max-width: 768px) {
+      #trabalhe div[style*="display:flex"] {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        justify-content: space-between !important;
+        align-items: stretch !important;
+      }
+      
+      #trabalhe .trabalhe-grid {
+        flex: 0 0 48% !important;
+        width: 48% !important;
+        margin-bottom: 15px !important;
+      }
+      
+      /* Centralizar texto dos benefícios */
+      #trabalhe .trabalhe-grid h3 {
+        text-align: center !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        height: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+      
+      /* Mover especificamente o texto "Vale Alimentação/Refeição" */
+      #trabalhe .vale-alimentacao h3 {
+        transform: translateY(-60px) translateX(-20px) !important;
+        margin-top: -10px !important;
+      }
+      
+      /* Regra com máxima especificidade para garantir que funcione */
+      body #trabalhe .vale-alimentacao h3 {
+        transform: translateY(-60px) translateX(-20px) !important;
+        margin-top: -10px !important;
+      }
+      
+      /* Regra com máxima especificidade usando html body */
+      html body #trabalhe .vale-alimentacao h3 {
+        transform: translateY(-60px) translateX(-20px) !important;
+        margin-top: -10px !important;
+      }
+      
+      /* Mover todos os textos dos benefícios em -20px para a esquerda */
+      #trabalhe .trabalhe-grid h3 {
+        transform: translateX(-20px) !important;
+      }
+      
+      /* Regra com máxima especificidade para todos os benefícios */
+      body #trabalhe .trabalhe-grid h3 {
+        transform: translateX(-20px) !important;
+      }
+      
+      /* Regra com máxima especificidade usando html body para todos os benefícios */
+      html body #trabalhe .trabalhe-grid h3 {
+        transform: translateX(-20px) !important;
+      }
+      
+      /* Regra com máxima especificidade e !important para forçar o movimento */
+      html body #trabalhe .trabalhe-grid h3[style*="text-align"] {
+        transform: translateX(-20px) !important;
+      }
+      
+      /* Regra com máxima especificidade para sobrescrever qualquer regra conflitante */
+      html body #trabalhe .trabalhe-grid h3[style*="grid-column"] {
+        transform: translateX(-20px) !important;
+      }
+      
+      /* Regra com máxima especificidade para sobrescrever qualquer regra conflitante */
+      html body #trabalhe .trabalhe-grid h3[style*="color"] {
+        transform: translateX(-20px) !important;
+      }
+    }
+  }
+  
+  #sobre .hero {
+    min-height: 100vh !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    overflow: visible !important;
+    padding-top: 180px !important;
   }
 }
 
@@ -3590,13 +4126,13 @@ header::before, header::after,
 .pagamento-texto-mobile,
 .novo-texto-mobile {
     display: none;
-}
+    }
 
 .avaliacao-titulo-mobile,
 .diagnostico-titulo-mobile,
 .pagamento-titulo-mobile,
 .novo-titulo-mobile {
-    font-size: 1.3rem;
+        font-size: 1.3rem;
     font-weight: 700;
     color: #000;
     margin-bottom: 15px;
@@ -3607,7 +4143,7 @@ header::before, header::after,
 .diagnostico-descricao-mobile,
 .pagamento-descricao-mobile,
 .novo-descricao-mobile {
-    font-size: 0.95rem;
+        font-size: 0.95rem;
     color: #000;
     line-height: 1.4;
     text-align: left;
@@ -4423,7 +4959,7 @@ header::before, header::after,
   .parceiro-experiencia-info {
     justify-content: flex-end;
     padding: 20px 20px 0px 20px;
-    margin-top: auto;
+    margin-top: 250px;
   }
   .parceiro-experiencia-info h3 {
     font-size: 1.3rem;
@@ -4984,6 +5520,25 @@ header::before, header::after,
     z-index: 0 !important;
     transform: none !important;
 }
+
+/* Responsividade do .sobre-bg para mobile */
+@media (max-width: 768px) {
+  .sobre-bg {
+    width: 100vw !important;
+    height: 100vh !important;
+    object-fit: cover !important;
+    object-position: center center !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .sobre-bg {
+    width: 100vw !important;
+    height: 100vh !important;
+    object-fit: cover !important;
+    object-position: center center !important;
+  }
+}
 #sobre .hero-content, #sobre .sobre-nos, #sobre .hero {
     background: transparent !important;
     box-shadow: none !important;
@@ -5014,6 +5569,47 @@ header::before, header::after,
   margin: 0 !important;
   padding: 0 !important;
   background-color: transparent !important;
+}
+
+/* Responsividade da imagem de fundo para mobile */
+@media (max-width: 768px) {
+  #sobre.tab-content {
+    background: url('assets/images/sobre-nos/sobre-nos.webp') center center/cover no-repeat !important;
+    background-size: cover !important;
+    background-position: center center !important;
+  }
+  
+  #sobre.tab-content::before {
+    background: url('assets/images/sobre-nos/sobre-nos.webp') center center/cover no-repeat !important;
+    background-size: cover !important;
+    background-position: center center !important;
+  }
+  
+  #sobre .hero {
+    background: url('assets/images/sobre-nos/sobre-nos.webp') center center/cover no-repeat !important;
+    background-size: cover !important;
+    background-position: center center !important;
+  }
+}
+
+@media (max-width: 480px) {
+  #sobre.tab-content {
+    background: url('assets/images/sobre-nos/sobre-nos.webp') center center/cover no-repeat !important;
+    background-size: cover !important;
+    background-position: center center !important;
+  }
+  
+  #sobre.tab-content::before {
+    background: url('assets/images/sobre-nos/sobre-nos.webp') center center/cover no-repeat !important;
+    background-size: cover !important;
+    background-position: center center !important;
+  }
+  
+  #sobre .hero {
+    background: url('assets/images/sobre-nos/sobre-nos.webp') center center/cover no-repeat !important;
+    background-size: cover !important;
+    background-position: center center !important;
+  }
 }
 #sobre .sobre-bg-fixo {
   display: none !important;
@@ -5336,6 +5932,57 @@ video[poster] {
         margin-top: 100px !important;
         padding: 0 15px !important;
     }
+    
+    /* Correções específicas para Sobre Nós em mobile */
+    #sobre .hero-content {
+        padding: 20px !important;
+        min-height: 100vh !important;
+        display: flex !important;
+        align-items: flex-start !important;
+        justify-content: flex-start !important;
+        z-index: 100 !important;
+        position: relative !important;
+        margin-top: 0 !important;
+        padding-top: 120px !important;
+        padding-bottom: 30px !important;
+        margin-left: 400px !important;
+        transform: translateX(400px) !important;
+    }
+    #sobre .hero-text h2 {
+        font-size: 0.7rem !important;
+        color: #000 !important;
+        text-shadow: none !important;
+        z-index: 20 !important;
+        position: relative !important;
+        line-height: 1.2 !important;
+        margin-bottom: 15px !important;
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+    #sobre .hero-text p {
+        font-size: 0.55rem !important;
+        color: #000 !important;
+        text-shadow: none !important;
+        z-index: 20 !important;
+        position: relative !important;
+        line-height: 1.5 !important;
+        margin-bottom: 12px !important;
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+    #sobre .hero {
+        min-height: 100vh !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        justify-content: flex-start !important;
+        overflow: visible !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        padding-top: 160px !important;
+    }
 }
 
 img, video { max-width: 100%; height: auto; display: block; }
@@ -5453,94 +6100,146 @@ img[loading="lazy"].loaded { filter: none; }
         transform: rotate(-45deg) translate(6px, -6px);
     }
     
-    /* Menu Mobile Overlay */
+    /* Menu Mobile Overlay - LATERAL DIREITO */
     .mobile-menu-overlay {
         position: fixed;
         top: 0;
-        left: 0;
-        width: 100%;
+        right: -350px;
+        width: 350px;
         height: 100%;
-        background-color: rgba(0, 0, 0, 0.9);
-        z-index: 999;
-        opacity: 0;
-        visibility: hidden;
-        transition: all 0.3s ease;
+        background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+        z-index: 9999;
+        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.3);
+        border-radius: 20px 0 0 20px;
+        overflow: hidden;
     }
     
     .mobile-menu-overlay.active {
-        opacity: 1;
-        visibility: visible;
+        right: 0;
     }
     
     .mobile-menu-content {
-        position: absolute;
-        top: 0;
-        left: 0;
+        position: relative;
         width: 100%;
         height: 100%;
-        background-color: #fff;
-        padding: 20px;
+        padding: 30px 25px;
         display: flex;
         flex-direction: column;
+        background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
     }
     
     .mobile-menu-header {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding-bottom: 30px;
-        border-bottom: 1px solid #eee;
+        padding-bottom: 25px;
+        border-bottom: 2px solid #e9ecef;
         margin-bottom: 30px;
+        position: relative;
+    }
+    
+    .mobile-menu-header::after {
+        display: none;
     }
     
     .mobile-menu-close {
-        background: none;
+        background: linear-gradient(135deg, #00b140, #008d36);
         border: none;
-        font-size: 24px;
-        color: #00b140;
+        font-size: 18px;
+        color: #fff;
         cursor: pointer;
-        padding: 10px;
+        padding: 12px;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 177, 64, 0.3);
+    }
+    
+    .mobile-menu-close:hover {
+        transform: scale(1.1);
+        box-shadow: 0 6px 20px rgba(0, 177, 64, 0.4);
     }
     
     .mobile-nav {
         flex: 1;
         display: flex;
         flex-direction: column;
-        gap: 20px;
+        gap: 5px;
+        margin-top: 20px;
     }
     
     .mobile-nav-item {
-        font-size: 18px;
+        font-size: 16px;
         font-weight: 600;
         color: #333;
         text-decoration: none;
-        padding: 15px 0;
-        border-bottom: 1px solid #eee;
-        transition: color 0.3s ease;
+        padding: 18px 20px;
+        border-radius: 12px;
+        transition: all 0.3s ease;
+        background: #fff;
+        border: 2px solid transparent;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .mobile-nav-item::before {
+        display: none;
+    }
+    
+    .mobile-nav-item:hover::before {
+        display: none;
     }
     
     .mobile-nav-item:hover,
     .mobile-nav-item.active {
         color: #00b140;
+        border-color: #00b140;
+        background: linear-gradient(135deg, #f0fff4, #e6fffa);
+        transform: translateX(5px);
+        box-shadow: 0 4px 15px rgba(0, 177, 64, 0.2);
     }
     
     .mobile-social-links {
         display: flex;
-        gap: 20px;
+        gap: 15px;
         justify-content: center;
-        padding-top: 30px;
-        border-top: 1px solid #eee;
+        padding-top: 25px;
+        border-top: 2px solid #e9ecef;
+        margin-top: auto;
+        position: relative;
+    }
+    
+    .mobile-social-links::before {
+        display: none;
     }
     
     .mobile-social-links a {
-        font-size: 24px;
+        font-size: 22px;
         color: #00b140;
         text-decoration: none;
-        transition: color 0.3s ease;
+        transition: all 0.3s ease;
+        background: #fff;
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid transparent;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     }
     
     .mobile-social-links a:hover {
-        color: #008d36;
+        color: #fff;
+        background: linear-gradient(135deg, #00b140, #008d36);
+        transform: scale(1.1);
+        box-shadow: 0 4px 15px rgba(0, 177, 64, 0.3);
     }
 }
 
@@ -5649,4 +6348,630 @@ img[loading="lazy"].loaded { filter: none; }
     .ai-hero-content {
         top: 40%; /* move para cima */
     }
+}
+@media screen and (max-width: 580px){
+/* conteiner Redes de Varejo e Lojas e Revendas */
+.parceiro-experiencia-card {
+    flex-direction: column;
+    min-height: 0;
+    max-width: 98vw;
+}
+}
+
+/* MOBILE FOOTER - 1176px */
+@media (max-width: 1176px) {
+
+  /* Reset completo do footer */
+  footer {
+    background: #fff !important;
+    color: #000 !important;
+    padding: 0 !important;
+    border: none !important;
+  }
+  
+  /* Container principal - parte branca */
+  footer > div:first-child {
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    padding: 24px 16px 24px 16px !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    gap: 32px !important;
+    flex-wrap: nowrap !important;
+    background: #fff !important;
+  }
+  
+  /* Esconder navegação central */
+  footer > div:first-child > div:nth-child(2) {
+    display: none !important;
+  }
+  
+  /* Mostrar redes sociais no rodapé mobile */
+  footer .social-links {
+    display: flex !important;
+    gap: 16px !important;
+    margin-top: 8px !important;
+  }
+  
+  footer .social-links a {
+    color: #000 !important;
+    font-size: 1.5rem !important;
+    transition: color 0.2s !important;
+  }
+  
+  footer .social-links a:hover {
+    color: #00b140 !important;
+  }
+  
+  /* Mostrar redes sociais no cabeçalho mobile */
+  header .social-links {
+    display: flex !important;
+    gap: 16px !important;
+  }
+  
+  header .social-links a {
+    color: #000 !important;
+    font-size: 1.5rem !important;
+    transition: color 0.2s !important;
+  }
+  
+  header .social-links a:hover {
+    color: #00b140 !important;
+  }
+  
+  /* Garantir que as redes sociais apareçam no menu mobile */
+  .mobile-social-links {
+    display: flex !important;
+    gap: 16px !important;
+    justify-content: center !important;
+    margin-top: 24px !important;
+  }
+  
+  .mobile-social-links a {
+    color: #000 !important;
+    font-size: 1.5rem !important;
+    transition: color 0.2s !important;
+  }
+  
+  .mobile-social-links a:hover {
+    color: #00b140 !important;
+  }
+  
+  /* Mover menu mobile para a direita */
+  .mobile-menu-toggle {
+    order: 3 !important;
+    margin-left: auto !important;
+  }
+  
+  /* Reorganizar elementos do cabeçalho mobile */
+  header .header-content {
+    justify-content: space-between !important;
+    align-items: center !important;
+    flex-direction: row !important;
+    display: flex !important;
+  }
+  
+  header .logo {
+    order: 1 !important;
+    flex: 0 0 auto !important;
+  }
+  
+  header .social-links {
+    order: 2 !important;
+    flex: 0 0 auto !important;
+    margin: 0 !important;
+  }
+  
+  header .mobile-menu-toggle {
+    order: 3 !important;
+    flex: 0 0 auto !important;
+    margin-left: auto !important;
+  }
+  
+  /* Esconder navegação principal no mobile */
+  header .main-nav {
+    display: none !important;
+  }
+  
+  /* Forçar margem zero na hero mobile */
+  .hero {
+    margin-top: -100px !important;
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+    padding-top: 0 !important;
+    position: relative !important;
+  }
+  
+  /* Garantir que o conteúdo da hero seja visível */
+  .hero-content {
+    position: relative !important;
+    z-index: 10 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: 100% !important;
+  }
+  
+  .hero-text {
+    position: relative !important;
+    z-index: 20 !important;
+    color: #fff !important;
+    text-align: center !important;
+    max-width: 800px !important;
+    margin: 0 auto !important;
+    padding: 0 20px !important;
+  }
+  
+  .hero-text h1 {
+    color: #fff !important;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7) !important;
+  }
+  
+  .hero-text p {
+    color: #fff !important;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.7) !important;
+  }
+  
+  /* Sobrescrever qualquer outro CSS */
+  body .hero {
+    margin-top: -100px !important;
+  }
+  
+  html body .hero {
+    margin-top: -100px !important;
+  }
+  
+  /* Forçar aplicação */
+  .hero[style*="margin-top"] {
+    margin-top: -100px !important;
+  }
+  
+  /* Sobrescrever estilos inline */
+  .hero {
+    margin-top: -100px !important;
+  }
+  
+  /* Aplicar apenas à hero da home, não à hero-ia */
+  .hero:not(.ai-hero) {
+    margin-top: -100px !important;
+  }
+  
+  /* Garantir que as abas sejam visíveis quando ativas */
+  .tab-content.active {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+  
+  .tab-content:not(.active) {
+    display: none !important;
+  }
+  
+
+  
+  /* Reduzir espaçamento inferior do cabeçalho */
+  header {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+    position: relative !important;
+    z-index: 1000 !important;
+  }
+  
+  /* Reduzir espaçamento da seção hero */
+  .hero-content {
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+  }
+  
+  /* Manter copyright na faixa preta */
+  footer > div:nth-child(2) {
+    display: block !important;
+    background: #181818 !important;
+    color: #bbb !important;
+    margin: 0 !important;
+    padding: 18px 0 8px 0 !important;
+    text-align: center !important;
+    font-size: 1rem !important;
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+  }
+  
+  /* Logo container */
+  footer > div:first-child > div:first-child {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 8px !important;
+    flex: 0 0 auto !important;
+    min-width: 180px !important;
+    max-width: 200px !important;
+  }
+  
+  /* Ajustar layout para acomodar redes sociais */
+  footer > div:first-child {
+    gap: 24px !important;
+  }
+  
+  /* Contato container (endereço e telefone) */
+  footer > div:first-child > div:last-child {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 8px !important;
+    flex: 1 1 auto !important;
+    min-width: 200px !important;
+  }
+  
+  /* Garantir que os elementos de contato sejam visíveis */
+  footer > div:first-child > div:last-child > div {
+    display: flex !important;
+    align-items: flex-start !important;
+    gap: 10px !important;
+    font-size: 1rem !important;
+    margin-left: 0 !important;
+  }
+  
+  /* Forçar cores corretas */
+  footer > div:first-child > div:last-child span {
+    color: #000 !important;
+    text-align: left !important;
+  }
+  
+  footer > div:first-child > div:last-child i {
+    color: #00b140 !important;
+    margin-top: 6px !important;
+  }
+}
+
+/* SOLUÇÃO ESPECÍFICA PARA MOVER TEXTO PARA DIREITA */
+@media (max-width: 768px) {
+  #sobre .hero-text {
+    margin-left: 400px !important;
+    transform: translateX(400px) !important;
+  }
+  
+  #sobre .hero-text h2,
+  #sobre .hero-text p {
+    margin-left: 400px !important;
+    transform: translateX(400px) !important;
+  }
+}
+
+@media (max-width: 480px) {
+  #sobre .hero-text {
+    margin-left: 400px !important;
+    transform: translateX(400px) !important;
+  }
+  
+  #sobre .hero-text h2,
+  #sobre .hero-text p {
+    margin-left: 400px !important;
+    transform: translateX(400px) !important;
+  }
+}
+
+/* SOLUÇÃO SIMPLES PARA TEXTO VISÍVEL EM SOBRE NÓS MOBILE */
+#sobre .hero-text h2,
+#sobre .hero-text p {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    color: #000 !important;
+    position: relative !important;
+    z-index: 999 !important;
+    margin-left: 400px !important;
+    transform: translateX(400px) !important;
+}
+
+@media (max-width: 768px) {
+    #sobre .hero-text h2,
+    #sobre .hero-text p {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        color: #000 !important;
+        position: relative !important;
+        z-index: 999 !important;
+        font-size: 1.6rem !important;
+        line-height: 1.2 !important;
+    }
+}
+
+@media (max-width: 480px) {
+    #sobre .hero-text h2,
+    #sobre .hero-text p {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        color: #000 !important;
+        position: relative !important;
+        z-index: 999 !important;
+        font-size: 1.4rem !important;
+        line-height: 1.2 !important;
+    }
+}
+
+@media (max-width: 768px) {
+  #sobre .hero-text {
+    margin-top: 80px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  #sobre .hero-text {
+    margin-top: 60px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  #sobre .hero-text {
+    margin-top: 200px !important;
+  }
+}
+@media (max-width: 480px) {
+  #sobre .hero-text {
+    margin-top: 200px !important;
+  }
+}
+
+/* REGRAS FINAIS PARA TEXTO SOBRE NÓS MOBILE */
+#sobre .hero-text h2 { font-size: 0.5rem !important; margin-top: 0 !important; line-height: 1.1 !important; }
+#sobre .hero-text p { font-size: 0.3rem !important; margin-top: 0 !important; line-height: 1.3 !important; }
+
+/* REGRAS ULTRA ESPECÍFICAS PARA TEXTO SOBRE NÓS MOBILE */
+@media (max-width: 900px) {
+  body #sobre .hero-text { 
+    margin-top: 10px !important; 
+    margin-left: 10px !important;
+    transform: translateX(10px) !important;
+  }
+  body #sobre .hero-text h2 { 
+    font-size: 0.5rem !important; 
+    margin-top: 0 !important; 
+    line-height: 1.1 !important;
+    margin-left: 10px !important;
+    transform: translateX(10px) !important;
+  }
+  body #sobre .hero-text p { 
+    font-size: 0.3rem !important; 
+    margin-top: 0 !important; 
+    line-height: 1.3 !important;
+    margin-left: 10px !important;
+    transform: translateX(10px) !important;
+  }
+}
+
+/* REGRAS COM ESPECIFICIDADE MÁXIMA PARA SOBRESCREVER TUDO */
+html body #sobre .hero-text,
+html body #sobre .hero-text h2,
+html body #sobre .hero-text p {
+  margin-left: 10px !important;
+  transform: translateX(10px) !important;
+}
+
+/* SOBRESCREVER ESTILOS INLINE */
+html body #sobre .hero-text h1[style*="font-size"] {
+  font-size: 48px !important;
+  line-height: 1.05 !important;
+  margin-bottom: 24px !important;
+  color: #fff !important;
+  font-weight: 700 !important;
+  text-align: left !important;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.8) !important;
+  margin-top: 10px !important;
+  margin-left: 10px !important;
+}
+
+html body #sobre .hero-text p[style*="font-size"] {
+  color: #fff !important;
+  font-size: 18px !important;
+  line-height: 1.5 !important;
+  margin: 0 !important;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.7) !important;
+  margin-top: 10px !important;
+  margin-left: 10px !important;
+}
+
+/* REGRAS FINAIS PARA TAMANHOS CORRETOS - SOBRESCREVER TUDO */
+html body #sobre .hero-text h1 {
+  font-size: 48px !important;
+  line-height: 1.05 !important;
+  margin-bottom: 24px !important;
+  color: #fff !important;
+  font-weight: 700 !important;
+  text-align: left !important;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.8) !important;
+  margin-top: 10px !important;
+  margin-left: 10px !important;
+}
+
+html body #sobre .hero-text p {
+  color: #fff !important;
+  font-size: 18px !important;
+  line-height: 1.5 !important;
+  margin: 0 !important;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.7) !important;
+  margin-top: 10px !important;
+  margin-left: 10px !important;
+}
+
+/* REGRAS ESPECÍFICAS PARA MOBILE */
+@media (max-width: 768px) {
+  html body #sobre .hero-text {
+    position: absolute !important;
+    top: 50% !important;
+    left: 20px !important;
+    transform: translateY(-50%) !important;
+    z-index: 100 !important;
+    max-width: 80% !important;
+    margin-top: 200px !important;
+  }
+  
+  html body #sobre .hero-text h1 {
+    font-size: 32px !important;
+    line-height: 1.1 !important;
+    font-weight: 700 !important;
+    color: #fff !important;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8) !important;
+    margin-bottom: 16px !important;
+    text-align: left !important;
+    margin-top: 0 !important;
+    margin-left: 0 !important;
+  }
+  
+  html body #sobre .hero-text p {
+    font-size: 16px !important;
+    line-height: 1.5 !important;
+    color: #fff !important;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.7) !important;
+    margin: 0 !important;
+    margin-top: 0 !important;
+    margin-left: 0 !important;
+  }
+}
+
+@media (max-width: 480px) {
+  html body #sobre .hero-text {
+    position: absolute !important;
+    top: 50% !important;
+    left: 15px !important;
+    transform: translateY(-50%) !important;
+    z-index: 100 !important;
+    max-width: 85% !important;
+    margin-top: 200px !important;
+  }
+  
+  html body #sobre .hero-text h1 {
+    font-size: 28px !important;
+    line-height: 1.2 !important;
+    font-weight: 700 !important;
+    color: #fff !important;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8) !important;
+    margin-bottom: 16px !important;
+    text-align: left !important;
+    margin-top: 0 !important;
+    margin-left: 0 !important;
+  }
+  
+  html body #sobre .hero-text p {
+    font-size: 14px !important;
+    line-height: 1.4 !important;
+    color: #fff !important;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.7) !important;
+    margin: 0 !important;
+    margin-top: 0 !important;
+    margin-left: 0 !important;
+  }
+}
+
+@media (max-width: 360px) {
+  html body #sobre .hero-text {
+    position: absolute !important;
+    top: 50% !important;
+    left: 10px !important;
+    transform: translateY(-50%) !important;
+    z-index: 100 !important;
+    max-width: 90% !important;
+    margin-top: 200px !important;
+  }
+  
+  html body #sobre .hero-text h1 {
+    font-size: 24px !important;
+    line-height: 1.2 !important;
+    font-weight: 700 !important;
+    color: #fff !important;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8) !important;
+    margin-bottom: 16px !important;
+    text-align: left !important;
+    margin-top: 0 !important;
+    margin-left: 0 !important;
+  }
+  
+  html body #sobre .hero-text p {
+    font-size: 12px !important;
+    line-height: 1.4 !important;
+    color: #fff !important;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.7) !important;
+    margin: 0 !important;
+    margin-top: 0 !important;
+    margin-left: 0 !important;
+  }
+}
+
+@media (max-width: 320px) {
+  html body #sobre .hero-text {
+    position: absolute !important;
+    top: 50% !important;
+    left: 8px !important;
+    transform: translateY(-50%) !important;
+    z-index: 100 !important;
+    max-width: 95% !important;
+    margin-top: 200px !important;
+  }
+  
+  html body #sobre .hero-text h1 {
+    font-size: 20px !important;
+    line-height: 1.2 !important;
+    font-weight: 700 !important;
+    color: #fff !important;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8) !important;
+    margin-bottom: 16px !important;
+    text-align: left !important;
+    margin-top: 0 !important;
+    margin-left: 0 !important;
+  }
+  
+  html body #sobre .hero-text p {
+    font-size: 10px !important;
+    line-height: 1.4 !important;
+    color: #fff !important;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.7) !important;
+    margin: 0 !important;
+    margin-top: 0 !important;
+    margin-left: 0 !important;
+  }
+}
+
+/* Mover formulário de contato para a esquerda na versão mobile */
+@media (max-width: 768px) {
+  #contato .contato-l5-wrapper h1 {
+    margin-left: 20px !important;
+  }
+  #contato .contato-l5-wrapper p {
+    margin-left: 20px !important;
+  }
+  #contato .contato-l5-wrapper > div {
+    margin-left: 20px !important;
+  }
+  #contato .contato-l5-wrapper > div > div {
+    margin-left: 0 !important;
+  }
+  
+  /* Ocultar informações de contato na versão mobile */
+  #contato .contato-l5-wrapper > div > div:last-child {
+    display: none !important;
+  }
+}
+
+@media (max-width: 480px) {
+  #contato .contato-l5-wrapper h1 {
+    margin-left: 10px !important;
+  }
+  #contato .contato-l5-wrapper p {
+    margin-left: 10px !important;
+  }
+  #contato .contato-l5-wrapper > div {
+    margin-left: 10px !important;
+  }
+  #contato .contato-l5-wrapper > div > div {
+    margin-left: 0 !important;
+  }
+  
+  /* Ocultar informações de contato na versão mobile */
+  #contato .contato-l5-wrapper > div > div:last-child {
+    display: none !important;
+  }
 }

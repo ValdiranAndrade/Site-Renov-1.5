@@ -57,7 +57,7 @@
     
     
     <title>Renov - Sua Troca Inteligente</title>
-    <link rel="stylesheet" href="styles.css?v=1.6.0">
+    <link rel="stylesheet" href="styles.css?v=1.11.7">
     
 
     <!-- Font Awesome - Preload e fallback para performance e renderização imediata dos ícones -->
@@ -141,8 +141,8 @@
                     </div>
                 </nav>
             <div class="social-links">
-                <a href="https://www.instagram.com/renovsmart" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.linkedin.com/company/renovsmart/posts/?feedView=all" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://www.instagram.com/renovsmart" target="_blank" aria-label="Siga a Renov no Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/company/renovsmart/posts/?feedView=all" target="_blank" aria-label="Siga a Renov no LinkedIn"><i class="fab fa-linkedin"></i></a>
             </div>
             
             <!-- Menu Mobile -->
@@ -167,14 +167,14 @@
                     </button>
                 </div>
                 <nav class="mobile-nav">
-                    <a href="#" onclick="openTab('home'); closeMobileMenu(); return false;" class="mobile-nav-item active">Home</a>
-                    <a href="#" onclick="openTab('sobre'); closeMobileMenu(); return false;" class="mobile-nav-item">Sobre Nós</a>
-                    <a href="#" onclick="openTab('trabalhe'); closeMobileMenu(); return false;" class="mobile-nav-item">Trabalhe Conosco</a>
-                    <a href="#" onclick="openTab('contato'); closeMobileMenu(); return false;" class="mobile-nav-item">Fale Conosco</a>
+                    <a href="#" onclick="openTabFromMobile('home'); return false;" class="mobile-nav-item active">Home</a>
+                    <a href="#" onclick="openTabFromMobile('sobre'); return false;" class="mobile-nav-item">Sobre Nós</a>
+                    <a href="#" onclick="openTabFromMobile('trabalhe'); return false;" class="mobile-nav-item">Trabalhe Conosco</a>
+                    <a href="#" onclick="openTabFromMobile('contato'); return false;" class="mobile-nav-item">Fale Conosco</a>
                 </nav>
                 <div class="mobile-social-links">
-                    <a href="https://www.instagram.com/renovsmart" target="_blank"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.linkedin.com/company/renovsmart/posts/?feedView=all" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://www.instagram.com/renovsmart" target="_blank" aria-label="Siga a Renov no Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/company/renovsmart/posts/?feedView=all" target="_blank" aria-label="Siga a Renov no LinkedIn"><i class="fab fa-linkedin"></i></a>
                 </div>
             </div>
         </div>
@@ -198,7 +198,7 @@
                     </video>
                   </div>
                     <div class="hero-content">
-                        <div class="hero-text">
+                        <div class="hero-text trade-in-hero">
                             <h1 style="font-size: 48px; line-height: 1.05; margin-bottom: 24px; color: #fff; font-weight: 700; text-align: left; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">Potencialize<br>suas vendas com<br>Trade-in Inteligente</h1>
                             <p style="color: #fff; font-size: 18px; line-height: 1.5; margin: 0; text-shadow: 1px 1px 2px rgba(0,0,0,0.7);">A plataforma Renov transforma dispositivos usados em oportunidades de venda para sua empresa. Ofereça aos seus clientes a possibilidade de usar seus aparelhos antigos como forma de pagamento e aumente suas conversões de forma inteligente.</p>
                         </div>
@@ -657,12 +657,12 @@
               <section class="hero">
                 <div class="hero-content" style="position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;height:12vh;text-align:left;color:#222;transform:translateY(400px);">
                   <div style="max-width:700px;width:100%;display:flex;flex-direction:column;align-items:flex-start;margin-left:-400px;">
-                    <h1 style="font-size:3.2rem;font-weight:800;line-height:1.05;margin-bottom:1.5rem;color:#fff;">Parceiro estratégico<br>para crescimento<br>sustentável</h1>
-                    <p style="font-size:1.2rem;font-weight:400;line-height:1.4;margin-bottom:0;color:#fff;">Somos especialistas em soluções de trade-in que impulsionam vendas de varejo e telefonia. Nossa tecnologia avançada avalia smartphones, tablets e eletrônicos com precisão, facilitando upgrades e aumentando suas conversões. Transformamos objeções de preço em oportunidades de negócio.</p>
+                    <h1 style="font-size: 48px;font-weight:800;line-height:1.05;margin-bottom:1.5rem;color:#fff;margin-top:10px;margin-left:10px;">Parceiro estratégico<br>para crescimento<br>sustentável</h1>
+                    <p style="font-size: 18px;font-weight:400;line-height:1.4;margin-bottom:0;color:#fff;margin-top:10px;margin-left:10px;">Somos especialistas em soluções de trade-in<br>que impulsionam vendas de varejo e telefonia.<br>Nossa tecnologia avançada avalia smartphones,<br>tablets e eletrônicos com precisão, facilitando<br>upgrades e aumentando suas conversões.<br>Transformamos objeções de preço em<br>oportunidades de negócio.</p>
                   </div>
                 </div>
               </section>
-              <p style="font-size:1.1rem;font-weight:400;line-height:1.4;text-align:left;color:#000;margin:48px auto 24px 450px;max-width:900px;margin-top:50px;">
+              <p style="font-size:1.1rem;font-weight:400;line-height:1.4;text-align:left;color:#000;margin:48px auto 24px 450px;max-width:900px;margin-top:50px;" class="quem-somos-text">
   <span style="display:block;font-weight:700;font-size:2rem;text-align:left;margin-bottom:12px;">Quem somos</span>
   Somos uma empresa brasileira de inovação tecnológica focada em soluções inteligentes de trade-in para o varejo e o mercado de eletrônicos. Utilizando inteligência artificial e automação, tornamos o processo de avaliação e troca de dispositivos usados mais rápido, preciso e acessível — transformando smartphones, tablets e outros eletrônicos usados em oportunidades de negócio e inclusão digital.
 </p>
@@ -832,32 +832,32 @@
                         
                             </div>
                     <div style="display:flex;gap:15px;justify-content:center;margin:48px auto 0 auto;">
-                        <section class="trabalhe-grid" style="display:grid;width:280px;grid-template-columns:repeat(3,80px);gap:10px;min-height:340px;height:340px;background:url('assets/images/vale-alimentação.webp') center center/cover no-repeat;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,0.04);padding:24px 0;" loading="lazy">
-                            <h3 style="grid-column:1/-1;text-align:center;color:#fff;font-size:1rem;font-weight:600;margin:0;text-shadow:2px 2px 4px rgba(0,0,0,0.7);">Vale Alimentação/Refeição</h3>
+                        <section class="trabalhe-grid vale-alimentacao" style="display:grid;width:280px;grid-template-columns:repeat(3,80px);gap:10px;min-height:340px;height:340px;background:url('assets/images/vale-alimentação.webp') center center/cover no-repeat;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,0.04);padding:24px 0;" loading="lazy">
+                            <h3 style="grid-column:1/-1;text-align:center;color:#fff;font-size:1rem;font-weight:600;margin:0;text-shadow:2px 2px 4px rgba(0,0,0,0.7);transform:translateX(-30px);">Vale Alimentação<br>/Refeição</h3>
                         </section>
                         <section class="trabalhe-grid" style="display:grid;width:280px;grid-template-columns:repeat(3,80px);gap:10px;min-height:340px;height:340px;background:url('assets/images/vale-mobilidade.webp') center center/cover no-repeat;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,0.04);padding:24px 0;" loading="lazy">
-                            <h3 style="grid-column:1/-1;text-align:center;color:#fff;font-size:1rem;font-weight:600;margin:0;text-shadow:2px 2px 4px rgba(0,0,0,0.7);">Vale Mobilidade</h3>
+                            <h3 style="grid-column:1/-1;text-align:center;color:#fff;font-size:1rem;font-weight:600;margin:0;text-shadow:2px 2px 4px rgba(0,0,0,0.7);transform:translateX(-30px);">Vale Mobilidade</h3>
                         </section>
                         <section class="trabalhe-grid" style="display:grid;width:280px;grid-template-columns:repeat(3,80px);gap:10px;min-height:340px;height:340px;background:url('assets/images/totalpass.webp') center center/cover no-repeat;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,0.04);padding:24px 0;" loading="lazy">
-                            <h3 style="grid-column:1/-1;text-align:center;color:#fff;font-size:1rem;font-weight:600;margin:0;text-shadow:2px 2px 4px rgba(0,0,0,0.7);">Totalpass</h3>
+                            <h3 style="grid-column:1/-1;text-align:center;color:#fff;font-size:1rem;font-weight:600;margin:0;text-shadow:2px 2px 4px rgba(0,0,0,0.7);transform:translateX(-30px);">Totalpass</h3>
                         </section>
                         <section class="trabalhe-grid" style="display:grid;width:280px;grid-template-columns:repeat(3,80px);gap:10px;min-height:340px;height:340px;background:url('assets/images/dayoff.webp') center center/cover no-repeat;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,0.04);padding:24px 0;" loading="lazy">
-                            <h3 style="grid-column:1/-1;text-align:center;color:#fff;font-size:1rem;font-weight:600;margin:0;text-shadow:2px 2px 4px rgba(0,0,0,0.7);">Day Off</h3>
+                            <h3 style="grid-column:1/-1;text-align:center;color:#fff;font-size:1rem;font-weight:600;margin:0;text-shadow:2px 2px 4px rgba(0,0,0,0.7);transform:translateX(-30px);">Day Off</h3>
                         </section>
                             </div>
 
                     <div style="display:flex;gap:15px;justify-content:center;margin:15px auto 0 auto;">
                         <section class="trabalhe-grid" style="display:grid;width:280px;grid-template-columns:repeat(3,80px);gap:10px;min-height:340px;height:340px;background:url('assets/images/plano-de-saude.webp') center center/cover no-repeat;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,0.04);padding:24px 0;" loading="lazy">
-                            <h3 style="grid-column:1/-1;text-align:center;color:#fff;font-size:1rem;font-weight:600;margin:0;text-shadow:2px 2px 4px rgba(0,0,0,0.7);">Plano de Saúde</h3>
+                            <h3 style="grid-column:1/-1;text-align:center;color:#fff;font-size:1rem;font-weight:600;margin:0;text-shadow:2px 2px 4px rgba(0,0,0,0.7);transform:translateX(-30px);">Plano de Saúde</h3>
                         </section>
                         <section class="trabalhe-grid" style="display:grid;width:280px;grid-template-columns:repeat(3,80px);gap:10px;min-height:340px;height:340px;background:url('assets/images/plano-odontologico.webp') center center/cover no-repeat;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,0.04);padding:24px 0;" loading="lazy">
-                            <h3 style="grid-column:1/-1;text-align:center;color:#fff;font-size:1rem;font-weight:600;margin:0;text-shadow:2px 2px 4px rgba(0,0,0,0.7);">Plano Odontológico</h3>
+                            <h3 style="grid-column:1/-1;text-align:center;color:#fff;font-size:1rem;font-weight:600;margin:0;text-shadow:2px 2px 4px rgba(0,0,0,0.7);transform:translateX(-30px);">Plano Odontológico</h3>
                         </section>
                         <section class="trabalhe-grid" style="display:grid;width:280px;grid-template-columns:repeat(3,80px);gap:10px;min-height:340px;height:340px;background:url('assets/images/auxílio-creche.webp') center center/cover no-repeat;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,0.04);padding:24px 0;" loading="lazy">
-                            <h3 style="grid-column:1/-1;text-align:center;color:#fff;font-size:1rem;font-weight:600;margin:0;text-shadow:2px 2px 4px rgba(0,0,0,0.7);">Auxílio Creche</h3>
+                            <h3 style="grid-column:1/-1;text-align:center;color:#fff;font-size:1rem;font-weight:600;margin:0;text-shadow:2px 2px 4px rgba(0,0,0,0.7);transform:translateX(-30px);">Auxílio Creche</h3>
                         </section>
                         <section class="trabalhe-grid" style="display:grid;width:280px;grid-template-columns:repeat(3,80px);gap:10px;min-height:340px;height:340px;background:url('assets/images/seguro-de-vida.webp') center center/cover no-repeat;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,0.04);padding:24px 0;" loading="lazy">
-                            <h3 style="grid-column:1/-1;text-align:center;color:#fff;font-size:1rem;font-weight:600;margin:0;text-shadow:2px 2px 4px rgba(0,0,0,0.7);">Seguro de Vida</h3>
+                            <h3 style="grid-column:1/-1;text-align:center;color:#fff;font-size:1rem;font-weight:600;margin:0;text-shadow:2px 2px 4px rgba(0,0,0,0.7);transform:translateX(-30px);">Seguro de Vida</h3>
                         </section>
                     </div>
                 </div>
@@ -934,8 +934,8 @@
         <img src='assets/images/Renov-Logo.webp?v=1.6.0' alt='Renov - Sua Troca Inteligente' style='width:130px;filter:brightness(1.1);margin-top:-10px;' loading="lazy" decoding="async">
       </picture>
               <div class="social-links" style="display:flex;gap:16px;margin-top:-5px;margin-left:30px;">
-        <a href="https://www.instagram.com/renovsmart" target="_blank" style="color:#fff;font-size:1.5rem;transition:color 0.2s;" onmouseover="this.style.color='#00b140'" onmouseout="this.style.color='#fff'"><i class="fab fa-instagram"></i></a>
-        <a href="https://www.linkedin.com/company/renovsmart/posts/?feedView=all" target="_blank" style="color:#fff;font-size:1.5rem;transition:color 0.2s;" onmouseover="this.style.color='#00b140'" onmouseout="this.style.color='#fff'"><i class="fab fa-linkedin"></i></a>
+        <a href="https://www.instagram.com/renovsmart" target="_blank" style="color:#fff;font-size:1.5rem;transition:color 0.2s;" onmouseover="this.style.color='#00b140'" onmouseout="this.style.color='#fff'" aria-label="Siga a Renov no Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/company/renovsmart/posts/?feedView=all" target="_blank" style="color:#fff;font-size:1.5rem;transition:color 0.2s;" onmouseover="this.style.color='#00b140'" onmouseout="this.style.color='#fff'" aria-label="Siga a Renov no LinkedIn"><i class="fab fa-linkedin"></i></a>
       </div>
     </div>
     <!-- Navegação central -->
@@ -1043,6 +1043,191 @@
           poster.style.display = 'block';
         }
       });
+      
+      // SOLUÇÃO AGGRESSIVA PARA MENU MOBILE - COM PERMISSÃO SUDO
+      (function() {
+        console.log('🚀 INICIANDO SOLUÇÃO AGGRESSIVA DO MENU MOBILE');
+        
+        // Função para forçar a inicialização
+        function forceInitMobileMenu() {
+          console.log('🔧 Forçando inicialização do menu mobile...');
+          
+          // Remover todos os event listeners existentes
+          const toggle = document.querySelector('.mobile-menu-toggle');
+          const close = document.querySelector('.mobile-menu-close');
+          const overlay = document.querySelector('.mobile-menu-overlay');
+          
+          if (toggle) {
+            toggle.replaceWith(toggle.cloneNode(true));
+          }
+          if (close) {
+            close.replaceWith(close.cloneNode(true));
+          }
+          if (overlay) {
+            overlay.replaceWith(overlay.cloneNode(true));
+          }
+          
+          // Re-selecionar elementos após clonagem
+          const newToggle = document.querySelector('.mobile-menu-toggle');
+          const newClose = document.querySelector('.mobile-menu-close');
+          const newOverlay = document.querySelector('.mobile-menu-overlay');
+          
+          console.log('Elementos encontrados:', {
+            toggle: !!newToggle,
+            close: !!newClose,
+            overlay: !!newOverlay
+          });
+          
+          // Funções globais FORÇADAS
+          window.openMobileMenu = function() {
+            console.log('🔥 ABRINDO MENU MOBILE');
+            const overlay = document.querySelector('.mobile-menu-overlay');
+            const toggle = document.querySelector('.mobile-menu-toggle');
+            
+            if (overlay && toggle) {
+              overlay.style.display = 'block';
+              overlay.style.opacity = '1';
+              overlay.style.visibility = 'visible';
+              overlay.classList.add('active');
+              toggle.classList.add('active');
+              document.body.style.overflow = 'hidden';
+              console.log('✅ MENU ABERTO COM SUCESSO!');
+            } else {
+              console.error('❌ ELEMENTOS NÃO ENCONTRADOS');
+            }
+          };
+          
+          window.closeMobileMenu = function() {
+            console.log('🔥 FECHANDO MENU MOBILE');
+            const overlay = document.querySelector('.mobile-menu-overlay');
+            const toggle = document.querySelector('.mobile-menu-toggle');
+            
+            if (overlay && toggle) {
+              overlay.style.display = 'none';
+              overlay.style.opacity = '0';
+              overlay.style.visibility = 'hidden';
+              overlay.classList.remove('active');
+              toggle.classList.remove('active');
+              document.body.style.overflow = '';
+              console.log('✅ MENU FECHADO COM SUCESSO!');
+            }
+          };
+          
+          window.openTabFromMobile = function(tabId) {
+            console.log('🔥 ABRINDO ABA:', tabId);
+            closeMobileMenu();
+            
+            setTimeout(() => {
+              // FORÇAR esconder todas as abas
+              const allTabs = document.querySelectorAll('.tab-content');
+              allTabs.forEach(tab => {
+                tab.style.display = 'none';
+                tab.style.visibility = 'hidden';
+                tab.style.opacity = '0';
+                tab.classList.remove('active');
+              });
+              
+              // FORÇAR mostrar aba selecionada
+              const targetTab = document.getElementById(tabId);
+              if (targetTab) {
+                targetTab.style.display = 'block';
+                targetTab.style.visibility = 'visible';
+                targetTab.style.opacity = '1';
+                targetTab.classList.add('active');
+                console.log('✅ ABA ABERTA:', tabId);
+              } else {
+                console.error('❌ ABA NÃO ENCONTRADA:', tabId);
+              }
+              
+              // FORÇAR ativar botão correspondente
+              document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+                btn.style.color = '';
+              });
+              const targetBtn = document.querySelector(`.tab-btn[onclick*="${tabId}"]`);
+              if (targetBtn) {
+                targetBtn.classList.add('active');
+                targetBtn.style.color = '#008d36 !important';
+              }
+              
+              window.scrollTo(0, 0);
+            }, 300);
+          };
+          
+          // ADICIONAR EVENT LISTENERS FORÇADOS
+          if (newToggle) {
+            console.log('🔗 Adicionando listener FORÇADO ao toggle');
+            newToggle.addEventListener('click', function(e) {
+              e.preventDefault();
+              e.stopPropagation();
+              e.stopImmediatePropagation();
+              console.log('🖱️ CLIQUE NO TOGGLE DETECTADO');
+              openMobileMenu();
+            }, true);
+            
+            // Backup com onclick
+            newToggle.onclick = function(e) {
+              e.preventDefault();
+              e.stopPropagation();
+              console.log('🖱️ CLIQUE ONCLICK NO TOGGLE');
+              openMobileMenu();
+            };
+          }
+          
+          if (newClose) {
+            console.log('🔗 Adicionando listener FORÇADO ao close');
+            newClose.addEventListener('click', function(e) {
+              e.preventDefault();
+              e.stopPropagation();
+              e.stopImmediatePropagation();
+              console.log('🖱️ CLIQUE NO CLOSE DETECTADO');
+              closeMobileMenu();
+            }, true);
+            
+            // Backup com onclick
+            newClose.onclick = function(e) {
+              e.preventDefault();
+              e.stopPropagation();
+              console.log('🖱️ CLIQUE ONCLICK NO CLOSE');
+              closeMobileMenu();
+            };
+          }
+          
+          if (newOverlay) {
+            console.log('🔗 Adicionando listener FORÇADO ao overlay');
+            newOverlay.addEventListener('click', function(e) {
+              if (e.target === newOverlay) {
+                console.log('🖱️ CLIQUE NO OVERLAY DETECTADO');
+                closeMobileMenu();
+              }
+            }, true);
+          }
+          
+          // ESC key FORÇADO
+          document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+              console.log('⌨️ TECLA ESC PRESSIONADA');
+              closeMobileMenu();
+            }
+          }, true);
+          
+          console.log('✅ MENU MOBILE INICIALIZADO COM SUCESSO!');
+        }
+        
+        // Executar imediatamente
+        forceInitMobileMenu();
+        
+        // Backup: executar novamente após DOM carregado
+        document.addEventListener('DOMContentLoaded', forceInitMobileMenu);
+        
+        // Backup: executar após window load
+        window.addEventListener('load', forceInitMobileMenu);
+        
+        // Backup: executar após 1 segundo
+        setTimeout(forceInitMobileMenu, 1000);
+        
+        console.log('🚀 SOLUÇÃO AGGRESSIVA CONFIGURADA!');
+      })();
     </script>
     <script>
 document.addEventListener('submit', function(e) {

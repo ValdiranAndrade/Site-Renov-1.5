@@ -8,12 +8,27 @@
     <link rel="preconnect" href="fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="styles-optimized.css">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+        
+        /* Ocultar navegação central na versão mobile */
+        @media (max-width: 768px) {
+          footer > div > div:nth-child(2) {
+            display: none !important;
+          }
+          
+          /* Mover título "Fale Conosco" para baixo na versão mobile */
+          .hero-content h1 {
+            margin-top: 100px !important;
+          }
+          
+          .hero-content p {
+            margin-top: 40px !important;
+          }
         }
 
         body {
@@ -301,7 +316,7 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <img src="assets/images/Renov-Logo.webp" alt="Renov" loading="lazy">
+                    <img src="assets/images/Renov-Logo.webp" alt="Renov">
                 </div>
                 <a href="index.html" class="back-button">
                     <i class="fas fa-arrow-left"></i> Voltar ao Site
@@ -392,7 +407,7 @@
                         </div>
                         <div class="info-content">
                             <h3>Telefone</h3>
-                            <p><a href="tel:+551151022950">(11) 5102-2950</a></p>
+                            <p><a href="tel:+551151942988">(11) 5194-2988</a></p>
                         </div>
                     </div>
 
@@ -424,54 +439,59 @@
 
     <footer style="color:#fff;padding:0 0 0 0;width:100%;border:none;">
   <div style="max-width:1200px;margin:0 auto;padding:48px 32px 0 32px;display:flex;align-items:flex-start;justify-content:space-between;gap:48px;flex-wrap:wrap;">
-    <!-- Logo e social -->
-    <div style="flex:1 1 220px;min-width:180px;display:flex;flex-direction:column;align-items:flex-start;gap:24px;">
-      <img src='assets/images/Renov-Logo.webp' alt='Renov - Sua Troca Inteligente' style='width:130px;filter:brightness(1.1);margin-top:-10px;' loading="lazy">
-              <div class="social-links" style="display:flex;gap:16px;margin-top:-5px;margin-left:10px;">
-        <a href="https://www.instagram.com/renovsmart" target="_blank" style="color:#000;font-size:1.5rem;transition:color 0.2s;" onmouseover="this.style.color='#00b140'" onmouseout="this.style.color='#000'"><i class="fab fa-instagram"></i></a>
-        <a href="https://www.linkedin.com/company/renovsmart/posts/?feedView=all" target="_blank" style="color:#000;font-size:1.5rem;transition:color 0.2s;" onmouseover="this.style.color='#00b140'" onmouseout="this.style.color='#000'"><i class="fab fa-linkedin"></i></a>
+    <!-- Logo e contato lado a lado -->
+    <div style="flex:1 1 220px;min-width:180px;display:flex;align-items:flex-start;gap:30px;">
+      <div style="display:flex;flex-direction:column;align-items:flex-start;gap:24px;">
+        <picture>
+          <source srcset="assets/images/Renov-Logo.webp?v=1.6.0" type="image/webp">
+          <img src='assets/images/Renov-Logo.webp?v=1.6.0' alt='Renov - Sua Troca Inteligente' style='width:130px;filter:brightness(1.1);margin-top:-10px;' loading="lazy" decoding="async">
+        </picture>
+        <div class="social-links" style="display:flex;gap:16px;margin-top:-5px;margin-left:30px;">
+          <a href="https://www.instagram.com/renovsmart" target="_blank" style="color:#000;font-size:1.5rem;transition:color 0.2s;" onmouseover="this.style.color='#00b140'" onmouseout="this.style.color='#000'" aria-label="Siga a Renov no Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.linkedin.com/company/renovsmart/posts/?feedView=all" target="_blank" style="color:#000;font-size:1.5rem;transition:color 0.2s;" onmouseover="this.style.color='#00b140'" onmouseout="this.style.color='#000'" aria-label="Siga a Renov no LinkedIn"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+      <!-- Informações de contato lado a lado com a logo -->
+      <div style="display:flex;flex-direction:column;gap:8px;margin-top:0px;margin-left:80px;">
+        <div style="display:flex;align-items:flex-start;gap:10px;font-size:0.9rem;">
+          <i class="fas fa-map-marker-alt" style="color:#00b140;margin-top:3px;"></i>
+          <span style="color:#000;text-align:left;">R. Luigi Galvani, 200<br>São Paulo - SP</span>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:10px;font-size:0.9rem;">
+          <i class="fas fa-phone" style="color:#00b140;margin-top:3px;"></i>
+          <span style="color:#000;text-align:left;">(11) 5102-2950</span>
+        </div>
       </div>
     </div>
     <!-- Navegação central -->
     <div style="flex:2 1 520px;min-width:320px;display:flex;justify-content:center;gap:32px;">
       <div style="display:flex;flex-direction:column;gap:12px;min-width:120px;">
-        <span style="font-weight:700;font-size:0.95rem;color:#000;margin-bottom:8px;">Home</span>
+        <span style="font-weight:400;font-size:0.95rem;color:#000;margin-bottom:8px;">Home</span>
         <a href="index.html#como-funciona" style="color:#000;text-decoration:none;font-size:0.95rem;">Solução</a>
         <a href="index.html#home" style="color:#000;text-decoration:none;font-size:0.95rem;">IA</a>
         <a href="index.html#parceiros" style="color:#000;text-decoration:none;font-size:0.95rem;">Parceiros</a>
       </div>
       <div style="display:flex;flex-direction:column;gap:12px;min-width:120px;margin-right:24px;">
-        <span style="font-weight:700;font-size:0.95rem;color:#000;margin-bottom:8px;">Sobre Nós</span>
+        <span style="font-weight:400;font-size:0.95rem;color:#000;margin-bottom:8px;">Sobre Nós</span>
         <a href="index.html#sobre" style="color:#000;text-decoration:none;font-size:0.95rem;">Sustentabilidade</a>
       </div>
       <div style="display:flex;flex-direction:column;gap:12px;min-width:120px;margin-right:24px;">
-        <span style="font-weight:700;font-size:0.95rem;color:#000;margin-bottom:8px;white-space:nowrap;">Trabalhe Conosco</span>
+        <span style="font-weight:400;font-size:0.95rem;color:#000;margin-bottom:8px;white-space:nowrap;">Trabalhe Conosco</span>
         <a href="index.html#trabalhe" style="color:#000;text-decoration:none;font-size:0.95rem;">Benefícios</a>
         <a href="index.html#trabalhe" style="color:#000;text-decoration:none;font-size:0.95rem;">Contato RH</a>
       </div>
       <div style="display:flex;flex-direction:column;gap:12px;min-width:120px;margin-right:24px;">
-        <span style="font-weight:700;font-size:0.95rem;color:#000;margin-bottom:8px;">Fale Conosco</span>
+        <span style="font-weight:400;font-size:0.95rem;color:#000;margin-bottom:8px;">Fale Conosco</span>
         <a href="index.html#contato" style="color:#000;text-decoration:none;font-size:0.95rem;">Atendimento</a>
       </div>
     </div>
-    <!-- Contato à direita -->
-    <div style="flex:1 1 220px;min-width:180px;display:flex;flex-direction:column;align-items:flex-start;gap:18px;padding-left:0;margin-left:40px;">
-      <div style="display:flex;align-items:flex-start;gap:10px;font-size:1rem;margin-left:0;">
-        <i class="fas fa-map-marker-alt" style="color:#00b140;margin-top:6px;"></i>
-        <span style="color:#000;text-align:left;">R. Luigi Galvani, 200<br>São Paulo - SP</span>
-      </div>
-      <div style="display:flex;align-items:flex-start;gap:10px;font-size:1rem;margin-left:0;">
-        <i class="fas fa-phone" style="color:#00b140;margin-top:6px;"></i>
-        <span style="color:#000;text-align:left;">(11) 5102-2950</span>
-      </div>
-    </div>
+
   </div>
-  <div style="margin:32px 0 0 0;padding:0;text-align:center;font-size:1rem;color:#bbb;background:#181818;border:none;box-shadow:none;outline:none;height:40px;display:flex;align-items:center;justify-content:center;">
+  <div style="margin:40px 0 0 0;padding:18px 0 8px 0;text-align:center;font-size:1rem;color:#bbb;background:#181818;border:none;box-shadow:none;outline:none;">
     <span>&copy; 2024 Renov. Todos os direitos reservados.</span>
   </div>
 </footer>
 
-    <script src="script.min.js?v=1.6.0"></script>
     <script>
         // Form submission handling with Formspree
         document.getElementById('contactForm').addEventListener('submit', function(e) {
