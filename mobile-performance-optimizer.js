@@ -31,7 +31,8 @@
         const images = document.querySelectorAll('img[src*="assets/images/"]');
         images.forEach(img => {
             const src = img.src;
-            if (src.includes('assets/images/') && !src.includes('/mobile/')) {
+            // Só aplicar versões mobile para imagens que não são de partners
+            if (src.includes('assets/images/') && !src.includes('/mobile/') && !src.includes('/partners/')) {
                 // Tentar carregar versão mobile se existir
                 const mobileSrc = src.replace('assets/images/', 'assets/images/mobile/');
                 
@@ -48,6 +49,11 @@
                     img.setAttribute('fetchpriority', 'low');
                 };
                 testImg.src = mobileSrc;
+            } else {
+                // Para imagens de partners, apenas otimizar sem tentar carregar versão mobile
+                img.setAttribute('loading', 'lazy');
+                img.setAttribute('decoding', 'async');
+                img.setAttribute('fetchpriority', 'low');
             }
         });
     }
