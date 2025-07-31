@@ -21,7 +21,7 @@
     }
     
     function fixImageCORS() {
-        // Adicionar crossorigin para imagens que podem ter problemas de CORS
+        // Corrigir problemas de CORS para imagens
         const images = document.querySelectorAll('img[src*="assets/images/"]');
         images.forEach(img => {
             // Remover crossorigin se existir para evitar problemas
@@ -36,18 +36,26 @@
                     img.src = originalSrc;
                 }
             };
+            
+            // Adicionar tratamento de erro específico para imagens de partners
+            if (img.src.includes('/partners/')) {
+                img.onerror = function() {
+                    console.log('⚠️ Imagem de partner não encontrada:', img.src);
+                    // Não tentar recarregar imagens de partners que não existem
+                };
+            }
         });
         
         // Corrigir problemas específicos de fontes
         const fontLinks = document.querySelectorAll('link[href*="fonts.googleapis.com"]');
         fontLinks.forEach(link => {
-            link.setAttribute('crossorigin', 'anonymous');
+            link.removeAttribute('crossorigin');
         });
         
         // Corrigir preload de fontes
         const fontPreloads = document.querySelectorAll('link[href*="Montserrat"]');
         fontPreloads.forEach(link => {
-            link.setAttribute('crossorigin', 'anonymous');
+            link.removeAttribute('crossorigin');
         });
     }
     
@@ -68,6 +76,15 @@
                 });
             });
         }
+        
+        // Desabilitar preload de recursos que causam problemas
+        const preloadLinks = document.querySelectorAll('link[rel="preload"]');
+        preloadLinks.forEach(link => {
+            if (link.href.includes('assets/images/') || link.href.includes('assets/fonts/')) {
+                link.remove();
+                console.log('🚫 Removido preload problemático:', link.href);
+            }
+        });
     }
     
     function ensureImageLoading() {
