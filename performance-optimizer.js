@@ -33,7 +33,7 @@
     function preloadCriticalResources() {
         const criticalResources = [
             'assets/fonts/Montserrat-Regular.woff2',
-            'assets/fonts/Montserrat-SemiBold.woff2',
+            'assets/fonts/Montserrat-Medium.woff2',
             'assets/images/Renov-Logo.png'
         ];
         

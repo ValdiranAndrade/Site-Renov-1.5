@@ -37,6 +37,18 @@
                 }
             };
         });
+        
+        // Corrigir problemas específicos de fontes
+        const fontLinks = document.querySelectorAll('link[href*="fonts.googleapis.com"]');
+        fontLinks.forEach(link => {
+            link.setAttribute('crossorigin', 'anonymous');
+        });
+        
+        // Corrigir preload de fontes
+        const fontPreloads = document.querySelectorAll('link[href*="Montserrat"]');
+        fontPreloads.forEach(link => {
+            link.setAttribute('crossorigin', 'anonymous');
+        });
     }
     
     function disableProblematicOptimizations() {
