@@ -79,13 +79,17 @@
         }
         
         // Remover service worker se estiver causando problemas
-        if ('serviceWorker' in navigator) {
+        if ('serviceWorker' in navigator && window.location.protocol !== 'file:') {
             navigator.serviceWorker.getRegistrations().then(registrations => {
                 registrations.forEach(registration => {
                     registration.unregister();
                     console.log('🚫 Service Worker desregistrado para evitar problemas');
                 });
+            }).catch(error => {
+                console.log('🚫 Erro ao desregistrar Service Worker:', error);
             });
+        } else {
+            console.log('🚫 Service Worker não acessível em protocolo file://');
         }
         
         // Desabilitar preload de recursos que causam problemas
