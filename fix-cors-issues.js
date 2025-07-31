@@ -57,6 +57,17 @@
         fontPreloads.forEach(link => {
             link.removeAttribute('crossorigin');
         });
+        
+        // Corrigir problemas específicos de fontes locais
+        const localFonts = document.querySelectorAll('link[href*="assets/fonts/"]');
+        localFonts.forEach(link => {
+            link.removeAttribute('crossorigin');
+            // Verificar se a fonte existe
+            if (link.href.includes('Montserrat-SemiBold')) {
+                link.remove();
+                console.log('🚫 Removido preload de fonte não encontrada:', link.href);
+            }
+        });
     }
     
     function disableProblematicOptimizations() {
