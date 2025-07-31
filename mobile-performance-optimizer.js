@@ -205,7 +205,7 @@
     
     // 7. Otimizar Service Worker para mobile
     function optimizeServiceWorker() {
-        if ('serviceWorker' in navigator) {
+        if ('serviceWorker' in navigator && window.location.protocol !== 'file:') {
             navigator.serviceWorker.register('/sw.js?v=1.6.0', {
                 scope: '/'
             }).then(registration => {
@@ -213,6 +213,8 @@
             }).catch(error => {
                 console.log('❌ Erro no registro do Service Worker:', error);
             });
+        } else {
+            console.log('📱 Service Worker desabilitado para protocolo file://');
         }
     }
     

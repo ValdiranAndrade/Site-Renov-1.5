@@ -641,7 +641,7 @@ class CacheManager {
 
   // Inicializa o gerenciador de cache
   async init() {
-    if ('serviceWorker' in navigator) {
+    if ('serviceWorker' in navigator && window.location.protocol !== 'file:') {
       try {
         const registration = await navigator.serviceWorker.register('/sw.js?v=' + this.cacheVersion);
         console.log('Cache Manager inicializado:', registration.scope);
@@ -653,6 +653,8 @@ class CacheManager {
       } catch (error) {
         console.error('Erro ao inicializar Cache Manager:', error);
       }
+    } else {
+      console.log('Service Worker desabilitado para protocolo file://');
     }
   }
 

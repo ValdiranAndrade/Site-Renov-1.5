@@ -982,7 +982,7 @@
     <script src="remove-version-params.js"></script>
     <script>
       // Registro do Service Worker para cache offline
-      if ('serviceWorker' in navigator) {
+      if ('serviceWorker' in navigator && window.location.protocol !== 'file:') {
         window.addEventListener('load', () => {
           navigator.serviceWorker.register('/sw.min.js?v=1.6.0')
             .then(registration => {
@@ -992,6 +992,8 @@
               console.log('Falha no registro do Service Worker:', error);
             });
         });
+      } else {
+        console.log('Service Worker desabilitado para protocolo file://');
       }
 
       // Adiar scripts de performance para após o carregamento da página (melhor LCP)
