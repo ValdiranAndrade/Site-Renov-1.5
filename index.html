@@ -40,14 +40,14 @@
     <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
     
     <!-- Ultra-critical resources for LCP - Minimal chain -->
-    <link rel="preload" href="assets/images/Renov-Logo.webp?v=1.6.0" as="image" fetchpriority="high" type="image/webp" crossorigin="anonymous">
-    <link rel="preload" href="assets/fonts/Montserrat-Regular.woff2" as="font" type="font/woff2" crossorigin fetchpriority="high">
-    <link rel="preload" href="styles-optimized.css?v=1.6.0" as="style" fetchpriority="high" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="styles-optimized.css?v=1.6.0"></noscript>
-    <link rel="stylesheet" href="styles-optimized.css?v=1.6.0">
+    <link rel="preload" href="assets/images/Renov-Logo.webp" as="image" fetchpriority="high" type="image/webp">
+    <link rel="preload" href="assets/fonts/Montserrat-Regular.woff2" as="font" type="font/woff2" fetchpriority="high">
+    <link rel="preload" href="styles-optimized.css" as="style" fetchpriority="high" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="styles-optimized.css"></noscript>
+    <link rel="stylesheet" href="styles-optimized.css">
     
     <!-- High priority resources -->
-    <link rel="preload" href="script.min.js?v=1.6.0" as="script" fetchpriority="high">
+    <link rel="preload" href="script.min.js" as="script" fetchpriority="high">
     
     <!-- Deferred resources - Reduced chain -->
     
@@ -127,8 +127,8 @@
             <div class="logo">
                 <a href="#" onclick="openTab('home'); return false;" style="text-decoration: none; cursor: pointer;">
                     <picture>
-                        <source srcset="assets/images/Renov-Logo.webp?v=1.6.0" type="image/webp">
-                        <img src="assets/images/Renov-Logo.webp?v=1.6.0" alt="Renov - Sua Troca Inteligente" loading="eager" fetchpriority="high" decoding="sync" width="160" height="40">
+                        <source srcset="assets/images/Renov-Logo.webp" type="image/webp">
+                        <img src="assets/images/Renov-Logo.webp" alt="Renov - Sua Troca Inteligente" loading="eager" fetchpriority="high" decoding="sync" width="160" height="40">
                     </picture>
                 </a>
             </div>
@@ -979,6 +979,7 @@
 
     <script src="script.min.js?v=1.6.0" fetchpriority="high"></script>
     <script src="fix-cors-issues.js"></script>
+    <script src="remove-version-params.js"></script>
     <script>
       // Registro do Service Worker para cache offline
       if ('serviceWorker' in navigator) {
