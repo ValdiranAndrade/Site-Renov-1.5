@@ -39,19 +39,15 @@
     <!-- DNS prefetch para recursos críticos -->
     <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
     
-    <!-- Ultra-critical resources for LCP - Mobile optimized -->
+    <!-- Ultra-critical resources for LCP - Minimal chain -->
     <link rel="preload" href="assets/images/Renov-Logo.webp?v=1.6.0" as="image" fetchpriority="high" type="image/webp" crossorigin="anonymous">
     <link rel="preload" href="assets/fonts/Montserrat-Regular.woff2" as="font" type="font/woff2" crossorigin fetchpriority="high">
-    <link rel="preload" href="assets/images/bg-como-funciona.webp?v=1.6.0" as="image" fetchpriority="high" type="image/webp">
     <link rel="preload" href="styles-optimized.css?v=1.6.0" as="style" fetchpriority="high" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="styles-optimized.css?v=1.6.0"></noscript>
     <link rel="stylesheet" href="styles-optimized.css?v=1.6.0">
     
     <!-- High priority resources -->
     <link rel="preload" href="script.min.js?v=1.6.0" as="script" fetchpriority="high">
-    
-    <!-- Mobile-specific optimizations -->
-    <link rel="preload" href="assets/images/mobile/bg-como-funciona.webp?v=1.6.0" as="image" media="(max-width: 768px)" fetchpriority="high">
     
     <!-- Deferred resources - Reduced chain -->
     
@@ -69,66 +65,48 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'"></noscript>
     
-    <!-- Critical CSS for LCP optimization - Mobile Enhanced -->
+    <!-- Critical CSS for LCP optimization -->
     <style>
-      /* Ultra-critical CSS for LCP optimization - Mobile optimized */
-      .logo img{width:160px;height:40px;object-fit:contain;display:block;max-width:100%;will-change:transform}
-      .header-content{display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem;max-width:1200px;margin:0 auto;position:relative;z-index:10;background:#fff;min-height:70px;contain:layout style}
-      .main-nav .tab-buttons{display:flex;gap:12px;contain:layout}
-      .tab-btn{font-size:1.1rem;font-weight:400;padding:8px 18px;border-radius:24px;background:transparent;border:none;cursor:pointer;transition:background 0.2s;contain:layout style}
+      /* Ultra-critical CSS for LCP optimization - Minimal chain */
+      .logo img{width:160px;height:40px;object-fit:contain;display:block;max-width:100%}
+      .header-content{display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem;max-width:1200px;margin:0 auto;position:relative;z-index:10;background:#fff;min-height:70px}
+      .main-nav .tab-buttons{display:flex;gap:12px}
+      .tab-btn{font-size:1.1rem;font-weight:400;padding:8px 18px;border-radius:24px;background:transparent;border:none;cursor:pointer;transition:background 0.2s}
       .tab-btn.active,.tab-btn:focus{background:#00b140;color:#fff!important;outline:none}
-      .social-links{display:flex;gap:12px;contain:layout}
-      .social-links a{font-size:1.3rem;color:#00b140;text-decoration:none;transition:color 0.2s;contain:layout style}
+      .social-links{display:flex;gap:12px}
+      .social-links a{font-size:1.3rem;color:#00b140;text-decoration:none;transition:color 0.2s}
       .social-links a:hover{color:#008d36}
-      .hero{position:relative;width:100vw;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw;height:140vh;display:flex;align-items:flex-start;overflow:hidden;margin-top:0!important;margin-bottom:-350px;background:#000;contain:layout}
-      .hero-content{position:relative;z-index:1;width:100%;max-width:1200px;margin:0 auto;padding:0 5%;margin-top:300px;contain:layout}
-      .video-bg-wrapper{position:absolute;top:0;left:0;width:100vw;height:100%;z-index:0;overflow:hidden;pointer-events:none;transform:translateY(-300px);display:block!important;contain:layout}
-      .video-bg{position:absolute;top:0;left:50%;width:100vw;height:100%;min-width:100vw;min-height:100%;object-fit:cover;transform:translateX(-50%);opacity:1!important;visibility:visible!important;contain:layout}
+      .hero{position:relative;width:100vw;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw;height:140vh;display:flex;align-items:flex-start;overflow:hidden;margin-top:0!important;margin-bottom:-350px;background:#000}
+      .hero-content{position:relative;z-index:1;width:100%;max-width:1200px;margin:0 auto;padding:0 5%;margin-top:300px}
+      .video-bg-wrapper{position:absolute;top:0;left:0;width:100vw;height:100%;z-index:0;overflow:hidden;pointer-events:none;transform:translateY(-300px);display:block!important}
+      .video-bg{position:absolute;top:0;left:50%;width:100vw;height:100%;min-width:100vw;min-height:100%;object-fit:cover;transform:translateX(-50%);opacity:1!important;visibility:visible!important}
       
-      /* Mobile LCP optimizations - Ultra-compressed with performance hints */
-      @media (max-width:768px){
-        .hero{height:100vh;margin-bottom:0;min-height:600px;contain:layout}
-        .hero-content{margin-top:120px;padding:0 20px;z-index:2;contain:layout}
-        .header-content{padding:0.5rem 1rem;background:rgba(255,255,255,0.95);backdrop-filter:blur(10px);contain:layout}
-        .logo img{width:120px;height:30px;will-change:transform}
-        .hero-text{max-width:100%;padding:0;margin:0;contain:layout}
-        /* Force hardware acceleration for mobile */
-        .hero, .hero-content, .video-bg-wrapper { transform: translateZ(0); }
-      }
-      @media (max-width:480px){
-        .hero-text h1{font-size:28px;line-height:1.2;contain:layout}
-        .hero-text p{font-size:14px;line-height:1.4;contain:layout}
-        .logo img{width:100px;height:25px;will-change:transform}
-      }
-      /* Mobile video optimizations */
+      /* Mobile LCP optimizations - Ultra-compressed */
+      @media (max-width:768px){.hero{height:100vh;margin-bottom:0;min-height:600px}.hero-content{margin-top:120px;padding:0 20px;z-index:2}.header-content{padding:0.5rem 1rem;background:rgba(255,255,255,0.95);backdrop-filter:blur(10px)}.logo img{width:120px;height:30px}.hero-text{max-width:100%;padding:0;margin:0}}
+      @media (max-width:480px){.hero-text h1{font-size:28px;line-height:1.2}.hero-text p{font-size:14px;line-height:1.4}.logo img{width:100px;height:25px}}
+      /* Correção: garantir que o vídeo ocupe toda a altura da .hero no mobile */
       @media (max-width: 768px) {
-        .hero { align-items: stretch !important; contain:layout !important; }
+        .hero { align-items: stretch !important; }
         .video-bg-wrapper, .video-bg {
           height: 100% !important;
           min-height: 100% !important;
-          contain:layout !important;
         }
-        /* Force video display on mobile with hardware acceleration */
+        /* Força o vídeo a aparecer no mobile */
         .video-bg, #hero-video {
           display: block !important;
           opacity: 1 !important;
           visibility: visible !important;
           width: 100vw !important;
           height: 100% !important;
-          transform: translateZ(0) !important;
-          will-change: transform !important;
-        }
-        /* Mobile background optimization */
-        .mobile-bg {
-          display: block !important;
-          background-image: url('assets/images/mobile/bg-como-funciona.webp') !important;
-          contain: layout style paint !important;
-        }
-        /* Optimize text rendering for mobile */
-        .hero-text h1, .hero-text p {
-          text-rendering: optimizeSpeed !important;
-          -webkit-font-smoothing: antialiased !important;
-          -moz-osx-font-smoothing: grayscale !important;
+          min-width: 100vw !important;
+          min-height: 100% !important;
+          object-fit: cover !important;
+          position: absolute !important;
+          top: 0 !important;
+          left: 50% !important;
+          transform: translateX(-50%) !important;
+          z-index: 0 !important;
+          background: transparent !important;
         }
       }
       
@@ -209,11 +187,11 @@
             <section id="home" class="tab-content active">
                 <section class="hero">
                   <div class="video-bg-wrapper">
-                    <!-- Background para mobile - Optimized for LCP -->
-                    <div class="mobile-bg" style="position: absolute; top: 0; left: 0; width: 100vw; height: 100%; min-width: 100vw; min-height: 100%; background-image: url('assets/images/mobile/bg-como-funciona.webp'); background-size: cover; background-position: center; background-repeat: no-repeat; z-index: 0; display: none; contain: layout style paint;"></div>
+                    <!-- Background para mobile -->
+                    <div class="mobile-bg" style="position: absolute; top: 0; left: 0; width: 100vw; height: 100%; min-width: 100vw; min-height: 100%; background-image: url('assets/images/bg-como-funciona.webp'); background-size: cover; background-position: center; background-repeat: no-repeat; z-index: 0; display: none;"></div>
                     
-                    <!-- Vídeo para desktop - Optimized loading -->
-                    <video id="hero-video" autoplay muted loop playsinline class="video-bg desktop-video" preload="metadata" poster="assets/images/bg-como-funciona.webp" loading="lazy">
+                    <!-- Vídeo para desktop -->
+                    <video id="hero-video" autoplay muted loop playsinline class="video-bg desktop-video" preload="auto" poster="assets/images/bg-como-funciona.webp">
                       <source src="assets/video/bg-video.mp4.webm?v=1.6.0" type="video/webm">
                       <source src="assets/video/bg-video.mp4.mp4?v=1.6.0" type="video/mp4">
                       Seu navegador não suporta o elemento de vídeo.
@@ -995,42 +973,12 @@
     </div>
   </div>
   <div style="margin:40px 0 0 0;padding:18px 0 8px 0;text-align:center;font-size:1rem;color:#bbb;background:#181818;border:none;box-shadow:none;outline:none;">
-    <span>&copy; 2024 Renov. Todos os direitos reservados.</span>
+    <span>&copy; 2025 Renov. Todos os direitos reservados.</span>
   </div>
 </footer>
 
     <script src="script.min.js?v=1.6.0" fetchpriority="high"></script>
     <script>
-      // Mobile performance optimizations
-      if (window.innerWidth <= 768) {
-        // Force mobile background display
-        document.addEventListener('DOMContentLoaded', function() {
-          const mobileBg = document.querySelector('.mobile-bg');
-          const heroVideo = document.getElementById('hero-video');
-          if (mobileBg && heroVideo) {
-            mobileBg.style.display = 'block';
-            heroVideo.style.display = 'none';
-          }
-        
-        });
-        
-        // Optimize image loading for mobile
-        const images = document.querySelectorAll('img[loading="lazy"]');
-        if ('IntersectionObserver' in window) {
-          const imageObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-              if (entry.isIntersecting) {
-                const img = entry.target;
-                img.src = img.dataset.src || img.src;
-                img.classList.remove('lazy');
-                observer.unobserve(img);
-              }
-            });
-          });
-          images.forEach(img => imageObserver.observe(img));
-        }
-      }
-      
       // Registro do Service Worker para cache offline
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
