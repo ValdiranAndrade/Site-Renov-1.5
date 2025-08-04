@@ -1,0 +1,507 @@
+/* CSS NÃO CRÍTICO - Below the fold */
+
+/* Estilos para títulos em três linhas */
+h1 span, h2 span {
+    display: block;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.linha1, .linha2, .linha3 {
+    display: block;
+    line-height: 1.2;
+}
+
+.linha2 {
+    margin: 15px 0;
+}
+
+/* Ajuste específico para títulos menores */
+section h2 span {
+    font-size: 48px;
+    font-weight: 700;
+}
+
+/* Tab content */
+.tab-content {
+    display: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.tab-content.active {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Como funciona */
+.como-funciona {
+    position: relative;
+    width: 100%;
+    padding: 80px 0;
+    background: #f8f9fa;
+    overflow: hidden;
+}
+
+.como-funciona-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.como-funciona-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.como-funciona-content {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    text-align: center;
+}
+
+.como-funciona-texto h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: #000;
+}
+
+.como-funciona-texto p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #666;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Avaliação, Diagnóstico, Logística, Pagamento */
+.avaliacao-diagnostico-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.avaliacao-container,
+.diagnostico-container,
+.pagamento-container,
+.novo-container {
+    flex: 1 1 250px;
+    background: #fff;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.avaliacao-bg,
+.diagnostico-bg,
+.pagamento-bg,
+.novo-bg {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1rem;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.avaliacao-titulo,
+.diagnostico-titulo,
+.pagamento-titulo,
+.novo-titulo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #000;
+}
+
+.avaliacao-descricao,
+.diagnostico-descricao,
+.pagamento-descricao,
+.novo-descricao {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #666;
+}
+
+/* Nossa solução */
+.nossa-solucao {
+    padding: 80px 0;
+    background: #fff;
+}
+
+.nossa-solucao-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    text-align: center;
+}
+
+.nossa-solucao h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: #000;
+}
+
+.nossa-solucao p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #666;
+    max-width: 800px;
+    margin: 0 auto 3rem;
+}
+
+/* AI Hero */
+.ai-hero {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+    border-radius: 12px;
+    margin: 3rem 0;
+}
+
+.ai-video-bg-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.ai-video-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.ai-hero-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    padding: 3rem;
+    background: rgba(0,0,0,0.5);
+    color: #fff;
+}
+
+.ai-hero-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+.ai-hero-content p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    max-width: 600px;
+}
+
+/* Diferenciais */
+.diferenciais {
+    padding: 80px 0;
+    background: #f8f9fa;
+}
+
+.diferenciais-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    text-align: center;
+}
+
+.diferenciais h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 3rem;
+    color: #000;
+}
+
+.diferenciais-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.diferencial-card {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.diferencial-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1rem;
+}
+
+.diferencial-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.diferencial-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #000;
+}
+
+.diferencial-text {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #666;
+}
+
+/* Parceiros */
+.parceiros {
+    padding: 80px 0;
+    background: #fff;
+}
+
+.parceiros-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.parceiros-header h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #000;
+}
+
+.parceiros-slider {
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.slider-track {
+    display: flex;
+    animation: scroll 30s linear infinite;
+}
+
+.parceiro-item {
+    flex-shrink: 0;
+    width: 200px;
+    height: 100px;
+    margin: 0 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.parceiro-item img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* Parceiro experiência */
+.parceiro-experiencia {
+    padding: 80px 0;
+    background: #f8f9fa;
+}
+
+.parceiro-experiencia > h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 3rem;
+    color: #000;
+}
+
+.parceiro-experiencia-card {
+    max-width: 1200px;
+    margin: 0 auto 2rem;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+}
+
+.parceiro-experiencia-info {
+    flex: 1;
+    padding: 3rem;
+}
+
+.parceiro-experiencia-info h3 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #000;
+}
+
+.parceiro-experiencia-info p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #666;
+    margin-bottom: 2rem;
+}
+
+.btn-parceiro {
+    display: inline-block;
+    background: #00b140;
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.2s;
+}
+
+.btn-parceiro:hover {
+    background: #008d36;
+}
+
+/* Respostas rápidas */
+.respostas-rapidas {
+    padding: 80px 0;
+    background: #fff;
+}
+
+.respostas-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.respostas-container h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 3rem;
+    color: #000;
+}
+
+.respostas-slider {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.resposta-card {
+    background: #f8f9fa;
+    padding: 2rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+}
+
+.resposta-card h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: #000;
+}
+
+.resposta-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.resposta-content p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #666;
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+    .como-funciona-texto h2,
+    .nossa-solucao h2,
+    .diferenciais h2,
+    .parceiros-header h2,
+    .parceiro-experiencia > h2,
+    .respostas-container h2 {
+        font-size: 2rem;
+    }
+    
+    .parceiro-experiencia-card {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .parceiro-experiencia-info {
+        padding: 2rem;
+    }
+    
+    .diferenciais-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .avaliacao-diagnostico-wrapper {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    .como-funciona-texto h2,
+    .nossa-solucao h2,
+    .diferenciais h2,
+    .parceiros-header h2,
+    .parceiro-experiencia > h2,
+    .respostas-container h2 {
+        font-size: 1.8rem;
+    }
+    
+    .ai-hero-content {
+        padding: 2rem;
+    }
+    
+    .ai-hero-title {
+        font-size: 2rem;
+    }
+}
+
+/* Font Awesome - Deferred */
+@font-face {
+    font-family: 'Font Awesome 6 Brands';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-brands-400.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Font Awesome 6 Free Solid';
+    font-style: normal;
+    font-weight: 900;
+    font-display: swap;
+    src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-solid-900.woff2') format('woff2');
+} 
