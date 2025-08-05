@@ -6499,6 +6499,28 @@ img[loading="lazy"].loaded { filter: none; }
     }
   }
   
+  /* Reduzir tamanho da logo no footer para mobile */
+  @media (max-width: 768px) {
+    footer img[src*="Renov-Logo.webp"] {
+      width: 100px !important;
+      height: auto !important;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    footer img[src*="Renov-Logo.webp"] {
+      width: 80px !important;
+      height: auto !important;
+    }
+  }
+  
+  @media (max-width: 360px) {
+    footer img[src*="Renov-Logo.webp"] {
+      width: 70px !important;
+      height: auto !important;
+    }
+  }
+  
   /* Reorganizar elementos do cabeçalho mobile */
   header .header-content {
     justify-content: space-between !important;
