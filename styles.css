@@ -6572,6 +6572,7 @@ img[loading="lazy"].loaded { filter: none; }
     footer img[src*="Renov-Logo.webp"] {
       width: 100px !important;
       height: auto !important;
+      margin-top: 15px !important;
     }
   }
   
