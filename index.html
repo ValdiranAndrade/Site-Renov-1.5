@@ -41,13 +41,23 @@
     
     <!-- Ultra-critical resources for LCP - Minimal chain -->
     <link rel="preload" href="assets/images/Renov-Logo.webp" as="image" fetchpriority="high" type="image/webp">
-    <link rel="preload" href="assets/fonts/Montserrat-Regular.woff2" as="font" type="font/woff2" fetchpriority="high">
+    <!-- Font preload only if not already loaded -->
+    <script>
+      if (!document.querySelector('link[href*="Montserrat-Regular.woff2"]')) {
+        var fontLink = document.createElement('link');
+        fontLink.rel = 'preload';
+        fontLink.href = 'assets/fonts/Montserrat-Regular.woff2';
+        fontLink.as = 'font';
+        fontLink.type = 'font/woff2';
+        fontLink.setAttribute('fetchpriority', 'high');
+        document.head.appendChild(fontLink);
+      }
+    </script>
     <link rel="preload" href="styles.css?v=1.6.4" as="style" fetchpriority="high" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="styles.css?v=1.6.4"></noscript>
     <link rel="stylesheet" href="styles.css?v=1.6.4">
     
     <!-- High priority resources -->
-    <link rel="preload" href="script.min.js?v=1.6.3" as="script" fetchpriority="high">
     <link rel="preload" href="assets/video/bg-IA.gif" as="image" fetchpriority="high">
     
     <!-- Deferred resources - Reduced chain -->
@@ -69,8 +79,16 @@
     <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
     
-    <!-- Web Manifest -->
-    <link rel="manifest" href="site.webmanifest">
+    <!-- Web Manifest - Only on HTTPS -->
+    <script>
+      // Only load manifest on HTTPS to avoid CORS issues
+      if (window.location.protocol === 'https:') {
+        var manifest = document.createElement('link');
+        manifest.rel = 'manifest';
+        manifest.href = 'site.webmanifest';
+        document.head.appendChild(manifest);
+      }
+    </script>
     
 
     <!-- Font Awesome - Deferred loading para reduzir cadeia crítica -->
@@ -994,7 +1012,7 @@
   </div>
 </footer>
 
-    <script src="script.min.js?v=1.6.3" fetchpriority="high"></script>
+    <script src="script.min.js?v=1.6.4" fetchpriority="high"></script>
     <!-- Deferred non-critical scripts -->
     <script>
       // Carregar scripts não críticos de forma assíncrona
