@@ -22,7 +22,7 @@
     <meta name="MobileOptimized" content="width">
     
     <!-- PWA Manifest -->
-    <link rel="manifest" href="/manifest.json?v=1.6.3">
+    <link rel="manifest" href="manifest.json?v=1.6.3">
     <meta name="theme-color" content="#00b140">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -59,6 +59,7 @@
     
     <title>Renov - Sua Troca Inteligente</title>
     <link rel="stylesheet" href="styles.css?v=1.6.3">
+    <link rel="icon" type="image/x-icon" href="assets/images/Renov-Logo.webp">
     
 
     <!-- Font Awesome - Deferred loading para reduzir cadeia crítica -->
@@ -1000,7 +1001,7 @@
       // Registro do Service Worker para cache offline - Deferred
       if ('serviceWorker' in navigator && window.location.protocol !== 'file:') {
         setTimeout(() => {
-          navigator.serviceWorker.register('/sw.min.js?v=1.6.3')
+          navigator.serviceWorker.register('sw.min.js?v=1.6.3')
             .then(registration => {
               console.log('Service Worker registrado com sucesso:', registration.scope);
             })
