@@ -6499,6 +6499,7 @@ img[loading="lazy"].loaded { filter: none; }
     
     footer .social-links {
       margin-top: 2px !important;
+      gap: 6px !important;
     }
     
     footer .social-links a {
@@ -6518,6 +6519,10 @@ img[loading="lazy"].loaded { filter: none; }
     footer > div:first-child {
       padding: 6px 4px 6px 4px !important;
       gap: 8px !important;
+    }
+    
+    footer .social-links {
+      gap: 4px !important;
     }
     
     footer .social-links a {
