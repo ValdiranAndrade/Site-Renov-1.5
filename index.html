@@ -41,21 +41,10 @@
     
     <!-- Ultra-critical resources for LCP - Minimal chain -->
     <link rel="preload" href="assets/images/Renov-Logo.webp" as="image" fetchpriority="high" type="image/webp">
-    <!-- Font preload only if not already loaded -->
-    <script>
-      if (!document.querySelector('link[href*="Montserrat-Regular.woff2"]')) {
-        var fontLink = document.createElement('link');
-        fontLink.rel = 'preload';
-        fontLink.href = 'assets/fonts/Montserrat-Regular.woff2';
-        fontLink.as = 'font';
-        fontLink.type = 'font/woff2';
-        fontLink.setAttribute('fetchpriority', 'high');
-        document.head.appendChild(fontLink);
-      }
-    </script>
-    <link rel="preload" href="styles.css?v=1.6.4" as="style" fetchpriority="high" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="styles.css?v=1.6.4"></noscript>
-    <link rel="stylesheet" href="styles.css?v=1.6.4">
+
+    <link rel="preload" href="styles.css?v=1.6.5" as="style" fetchpriority="high" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="styles.css?v=1.6.5"></noscript>
+    <link rel="stylesheet" href="styles.css?v=1.6.5">
     
     <!-- High priority resources -->
     <link rel="preload" href="assets/video/bg-IA.gif" as="image" fetchpriority="high">
@@ -68,7 +57,7 @@
     
     
     <title>Renov - Sua Troca Inteligente</title>
-    <link rel="stylesheet" href="styles.css?v=1.6.4">
+    <link rel="stylesheet" href="styles.css?v=1.6.5">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="icon" type="image/x-icon" href="assets/images/Renov-Logo.webp">
     
@@ -1012,7 +1001,7 @@
   </div>
 </footer>
 
-    <script src="script.min.js?v=1.6.4" fetchpriority="high"></script>
+    <script src="script.min.js?v=1.6.5" fetchpriority="high"></script>
     <!-- Deferred non-critical scripts -->
     <script>
       // Carregar scripts não críticos de forma assíncrona
