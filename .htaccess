@@ -100,11 +100,4 @@
     AddOutputFilterByType BROTLI_COMPRESS font/woff2 font/woff font/ttf font/otf
 </IfModule>
 
-# Preload de recursos críticos
-<IfModule mod_headers.c>
-    <FilesMatch "index\.html$">
-        Header add Link "</assets/fonts/Montserrat-Regular.woff2>; rel=preload; as=font; crossorigin"
-        Header add Link "</assets/fonts/Montserrat-SemiBold.woff2>; rel=preload; as=font; crossorigin"
-        Header add Link "</assets/images/Renov-Logo.png>; rel=preload; as=image"
-    </FilesMatch>
-</IfModule> 
+ 
