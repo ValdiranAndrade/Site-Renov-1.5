@@ -12,7 +12,7 @@ const MOBILE_CONFIG = {
     '/',
     '/index.html',
     '/styles.css',
-    '/script.js',
+    '/script.min.js',
     '/assets/images/Renov-Logo.webp'
   ],
   lcpOptimization: {
@@ -34,7 +34,7 @@ const CACHE_STRATEGIES = {
       '/',
       '/index.html',
       '/styles.css',
-      '/script.js',
+      '/script.min.js',
       '/assets/images/Renov-Logo.webp'
     ],
     strategy: 'cache-first',

@@ -798,7 +798,7 @@ class CacheManager {
     this.preloadResources([
       { url: '/styles.css?v=' + this.cacheVersion, type: 'style' },
       { url: '/script.js?v=' + this.cacheVersion, type: 'script' },
-      { url: '/assets/images/Renov-Logo.png?v=' + this.cacheVersion, type: 'image' }
+      { url: '/assets/images/Renov-Logo.webp?v=' + this.cacheVersion, type: 'image' }
     ]);
     
     // DNS prefetch para recursos externos
