@@ -11,7 +11,7 @@ const path = require('path');
 
 class VersionUpdater {
   constructor() {
-    this.currentVersion = '1.5.2';
+    this.currentVersion = '1.6.6';
     this.newVersion = this.incrementVersion(this.currentVersion);
     this.filesToUpdate = [
       'index.html',
