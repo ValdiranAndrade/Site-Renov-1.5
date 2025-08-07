@@ -40,50 +40,15 @@
     <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
     
     <!-- Critical CSS only -->
-    <link rel="stylesheet" href="styles.css?v=1.6.6" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="styles.css?v=1.6.6"></noscript>
+    <link rel="stylesheet" href="styles.css?v=1.6.6">
     
     <!-- Ultra-critical preloads for LCP optimization -->
-    <link rel="preload" href="assets/images/Renov-Logo.webp" as="image" fetchpriority="high">
-    <link rel="preload" href="assets/images/bg-como-funciona.webp" as="image" fetchpriority="high">
+    <link rel="preload" href="assets/images/Renov-Logo.webp" as="image" fetchpriority="high" decoding="sync">
     <link rel="preload" href="assets/fonts/Montserrat-Regular.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="assets/fonts/Montserrat-Medium.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="script.min.js?v=1.6.6" as="script" fetchpriority="high">
-    
-    <!-- Mobile-specific preloads for ultra-fast LCP -->
-    <script>
-      // Mobile detection and ultra-fast preloading
-      if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-        // Preload critical mobile resources immediately
-        var mobilePreloads = [
-          'assets/images/Renov-Logo.webp',
-          'assets/images/bg-como-funciona.webp',
-          'assets/fonts/Montserrat-Regular.woff2',
-          'assets/fonts/Montserrat-Medium.woff2'
-        ];
-        
-        mobilePreloads.forEach(function(resource) {
-          if (resource.includes('.woff2')) {
-            var link = document.createElement('link');
-            link.rel = 'preload';
-            link.href = resource;
-            link.as = 'font';
-            link.type = 'font/woff2';
-            link.crossOrigin = 'anonymous';
-            link.fetchPriority = 'high';
-            document.head.appendChild(link);
-          } else if (resource.includes('.webp')) {
-            var img = new Image();
-            img.src = resource;
-            img.fetchPriority = 'high';
-          }
-        });
-      }
-    </script>
-    
-    <!-- DNS prefetch para reduzir latência -->
-    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preload" href="assets/video/bg-video.mp4.mp4" as="video" type="video/mp4">
+    <link rel="preload" href="assets/video/bg-IA.gif" as="image" fetchpriority="high">
     
     <!-- Deferred resources - Reduced chain -->
     
@@ -115,96 +80,67 @@
     </script>
     
 
-    <!-- Font Awesome - Ultra-deferred loading para eliminar cadeia crítica -->
+    <!-- Font Awesome - Deferred loading para reduzir cadeia crítica -->
     <script>
-      // Carregar Font Awesome apenas após 5 segundos para não impactar LCP
+      // Carregar Font Awesome de forma assíncrona
       setTimeout(function() {
         var fa = document.createElement('link');
         fa.rel = 'stylesheet';
         fa.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css';
-        fa.media = 'print';
-        fa.onload = function() {
-          fa.media = 'all';
-        };
+        fa.media = 'all';
         document.head.appendChild(fa);
-      }, 5000);
+      }, 3000);
     </script>
     
     <!-- Critical CSS for LCP optimization -->
     <style>
       /* Ultra-critical CSS for LCP optimization - Mobile-first */
       *{box-sizing:border-box;margin:0;padding:0}
-      html,body{margin:0!important;padding:0!important;width:100vw!important;height:100vh!important;overflow-x:hidden!important}
-      body{font-family:'Montserrat',sans-serif;line-height:1.6;color:#000;background:transparent!important;overflow-x:hidden!important}
-      h1,h2,h3,h4,h5,h6{font-family:'Montserrat',sans-serif;font-weight:700}
-      
-      /* Header & Navigation */
-      header{position:fixed;top:0;left:0;width:100%;z-index:1000;background:#fff;box-shadow:0 2px 10px rgba(0,0,0,0.1)}
-      .header-content{display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem;max-width:1200px;margin:0 auto;position:relative;z-index:10;background:#fff;min-height:70px;will-change:transform}
-      .logo{display:flex;align-items:center}
-      .logo img{width:160px;height:40px;object-fit:contain;display:block;max-width:100%;will-change:transform}
-      .main-nav{display:flex;align-items:center}
-      .tab-buttons{display:flex;gap:12px}
-      .tab-btn{font-size:1.1rem;font-weight:400;padding:8px 18px;border-radius:24px;background:transparent;border:none;cursor:pointer;transition:background 0.2s;color:#000}
+      body{font-family:'Montserrat',sans-serif;line-height:1.6;color:#333;overflow-x:hidden}
+      .logo img{width:160px;height:40px;object-fit:contain;display:block;max-width:100%;will-change:transform;transform:translateZ(0)}
+      .header-content{display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem;max-width:1200px;margin:0 auto;position:relative;z-index:10;background:#fff;min-height:70px;will-change:transform;transform:translateZ(0)}
+      .main-nav .tab-buttons{display:flex;gap:12px}
+      .tab-btn{font-size:1.1rem;font-weight:400;padding:8px 18px;border-radius:24px;background:transparent;border:none;cursor:pointer;transition:background 0.2s}
       .tab-btn.active,.tab-btn:focus{background:#00b140;color:#fff!important;outline:none}
       .social-links{display:flex;gap:12px}
       .social-links a{font-size:1.1rem;color:#00b140;text-decoration:none;transition:color 0.2s}
       .social-links a:hover{color:#008d36}
-      
-      /* Hero Section */
-      .hero{position:relative;width:100vw;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw;height:140vh;display:flex;align-items:flex-start;overflow:hidden;margin-top:0!important;margin-bottom:-350px;background:#000;will-change:transform}
-      .hero-content{position:relative;z-index:1;width:100%;max-width:1200px;margin:0 auto;padding:0 5%;margin-top:300px;will-change:transform}
-      .video-bg-wrapper{position:absolute;top:0;left:0;width:100vw;height:100%;z-index:0;overflow:hidden;pointer-events:none;transform:translateY(-300px);display:block!important;will-change:transform}
-      .video-bg{position:absolute;top:0;left:50%;width:100vw;height:100%;min-width:100vw;min-height:100%;object-fit:cover;transform:translateX(-50%);opacity:1!important;visibility:visible!important;will-change:transform}
-      .hero-text{color:#fff;text-align:center;margin-bottom:2rem;will-change:transform}
-      .hero-text h1{font-size:3.5rem;font-weight:700;margin-bottom:1rem;line-height:1.2;will-change:transform}
-      .hero-text p{font-size:1.2rem;margin-bottom:2rem;opacity:0.9;will-change:transform}
-      .cta-button{display:inline-block;background:#00b140;color:#fff;padding:15px 30px;text-decoration:none;border-radius:30px;font-weight:600;font-size:1.1rem;transition:background 0.3s;will-change:transform}
+      .hero{position:relative;width:100vw;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw;height:140vh;display:flex;align-items:flex-start;overflow:hidden;margin-top:0!important;margin-bottom:-350px;background:#000;will-change:transform;transform:translateZ(0)}
+      .hero-content{position:relative;z-index:1;width:100%;max-width:1200px;margin:0 auto;padding:0 5%;margin-top:300px;will-change:transform;transform:translateZ(0)}
+      .video-bg-wrapper{position:absolute;top:0;left:0;width:100vw;height:100%;z-index:0;overflow:hidden;pointer-events:none;transform:translateY(-300px);display:block!important;will-change:transform;transform:translateZ(0)}
+      .video-bg{position:absolute;top:0;left:50%;width:100vw;height:100%;min-width:100vw;min-height:100%;object-fit:cover;transform:translateX(-50%);opacity:1!important;visibility:visible!important;will-change:transform;transform:translateZ(0)}
+      .hero-text{color:#fff;text-align:center;margin-bottom:2rem;will-change:transform;transform:translateZ(0)}
+      .hero-text h1{font-size:3.5rem;font-weight:700;margin-bottom:1rem;line-height:1.2;will-change:transform;transform:translateZ(0)}
+      .hero-text p{font-size:1.2rem;margin-bottom:2rem;opacity:0.9;will-change:transform;transform:translateZ(0)}
+      .cta-button{display:inline-block;background:#00b140;color:#fff;padding:15px 30px;text-decoration:none;border-radius:30px;font-weight:600;font-size:1.1rem;transition:background 0.3s;will-change:transform;transform:translateZ(0)}
       .cta-button:hover{background:#008d36}
-      
-      /* Tab Content */
-      .tab-content{display:none;animation:fadeIn 0.5s ease-in-out}
-      .tab-content.active{display:block}
-      @keyframes fadeIn{from{opacity:0}to{opacity:1}}
       
       /* Mobile LCP optimizations - Ultra-compressed */
       @media (max-width:768px){
-        .hero{height:100vh;margin-bottom:0;min-height:600px;align-items:stretch!important;background:#000!important}
+        .hero{height:100vh;margin-bottom:0;min-height:600px;align-items:stretch!important;transform:translateZ(0)}
         .hero-content{margin-top:120px;padding:0 20px;z-index:2;transform:translateZ(0)}
         .header-content{padding:0.5rem 1rem;background:rgba(255,255,255,0.95);backdrop-filter:blur(10px);transform:translateZ(0)}
         .logo img{width:120px;height:30px;transform:translateZ(0)}
         .hero-text{max-width:100%;padding:0;margin:0;transform:translateZ(0)}
-        .hero-text h1{font-size:2.5rem!important;line-height:1.2!important;margin-bottom:1rem!important;transform:translateZ(0)}
-        .hero-text p{font-size:1rem!important;line-height:1.4!important;margin-bottom:2rem!important;transform:translateZ(0)}
         .video-bg-wrapper,.video-bg{height:100%!important;min-height:100%!important;transform:translateZ(0)}
-        .video-bg,#hero-video{display:block!important;opacity:1!important;visibility:visible!important;width:100vw!important;height:100%!important;min-width:100vw!important;min-height:100%!important;object-fit:cover!important;position:absolute!important;top:0!important;left:50%!important;transform:translateX(-50%) translateZ(0)!important;z-index:0!important;background:transparent!important}
-        .mobile-bg{display:block!important;opacity:1!important;visibility:visible!important;width:100vw!important;height:100%!important;min-width:100vw!important;min-height:100%!important;object-fit:cover!important;position:absolute!important;top:0!important;left:0!important;z-index:0!important;transform:translateZ(0)}
-        .tab-buttons{display:none}
-        .social-links{display:none}
-        body{font-size:16px!important}
-        *{will-change:auto}
+        .video-bg,#hero-video{display:block!important;opacity:1!important;visibility:visible!important;width:100vw!important;height:100%!important;min-width:100vw!important;min-height:100%!important;object-fit:cover!important;position:absolute!important;top:0!important;left:50%!important;transform:translateX(-50%)!important;z-index:0!important;background:transparent!important}
+        .hero-text h1{font-size:32px;line-height:1.2;transform:translateZ(0)}
+        .hero-text p{font-size:16px;line-height:1.4;transform:translateZ(0)}
       }
       @media (max-width:480px){
-        .hero-text h1{font-size:28px!important;line-height:1.2!important;transform:translateZ(0)}
-        .hero-text p{font-size:14px!important;line-height:1.4!important;transform:translateZ(0)}
+        .hero-text h1{font-size:28px;line-height:1.2;transform:translateZ(0)}
+        .hero-text p{font-size:14px;line-height:1.4;transform:translateZ(0)}
         .logo img{width:100px;height:25px;transform:translateZ(0)}
-        .hero-content{margin-top:100px!important;transform:translateZ(0)}
-        body{font-size:14px!important}
       }
       @media (max-width:360px){
-        .hero-text h1{font-size:24px!important;transform:translateZ(0)}
-        .hero-text p{font-size:12px!important;transform:translateZ(0)}
+        .hero-text h1{font-size:24px;line-height:1.2;transform:translateZ(0)}
+        .hero-text p{font-size:12px;line-height:1.4;transform:translateZ(0)}
         .logo img{width:80px;height:20px;transform:translateZ(0)}
-        .hero-content{margin-top:80px!important;transform:translateZ(0)}
-        body{font-size:12px!important}
       }
-      @media (max-width:320px){
-        .hero-text h1{font-size:20px!important;transform:translateZ(0)}
-        .hero-text p{font-size:10px!important;transform:translateZ(0)}
-        .logo img{width:60px;height:15px;transform:translateZ(0)}
-        .hero-content{margin-top:60px!important;transform:translateZ(0)}
-        body{font-size:10px!important}
-      }
+      
+      /* Font Awesome - Deferred */
+      @font-face{font-family:'Font Awesome 6 Brands';font-style:normal;font-weight:400;font-display:swap;src:url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-brands-400.woff2') format('woff2')}
+      @font-face{font-family:'Font Awesome 6 Free Solid';font-style:normal;font-weight:900;font-display:swap;src:url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-solid-900.woff2') format('woff2')}
       
       /* Accessibility & Video */
       .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
@@ -279,8 +215,8 @@
             <section id="home" class="tab-content active">
                 <section class="hero">
                   <div class="video-bg-wrapper">
-                    <!-- Background para mobile - LCP optimized -->
-                    <img src="assets/images/bg-como-funciona.webp" alt="Background hero mobile" class="mobile-bg" loading="eager" fetchpriority="high" decoding="sync" style="position: absolute; top: 0; left: 0; width: 100vw; height: 100%; min-width: 100vw; min-height: 100%; object-fit: cover; z-index: 0; display: none;">
+                    <!-- Background para mobile -->
+                    <div class="mobile-bg" style="position: absolute; top: 0; left: 0; width: 100vw; height: 100%; min-width: 100vw; min-height: 100%; background-image: url('assets/images/bg-como-funciona.webp'); background-size: cover; background-position: center; background-repeat: no-repeat; z-index: 0; display: none;"></div>
                     
                     <!-- Vídeo para desktop -->
                     <video id="hero-video" autoplay muted loop playsinline class="video-bg desktop-video" preload="auto" poster="assets/images/bg-como-funciona.webp">
@@ -1066,7 +1002,7 @@
   </div>
 </footer>
 
-    <script src="script.min.js?v=1.6.6" fetchpriority="high" async></script>
+    <script src="script.min.js?v=1.6.6" fetchpriority="high" async defer></script>
     <!-- Deferred non-critical scripts -->
     <script>
       // Carregar scripts não críticos de forma assíncrona
@@ -1373,11 +1309,20 @@ document.addEventListener('submit', function(e) {
   }
 }, true);
 </script>
-
+<script>
+  // Adiar Font Awesome para após o carregamento inicial
+  window.addEventListener('load', function() {
+    var fa = document.createElement('link');
+    fa.rel = 'stylesheet';
+    fa.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css';
+    fa.media = 'all';
+    document.head.appendChild(fa);
+  });
+</script>
 
 <!-- Mobile LCP Optimization Script -->
 <script>
-  // Otimizações ultra-agressivas para LCP mobile
+  // Otimizações ultra-agressivas para LCP e Speed Index mobile
   (function() {
     'use strict';
     
@@ -1388,9 +1333,10 @@ document.addEventListener('submit', function(e) {
       // Forçar carregamento prioritário de recursos críticos
       var criticalResources = [
         'assets/images/Renov-Logo.webp',
-        'assets/images/bg-como-funciona.webp',
         'assets/fonts/Montserrat-Regular.woff2',
         'assets/fonts/Montserrat-Medium.woff2',
+        'assets/video/bg-video.mp4.mp4',
+        'assets/video/bg-IA.gif',
         'script.min.js?v=1.6.6'
       ];
       
@@ -1402,33 +1348,17 @@ document.addEventListener('submit', function(e) {
           link.as = 'font';
           link.type = 'font/woff2';
           link.crossOrigin = 'anonymous';
-          link.fetchPriority = 'high';
           document.head.appendChild(link);
-        } else if (resource.includes('.webp')) {
+        } else if (resource.includes('.webp') || resource.includes('.gif')) {
           var img = new Image();
           img.src = resource;
-          img.fetchPriority = 'high';
+          img.decoding = 'sync';
+        } else if (resource.includes('.mp4')) {
+          var video = document.createElement('video');
+          video.src = resource;
+          video.preload = 'metadata';
         }
       });
-      
-      // Forçar carregamento da imagem LCP imediatamente
-      var lcpImage = document.querySelector('.mobile-bg');
-      if (lcpImage) {
-        lcpImage.style.display = 'block';
-        lcpImage.style.opacity = '1';
-        lcpImage.style.visibility = 'visible';
-        lcpImage.style.willChange = 'transform';
-        lcpImage.style.transform = 'translateZ(0)';
-        lcpImage.style.zIndex = '0';
-        lcpImage.style.position = 'absolute';
-        lcpImage.style.top = '0';
-        lcpImage.style.left = '0';
-        lcpImage.style.width = '100vw';
-        lcpImage.style.height = '100%';
-        lcpImage.style.minWidth = '100vw';
-        lcpImage.style.minHeight = '100%';
-        lcpImage.style.objectFit = 'cover';
-      }
       
       // Otimizar renderização com GPU acceleration
       document.body.style.willChange = 'transform';
@@ -1439,6 +1369,7 @@ document.addEventListener('submit', function(e) {
       if (logo) {
         logo.style.willChange = 'transform';
         logo.style.transform = 'translateZ(0)';
+        logo.style.decoding = 'sync';
       }
       
       var heroText = document.querySelector('.hero-text h1');
@@ -1453,15 +1384,18 @@ document.addEventListener('submit', function(e) {
         heroContent.style.transform = 'translateZ(0)';
       }
       
+      // Otimizar vídeo de fundo
+      var videoBg = document.querySelector('.video-bg');
+      if (videoBg) {
+        videoBg.style.willChange = 'transform';
+        videoBg.style.transform = 'translateZ(0)';
+      }
+      
       // Forçar repaint para melhorar Speed Index
       requestAnimationFrame(function() {
-        document.body.style.transform = 'translateZ(0)';
-        if (lcpImage) lcpImage.style.transform = 'translateZ(0)';
-        if (logo) logo.style.transform = 'translateZ(0)';
-        if (heroText) heroText.style.transform = 'translateZ(0)';
+        document.body.offsetHeight; // Force reflow
+        console.log('📱 Ultra-aggressive mobile optimizations applied');
       });
-      
-      console.log('📱 Ultra-aggressive Mobile LCP optimizations applied');
     }
   })();
 </script>
