@@ -47,6 +47,10 @@
     <link rel="preload" href="assets/fonts/Montserrat-Regular.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="script.min.js?v=1.6.6" as="script" fetchpriority="high">
     
+    <!-- DNS prefetch para reduzir latência -->
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    
     <!-- Deferred resources - Reduced chain -->
     
     
@@ -77,16 +81,19 @@
     </script>
     
 
-    <!-- Font Awesome - Deferred loading para reduzir cadeia crítica -->
+    <!-- Font Awesome - Ultra-deferred loading para eliminar cadeia crítica -->
     <script>
-      // Carregar Font Awesome de forma assíncrona
+      // Carregar Font Awesome apenas após 5 segundos para não impactar LCP
       setTimeout(function() {
         var fa = document.createElement('link');
         fa.rel = 'stylesheet';
         fa.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css';
-        fa.media = 'all';
+        fa.media = 'print';
+        fa.onload = function() {
+          fa.media = 'all';
+        };
         document.head.appendChild(fa);
-      }, 3000);
+      }, 5000);
     </script>
     
     <!-- Critical CSS for LCP optimization -->
@@ -127,10 +134,13 @@
         .hero-text p{font-size:14px;line-height:1.4}
         .logo img{width:100px;height:25px}
       }
+      @media (max-width:360px){
+        .hero-text h1{font-size:24px}
+        .hero-text p{font-size:12px}
+        .logo img{width:80px;height:20px}
+      }
       
-      /* Font Awesome - Deferred */
-      @font-face{font-family:'Font Awesome 6 Brands';font-style:normal;font-weight:400;font-display:swap;src:url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-brands-400.woff2') format('woff2')}
-      @font-face{font-family:'Font Awesome 6 Free Solid';font-style:normal;font-weight:900;font-display:swap;src:url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-solid-900.woff2') format('woff2')}
+      /* Font Awesome - Removed from critical chain */
       
       /* Accessibility & Video */
       .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
@@ -1299,16 +1309,7 @@ document.addEventListener('submit', function(e) {
   }
 }, true);
 </script>
-<script>
-  // Adiar Font Awesome para após o carregamento inicial
-  window.addEventListener('load', function() {
-    var fa = document.createElement('link');
-    fa.rel = 'stylesheet';
-    fa.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css';
-    fa.media = 'all';
-    document.head.appendChild(fa);
-  });
-</script>
+
 
 <!-- Mobile LCP Optimization Script -->
 <script>
