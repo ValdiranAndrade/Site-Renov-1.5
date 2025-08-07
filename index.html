@@ -993,7 +993,7 @@
   </div>
 </footer>
 
-    <script src="script.min.js?v=1.6.6" fetchpriority="high"></script>
+    <script src="script.min.js?v=1.6.5" fetchpriority="high"></script>
     <!-- Deferred non-critical scripts -->
     <script>
       // Carregar scripts não críticos de forma assíncrona
@@ -1011,7 +1011,7 @@
       // Registro do Service Worker para cache offline - Deferred
       if ('serviceWorker' in navigator && window.location.protocol !== 'file:') {
         setTimeout(() => {
-          navigator.serviceWorker.register('sw.js?v=1.6.5')
+          navigator.serviceWorker.register('sw.min.js?v=1.6.3')
             .then(registration => {
               console.log('Service Worker registrado com sucesso:', registration.scope);
             })

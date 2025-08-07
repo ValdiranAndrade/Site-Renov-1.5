@@ -630,7 +630,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // Sistema de gerenciamento de cache eficiente
 class CacheManager {
   constructor() {
-    this.cacheVersion = '1.5.2';
+    this.cacheVersion = '1.6.5';
     this.cacheStrategies = {
       critical: { maxAge: 31536000 }, // 1 ano
       static: { maxAge: 2592000 },    // 30 dias

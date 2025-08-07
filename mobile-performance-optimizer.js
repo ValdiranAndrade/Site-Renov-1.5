@@ -206,7 +206,7 @@
     // 7. Otimizar Service Worker para mobile
     function optimizeServiceWorker() {
         if ('serviceWorker' in navigator && window.location.protocol !== 'file:') {
-            navigator.serviceWorker.register('/sw.js?v=1.6.0', {
+            navigator.serviceWorker.register('/sw.js?v=1.6.5', {
                 scope: '/'
             }).then(registration => {
                 console.log('📱 Service Worker registrado com otimizações mobile');
