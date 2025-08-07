@@ -44,7 +44,8 @@
     <link rel="preload" href="assets/fonts/Montserrat-Regular.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="assets/fonts/Montserrat-Medium.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="script.min.js?v=1.6.6" as="script" fetchpriority="high">
-    <link rel="preload" href="assets/images/bg-como-funciona.webp" as="image" fetchpriority="high">
+    <link rel="preload" href="assets/video/bg-video.mp4.mp4" as="video" type="video/mp4">
+    <link rel="preload" href="assets/video/bg-IA.gif" as="image" fetchpriority="high">
     
     <!-- Deferred resources - Reduced chain -->
     
@@ -76,8 +77,17 @@
     </script>
     
 
-    <!-- Font Awesome - Completamente removido para otimizar LCP -->
-    <!-- Removido para melhorar performance mobile -->
+    <!-- Font Awesome - Deferred loading para reduzir cadeia crítica -->
+    <script>
+      // Carregar Font Awesome de forma assíncrona
+      setTimeout(function() {
+        var fa = document.createElement('link');
+        fa.rel = 'stylesheet';
+        fa.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css';
+        fa.media = 'all';
+        document.head.appendChild(fa);
+      }, 3000);
+    </script>
     
     <!-- Critical CSS for LCP optimization -->
     <style>
@@ -125,7 +135,9 @@
         .logo img{width:80px;height:20px;transform:translateZ(0)}
       }
       
-      /* Font Awesome - Removido para otimizar LCP */
+      /* Font Awesome - Deferred */
+      @font-face{font-family:'Font Awesome 6 Brands';font-style:normal;font-weight:400;font-display:swap;src:url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-brands-400.woff2') format('woff2')}
+      @font-face{font-family:'Font Awesome 6 Free Solid';font-style:normal;font-weight:900;font-display:swap;src:url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-solid-900.woff2') format('woff2')}
       
       /* Accessibility & Video */
       .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
@@ -189,8 +201,8 @@
                     </div>
                 </nav>
             <div class="social-links">
-                <a href="https://www.instagram.com/renovsmart" target="_blank" aria-label="Siga a Renov no Instagram">📷</a>
-                <a href="https://www.linkedin.com/company/renovsmart/posts/?feedView=all" target="_blank" aria-label="Siga a Renov no LinkedIn">💼</a>
+                <a href="https://www.instagram.com/renovsmart" target="_blank" aria-label="Siga a Renov no Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/company/renovsmart/posts/?feedView=all" target="_blank" aria-label="Siga a Renov no LinkedIn"><i class="fab fa-linkedin"></i></a>
             </div>
             
             <!-- Menu Mobile -->
@@ -221,8 +233,8 @@
                     <a href="#" onclick="openTabFromMobile('contato'); return false;" class="mobile-nav-item">Fale Conosco</a>
                 </nav>
                 <div class="mobile-social-links">
-                    <a href="https://www.instagram.com/renovsmart" target="_blank" aria-label="Siga a Renov no Instagram">📷</a>
-                    <a href="https://www.linkedin.com/company/renovsmart/posts/?feedView=all" target="_blank" aria-label="Siga a Renov no LinkedIn">💼</a>
+                    <a href="https://www.instagram.com/renovsmart" target="_blank" aria-label="Siga a Renov no Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/company/renovsmart/posts/?feedView=all" target="_blank" aria-label="Siga a Renov no LinkedIn"><i class="fab fa-linkedin"></i></a>
                 </div>
             </div>
         </div>
@@ -975,8 +987,8 @@
         <img src='assets/images/Renov-Logo.webp?v=1.6.0' alt='Renov - Sua Troca Inteligente' style='width:130px;filter:brightness(1.1);margin-top:-10px;' loading="lazy" decoding="async">
       </picture>
               <div class="social-links" style="display:flex;gap:16px;margin-top:-5px;margin-left:30px;">
-        <a href="https://www.instagram.com/renovsmart" target="_blank" style="color:#fff;font-size:1.5rem;transition:color 0.2s;" onmouseover="this.style.color='#00b140'" onmouseout="this.style.color='#fff'" aria-label="Siga a Renov no Instagram">📷</a>
-        <a href="https://www.linkedin.com/company/renovsmart/posts/?feedView=all" target="_blank" style="color:#fff;font-size:1.5rem;transition:color 0.2s;" onmouseover="this.style.color='#00b140'" onmouseout="this.style.color='#fff'" aria-label="Siga a Renov no LinkedIn">💼</a>
+        <a href="https://www.instagram.com/renovsmart" target="_blank" style="color:#fff;font-size:1.5rem;transition:color 0.2s;" onmouseover="this.style.color='#00b140'" onmouseout="this.style.color='#fff'" aria-label="Siga a Renov no Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/company/renovsmart/posts/?feedView=all" target="_blank" style="color:#fff;font-size:1.5rem;transition:color 0.2s;" onmouseover="this.style.color='#00b140'" onmouseout="this.style.color='#fff'" aria-label="Siga a Renov no LinkedIn"><i class="fab fa-linkedin"></i></a>
       </div>
     </div>
     <!-- Navegação central -->
