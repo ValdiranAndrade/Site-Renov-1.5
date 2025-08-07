@@ -1,4 +1,4 @@
-const CACHE_VERSION = '1.6.6';
+const CACHE_VERSION = '1.6.0';
 const CACHE_NAME = `renov-cache-v${CACHE_VERSION}`;
 
 // Detectar se é dispositivo mobile
