@@ -42,7 +42,10 @@
     <!-- Ultra-critical preloads for LCP optimization -->
     <link rel="preload" href="assets/images/Renov-Logo.webp" as="image" fetchpriority="high" decoding="sync">
     <link rel="preload" href="assets/fonts/Montserrat-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="assets/fonts/Montserrat-Medium.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="script.min.js?v=1.6.6" as="script" fetchpriority="high">
+    <link rel="preload" href="assets/video/bg-video.mp4.mp4" as="video" type="video/mp4">
+    <!-- bg-IA.gif removido para otimizar payload -->
     
     <!-- Deferred resources - Reduced chain -->
     
@@ -125,15 +128,6 @@
       
       /* Font Awesome - Removido para otimizar LCP */
       
-      /* Otimização de fontes para LCP */
-      @font-face {
-        font-family: 'Montserrat';
-        src: url('assets/fonts/Montserrat-Regular.woff2') format('woff2');
-        font-weight: 400;
-        font-style: normal;
-        font-display: swap;
-      }
-      
       /* Accessibility & Video */
       .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
       #home.tab-content.active .video-bg-wrapper,#home.tab-content.active .video-bg{display:block!important;opacity:1!important;visibility:visible!important}
@@ -145,7 +139,7 @@
       (function() {
         'use strict';
         
-        // Forçar carregamento imediato de recursos críticos (sem vídeos grandes)
+        // Forçar carregamento imediato de recursos críticos
         var criticalImages = [
           'assets/images/Renov-Logo.webp',
           'assets/images/bg-como-funciona.webp'
@@ -244,8 +238,8 @@
                     <!-- Background para mobile -->
                     <div class="mobile-bg" style="position: absolute; top: 0; left: 0; width: 100vw; height: 100%; min-width: 100vw; min-height: 100%; background-image: url('assets/images/bg-como-funciona.webp'); background-size: cover; background-position: center; background-repeat: no-repeat; z-index: 0; display: none;"></div>
                     
-                    <!-- Vídeo para desktop - Lazy loaded -->
-                    <video id="hero-video" autoplay muted loop playsinline class="video-bg desktop-video" preload="metadata" poster="assets/images/bg-como-funciona.webp" loading="lazy">
+                    <!-- Vídeo para desktop -->
+                    <video id="hero-video" autoplay muted loop playsinline class="video-bg desktop-video" preload="auto" poster="assets/images/bg-como-funciona.webp">
                       <source src="assets/video/bg-video.mp4.webm?v=1.6.0" type="video/webm">
                       <source src="assets/video/bg-video.mp4.mp4?v=1.6.0" type="video/mp4">
                       Seu navegador não suporta o elemento de vídeo.
@@ -335,7 +329,7 @@
                         <!-- Nova seção: Avaliação Inteligente -->
                         <section class="ai-hero">
                             <div class="ai-video-bg-wrapper">
-                                <img src="assets/video/bg-IA.gif" alt="Background animado da seção IA" class="ai-video-bg" style="width: 100%; height: 100%; object-fit: cover; display: block;" fetchpriority="high" onload="this.style.opacity='1'">
+                                <img src="assets/images/bg-como-funciona.webp" alt="Background da seção IA" class="ai-video-bg" style="width: 100%; height: 100%; object-fit: cover; display: block;" fetchpriority="high" onload="this.style.opacity='1'">
                             </div>
                             <div class="ai-hero-content">
                                 <h2 class="ai-hero-title">Tecnologia que vende por<br>você</h2>
@@ -1335,16 +1329,7 @@ document.addEventListener('submit', function(e) {
   }
 }, true);
 </script>
-<script>
-  // Adiar Font Awesome para após o carregamento inicial
-  window.addEventListener('load', function() {
-    var fa = document.createElement('link');
-    fa.rel = 'stylesheet';
-    fa.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css';
-    fa.media = 'all';
-    document.head.appendChild(fa);
-  });
-</script>
+<!-- Font Awesome removido para otimizar payload -->
 
 <!-- Mobile LCP Optimization Script -->
 <script>
@@ -1356,12 +1341,14 @@ document.addEventListener('submit', function(e) {
     var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     
     if (isMobile) {
-      // Forçar carregamento prioritário de recursos críticos (sem vídeos grandes)
-      var criticalResources = [
-        'assets/images/Renov-Logo.webp',
-        'assets/fonts/Montserrat-Regular.woff2',
-        'script.min.js?v=1.6.6'
-      ];
+      // Forçar carregamento prioritário de recursos críticos
+              var criticalResources = [
+          'assets/images/Renov-Logo.webp',
+          'assets/fonts/Montserrat-Regular.woff2',
+          'assets/fonts/Montserrat-Medium.woff2',
+          'assets/video/bg-video.mp4.mp4',
+          'script.min.js?v=1.6.6'
+        ];
       
       criticalResources.forEach(function(resource) {
         if (resource.includes('.woff2')) {
@@ -1420,25 +1407,6 @@ document.addEventListener('submit', function(e) {
         console.log('📱 Ultra-aggressive mobile optimizations applied');
       });
     }
-  })();
-</script>
-
-<!-- Lazy load videos script -->
-<script>
-  // Carregar vídeos apenas quando necessário
-  (function() {
-    'use strict';
-    
-    // Carregar vídeos após o LCP
-    window.addEventListener('load', function() {
-      setTimeout(function() {
-        var video = document.getElementById('hero-video');
-        if (video) {
-          video.preload = 'auto';
-          console.log('🎥 Videos loaded after LCP');
-        }
-      }, 2000); // 2 segundos após o load
-    });
   })();
 </script>
 </body>
