@@ -40,7 +40,8 @@
     <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
     
     <!-- Critical CSS only -->
-    <link rel="stylesheet" href="styles.css?v=1.6.6">
+    <link rel="stylesheet" href="styles.css?v=1.6.6" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="styles.css?v=1.6.6"></noscript>
     
     <!-- Ultra-critical preloads for LCP optimization -->
     <link rel="preload" href="assets/images/Renov-Logo.webp" as="image" fetchpriority="high">
@@ -101,15 +102,24 @@
     <style>
       /* Ultra-critical CSS for LCP optimization - Mobile-first */
       *{box-sizing:border-box;margin:0;padding:0}
-      body{font-family:'Montserrat',sans-serif;line-height:1.6;color:#333;overflow-x:hidden}
-      .logo img{width:160px;height:40px;object-fit:contain;display:block;max-width:100%;will-change:transform}
+      html,body{margin:0!important;padding:0!important;width:100vw!important;height:100vh!important;overflow-x:hidden!important}
+      body{font-family:'Montserrat',sans-serif;line-height:1.6;color:#000;background:transparent!important;overflow-x:hidden!important}
+      h1,h2,h3,h4,h5,h6{font-family:'Montserrat',sans-serif;font-weight:700}
+      
+      /* Header & Navigation */
+      header{position:fixed;top:0;left:0;width:100%;z-index:1000;background:#fff;box-shadow:0 2px 10px rgba(0,0,0,0.1)}
       .header-content{display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem;max-width:1200px;margin:0 auto;position:relative;z-index:10;background:#fff;min-height:70px;will-change:transform}
-      .main-nav .tab-buttons{display:flex;gap:12px}
-      .tab-btn{font-size:1.1rem;font-weight:400;padding:8px 18px;border-radius:24px;background:transparent;border:none;cursor:pointer;transition:background 0.2s}
+      .logo{display:flex;align-items:center}
+      .logo img{width:160px;height:40px;object-fit:contain;display:block;max-width:100%;will-change:transform}
+      .main-nav{display:flex;align-items:center}
+      .tab-buttons{display:flex;gap:12px}
+      .tab-btn{font-size:1.1rem;font-weight:400;padding:8px 18px;border-radius:24px;background:transparent;border:none;cursor:pointer;transition:background 0.2s;color:#000}
       .tab-btn.active,.tab-btn:focus{background:#00b140;color:#fff!important;outline:none}
       .social-links{display:flex;gap:12px}
       .social-links a{font-size:1.1rem;color:#00b140;text-decoration:none;transition:color 0.2s}
       .social-links a:hover{color:#008d36}
+      
+      /* Hero Section */
       .hero{position:relative;width:100vw;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw;height:140vh;display:flex;align-items:flex-start;overflow:hidden;margin-top:0!important;margin-bottom:-350px;background:#000;will-change:transform}
       .hero-content{position:relative;z-index:1;width:100%;max-width:1200px;margin:0 auto;padding:0 5%;margin-top:300px;will-change:transform}
       .video-bg-wrapper{position:absolute;top:0;left:0;width:100vw;height:100%;z-index:0;overflow:hidden;pointer-events:none;transform:translateY(-300px);display:block!important;will-change:transform}
@@ -119,6 +129,11 @@
       .hero-text p{font-size:1.2rem;margin-bottom:2rem;opacity:0.9;will-change:transform}
       .cta-button{display:inline-block;background:#00b140;color:#fff;padding:15px 30px;text-decoration:none;border-radius:30px;font-weight:600;font-size:1.1rem;transition:background 0.3s;will-change:transform}
       .cta-button:hover{background:#008d36}
+      
+      /* Tab Content */
+      .tab-content{display:none;animation:fadeIn 0.5s ease-in-out}
+      .tab-content.active{display:block}
+      @keyframes fadeIn{from{opacity:0}to{opacity:1}}
       
       /* Mobile LCP optimizations - Ultra-compressed */
       @media (max-width:768px){
@@ -130,6 +145,8 @@
         .video-bg-wrapper,.video-bg{height:100%!important;min-height:100%!important}
         .video-bg,#hero-video{display:block!important;opacity:1!important;visibility:visible!important;width:100vw!important;height:100%!important;min-width:100vw!important;min-height:100%!important;object-fit:cover!important;position:absolute!important;top:0!important;left:50%!important;transform:translateX(-50%)!important;z-index:0!important;background:transparent!important}
         .mobile-bg{display:block!important;opacity:1!important;visibility:visible!important;width:100vw!important;height:100%!important;min-width:100vw!important;min-height:100%!important;object-fit:cover!important;position:absolute!important;top:0!important;left:0!important;z-index:0!important}
+        .tab-buttons{display:none}
+        .social-links{display:none}
       }
       @media (max-width:480px){
         .hero-text h1{font-size:28px;line-height:1.2}
@@ -141,8 +158,6 @@
         .hero-text p{font-size:12px}
         .logo img{width:80px;height:20px}
       }
-      
-      /* Font Awesome - Removed from critical chain */
       
       /* Accessibility & Video */
       .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
