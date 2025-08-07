@@ -33,11 +33,8 @@
     <meta http-equiv="Cache-Control" content="public, max-age=31536000, immutable">
     <meta http-equiv="Expires" content="Thu, 31 Dec 2025 23:59:59 GMT">
     
-    <!-- Preconnect para recursos externos - Melhoria de performance -->
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-    
-    <!-- DNS prefetch para recursos críticos -->
-    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    <!-- Preconnect removido para otimizar LCP -->
+    <!-- DNS prefetch removido para otimizar LCP -->
     
     <!-- Critical CSS only -->
     <link rel="stylesheet" href="styles.css?v=1.6.6">
@@ -80,17 +77,8 @@
     </script>
     
 
-    <!-- Font Awesome - Deferred loading para reduzir cadeia crítica -->
-    <script>
-      // Carregar Font Awesome de forma assíncrona
-      setTimeout(function() {
-        var fa = document.createElement('link');
-        fa.rel = 'stylesheet';
-        fa.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css';
-        fa.media = 'all';
-        document.head.appendChild(fa);
-      }, 3000);
-    </script>
+    <!-- Font Awesome - Completamente removido para otimizar LCP -->
+    <!-- Removido para melhorar performance mobile -->
     
     <!-- Critical CSS for LCP optimization -->
     <style>
@@ -100,10 +88,10 @@
       .logo img{width:160px;height:40px;object-fit:contain;display:block;max-width:100%;will-change:transform;transform:translateZ(0)}
       .header-content{display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem;max-width:1200px;margin:0 auto;position:relative;z-index:10;background:#fff;min-height:70px;will-change:transform;transform:translateZ(0)}
       .main-nav .tab-buttons{display:flex;gap:12px}
-      .tab-btn{font-size:1.1rem;font-weight:400;padding:8px 18px;border-radius:24px;background:transparent;border:none;cursor:pointer;transition:background 0.2s}
+      .tab-btn{font-size:1.1rem;font-weight:400;padding:8px 18px;border-radius:24px;background:transparent;border:none;cursor:pointer}
       .tab-btn.active,.tab-btn:focus{background:#00b140;color:#fff!important;outline:none}
       .social-links{display:flex;gap:12px}
-      .social-links a{font-size:1.1rem;color:#00b140;text-decoration:none;transition:color 0.2s}
+      .social-links a{font-size:1.1rem;color:#00b140;text-decoration:none}
       .social-links a:hover{color:#008d36}
       .hero{position:relative;width:100vw;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw;height:140vh;display:flex;align-items:flex-start;overflow:hidden;margin-top:0!important;margin-bottom:-350px;background:#000;will-change:transform;transform:translateZ(0)}
       .hero-content{position:relative;z-index:1;width:100%;max-width:1200px;margin:0 auto;padding:0 5%;margin-top:300px;will-change:transform;transform:translateZ(0)}
@@ -112,7 +100,7 @@
       .hero-text{color:#fff;text-align:center;margin-bottom:2rem;will-change:transform;transform:translateZ(0)}
       .hero-text h1{font-size:3.5rem;font-weight:700;margin-bottom:1rem;line-height:1.2;will-change:transform;transform:translateZ(0)}
       .hero-text p{font-size:1.2rem;margin-bottom:2rem;opacity:0.9;will-change:transform;transform:translateZ(0)}
-      .cta-button{display:inline-block;background:#00b140;color:#fff;padding:15px 30px;text-decoration:none;border-radius:30px;font-weight:600;font-size:1.1rem;transition:background 0.3s;will-change:transform;transform:translateZ(0)}
+      .cta-button{display:inline-block;background:#00b140;color:#fff;padding:15px 30px;text-decoration:none;border-radius:30px;font-weight:600;font-size:1.1rem;will-change:transform;transform:translateZ(0)}
       .cta-button:hover{background:#008d36}
       
       /* Mobile LCP optimizations - Ultra-compressed */
@@ -138,9 +126,7 @@
         .logo img{width:80px;height:20px;transform:translateZ(0)}
       }
       
-      /* Font Awesome - Deferred */
-      @font-face{font-family:'Font Awesome 6 Brands';font-style:normal;font-weight:400;font-display:swap;src:url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-brands-400.woff2') format('woff2')}
-      @font-face{font-family:'Font Awesome 6 Free Solid';font-style:normal;font-weight:900;font-display:swap;src:url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-solid-900.woff2') format('woff2')}
+      /* Font Awesome - Removido para otimizar LCP */
       
       /* Accessibility & Video */
       .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
@@ -148,6 +134,41 @@
     </style>
 </head>
 <body>
+    <!-- Ultra-aggressive LCP optimization script -->
+    <script>
+      (function() {
+        'use strict';
+        
+        // Forçar carregamento imediato de recursos críticos
+        var criticalImages = [
+          'assets/images/Renov-Logo.webp',
+          'assets/images/bg-como-funciona.webp',
+          'assets/video/bg-IA.gif'
+        ];
+        
+        // Carregar imagens críticas imediatamente
+        criticalImages.forEach(function(src) {
+          var img = new Image();
+          img.src = src;
+          img.decoding = 'sync';
+        });
+        
+        // Forçar layout síncrono
+        document.body.style.display = 'block';
+        document.body.style.visibility = 'visible';
+        
+        // Otimizar elementos críticos
+        var logo = document.querySelector('.logo img');
+        if (logo) {
+          logo.style.display = 'block';
+          logo.style.visibility = 'visible';
+          logo.style.opacity = '1';
+        }
+        
+        console.log('🚀 Ultra-aggressive LCP optimization applied');
+      })();
+    </script>
+    
     <div class="page-wrapper">
         <!-- Header com Logo e Navegação -->
     <header>
