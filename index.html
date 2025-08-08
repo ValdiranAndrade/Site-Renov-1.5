@@ -36,16 +36,26 @@
     <!-- Preconnect removido para otimizar LCP -->
     <!-- DNS prefetch removido para otimizar LCP -->
     
-    <!-- Critical CSS only -->
-    <link rel="stylesheet" href="styles.css?v=1.6.6">
+    <!-- Critical CSS only - Ultra-optimized loading -->
+    <link rel="stylesheet" href="styles-critical.css?v=1.6.7" fetchpriority="high">
+    <link rel="stylesheet" href="styles.css?v=1.6.6" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="styles.css?v=1.6.6"></noscript>
     
-    <!-- Ultra-critical preloads for LCP optimization -->
-    <link rel="preload" href="assets/images/Renov-Logo.webp" as="image" fetchpriority="high" decoding="sync">
+    <!-- DNS prefetch para domínios externos -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    
+    <!-- Preconnect para recursos críticos -->
+    <link rel="preconnect" href="//fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="//fonts.gstatic.com" crossorigin>
+    
+    <!-- Ultra-critical preloads for LCP optimization - Reduzido -->
+    <link rel="preload" href="assets/images/Renov-Logo.webp" as="image" fetchpriority="high">
     <link rel="preload" href="assets/fonts/Montserrat-Regular.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="assets/fonts/Montserrat-Medium.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="script.min.js?v=1.6.6" as="script" fetchpriority="high">
-    <link rel="preload" href="assets/video/bg-video.mp4.mp4" as="video" type="video/mp4">
-    <link rel="preload" href="assets/video/bg-IA.gif" as="image" fetchpriority="high">
+    
+    <!-- Defer non-critical resources -->
+    <link rel="preload" href="assets/fonts/Montserrat-Medium.woff2" as="font" type="font/woff2" crossorigin media="print" onload="this.media='all'">
+    <link rel="preload" href="script.min.js?v=1.6.6" as="script" media="print" onload="this.media='all'">
     
     <!-- Deferred resources - Reduced chain -->
     
@@ -80,53 +90,73 @@
     <!-- Font Awesome - Completamente removido para otimizar LCP -->
     <!-- Removido para melhorar performance mobile -->
     
-    <!-- Critical CSS for LCP optimization -->
+    <!-- CSS para ícones dos botões de navegação -->
+    <style>
+      .nav-button i::before {
+        content: '';
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        border-style: solid;
+        border-width: 2px 2px 0 0;
+      }
+      
+      .nav-button.prev i::before {
+        transform: rotate(-135deg);
+        margin-left: 4px;
+      }
+      
+      .nav-button.next i::before {
+        transform: rotate(45deg);
+        margin-right: 4px;
+      }
+    </style>
+    
+    <!-- Critical CSS for LCP optimization - Ultra-compressed -->
     <style>
       /* Ultra-critical CSS for LCP optimization - Mobile-first */
       *{box-sizing:border-box;margin:0;padding:0}
       body{font-family:'Montserrat',sans-serif;line-height:1.6;color:#333;overflow-x:hidden}
-      .logo img{width:160px;height:40px;object-fit:contain;display:block;max-width:100%;will-change:transform;transform:translateZ(0)}
-      .header-content{display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem;max-width:1200px;margin:0 auto;position:relative;z-index:10;background:#fff;min-height:70px;will-change:transform;transform:translateZ(0)}
+      .logo img{width:160px;height:40px;object-fit:contain;display:block;max-width:100%}
+      .header-content{display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem;max-width:1200px;margin:0 auto;position:relative;z-index:10;background:#fff;min-height:70px}
       .main-nav .tab-buttons{display:flex;gap:12px}
       .tab-btn{font-size:1.1rem;font-weight:400;padding:8px 18px;border-radius:24px;background:transparent;border:none;cursor:pointer}
       .tab-btn.active,.tab-btn:focus{background:#00b140;color:#fff!important;outline:none}
       .social-links{display:flex;gap:12px}
       .social-links a{font-size:1.1rem;color:#00b140;text-decoration:none}
       .social-links a:hover{color:#008d36}
-      .hero{position:relative;width:100vw;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw;height:140vh;display:flex;align-items:flex-start;overflow:hidden;margin-top:0!important;margin-bottom:-350px;background:#000;will-change:transform;transform:translateZ(0)}
-      .hero-content{position:relative;z-index:1;width:100%;max-width:1200px;margin:0 auto;padding:0 5%;margin-top:300px;will-change:transform;transform:translateZ(0)}
-      .video-bg-wrapper{position:absolute;top:0;left:0;width:100vw;height:100%;z-index:0;overflow:hidden;pointer-events:none;transform:translateY(-300px);display:block!important;will-change:transform;transform:translateZ(0)}
-      .video-bg{position:absolute;top:0;left:50%;width:100vw;height:100%;min-width:100vw;min-height:100%;object-fit:cover;transform:translateX(-50%);opacity:1!important;visibility:visible!important;will-change:transform;transform:translateZ(0)}
-      .hero-text{color:#fff;text-align:center;margin-bottom:2rem;will-change:transform;transform:translateZ(0)}
-      .hero-text h1{font-size:3.5rem;font-weight:700;margin-bottom:1rem;line-height:1.2;will-change:transform;transform:translateZ(0)}
-      .hero-text p{font-size:1.2rem;margin-bottom:2rem;opacity:0.9;will-change:transform;transform:translateZ(0)}
-      .cta-button{display:inline-block;background:#00b140;color:#fff;padding:15px 30px;text-decoration:none;border-radius:30px;font-weight:600;font-size:1.1rem;will-change:transform;transform:translateZ(0)}
+      .hero{position:relative;width:100vw;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw;height:140vh;display:flex;align-items:flex-start;overflow:hidden;margin-top:0!important;margin-bottom:-350px;background:#000}
+      .hero-content{position:relative;z-index:1;width:100%;max-width:1200px;margin:0 auto;padding:0 5%;margin-top:300px}
+      .video-bg-wrapper{position:absolute;top:0;left:0;width:100vw;height:100%;z-index:0;overflow:hidden;pointer-events:none;transform:translateY(-300px);display:block!important}
+      .video-bg{position:absolute;top:0;left:50%;width:100vw;height:100%;min-width:100vw;min-height:100%;object-fit:cover;transform:translateX(-50%);opacity:1!important;visibility:visible!important}
+      .hero-text{color:#fff;text-align:center;margin-bottom:2rem}
+      .hero-text h1{font-size:3.5rem;font-weight:700;margin-bottom:1rem;line-height:1.2}
+      .hero-text p{font-size:1.2rem;margin-bottom:2rem;opacity:0.9}
+      .cta-button{display:inline-block;background:#00b140;color:#fff;padding:15px 30px;text-decoration:none;border-radius:30px;font-weight:600;font-size:1.1rem}
       .cta-button:hover{background:#008d36}
       
       /* Mobile LCP optimizations - Ultra-compressed */
       @media (max-width:768px){
-        .hero{height:100vh;margin-bottom:0;min-height:600px;align-items:stretch!important;transform:translateZ(0)}
-        .hero-content{margin-top:120px;padding:0 20px;z-index:2;transform:translateZ(0)}
-        .header-content{padding:0.5rem 1rem;background:rgba(255,255,255,0.95);backdrop-filter:blur(10px);transform:translateZ(0)}
-        .logo img{width:120px;height:30px;transform:translateZ(0)}
-        .hero-text{max-width:100%;padding:0;margin:0;transform:translateZ(0)}
-        .video-bg-wrapper,.video-bg{height:100%!important;min-height:100%!important;transform:translateZ(0)}
+        .hero{height:100vh;margin-bottom:0;min-height:600px;align-items:stretch!important}
+        .hero-content{margin-top:120px;padding:0 20px;z-index:2}
+        .header-content{padding:0.5rem 1rem;background:rgba(255,255,255,0.95);backdrop-filter:blur(10px)}
+        .logo img{width:120px;height:30px}
+        .hero-text{max-width:100%;padding:0;margin:0}
+        .video-bg-wrapper,.video-bg{height:100%!important;min-height:100%!important}
         .video-bg,#hero-video{display:block!important;opacity:1!important;visibility:visible!important;width:100vw!important;height:100%!important;min-width:100vw!important;min-height:100%!important;object-fit:cover!important;position:absolute!important;top:0!important;left:50%!important;transform:translateX(-50%)!important;z-index:0!important;background:transparent!important}
-        .hero-text h1{font-size:32px;line-height:1.2;transform:translateZ(0)}
-        .hero-text p{font-size:16px;line-height:1.4;transform:translateZ(0)}
+        .hero-text h1{font-size:32px;line-height:1.2}
+        .hero-text p{font-size:16px;line-height:1.4}
       }
       @media (max-width:480px){
-        .hero-text h1{font-size:28px;line-height:1.2;transform:translateZ(0)}
-        .hero-text p{font-size:14px;line-height:1.4;transform:translateZ(0)}
-        .logo img{width:100px;height:25px;transform:translateZ(0)}
+        .hero-text h1{font-size:28px;line-height:1.2}
+        .hero-text p{font-size:14px;line-height:1.4}
+        .logo img{width:100px;height:25px}
       }
       @media (max-width:360px){
-        .hero-text h1{font-size:24px;line-height:1.2;transform:translateZ(0)}
-        .hero-text p{font-size:12px;line-height:1.4;transform:translateZ(0)}
-        .logo img{width:80px;height:20px;transform:translateZ(0)}
+        .hero-text h1{font-size:24px;line-height:1.2}
+        .hero-text p{font-size:12px;line-height:1.4}
+        .logo img{width:80px;height:20px}
       }
-      
-      /* Font Awesome - Removido para otimizar LCP */
       
       /* Accessibility & Video */
       .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
@@ -134,38 +164,29 @@
     </style>
 </head>
 <body>
-    <!-- Ultra-aggressive LCP optimization script -->
+    <!-- Ultra-aggressive LCP optimization script - Reduced -->
     <script>
       (function() {
         'use strict';
         
-        // Forçar carregamento imediato de recursos críticos
-        var criticalImages = [
-          'assets/images/Renov-Logo.webp',
-          'assets/images/bg-como-funciona.webp',
-          'assets/video/bg-IA.gif'
-        ];
-        
-        // Carregar imagens críticas imediatamente
-        criticalImages.forEach(function(src) {
-          var img = new Image();
-          img.src = src;
-          img.decoding = 'sync';
-        });
+        // Forçar carregamento imediato apenas do logo (LCP element)
+        var logo = new Image();
+        logo.src = 'assets/images/Renov-Logo.webp';
+        logo.decoding = 'sync';
         
         // Forçar layout síncrono
         document.body.style.display = 'block';
         document.body.style.visibility = 'visible';
         
-        // Otimizar elementos críticos
-        var logo = document.querySelector('.logo img');
-        if (logo) {
-          logo.style.display = 'block';
-          logo.style.visibility = 'visible';
-          logo.style.opacity = '1';
+        // Otimizar logo element
+        var logoElement = document.querySelector('.logo img');
+        if (logoElement) {
+          logoElement.style.display = 'block';
+          logoElement.style.visibility = 'visible';
+          logoElement.style.opacity = '1';
         }
         
-        console.log('🚀 Ultra-aggressive LCP optimization applied');
+        console.log('🚀 Reduced LCP optimization applied');
       })();
     </script>
     
@@ -1023,7 +1044,79 @@
   </div>
 </footer>
 
-    <script src="script.min.js?v=1.6.6" fetchpriority="high" async defer></script>
+    <script src="script.min.js?v=1.6.6" defer></script>
+    
+    <!-- Script para garantir que os botões de dúvidas frequentes funcionem -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        console.log('🔍 Verificando botões de dúvidas frequentes...');
+        
+        const slider = document.querySelector('.respostas-slider');
+        const cards = document.querySelectorAll('.resposta-card');
+        const indicators = document.querySelectorAll('.indicator');
+        const prevButton = document.querySelector('.nav-button.prev');
+        const nextButton = document.querySelector('.nav-button.next');
+        
+        console.log('Elementos encontrados:', {
+          slider: !!slider,
+          cards: cards.length,
+          indicators: indicators.length,
+          prevButton: !!prevButton,
+          nextButton: !!nextButton
+        });
+        
+        if (prevButton && nextButton) {
+          console.log('✅ Botões de navegação encontrados!');
+          
+          // Garantir que os botões sejam visíveis
+          prevButton.style.display = 'flex';
+          prevButton.style.visibility = 'visible';
+          prevButton.style.opacity = '1';
+          
+          nextButton.style.display = 'flex';
+          nextButton.style.visibility = 'visible';
+          nextButton.style.opacity = '1';
+          
+          console.log('✅ Botões configurados como visíveis!');
+        } else {
+          console.error('❌ Botões de navegação não encontrados!');
+        }
+      });
+    </script>
+    
+    <!-- LCP Optimization Script -->
+    <script>
+      // Otimização agressiva para LCP
+      (function() {
+        'use strict';
+        
+        // Preload crítico apenas do logo
+        var logo = new Image();
+        logo.src = 'assets/images/Renov-Logo.webp';
+        logo.decoding = 'sync';
+        
+        // Forçar renderização síncrona
+        document.body.style.display = 'block';
+        document.body.style.visibility = 'visible';
+        
+        // Otimizar logo element (LCP candidate)
+        var logoElement = document.querySelector('.logo img');
+        if (logoElement) {
+          logoElement.style.display = 'block';
+          logoElement.style.visibility = 'visible';
+          logoElement.style.opacity = '1';
+          logoElement.style.willChange = 'auto';
+        }
+        
+        // Reduzir reflows
+        var heroText = document.querySelector('.hero-text h1');
+        if (heroText) {
+          heroText.style.willChange = 'auto';
+        }
+        
+        console.log('🚀 LCP optimization applied');
+      })();
+    </script>
     <!-- Deferred non-critical scripts -->
     <script>
       // Carregar scripts não críticos de forma assíncrona
