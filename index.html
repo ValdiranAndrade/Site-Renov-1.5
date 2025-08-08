@@ -33,36 +33,87 @@
     <meta http-equiv="Cache-Control" content="public, max-age=31536000, immutable">
     <meta http-equiv="Expires" content="Thu, 31 Dec 2025 23:59:59 GMT">
     
-    <!-- Preconnect removido para otimizar LCP -->
-    <!-- DNS prefetch removido para otimizar LCP -->
+    <!-- ULTRA-CRITICAL PRELOADS FOR LCP OPTIMIZATION -->
+    <link rel="preload" href="assets/images/Renov-Logo.webp" as="image" fetchpriority="high" decoding="sync">
+    <link rel="preload" href="assets/fonts/Montserrat-Regular.woff2" as="font" type="font/woff2" crossorigin fetchpriority="high">
+    <link rel="preload" href="assets/fonts/Montserrat-Medium.woff2" as="font" type="font/woff2" crossorigin fetchpriority="high">
     
-    <!-- Critical CSS only - Ultra-optimized loading -->
-    <link rel="stylesheet" href="styles-critical.css?v=1.6.7" fetchpriority="high">
-    <link rel="stylesheet" href="styles.css?v=1.6.6" media="print" onload="this.media='all'">
+    <!-- CRITICAL CSS INLINE FOR LCP OPTIMIZATION -->
+    <style>
+      /* Ultra-critical CSS for LCP optimization - Minimal and optimized */
+      *{box-sizing:border-box;margin:0;padding:0}
+      body{font-family:'Montserrat',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,sans-serif;line-height:1.6;color:#333;overflow-x:hidden}
+      .logo img{width:160px;height:40px;object-fit:contain;display:block;max-width:100%;contain:layout style paint}
+      .header-content{display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem;max-width:1200px;margin:0 auto;position:relative;z-index:10;background:#fff;min-height:70px;contain:layout}
+      .main-nav .tab-buttons{display:flex;gap:12px}
+      .tab-btn{font-size:1.1rem;font-weight:400;padding:8px 18px;border-radius:24px;background:transparent;border:none;cursor:pointer}
+      .tab-btn.active,.tab-btn:focus{background:#00b140;color:#fff!important;outline:none}
+      .social-links{display:flex;gap:12px}
+      .social-links a{font-size:1.1rem;color:#00b140;text-decoration:none}
+      .social-links a:hover{color:#008d36}
+      .hero{position:relative;width:100vw;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw;height:140vh;display:flex;align-items:flex-start;overflow:hidden;margin-top:0!important;margin-bottom:-350px;background:#000;contain:layout style paint}
+      .hero-content{position:relative;z-index:1;width:100%;max-width:1200px;margin:0 auto;padding:0 5%;margin-top:300px;contain:layout}
+      .video-bg-wrapper{position:absolute;top:0;left:0;width:100vw;height:100%;z-index:0;overflow:hidden;pointer-events:none;transform:translateY(-300px);display:block!important;contain:layout style paint}
+      .video-bg{position:absolute;top:0;left:50%;width:100vw;height:100%;min-width:100vw;min-height:100%;object-fit:cover;transform:translateX(-50%);opacity:1!important;visibility:visible!important;contain:layout style paint}
+      .hero-text{color:#fff;text-align:center;margin-bottom:2rem;contain:layout}
+      .hero-text h1{font-size:3.5rem;font-weight:700;margin-bottom:1rem;line-height:1.2;contain:layout style paint}
+      .hero-text p{font-size:1.2rem;margin-bottom:2rem;opacity:0.9;contain:layout style paint}
+      .cta-button{display:inline-block;background:#00b140;color:#fff;padding:15px 30px;text-decoration:none;border-radius:30px;font-weight:600;font-size:1.1rem;contain:layout style paint}
+      .cta-button:hover{background:#008d36}
+      
+      /* Mobile LCP optimizations - Ultra-compressed */
+      @media (max-width:768px){
+        .hero{height:100vh;margin-bottom:0;min-height:600px;align-items:stretch!important;contain:layout style paint}
+        .hero-content{margin-top:120px;padding:0 20px;z-index:2;contain:layout}
+        .header-content{padding:0.5rem 1rem;background:rgba(255,255,255,0.95);backdrop-filter:blur(10px);contain:layout}
+        .logo img{width:120px;height:30px;contain:layout style paint}
+        .hero-text{max-width:100%;padding:0;margin:0;contain:layout}
+        .video-bg-wrapper,.video-bg{height:100%!important;min-height:100%!important;contain:layout style paint}
+        .video-bg,#hero-video{display:block!important;opacity:1!important;visibility:visible!important;width:100vw!important;height:100%!important;min-width:100vw!important;min-height:100%!important;object-fit:cover!important;position:absolute!important;top:0!important;left:50%!important;transform:translateX(-50%)!important;z-index:0!important;background:transparent!important;contain:layout style paint}
+        .hero-text h1{font-size:32px;line-height:1.2;contain:layout style paint}
+        .hero-text p{font-size:16px;line-height:1.4;contain:layout style paint}
+      }
+      @media (max-width:480px){
+        .hero-text h1{font-size:28px;line-height:1.2;contain:layout style paint}
+        .hero-text p{font-size:14px;line-height:1.4;contain:layout style paint}
+        .logo img{width:100px;height:25px;contain:layout style paint}
+      }
+      @media (max-width:360px){
+        .hero-text h1{font-size:24px;line-height:1.2;contain:layout style paint}
+        .hero-text p{font-size:12px;line-height:1.4;contain:layout style paint}
+        .logo img{width:80px;height:20px;contain:layout style paint}
+      }
+      
+      /* Font Awesome - Removido para otimizar LCP */
+      
+      /* Accessibility & Video */
+      .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+      #home.tab-content.active .video-bg-wrapper,#home.tab-content.active .video-bg{display:block!important;opacity:1!important;visibility:visible!important}
+      
+      /* CSS para ícones dos botões de navegação */
+      .nav-button i::before {
+        content: '';
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        border-style: solid;
+        border-width: 2px 2px 0 0;
+      }
+      
+      .nav-button.prev i::before {
+        transform: rotate(-135deg);
+        margin-left: 4px;
+      }
+      
+      .nav-button.next i::before {
+        transform: rotate(45deg);
+        margin-right: 4px;
+      }
+    </style>
+    
+    <!-- DEFER NON-CRITICAL CSS -->
+    <link rel="preload" href="styles.css?v=1.6.6" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="styles.css?v=1.6.6"></noscript>
-    
-    <!-- DNS prefetch para domínios externos -->
-    <link rel="dns-prefetch" href="//fonts.googleapis.com">
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    
-    <!-- Preconnect para recursos críticos -->
-    <link rel="preconnect" href="//fonts.googleapis.com" crossorigin>
-    <link rel="preconnect" href="//fonts.gstatic.com" crossorigin>
-    
-    <!-- Ultra-critical preloads for LCP optimization - Reduzido -->
-    <link rel="preload" href="assets/images/Renov-Logo.webp" as="image" fetchpriority="high">
-    <link rel="preload" href="assets/fonts/Montserrat-Regular.woff2" as="font" type="font/woff2" crossorigin>
-    
-    <!-- Defer non-critical resources -->
-    <link rel="preload" href="assets/fonts/Montserrat-Medium.woff2" as="font" type="font/woff2" crossorigin media="print" onload="this.media='all'">
-    <link rel="preload" href="script.min.js?v=1.6.6" as="script" media="print" onload="this.media='all'">
-    
-    <!-- Deferred resources - Reduced chain -->
-    
-    
-    
-    
-    
     
     <title>Renov - Sua Troca Inteligente</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -85,108 +136,40 @@
         document.head.appendChild(manifest);
       }
     </script>
-    
-
-    <!-- Font Awesome - Completamente removido para otimizar LCP -->
-    <!-- Removido para melhorar performance mobile -->
-    
-    <!-- CSS para ícones dos botões de navegação -->
-    <style>
-      .nav-button i::before {
-        content: '';
-        display: inline-block;
-        width: 12px;
-        height: 12px;
-        border-style: solid;
-        border-width: 2px 2px 0 0;
-      }
-      
-      .nav-button.prev i::before {
-        transform: rotate(-135deg);
-        margin-left: 4px;
-      }
-      
-      .nav-button.next i::before {
-        transform: rotate(45deg);
-        margin-right: 4px;
-      }
-    </style>
-    
-    <!-- Critical CSS for LCP optimization - Ultra-compressed -->
-    <style>
-      /* Ultra-critical CSS for LCP optimization - Mobile-first */
-      *{box-sizing:border-box;margin:0;padding:0}
-      body{font-family:'Montserrat',sans-serif;line-height:1.6;color:#333;overflow-x:hidden}
-      .logo img{width:160px;height:40px;object-fit:contain;display:block;max-width:100%}
-      .header-content{display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem;max-width:1200px;margin:0 auto;position:relative;z-index:10;background:#fff;min-height:70px}
-      .main-nav .tab-buttons{display:flex;gap:12px}
-      .tab-btn{font-size:1.1rem;font-weight:400;padding:8px 18px;border-radius:24px;background:transparent;border:none;cursor:pointer}
-      .tab-btn.active,.tab-btn:focus{background:#00b140;color:#fff!important;outline:none}
-      .social-links{display:flex;gap:12px}
-      .social-links a{font-size:1.1rem;color:#00b140;text-decoration:none}
-      .social-links a:hover{color:#008d36}
-      .hero{position:relative;width:100vw;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw;height:140vh;display:flex;align-items:flex-start;overflow:hidden;margin-top:0!important;margin-bottom:-350px;background:#000}
-      .hero-content{position:relative;z-index:1;width:100%;max-width:1200px;margin:0 auto;padding:0 5%;margin-top:300px}
-      .video-bg-wrapper{position:absolute;top:0;left:0;width:100vw;height:100%;z-index:0;overflow:hidden;pointer-events:none;transform:translateY(-300px);display:block!important}
-      .video-bg{position:absolute;top:0;left:50%;width:100vw;height:100%;min-width:100vw;min-height:100%;object-fit:cover;transform:translateX(-50%);opacity:1!important;visibility:visible!important}
-      .hero-text{color:#fff;text-align:center;margin-bottom:2rem}
-      .hero-text h1{font-size:3.5rem;font-weight:700;margin-bottom:1rem;line-height:1.2}
-      .hero-text p{font-size:1.2rem;margin-bottom:2rem;opacity:0.9}
-      .cta-button{display:inline-block;background:#00b140;color:#fff;padding:15px 30px;text-decoration:none;border-radius:30px;font-weight:600;font-size:1.1rem}
-      .cta-button:hover{background:#008d36}
-      
-      /* Mobile LCP optimizations - Ultra-compressed */
-      @media (max-width:768px){
-        .hero{height:100vh;margin-bottom:0;min-height:600px;align-items:stretch!important}
-        .hero-content{margin-top:120px;padding:0 20px;z-index:2}
-        .header-content{padding:0.5rem 1rem;background:rgba(255,255,255,0.95);backdrop-filter:blur(10px)}
-        .logo img{width:120px;height:30px}
-        .hero-text{max-width:100%;padding:0;margin:0}
-        .video-bg-wrapper,.video-bg{height:100%!important;min-height:100%!important}
-        .video-bg,#hero-video{display:block!important;opacity:1!important;visibility:visible!important;width:100vw!important;height:100%!important;min-width:100vw!important;min-height:100%!important;object-fit:cover!important;position:absolute!important;top:0!important;left:50%!important;transform:translateX(-50%)!important;z-index:0!important;background:transparent!important}
-        .hero-text h1{font-size:32px;line-height:1.2}
-        .hero-text p{font-size:16px;line-height:1.4}
-      }
-      @media (max-width:480px){
-        .hero-text h1{font-size:28px;line-height:1.2}
-        .hero-text p{font-size:14px;line-height:1.4}
-        .logo img{width:100px;height:25px}
-      }
-      @media (max-width:360px){
-        .hero-text h1{font-size:24px;line-height:1.2}
-        .hero-text p{font-size:12px;line-height:1.4}
-        .logo img{width:80px;height:20px}
-      }
-      
-      /* Accessibility & Video */
-      .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
-      #home.tab-content.active .video-bg-wrapper,#home.tab-content.active .video-bg{display:block!important;opacity:1!important;visibility:visible!important}
-    </style>
 </head>
 <body>
-    <!-- Ultra-aggressive LCP optimization script - Reduced -->
+    <!-- Ultra-aggressive LCP optimization script -->
     <script>
       (function() {
         'use strict';
         
-        // Forçar carregamento imediato apenas do logo (LCP element)
-        var logo = new Image();
-        logo.src = 'assets/images/Renov-Logo.webp';
-        logo.decoding = 'sync';
+        // Forçar carregamento imediato de recursos críticos
+        var criticalImages = [
+          'assets/images/Renov-Logo.webp',
+          'assets/images/bg-como-funciona.webp',
+          'assets/video/bg-IA.gif'
+        ];
+        
+        // Carregar imagens críticas imediatamente
+        criticalImages.forEach(function(src) {
+          var img = new Image();
+          img.src = src;
+          img.decoding = 'sync';
+        });
         
         // Forçar layout síncrono
         document.body.style.display = 'block';
         document.body.style.visibility = 'visible';
         
-        // Otimizar logo element
-        var logoElement = document.querySelector('.logo img');
-        if (logoElement) {
-          logoElement.style.display = 'block';
-          logoElement.style.visibility = 'visible';
-          logoElement.style.opacity = '1';
+        // Otimizar elementos críticos
+        var logo = document.querySelector('.logo img');
+        if (logo) {
+          logo.style.display = 'block';
+          logo.style.visibility = 'visible';
+          logo.style.opacity = '1';
         }
         
-        console.log('🚀 Reduced LCP optimization applied');
+        console.log('🚀 Ultra-aggressive LCP optimization applied');
       })();
     </script>
     
@@ -260,8 +243,8 @@
                     <!-- Background para mobile -->
                     <div class="mobile-bg" style="position: absolute; top: 0; left: 0; width: 100vw; height: 100%; min-width: 100vw; min-height: 100%; background-image: url('assets/images/bg-como-funciona.webp'); background-size: cover; background-position: center; background-repeat: no-repeat; z-index: 0; display: none;"></div>
                     
-                    <!-- Vídeo para desktop -->
-                    <video id="hero-video" autoplay muted loop playsinline class="video-bg desktop-video" preload="auto" poster="assets/images/bg-como-funciona.webp">
+                    <!-- Vídeo para desktop - LCP OPTIMIZED -->
+                    <video id="hero-video" autoplay muted loop playsinline class="video-bg desktop-video" preload="none" poster="assets/images/bg-como-funciona.webp" data-critical="true" data-lcp-candidate="true">
                       <source src="assets/video/bg-video.mp4.webm?v=1.6.0" type="video/webm">
                       <source src="assets/video/bg-video.mp4.mp4?v=1.6.0" type="video/mp4">
                       Seu navegador não suporta o elemento de vídeo.
@@ -1044,7 +1027,57 @@
   </div>
 </footer>
 
-    <script src="script.min.js?v=1.6.6" defer></script>
+    <!-- LCP EMERGENCY OPTIMIZER -->
+    <script src="lcp-emergency-optimizer.js?v=1.6.7" async></script>
+    
+    <!-- DEFER NON-CRITICAL SCRIPTS FOR LCP OPTIMIZATION -->
+    <script>
+      // Load critical scripts immediately
+      function loadCriticalScripts() {
+        var script = document.createElement('script');
+        script.src = 'script.min.js?v=1.6.6';
+        script.async = true;
+        script.defer = true;
+        document.body.appendChild(script);
+      }
+      
+      // Load non-critical scripts after LCP
+      function loadNonCriticalScripts() {
+        var scripts = [
+          'fix-cors-issues.js?v=1.6.3',
+          'remove-version-params.js?v=1.6.3',
+          'performance-optimizer.min.js?v=1.6.3',
+          'mobile-performance-optimizer.min.js?v=1.6.3'
+        ];
+        
+        scripts.forEach(function(src) {
+          var script = document.createElement('script');
+          script.src = src;
+          script.async = true;
+          document.body.appendChild(script);
+        });
+      }
+      
+      // Load critical scripts immediately
+      loadCriticalScripts();
+      
+      // Load non-critical scripts after LCP or timeout
+      if ('PerformanceObserver' in window) {
+        const lcpObserver = new PerformanceObserver((list) => {
+          const entries = list.getEntries();
+          entries.forEach(entry => {
+            if (entry.entryType === 'largest-contentful-paint') {
+              console.log(`🚀 LCP measured: ${entry.startTime.toFixed(2)}ms`);
+              loadNonCriticalScripts();
+            }
+          });
+        });
+        lcpObserver.observe({ entryTypes: ['largest-contentful-paint'] });
+      }
+      
+      // Fallback: load non-critical scripts after 3 seconds
+      setTimeout(loadNonCriticalScripts, 3000);
+    </script>
     
     <!-- Script para garantir que os botões de dúvidas frequentes funcionem -->
     <script>
@@ -1082,40 +1115,6 @@
           console.error('❌ Botões de navegação não encontrados!');
         }
       });
-    </script>
-    
-    <!-- LCP Optimization Script -->
-    <script>
-      // Otimização agressiva para LCP
-      (function() {
-        'use strict';
-        
-        // Preload crítico apenas do logo
-        var logo = new Image();
-        logo.src = 'assets/images/Renov-Logo.webp';
-        logo.decoding = 'sync';
-        
-        // Forçar renderização síncrona
-        document.body.style.display = 'block';
-        document.body.style.visibility = 'visible';
-        
-        // Otimizar logo element (LCP candidate)
-        var logoElement = document.querySelector('.logo img');
-        if (logoElement) {
-          logoElement.style.display = 'block';
-          logoElement.style.visibility = 'visible';
-          logoElement.style.opacity = '1';
-          logoElement.style.willChange = 'auto';
-        }
-        
-        // Reduzir reflows
-        var heroText = document.querySelector('.hero-text h1');
-        if (heroText) {
-          heroText.style.willChange = 'auto';
-        }
-        
-        console.log('🚀 LCP optimization applied');
-      })();
     </script>
     <!-- Deferred non-critical scripts -->
     <script>
