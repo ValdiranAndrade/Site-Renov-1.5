@@ -176,10 +176,10 @@
             </div>
                 <nav class="main-nav">
                     <div class="tab-buttons">
-                        <button class="tab-btn active" onclick="openTab('home')" style="color:#000!important;">Home</button>
-                        <button class="tab-btn" onclick="openTab('sobre')" style="color:#000!important;">Sobre Nós</button>
-                        <button class="tab-btn" onclick="openTab('trabalhe')" style="color:#000!important;">Trabalhe Conosco</button>
-                        <button class="tab-btn" onclick="openTab('contato')" style="color:#000!important;">Fale Conosco</button>
+                                        <button class="tab-btn active" onclick="openTab('home')" style="color:#000!important;" aria-label="Ir para página inicial" aria-pressed="true">Home</button>
+                <button class="tab-btn" onclick="openTab('sobre')" style="color:#000!important;" aria-label="Ir para página sobre nós" aria-pressed="false">Sobre Nós</button>
+                <button class="tab-btn" onclick="openTab('trabalhe')" style="color:#000!important;" aria-label="Ir para página trabalhe conosco" aria-pressed="false">Trabalhe Conosco</button>
+                <button class="tab-btn" onclick="openTab('contato')" style="color:#000!important;" aria-label="Ir para página fale conosco" aria-pressed="false">Fale Conosco</button>
                     </div>
                 </nav>
             <div class="social-links">
@@ -194,24 +194,25 @@
             </div>
             
             <!-- Menu Mobile -->
-            <div class="mobile-menu-toggle">
+            <button class="mobile-menu-toggle" aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="mobile-menu-content">
                 <span></span>
                 <span></span>
                 <span></span>
-            </div>
+            </button>
         </div>
         
         <!-- Menu Mobile Overlay -->
         <div class="mobile-menu-overlay">
-            <div class="mobile-menu-content">
+            <div class="mobile-menu-content" id="mobile-menu-content">
                 <div class="mobile-menu-header">
                     <div class="logo">
                         <a href="#" onclick="openTab('home'); closeMobileMenu(); return false;">
                             <img src="assets/images/Renov-Logo.webp?v=1.6.0" alt="Renov - Sua Troca Inteligente" width="120" height="30">
                         </a>
                     </div>
-                    <button class="mobile-menu-close" onclick="closeMobileMenu()">
-                        <i class="fas fa-times"></i>
+                    <button class="mobile-menu-close" onclick="closeMobileMenu()" aria-label="Fechar menu de navegação" aria-expanded="false">
+                        <i class="fas fa-times" aria-hidden="true"></i>
+                        <span class="sr-only">Fechar menu</span>
                     </button>
                 </div>
                 <nav class="mobile-nav">
