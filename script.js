@@ -856,33 +856,11 @@ document.addEventListener('DOMContentLoaded', async () => {
   // Inicializa menu mobile
   initMobileMenu();
   
-  // Força o carregamento do vídeo no mobile
-  forceVideoLoad();
+  // LCP OPTIMIZATION: Removed forceVideoLoad() to prevent blocking LCP
+  // Video will load on demand after LCP is measured
   
-  // Verificação adicional para mobile
-  if (window.innerWidth <= 940) {
-    setTimeout(() => {
-      const video = document.getElementById('hero-video');
-      if (video) {
-        video.style.cssText = `
-          display: block !important;
-          opacity: 1 !important;
-          visibility: visible !important;
-          width: 100vw !important;
-          height: 100% !important;
-          min-width: 100vw !important;
-          min-height: 100% !important;
-          object-fit: cover !important;
-          position: absolute !important;
-          top: 0 !important;
-          left: 50% !important;
-          transform: translateX(-50%) !important;
-          z-index: 0 !important;
-          background: transparent !important;
-        `;
-      }
-    }, 500);
-  }
+  // LCP OPTIMIZATION: Removed mobile video forcing to prevent blocking LCP
+  // Mobile will use static background image instead
 });
 
 // Funções do Menu Mobile
@@ -936,50 +914,6 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
-// Força o carregamento do vídeo no mobile
-function forceVideoLoad() {
-  const video = document.getElementById('hero-video');
-  if (video) {
-    // Força o carregamento do vídeo
-    video.load();
-    
-    // Garante que o vídeo seja visível imediatamente
-    video.style.cssText = `
-      display: block !important;
-      opacity: 1 !important;
-      visibility: visible !important;
-      width: 100vw !important;
-      height: 100% !important;
-      min-width: 100vw !important;
-      min-height: 100% !important;
-      object-fit: cover !important;
-      position: absolute !important;
-      top: 0 !important;
-      left: 50% !important;
-      transform: translateX(-50%) !important;
-      z-index: 0 !important;
-      background: transparent !important;
-    `;
-    
-    // Tenta reproduzir o vídeo após um pequeno delay
-    setTimeout(() => {
-      const playPromise = video.play();
-      if (playPromise !== undefined) {
-        playPromise.catch(error => {
-          console.log('Vídeo não pôde ser reproduzido automaticamente:', error);
-          // Mesmo com erro, mantém o vídeo visível
-          video.style.display = 'block';
-          video.style.opacity = '1';
-          video.style.visibility = 'visible';
-        });
-      }
-    }, 100);
-    
-    // Adiciona listener para garantir que o vídeo seja visível quando carregado
-    video.addEventListener('loadeddata', () => {
-      video.style.display = 'block';
-      video.style.opacity = '1';
-      video.style.visibility = 'visible';
-    });
-  }
-} 
+// LCP OPTIMIZATION: Removed forceVideoLoad() function
+// This function was causing LCP to be blocked by forcing video download
+// Video will now load on demand after LCP is measured 
