@@ -206,8 +206,14 @@ section h2 span {
     
     /* Otimizar grid layouts para mobile */
     .diferenciais-grid {
-        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column;
         gap: 2rem;
+    }
+    
+    .diferencial-card {
+        width: 100%;
+        margin-bottom: 2rem;
     }
     
     .parceiros-slider {
@@ -234,6 +240,19 @@ section h2 span {
     .logo img {
         width: 120px;
         height: 30px;
+    }
+    
+    /* Garantir que diferenciais fiquem em coluna única */
+    .diferenciais-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    
+    .diferencial-card {
+        width: 100%;
+        margin-bottom: 1.5rem;
+        padding: 1.5rem;
     }
     
     /* Garantir que formulários sejam acessíveis */
@@ -492,6 +511,12 @@ footer {
     .hero-content {
         max-width: 90%;
     }
+    
+    /* Ajuste para tablets - 2 colunas */
+    .diferenciais-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
 }
 
 @media (max-width: 768px) {
@@ -717,6 +742,32 @@ footer {
     gap: 2.5rem;
     max-width: 1200px;
     margin: 0 auto;
+}
+
+/* Forçar layout em coluna para mobile */
+@media (max-width: 768px) {
+    .diferenciais-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        grid-template-columns: none !important;
+        gap: 2rem !important;
+    }
+    
+    .diferencial-card {
+        width: 100% !important;
+        margin-bottom: 2rem !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .diferenciais-grid {
+        gap: 1.5rem !important;
+    }
+    
+    .diferencial-card {
+        margin-bottom: 1.5rem !important;
+        padding: 1.5rem !important;
+    }
 }
 
 .diferencial-card {
