@@ -5057,7 +5057,7 @@ header::before, header::after,
   .parceiro-experiencia-info {
     justify-content: flex-end;
     padding: 20px 20px 0px 20px;
-    margin-top: 250px;
+    margin-top: 200px; /* Reduzido de 250px para 200px para subir o conteúdo */
     height: 100%; /* Ocupar toda a altura disponível */
     display: flex;
     flex-direction: column;
@@ -5097,7 +5097,7 @@ header::before, header::after,
   }
   
   .parceiro-experiencia-info {
-    margin-top: 200px;
+    margin-top: 160px; /* Reduzido de 200px para 160px para subir o conteúdo */
     padding: 15px 15px 0px 15px;
   }
   
