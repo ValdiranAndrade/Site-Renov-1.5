@@ -5057,7 +5057,7 @@ header::before, header::after,
   .parceiro-experiencia-info {
     justify-content: flex-end;
     padding: 20px 20px 0px 20px;
-    margin-top: 200px; /* Reduzido de 250px para 200px para subir o conteúdo */
+    margin-top: 150px; /* Reduzido de 200px para 150px para subir ainda mais */
     height: 100%; /* Ocupar toda a altura disponível */
     display: flex;
     flex-direction: column;
@@ -5097,7 +5097,7 @@ header::before, header::after,
   }
   
   .parceiro-experiencia-info {
-    margin-top: 160px; /* Reduzido de 200px para 160px para subir o conteúdo */
+    margin-top: 120px; /* Reduzido de 160px para 120px para subir ainda mais */
     padding: 15px 15px 0px 15px;
   }
   
@@ -5125,7 +5125,7 @@ header::before, header::after,
   }
   
   .parceiro-experiencia-info {
-    margin-top: 180px;
+    margin-top: 140px; /* Reduzido de 180px para 140px para subir ainda mais */
     padding: 12px 12px 0px 12px;
   }
   
