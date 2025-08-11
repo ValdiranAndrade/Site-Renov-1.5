@@ -163,7 +163,7 @@ class LiteSpeedCacheOptimizer {
                     left: 0; 
                     width: 100vw; 
                     height: 100%; 
-                    background-image: url('assets/images/mobile/bg-como-funciona.webp'); 
+                    background-image: url('assets/images/mobile/bg-como-funciona.png'); 
                     background-size: cover; 
                     background-position: center; 
                     background-repeat: no-repeat; 
@@ -313,7 +313,7 @@ class LiteSpeedCacheOptimizer {
                     'assets/images/Renov-Logo.webp',
                     'assets/fonts/Montserrat-Regular.woff2',
                     'assets/fonts/Montserrat-Medium.woff2',
-                    'assets/images/mobile/bg-como-funciona.webp'
+                    'assets/images/mobile/bg-como-funciona.png'
                 ];
                 
                 criticalResources.forEach(resource => {
