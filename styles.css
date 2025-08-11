@@ -435,6 +435,33 @@ footer {
     max-width: 100%;
     padding: 12px 0 4px 0 !important;
     background-color: #fff !important;
+    margin: 0 !important;
+    position: relative;
+    bottom: 0;
+}
+
+/* Garantir que não haja espaçamento após o footer */
+body {
+    margin: 0 !important;
+    padding: 0 !important;
+    min-height: 100vh;
+}
+
+html {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Remover qualquer espaçamento após o footer */
+footer + * {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+/* Garantir que o footer seja o último elemento */
+footer:last-child {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
 }
 
 .footer-content {
@@ -2286,10 +2313,10 @@ footer {
 
 .slider-track {
     display: flex;
-    animation: scroll 30s linear infinite;
+    animation: scroll 20s linear infinite;
     width: max-content;
-    gap: 60px;
-    padding: 0 30px;
+    gap: 40px;
+    padding: 0 20px;
 }
 
 .parceiro-item {
@@ -2297,12 +2324,13 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-width: 200px;
+    min-width: 120px;
 }
 
 .parceiro-item img {
-    max-width: 154px; /* Aumento de 10% de 140px */
-    height: auto;
+    max-width: 120px !important;
+    width: 120px !important;
+    height: auto !important;
     opacity: 1;
     transition: all 0.3s ease;
 }
@@ -2322,11 +2350,55 @@ footer {
 
 @media (max-width: 768px) {
     .parceiro-item {
-        padding: 0 20px;
+        padding: 0 10px !important;
+        min-width: 80px !important;
     }
     
     .parceiro-item img {
-        max-width: 110px; /* Aumento de 10% de 100px */
+        max-width: 85px !important;
+        width: 85px !important;
+        height: auto !important;
+    }
+    
+    .slider-track {
+        gap: 20px !important;
+        animation: scroll 12s linear infinite !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .parceiro-item {
+        padding: 0 5px !important;
+        min-width: 60px !important;
+    }
+    
+    .parceiro-item img {
+        max-width: 65px !important;
+        width: 65px !important;
+        height: auto !important;
+    }
+    
+    .slider-track {
+        gap: 15px !important;
+        animation: scroll 12s linear infinite !important;
+    }
+}
+
+@media (max-width: 360px) {
+    .parceiro-item {
+        padding: 0 3px !important;
+        min-width: 50px !important;
+    }
+    
+    .parceiro-item img {
+        max-width: 55px !important;
+        width: 55px !important;
+        height: auto !important;
+    }
+    
+    .slider-track {
+        gap: 10px !important;
+        animation: scroll 12s linear infinite !important;
     }
 }
 
