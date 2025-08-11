@@ -45,7 +45,7 @@ const CACHE_STRATEGIES = {
   STATIC: {
     name: 'static',
     urls: [
-      '/assets/video/bg-video.mp4.mp4',
+      '/assets/video/bg-video.mp4.webm',
       '/assets/video/bg-IA.gif',
       '/assets/images/missao.webp',
       '/assets/images/visao.webp',

@@ -112,7 +112,6 @@ class LCPEmergencyOptimizer {
     optimizeResourceLoading() {
         // Deferir recursos não críticos
         const nonCriticalResources = [
-            'assets/video/bg-video.mp4.mp4',
             'assets/video/bg-video.mp4.webm',
             'assets/video/bg-IA.gif'
         ];
