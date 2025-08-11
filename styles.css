@@ -6515,7 +6515,7 @@ img[loading="lazy"].loaded { filter: none; }
         height: 100% !important;
         min-width: 100vw !important;
         min-height: 100% !important;
-        background-size: cover !important;
+        background-size: 150% auto !important;
         background-position: center !important;
         background-repeat: no-repeat !important;
         z-index: 0 !important;
@@ -6568,6 +6568,22 @@ img[loading="lazy"].loaded { filter: none; }
 @media (max-width: 768px) {
     .ai-hero-content {
         top: 40%; /* move para cima */
+    }
+    
+    .mobile-bg {
+        background-size: 150% auto !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .mobile-bg {
+        background-size: 170% auto !important;
+    }
+}
+
+@media (max-width: 360px) {
+    .mobile-bg {
+        background-size: 200% auto !important;
     }
 }
 @media screen and (max-width: 580px){
