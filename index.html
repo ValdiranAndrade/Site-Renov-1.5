@@ -44,6 +44,52 @@
     <!-- ULTRA-CRITICAL PRELOADS FOR LCP OPTIMIZATION -->
     <link rel="preload" href="assets/images/Renov-Logo.webp" as="image" fetchpriority="high" decoding="sync">
     
+    <!-- INTELLIGENT RESOURCE HINTS - Network-aware -->
+    <script>
+      // Dynamic resource hints based on connection speed
+      function addResourceHints() {
+        const connectionSpeed = getConnectionSpeed();
+        const head = document.head;
+        
+        if (connectionSpeed === 'fast') {
+          // Preload critical resources for fast connections
+          const preloads = [
+            { href: 'assets/fonts/Montserrat-Regular.woff2', as: 'font', type: 'font/woff2', crossorigin: 'anonymous' },
+            { href: 'assets/fonts/Montserrat-Medium.woff2', as: 'font', type: 'font/woff2', crossorigin: 'anonymous' }
+          ];
+          
+          preloads.forEach(function(resource) {
+            const link = document.createElement('link');
+            link.rel = 'preload';
+            link.href = resource.href;
+            link.as = resource.as;
+            link.type = resource.type;
+            link.crossOrigin = resource.crossorigin;
+            head.appendChild(link);
+          });
+        }
+        
+        // DNS prefetch for external resources
+        const dnsPrefetch = [
+          'https://cdnjs.cloudflare.com'
+        ];
+        
+        dnsPrefetch.forEach(function(domain) {
+          const link = document.createElement('link');
+          link.rel = 'dns-prefetch';
+          link.href = domain;
+          head.appendChild(link);
+        });
+      }
+      
+      // Execute resource hints
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', addResourceHints);
+      } else {
+        addResourceHints();
+      }
+    </script>
+    
     <!-- OPTIMIZED FONT STRATEGY: Local fonts only - No external dependencies -->
     <!-- Google Fonts removed to eliminate critical request chains -->
     
@@ -1150,6 +1196,21 @@
       (function() {
         'use strict';
         
+        // Network-aware loading strategy
+        function getConnectionSpeed() {
+          if ('connection' in navigator) {
+            const connection = navigator.connection;
+            if (connection.effectiveType === 'slow-2g' || connection.effectiveType === '2g') {
+              return 'slow';
+            } else if (connection.effectiveType === '3g') {
+              return 'medium';
+            } else {
+              return 'fast';
+            }
+          }
+          return 'fast'; // Default to fast
+        }
+        
         // Load critical script after page load to avoid blocking LCP
         function loadCriticalScript() {
           var script = document.createElement('script');
@@ -1174,15 +1235,51 @@
           });
         }
         
+        // Intelligent video loading based on connection speed
+        function loadVideosIntelligently() {
+          const connectionSpeed = getConnectionSpeed();
+          const videos = document.querySelectorAll('video[data-src]');
+          
+          videos.forEach(function(video) {
+            const dataSrc = video.getAttribute('data-src');
+            const mobileSrc = video.getAttribute('data-mobile-src');
+            
+            // For slow connections, use mobile-optimized videos or skip
+            if (connectionSpeed === 'slow' && mobileSrc) {
+              video.src = mobileSrc;
+            } else if (connectionSpeed === 'slow' && !mobileSrc) {
+              // Skip video loading for slow connections
+              video.style.display = 'none';
+              return;
+            } else {
+              video.src = dataSrc;
+            }
+            
+            // Load video only when in viewport
+            const observer = new IntersectionObserver(function(entries) {
+              entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                  video.load();
+                  observer.unobserve(video);
+                }
+              });
+            });
+            
+            observer.observe(video);
+          });
+        }
+        
         // Defer critical script loading to avoid blocking LCP
         if (document.readyState === 'loading') {
           document.addEventListener('DOMContentLoaded', function() {
             setTimeout(loadCriticalScript, 100);
             setTimeout(loadNonCriticalScripts, 200);
+            setTimeout(loadVideosIntelligently, 300);
           });
         } else {
           setTimeout(loadCriticalScript, 100);
           setTimeout(loadNonCriticalScripts, 200);
+          setTimeout(loadVideosIntelligently, 300);
         }
       })();
     </script>
@@ -1235,19 +1332,29 @@
     </script>
 
     <script>
-      // Registro do Service Worker para cache offline - Deferred
+      // Registro do Service Worker Inteligente - Network-aware caching
       if ('serviceWorker' in navigator && window.location.protocol !== 'file:') {
         setTimeout(() => {
-          navigator.serviceWorker.register('sw.min.js?v=1.6.3')
+          navigator.serviceWorker.register('sw-intelligent.js?v=1.6.7')
             .then(registration => {
-              console.log('Service Worker registrado com sucesso:', registration.scope);
+              console.log('🔄 Intelligent Service Worker registrado:', registration.scope);
+              
+              // Check for updates
+              registration.addEventListener('updatefound', () => {
+                const newWorker = registration.installing;
+                newWorker.addEventListener('statechange', () => {
+                  if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                    console.log('🆕 Nova versão do Service Worker disponível');
+                  }
+                });
+              });
             })
             .catch(error => {
-              console.log('Falha no registro do Service Worker:', error);
+              console.log('❌ Falha no registro do Service Worker:', error);
             });
-        }, 1000);
+        }, 500);
       } else {
-        console.log('Service Worker desabilitado para protocolo file://');
+        console.log('⚠️ Service Worker desabilitado para protocolo file://');
       }
 
 
