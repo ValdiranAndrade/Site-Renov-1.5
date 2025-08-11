@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head> 
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Renov - Sua Troca Inteligente. Plataforma de trade-in que transforma dispositivos usados em oportunidades de venda.">
@@ -96,10 +96,10 @@
       // Defer manifest loading to avoid blocking critical path
       if (window.location.protocol === 'https:') {
         setTimeout(function() {
-          var manifest = document.createElement('link');
-          manifest.rel = 'manifest';
-          manifest.href = 'site.webmanifest';
-          document.head.appendChild(manifest);
+        var manifest = document.createElement('link');
+        manifest.rel = 'manifest';
+        manifest.href = 'site.webmanifest';
+        document.head.appendChild(manifest);
         }, 1000);
       }
     </script>
@@ -148,17 +148,17 @@
           document.body.style.opacity = '1';
           
           // Preload imagens críticas
-          var criticalImages = [
-            'assets/images/Renov-Logo.webp',
+        var criticalImages = [
+          'assets/images/Renov-Logo.webp',
             'assets/images/mobile/bg-como-funciona.webp'
-          ];
-          
-          criticalImages.forEach(function(src) {
-            var img = new Image();
-            img.src = src;
-            img.decoding = 'sync';
-          });
-          
+        ];
+        
+        criticalImages.forEach(function(src) {
+          var img = new Image();
+          img.src = src;
+          img.decoding = 'sync';
+        });
+        
           console.log('⚡ Speed Index Ultra-optimization aplicado');
         }
       })();
@@ -1371,41 +1371,41 @@
     <script>
       // Defer form submission script to avoid blocking critical path
       document.addEventListener('DOMContentLoaded', function() {
-        document.addEventListener('submit', function(e) {
-          var form = e.target;
-          if (form && form.id === 'form-contato') {
-            e.preventDefault();
-            var mensagem = document.getElementById('form-mensagem');
-            if (!mensagem) return;
-            mensagem.textContent = 'Enviando...';
-            mensagem.style.color = '#008d36';
-            var emailInput = form.querySelector('input[name="email"]');
-            var replytoInput = form.querySelector('input[name="_replyto"]');
-            if(emailInput && replytoInput) replytoInput.value = emailInput.value;
-            var data = new FormData(form);
-            fetch(form.action, {
-              method: 'POST',
-              body: data,
-              headers: { 'Accept': 'application/json' }
-            })
-            .then(function(response) {
-              if (response.ok) {
-                mensagem.textContent = 'Mensagem enviada com sucesso! Em breve entraremos em contato.';
-                mensagem.style.color = '#008d36';
-                form.reset();
-              } else {
-                mensagem.textContent = 'Ocorreu um erro ao enviar. Por favor, tente novamente ou envie um e-mail para contato@renovsmart.com.br.';
-                mensagem.style.color = '#d32f2f';
-              }
-            })
-            .catch(function() {
-              mensagem.textContent = 'Erro de conexão. Por favor, tente novamente mais tarde.';
-              mensagem.style.color = '#d32f2f';
-            });
-          }
-        }, true);
+document.addEventListener('submit', function(e) {
+  var form = e.target;
+  if (form && form.id === 'form-contato') {
+    e.preventDefault();
+    var mensagem = document.getElementById('form-mensagem');
+    if (!mensagem) return;
+    mensagem.textContent = 'Enviando...';
+    mensagem.style.color = '#008d36';
+    var emailInput = form.querySelector('input[name="email"]');
+    var replytoInput = form.querySelector('input[name="_replyto"]');
+    if(emailInput && replytoInput) replytoInput.value = emailInput.value;
+    var data = new FormData(form);
+    fetch(form.action, {
+      method: 'POST',
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    })
+    .then(function(response) {
+      if (response.ok) {
+        mensagem.textContent = 'Mensagem enviada com sucesso! Em breve entraremos em contato.';
+        mensagem.style.color = '#008d36';
+        form.reset();
+      } else {
+        mensagem.textContent = 'Ocorreu um erro ao enviar. Por favor, tente novamente ou envie um e-mail para contato@renovsmart.com.br.';
+        mensagem.style.color = '#d32f2f';
+      }
+    })
+    .catch(function() {
+      mensagem.textContent = 'Erro de conexão. Por favor, tente novamente mais tarde.';
+      mensagem.style.color = '#d32f2f';
+    });
+  }
+}, true);
       });
-    </script>
+</script>
 
 
 </body>
