@@ -88,7 +88,7 @@ class LCPEmergencyOptimizer {
         // Forçar carregamento de fontes críticas
         const fontLinks = document.querySelectorAll('link[rel="preload"][as="font"]');
         fontLinks.forEach(link => {
-            link.setAttribute('fetchpriority', 'high');
+                link.setAttribute('fetchpriority', 'high');
         });
     }
 

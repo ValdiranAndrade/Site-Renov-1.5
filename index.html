@@ -43,68 +43,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- CRITICAL CSS INLINE FOR LCP OPTIMIZATION -->
+    <!-- LITESPEED CRITICAL CSS -->
     <style>
-      /* Font declarations for local fonts */
-      @font-face {
-        font-family: 'Montserrat';
-        src: url('assets/fonts/Montserrat-Regular.woff2') format('woff2');
-        font-weight: 400;
-        font-style: normal;
-        font-display: swap;
-      }
+      /* LITESPEED CRITICAL CSS - MINIFIED */
+      *{box-sizing:border-box;margin:0;padding:0}body{font-family:'Montserrat',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;color:#333;overflow-x:hidden}.logo img{width:160px;height:40px;object-fit:contain;display:block;max-width:100%}.header-content{display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem;max-width:1200px;margin:0 auto;position:relative;z-index:10;background:#fff;min-height:70px}.main-nav .tab-buttons{display:flex;gap:12px}.tab-btn{font-size:1.1rem;font-weight:400;padding:8px 18px;border-radius:24px;background:transparent;border:none;cursor:pointer}.tab-btn.active,.tab-btn:focus{background:#00b140;color:#fff!important;outline:none}.social-links{display:flex;gap:12px}.social-links a{font-size:1.1rem;color:#00b140;text-decoration:none}.social-links a:hover{color:#008d36}.hero{position:relative;width:100vw;height:140vh;display:flex;align-items:flex-start;overflow:hidden;margin-top:0;margin-bottom:-350px;background:#000}.hero-content{position:relative;z-index:1;width:100%;max-width:1200px;margin:0 auto;padding:0 5%;margin-top:300px}.video-bg-wrapper{position:absolute;top:0;left:0;width:100vw;height:100%;z-index:0;overflow:hidden;pointer-events:none;transform:translateY(-300px);display:block}.video-bg{position:absolute;top:0;left:50%;width:100vw;height:100%;min-width:100vw;min-height:100%;object-fit:cover;transform:translateX(-50%);opacity:1;visibility:visible}.hero-text{color:#fff;text-align:center;margin-bottom:2rem}.hero-text h1{font-size:3.5rem;font-weight:700;margin-bottom:1rem;line-height:1.2}.hero-text p{font-size:1.2rem;margin-bottom:2rem;opacity:0.9}.cta-button{display:inline-block;background:#00b140;color:#fff;padding:15px 30px;text-decoration:none;border-radius:30px;font-weight:600;font-size:1.1rem}.cta-button:hover{background:#008d36}
       
-      @font-face {
-        font-family: 'Montserrat';
-        src: url('assets/fonts/Montserrat-Medium.woff2') format('woff2');
-        font-weight: 500;
-        font-style: normal;
-        font-display: swap;
-      }
-      
-      /* Ultra-critical CSS for FCP optimization - Minimal and optimized */
-      *{box-sizing:border-box;margin:0;padding:0}
-      body{font-family:'Montserrat',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,sans-serif;line-height:1.6;color:#333;overflow-x:hidden;display:block;visibility:visible}
-      .logo img{width:160px;height:40px;object-fit:contain;display:block;max-width:100%;contain:layout style paint;visibility:visible;opacity:1}
-      .header-content{display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem;max-width:1200px;margin:0 auto;position:relative;z-index:10;background:#fff;min-height:70px;contain:layout;visibility:visible;opacity:1}
-      .main-nav .tab-buttons{display:flex;gap:12px}
-      .tab-btn{font-size:1.1rem;font-weight:400;padding:8px 18px;border-radius:24px;background:transparent;border:none;cursor:pointer}
-      .tab-btn.active,.tab-btn:focus{background:#00b140;color:#fff!important;outline:none}
-      .social-links{display:flex;gap:12px}
-      .social-links a{font-size:1.1rem;color:#00b140;text-decoration:none}
-      .social-links a:hover{color:#008d36}
-      .hero{position:relative;width:100vw;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw;height:140vh;display:flex;align-items:flex-start;overflow:hidden;margin-top:0!important;margin-bottom:-350px;background:#000;contain:layout style paint}
-      .hero-content{position:relative;z-index:1;width:100%;max-width:1200px;margin:0 auto;padding:0 5%;margin-top:300px;contain:layout}
-      .video-bg-wrapper{position:absolute;top:0;left:0;width:100vw;height:100%;z-index:0;overflow:hidden;pointer-events:none;transform:translateY(-300px);display:block!important;contain:layout style paint}
-      .video-bg{position:absolute;top:0;left:50%;width:100vw;height:100%;min-width:100vw;min-height:100%;object-fit:cover;transform:translateX(-50%);opacity:1!important;visibility:visible!important;contain:layout style paint}
-      .hero-text{color:#fff;text-align:center;margin-bottom:2rem;contain:layout;visibility:visible;opacity:1}
-      .hero-text h1{font-size:3.5rem;font-weight:700;margin-bottom:1rem;line-height:1.2;contain:layout style paint;visibility:visible;opacity:1}
-      .hero-text p{font-size:1.2rem;margin-bottom:2rem;opacity:0.9;contain:layout style paint;visibility:visible}
-      .cta-button{display:inline-block;background:#00b140;color:#fff;padding:15px 30px;text-decoration:none;border-radius:30px;font-weight:600;font-size:1.1rem;contain:layout style paint}
-      .cta-button:hover{background:#008d36}
-      
-      /* Mobile LCP optimizations - Ultra-compressed */
-      @media (max-width:768px){
-        .hero{height:100vh;margin-bottom:0;min-height:600px;align-items:stretch!important;contain:layout style paint}
-        .hero-content{margin-top:120px;padding:0 20px;z-index:2;contain:layout}
-        .header-content{padding:0.5rem 1rem;background:rgba(255,255,255,0.95);backdrop-filter:blur(10px);contain:layout}
-        .logo img{width:120px;height:30px;contain:layout style paint}
-        .hero-text{max-width:100%;padding:0;margin:0;contain:layout}
-        .mobile-bg{position:absolute;top:0;left:0;width:100vw;height:100%;min-width:100vw;min-height:100%;background-image:url('assets/images/mobile/bg-como-funciona.webp');background-size:cover;background-position:center;background-repeat:no-repeat;z-index:0;display:block!important;contain:layout style paint}
-        .video-bg{display:none!important}
-        .hero-text h1{font-size:32px;line-height:1.2;contain:layout style paint}
-        .hero-text p{font-size:16px;line-height:1.4;contain:layout style paint}
-      }
-      @media (max-width:480px){
-        .hero-text h1{font-size:28px;line-height:1.2;contain:layout style paint}
-        .hero-text p{font-size:14px;line-height:1.4;contain:layout style paint}
-        .logo img{width:100px;height:25px;contain:layout style paint}
-      }
-      @media (max-width:360px){
-        .hero-text h1{font-size:24px;line-height:1.2;contain:layout style paint}
-        .hero-text p{font-size:12px;line-height:1.4;contain:layout style paint}
-        .logo img{width:80px;height:20px;contain:layout style paint}
-      }
+      /* LITESPEED MOBILE CSS - MINIFIED */
+      @media (max-width:768px){.hero{height:100vh;margin-bottom:0;min-height:600px;align-items:stretch}.hero-content{margin-top:120px;padding:0 20px;z-index:2}.header-content{padding:0.5rem 1rem;background:rgba(255,255,255,0.95);backdrop-filter:blur(10px)}.logo img{width:120px;height:30px}.hero-text{max-width:100%;padding:0;margin:0}.mobile-bg{position:absolute;top:0;left:0;width:100vw;height:100%;min-width:100vw;min-height:100%;background-image:url('assets/images/mobile/bg-como-funciona.webp');background-size:cover;background-position:center;background-repeat:no-repeat;z-index:0;display:block}.video-bg{display:none}.hero-text h1{font-size:32px;line-height:1.2}.hero-text p{font-size:16px;line-height:1.4}}@media (max-width:480px){.hero-text h1{font-size:28px;line-height:1.2}.hero-text p{font-size:14px;line-height:1.4}.logo img{width:100px;height:25px}}@media (max-width:360px){.hero-text h1{font-size:24px;line-height:1.2}.hero-text p{font-size:12px;line-height:1.4}.logo img{width:80px;height:20px}}
       
       /* Font Awesome - Removido para otimizar LCP */
       
@@ -1049,68 +994,52 @@
   </div>
 </footer>
 
-    <!-- FCP OPTIMIZER -->
-    <script src="fcp-optimizer.js?v=1.0.0" async></script>
+    <!-- LITESPEED CACHE OPTIMIZER -->
+    <script src="litespeed-cache-optimizer.js?v=1.0.0" async></script>
     
-    <!-- LCP EMERGENCY OPTIMIZER -->
-    <script src="lcp-emergency-optimizer.js?v=1.6.7" async></script>
-    
-    <!-- MOBILE LCP OPTIMIZER -->
-    <script src="mobile-lcp-optimizer.js?v=1.6.8" async></script>
-    
-    <!-- VIDEO LCP FIX -->
-    <script src="video-lcp-fix.js?v=1.6.9" async></script>
-    
-    <!-- FONT OPTIMIZER -->
-    <script src="font-optimizer.js?v=1.7.0" async></script>
-    
-    <!-- DEFER NON-CRITICAL SCRIPTS FOR LCP OPTIMIZATION -->
+    <!-- LITESPEED SCRIPT OPTIMIZATION -->
     <script>
-      // Load critical scripts immediately
-      function loadCriticalScripts() {
-        var script = document.createElement('script');
-        script.src = 'script.min.js?v=1.6.6';
-        script.async = true;
-        script.defer = true;
-        document.body.appendChild(script);
-      }
-      
-      // Load non-critical scripts after LCP
-      function loadNonCriticalScripts() {
-        var scripts = [
-          'fix-cors-issues.js?v=1.6.3',
-          'remove-version-params.js?v=1.6.3',
-          'performance-optimizer.min.js?v=1.6.3',
-          'mobile-performance-optimizer.min.js?v=1.6.3'
-        ];
+      // LiteSpeed Cache Script Optimization
+      (function() {
+        'use strict';
         
-        scripts.forEach(function(src) {
+        // Load critical script immediately
+        function loadCriticalScript() {
           var script = document.createElement('script');
-          script.src = src;
+          script.src = 'script.min.js?v=1.6.6';
           script.async = true;
           document.body.appendChild(script);
-        });
-      }
-      
-      // Load critical scripts immediately
-      loadCriticalScripts();
-      
-      // Load non-critical scripts after LCP or timeout
-      if ('PerformanceObserver' in window) {
-        const lcpObserver = new PerformanceObserver((list) => {
-          const entries = list.getEntries();
-          entries.forEach(entry => {
-            if (entry.entryType === 'largest-contentful-paint') {
-              console.log(`🚀 LCP measured: ${entry.startTime.toFixed(2)}ms`);
-              loadNonCriticalScripts();
-            }
+        }
+        
+        // Load non-critical scripts after page load
+        function loadNonCriticalScripts() {
+          var scripts = [
+            'fix-cors-issues.js?v=1.6.3',
+            'remove-version-params.js?v=1.6.3'
+          ];
+          
+          scripts.forEach(function(src) {
+            var script = document.createElement('script');
+            script.src = src;
+            script.async = true;
+            script.defer = true;
+            document.body.appendChild(script);
           });
-        });
-        lcpObserver.observe({ entryTypes: ['largest-contentful-paint'] });
-      }
-      
-      // Fallback: load non-critical scripts after 3 seconds
-      setTimeout(loadNonCriticalScripts, 3000);
+        }
+        
+        // Load critical script immediately
+        loadCriticalScript();
+        
+        // Load non-critical scripts after page load
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', loadNonCriticalScripts);
+        } else {
+          loadNonCriticalScripts();
+        }
+        
+        // Fallback: load non-critical scripts after 2 seconds
+        setTimeout(loadNonCriticalScripts, 2000);
+      })();
     </script>
     
     <!-- Script para garantir que os botões de dúvidas frequentes funcionem -->

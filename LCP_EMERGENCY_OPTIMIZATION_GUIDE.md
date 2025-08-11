@@ -125,16 +125,16 @@
 
 #### Se LCP > 2.5s:
 1. **Remover Animações Complexas**
-   ```javascript
+```javascript
    const animatedElements = document.querySelectorAll('[style*="animation"], [style*="transition"]');
    animatedElements.forEach(el => {
        el.style.animation = 'none';
        el.style.transition = 'none';
    });
-   ```
+```
 
 2. **Reduzir Qualidade de Imagens**
-   ```javascript
+```javascript
    if (navigator.connection && navigator.connection.effectiveType === 'slow-2g') {
        const images = document.querySelectorAll('img');
        images.forEach(img => {
@@ -146,7 +146,7 @@
    ```
 
 3. **Desabilitar Vídeo em Dispositivos Lentos**
-   ```javascript
+```javascript
    if (video && navigator.hardwareConcurrency < 4) {
        video.style.display = 'none';
        const mobileBg = document.querySelector('.mobile-bg');
@@ -154,7 +154,7 @@
            mobileBg.style.display = 'block';
        }
    }
-   ```
+```
 
 ## 📊 Resultados Esperados
 
