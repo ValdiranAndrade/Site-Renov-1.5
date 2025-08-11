@@ -21,8 +21,8 @@
     <meta name="HandheldFriendly" content="true">
     <meta name="MobileOptimized" content="width">
     
-    <!-- PWA Manifest -->
-    <link rel="manifest" href="manifest.json?v=1.6.3">
+    <!-- PWA Manifest - Deferred to avoid blocking LCP -->
+    <link rel="manifest" href="manifest.json?v=1.6.3" media="print" onload="this.media='all'">
     <meta name="theme-color" content="#00b140">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -41,8 +41,9 @@
     <!-- OPTIMIZED FONT STRATEGY: Local fonts only - No external dependencies -->
     <!-- Google Fonts removed to eliminate critical request chains -->
     
-    <!-- Font Awesome for social icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Font Awesome for social icons - Deferred to avoid blocking LCP -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
     
     <!-- LITESPEED CRITICAL CSS -->
     <style>
@@ -1127,19 +1128,19 @@
   </div>
 </footer>
 
-    <!-- LITESPEED CACHE OPTIMIZER -->
-    <script src="litespeed-cache-optimizer.js?v=1.0.0" async></script>
+    <!-- LITESPEED CACHE OPTIMIZER - Deferred to avoid blocking LCP -->
+    <script src="litespeed-cache-optimizer.js?v=1.0.0" defer></script>
     
-    <!-- MOBILE LITESPEED OPTIMIZER -->
-    <script src="mobile-litespeed-optimizer.js?v=1.0.0" async></script>
+    <!-- MOBILE LITESPEED OPTIMIZER - Deferred to avoid blocking LCP -->
+    <script src="mobile-litespeed-optimizer.js?v=1.0.0" defer></script>
     
-    <!-- LITESPEED SCRIPT OPTIMIZATION -->
+    <!-- LITESPEED SCRIPT OPTIMIZATION - Deferred to avoid blocking LCP -->
     <script>
-      // LiteSpeed Cache Script Optimization - Simplified
+      // LiteSpeed Cache Script Optimization - Deferred for LCP optimization
       (function() {
         'use strict';
         
-        // Load critical script immediately
+        // Load critical script after page load to avoid blocking LCP
         function loadCriticalScript() {
           var script = document.createElement('script');
           script.src = 'script.min.js?v=1.6.6';
@@ -1163,21 +1164,31 @@
           });
         }
         
-        // Load critical script immediately
-        loadCriticalScript();
-        
-        // Load non-critical scripts after page load
+        // Defer critical script loading to avoid blocking LCP
         if (document.readyState === 'loading') {
-          document.addEventListener('DOMContentLoaded', loadNonCriticalScripts);
+          document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(loadCriticalScript, 100);
+            setTimeout(loadNonCriticalScripts, 200);
+          });
         } else {
-          loadNonCriticalScripts();
+          setTimeout(loadCriticalScript, 100);
+          setTimeout(loadNonCriticalScripts, 200);
         }
       })();
     </script>
     
-    <!-- Script para garantir que os botões de dúvidas frequentes funcionem -->
+    <!-- Script para garantir que os botões de dúvidas frequentes funcionem - Deferred -->
     <script>
-      document.addEventListener('DOMContentLoaded', function() {
+      // Defer FAQ button initialization to avoid blocking LCP
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', function() {
+          setTimeout(initializeFAQButtons, 150);
+        });
+      } else {
+        setTimeout(initializeFAQButtons, 150);
+      }
+      
+      function initializeFAQButtons() {
         console.log('🔍 Verificando botões de dúvidas frequentes...');
         
         const slider = document.querySelector('.respostas-slider');
@@ -1210,7 +1221,7 @@
         } else {
           console.error('❌ Botões de navegação não encontrados!');
         }
-      });
+      }
     </script>
 
     <script>
