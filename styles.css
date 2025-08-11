@@ -4974,6 +4974,7 @@ header::before, header::after,
   max-width: 1000px;
   width: 1000px;
   min-height: 420px;
+  height: 420px;
   position: relative;
 }
 .parceiro-experiencia-card::before {
@@ -5026,6 +5027,7 @@ header::before, header::after,
   .parceiro-experiencia-card {
     flex-direction: column;
     min-height: 0;
+    width: 98vw;
     max-width: 98vw;
   }
   .parceiro-experiencia-img {
@@ -5045,7 +5047,7 @@ header::before, header::after,
   }
   .parceiro-experiencia-card {
     border-radius: 18px;
-    width: 100%;
+    width: 98vw;
     max-width: 98vw;
     position: relative;
     overflow: hidden;
@@ -5081,8 +5083,17 @@ header::before, header::after,
   /* Garantir que ambos os cards tenham exatamente o mesmo tamanho */
   .parceiro-experiencia-card,
   .parceiro-experiencia-card.parceiro-revenda-bg {
-    min-height: 400px;
-    height: 400px;
+    min-height: 400px !important;
+    height: 400px !important;
+    width: 100% !important;
+    max-width: 1000px !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: stretch !important;
+    position: relative !important;
+    overflow: hidden !important;
+    border-radius: 32px !important;
+    box-shadow: 0 4px 32px rgba(0,0,0,0.08) !important;
   }
 }
 
@@ -5090,8 +5101,17 @@ header::before, header::after,
 @media (max-width: 480px) {
   .parceiro-experiencia-card,
   .parceiro-experiencia-card.parceiro-revenda-bg {
-    min-height: 350px;
-    height: 350px;
+    min-height: 350px !important;
+    height: 350px !important;
+    width: 100% !important;
+    max-width: 98vw !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    position: relative !important;
+    overflow: hidden !important;
+    border-radius: 18px !important;
+    box-shadow: 0 4px 32px rgba(0,0,0,0.08) !important;
   }
   
   .parceiro-experiencia-info {
@@ -5118,8 +5138,17 @@ header::before, header::after,
 @media (max-width: 360px) {
   .parceiro-experiencia-card,
   .parceiro-experiencia-card.parceiro-revenda-bg {
-    min-height: 320px;
-    height: 320px;
+    min-height: 320px !important;
+    height: 320px !important;
+    width: 100% !important;
+    max-width: 98vw !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    position: relative !important;
+    overflow: hidden !important;
+    border-radius: 18px !important;
+    box-shadow: 0 4px 32px rgba(0,0,0,0.08) !important;
   }
   
   .parceiro-experiencia-info {
@@ -5141,6 +5170,16 @@ header::before, header::after,
     font-size: 0.85rem;
     padding: 8px 16px;
   }
+}
+
+/* Garantir que ambos os containers tenham exatamente o mesmo tamanho */
+.parceiro-experiencia-card,
+.parceiro-experiencia-card.parceiro-revenda-bg {
+  flex: 1 1 0 !important;
+  min-width: 0 !important;
+  width: 1000px !important;
+  max-width: 1000px !important;
+  margin: 0 auto !important;
 }
 
 .parceiro-experiencia-card.parceiro-revenda-bg {
