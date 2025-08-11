@@ -1,21 +1,21 @@
 /**
  * MOBILE LITESPEED CACHE OPTIMIZER
  * Otimizações específicas para métricas mobile: FCP, Speed Index, CLS, LCP
- * Versão 1.0 - Performance máxima para mobile
+ * Versão 2.0 - Simplificada e sem conflitos
  */
 
 class MobileLiteSpeedOptimizer {
     constructor() {
         this.isMobile = this.detectMobile();
-        this.init();
+        if (this.isMobile) {
+            this.init();
+        }
     }
 
     init() {
-        if (this.isMobile) {
-            console.log('🚀 Mobile LiteSpeed Optimizer iniciado');
-            this.applyMobileOptimizations();
-            this.monitorPerformance();
-        }
+        console.log('📱 Mobile LiteSpeed Optimizer iniciado');
+        this.applyMobileOptimizations();
+        this.monitorPerformance();
     }
 
     detectMobile() {
@@ -29,16 +29,16 @@ class MobileLiteSpeedOptimizer {
     applyMobileOptimizations() {
         console.log('⚡ Aplicando otimizações Mobile LiteSpeed...');
         
-        // 1. FCP OPTIMIZATION (First Contentful Paint)
+        // 1. FCP OPTIMIZATION
         this.optimizeFCP();
         
         // 2. SPEED INDEX OPTIMIZATION
         this.optimizeSpeedIndex();
         
-        // 3. CLS OPTIMIZATION (Cumulative Layout Shift)
+        // 3. CLS OPTIMIZATION
         this.optimizeCLS();
         
-        // 4. LCP OPTIMIZATION (Largest Contentful Paint)
+        // 4. LCP OPTIMIZATION
         this.optimizeLCP();
         
         console.log('✅ Otimizações Mobile LiteSpeed aplicadas');
@@ -48,118 +48,21 @@ class MobileLiteSpeedOptimizer {
      * Otimizar First Contentful Paint (FCP)
      */
     optimizeFCP() {
-        console.log('🎨 Otimizando FCP...');
-        
         // Injetar CSS crítico inline para FCP
         const criticalCSS = `
             /* MOBILE CRITICAL CSS FOR FCP */
-            * { box-sizing: border-box; }
-            body { 
-                margin: 0; 
-                padding: 0; 
-                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-                line-height: 1.6;
-                color: #333;
-                overflow-x: hidden;
-            }
+            .logo img { contain: layout style paint; }
+            .header-content { contain: layout; }
+            .hero { contain: layout style paint; }
+            .hero-content { contain: layout; }
+            .hero-text h1 { contain: layout style paint; }
+            .hero-text p { contain: layout style paint; }
             
-            /* CRITICAL ELEMENTS FOR FCP */
-            .header-content { 
-                display: flex; 
-                align-items: center; 
-                justify-content: space-between; 
-                padding: 1rem 2rem; 
-                max-width: 1200px; 
-                margin: 0 auto; 
-                position: relative; 
-                z-index: 10; 
-                background: #fff; 
-                min-height: 70px;
-            }
-            
-            .logo img { 
-                width: 160px; 
-                height: 40px; 
-                object-fit: contain; 
-                display: block; 
-                max-width: 100%;
-            }
-            
-            .hero { 
-                position: relative; 
-                width: 100vw; 
-                height: 100vh; 
-                display: flex; 
-                align-items: flex-start; 
-                overflow: hidden; 
-                margin-top: 0; 
-                margin-bottom: 0; 
-                background: #000;
-            }
-            
-            .hero-content { 
-                position: relative; 
-                z-index: 1; 
-                width: 100%; 
-                max-width: 1200px; 
-                margin: 0 auto; 
-                padding: 0 5%; 
-                margin-top: 120px;
-            }
-            
-            .hero-text { 
-                color: #fff; 
-                text-align: center; 
-                margin-bottom: 2rem;
-            }
-            
-            .hero-text h1 { 
-                font-size: 2.5rem; 
-                font-weight: 700; 
-                margin-bottom: 1rem; 
-                line-height: 1.2;
-            }
-            
-            .hero-text p { 
-                font-size: 1.1rem; 
-                margin-bottom: 2rem; 
-                opacity: 0.9;
-            }
-            
-            /* MOBILE SPECIFIC */
             @media (max-width: 768px) {
-                .logo img { 
-                    width: 120px; 
-                    height: 30px;
-                }
-                
-                .hero-text h1 { 
-                    font-size: 2rem; 
-                    line-height: 1.2;
-                }
-                
-                .hero-text p { 
-                    font-size: 1rem; 
-                    line-height: 1.4;
-                }
-                
-                .mobile-bg { 
-                    position: absolute; 
-                    top: 0; 
-                    left: 0; 
-                    width: 100vw; 
-                    height: 100%; 
-                    background-image: url('assets/images/mobile/bg-como-funciona.webp'); 
-                    background-size: cover; 
-                    background-position: center; 
-                    background-repeat: no-repeat; 
-                    z-index: 0; 
-                    display: block;
-                }
-                
-                .video-bg { 
-                    display: none;
-                }
+                .logo img { width: 120px; height: 30px; contain: layout style paint; }
+                .hero-text h1 { font-size: 2rem; line-height: 1.2; contain: layout style paint; }
+                .hero-text p { font-size: 1rem; line-height: 1.4; contain: layout style paint; }
+                .mobile-bg { contain: layout style paint; }
             }
         `;
         
@@ -176,8 +79,6 @@ class MobileLiteSpeedOptimizer {
      * Otimizar Speed Index
      */
     optimizeSpeedIndex() {
-        console.log('⚡ Otimizando Speed Index...');
-        
         // Forçar renderização imediata de elementos críticos
         const criticalElements = [
             '.header-content',
@@ -206,17 +107,12 @@ class MobileLiteSpeedOptimizer {
         // Forçar layout síncrono
         document.body.style.display = 'block';
         document.body.style.visibility = 'visible';
-        
-        // Otimizar fontes para Speed Index
-        this.optimizeFonts();
     }
 
     /**
      * Otimizar Cumulative Layout Shift (CLS)
      */
     optimizeCLS() {
-        console.log('📐 Otimizando CLS...');
-        
         // Definir dimensões fixas para elementos críticos
         const clsElements = [
             { selector: '.logo img', width: '160px', height: '40px' },
@@ -244,21 +140,12 @@ class MobileLiteSpeedOptimizer {
                 img.style.aspectRatio = 'auto';
             }
         });
-        
-        // Prevenir layout shifts em containers
-        const containers = document.querySelectorAll('.parceiro-experiencia-card, .hero, .header-content');
-        containers.forEach(container => {
-            container.style.contain = 'layout style paint';
-            container.style.willChange = 'transform';
-        });
     }
 
     /**
      * Otimizar Largest Contentful Paint (LCP)
      */
     optimizeLCP() {
-        console.log('🎯 Otimizando LCP...');
-        
         // Identificar e otimizar candidatos LCP
         const lcpCandidates = [
             '.hero-text h1',
@@ -272,8 +159,6 @@ class MobileLiteSpeedOptimizer {
                 element.style.willChange = 'transform';
                 element.style.transform = 'translateZ(0)';
                 element.style.contain = 'layout style paint';
-                
-                // Forçar renderização
                 element.offsetHeight; // Force reflow
             });
         });
@@ -297,15 +182,10 @@ class MobileLiteSpeedOptimizer {
         // Remover vídeos não críticos no mobile
         const videos = document.querySelectorAll('video');
         videos.forEach(video => {
-            if (this.isMobile) {
-                video.style.display = 'none';
-                video.pause();
-                video.removeAttribute('src');
-            }
+            video.style.display = 'none';
+            video.pause();
+            video.removeAttribute('src');
         });
-        
-        // Otimizar fontes para LCP
-        this.optimizeFontsForLCP();
     }
 
     /**
@@ -324,42 +204,6 @@ class MobileLiteSpeedOptimizer {
             link.href = resource.href;
             link.as = resource.as;
             if (resource.type) link.type = resource.type;
-            link.crossOrigin = 'anonymous';
-            link.fetchPriority = 'high';
-            document.head.appendChild(link);
-        });
-    }
-
-    /**
-     * Otimizar fontes
-     */
-    optimizeFonts() {
-        // Forçar carregamento de fontes críticas
-        const fontFaces = document.querySelectorAll('@font-face');
-        fontFaces.forEach(face => {
-            face.style.fontDisplay = 'swap';
-        });
-        
-        // Usar fontes do sistema como fallback
-        document.body.style.fontFamily = '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
-    }
-
-    /**
-     * Otimizar fontes para LCP
-     */
-    optimizeFontsForLCP() {
-        // Preload fontes críticas
-        const criticalFonts = [
-            'assets/fonts/Montserrat-Regular.woff2',
-            'assets/fonts/Montserrat-Medium.woff2'
-        ];
-        
-        criticalFonts.forEach(font => {
-            const link = document.createElement('link');
-            link.rel = 'preload';
-            link.href = font;
-            link.as = 'font';
-            link.type = 'font/woff2';
             link.crossOrigin = 'anonymous';
             link.fetchPriority = 'high';
             document.head.appendChild(link);
@@ -405,10 +249,7 @@ class MobileLiteSpeedOptimizer {
             clsObserver.observe({ entryTypes: ['layout-shift'] });
         }
         
-        // Fallback para métricas básicas
-        setTimeout(() => {
-            console.log('📊 Mobile LiteSpeed Optimizer - Métricas monitoradas');
-        }, 2000);
+        console.log('📊 Mobile LiteSpeed Optimizer - Métricas monitoradas');
     }
 }
 

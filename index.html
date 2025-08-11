@@ -105,40 +105,7 @@
     </script>
 </head>
 <body>
-    <!-- Ultra-aggressive LCP optimization script -->
-    <script>
-      (function() {
-        'use strict';
-        
-        // Forçar carregamento imediato de recursos críticos
-        var criticalImages = [
-          'assets/images/Renov-Logo.webp',
-          'assets/images/bg-como-funciona.webp',
-          'assets/video/bg-IA.gif'
-        ];
-        
-        // Carregar imagens críticas imediatamente
-        criticalImages.forEach(function(src) {
-          var img = new Image();
-          img.src = src;
-          img.decoding = 'sync';
-        });
-        
-        // Forçar layout síncrono
-        document.body.style.display = 'block';
-        document.body.style.visibility = 'visible';
-        
-        // Otimizar elementos críticos
-        var logo = document.querySelector('.logo img');
-        if (logo) {
-          logo.style.display = 'block';
-          logo.style.visibility = 'visible';
-          logo.style.opacity = '1';
-        }
-        
-        console.log('🚀 Ultra-aggressive LCP optimization applied');
-      })();
-    </script>
+
     
     <div class="page-wrapper">
         <!-- Header com Logo e Navegação -->
@@ -1002,7 +969,7 @@
     
     <!-- LITESPEED SCRIPT OPTIMIZATION -->
     <script>
-      // LiteSpeed Cache Script Optimization
+      // LiteSpeed Cache Script Optimization - Simplified
       (function() {
         'use strict';
         
@@ -1039,9 +1006,6 @@
         } else {
           loadNonCriticalScripts();
         }
-        
-        // Fallback: load non-critical scripts after 2 seconds
-        setTimeout(loadNonCriticalScripts, 2000);
       })();
     </script>
     
@@ -1082,19 +1046,7 @@
         }
       });
     </script>
-    <!-- Deferred non-critical scripts -->
-    <script>
-      // Carregar scripts não críticos de forma assíncrona
-      window.addEventListener('load', function() {
-        var fixCors = document.createElement('script');
-        fixCors.src = 'fix-cors-issues.js?v=1.6.3';
-        document.body.appendChild(fixCors);
-        
-        var removeVersion = document.createElement('script');
-        removeVersion.src = 'remove-version-params.js?v=1.6.3';
-        document.body.appendChild(removeVersion);
-      });
-    </script>
+
     <script>
       // Registro do Service Worker para cache offline - Deferred
       if ('serviceWorker' in navigator && window.location.protocol !== 'file:') {
@@ -1111,19 +1063,7 @@
         console.log('Service Worker desabilitado para protocolo file://');
       }
 
-      // Carregamento otimizado de scripts de performance - Deferred
-      setTimeout(function() {
-        // Carregar apenas um script de performance por vez para evitar conflitos
-        var performanceScript = document.createElement('script');
-        performanceScript.src = 'performance-optimizer.min.js?v=1.6.3';
-        performanceScript.onload = function() {
-          // Carregar mobile optimizer apenas após o primeiro script carregar
-          var mobileScript = document.createElement('script');
-          mobileScript.src = 'mobile-performance-optimizer.min.js?v=1.6.3';
-          document.body.appendChild(mobileScript);
-        };
-        document.body.appendChild(performanceScript);
-      }, 2000);
+
 
       document.addEventListener('DOMContentLoaded', function() {
         const items = document.querySelectorAll('.impacto-circular-item');
@@ -1155,16 +1095,7 @@
         });
       });
 
-      // Exibir apenas o poster no mobile, não carregar o vídeo
-      window.addEventListener('DOMContentLoaded', function() {
-        var isMobile = window.innerWidth <= 768;
-        var video = document.getElementById('hero-video');
-        var poster = document.getElementById('hero-poster');
-        if (isMobile && video && poster) {
-          video.parentNode.removeChild(video);
-          poster.style.display = 'block';
-        }
-      });
+
       
 
 
@@ -1390,84 +1321,6 @@ document.addEventListener('submit', function(e) {
 </script>
 <!-- Font Awesome removido para otimizar payload -->
 
-<!-- Mobile LCP Optimization Script -->
-<script>
-  // Otimizações ultra-agressivas para LCP e Speed Index mobile
-  (function() {
-    'use strict';
-    
-    // Detectar mobile
-    var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    
-    if (isMobile) {
-      // Forçar carregamento prioritário de recursos críticos
-              var criticalResources = [
-          'assets/images/Renov-Logo.webp',
-          'assets/fonts/Montserrat-Regular.woff2',
-          'assets/fonts/Montserrat-Medium.woff2',
-          'assets/video/bg-video.mp4.webm',
-          'assets/video/bg-IA.gif',
-          'script.min.js?v=1.6.6'
-        ];
-      
-      criticalResources.forEach(function(resource) {
-        if (resource.includes('.woff2')) {
-          var link = document.createElement('link');
-          link.rel = 'preload';
-          link.href = resource;
-          link.as = 'font';
-          link.type = 'font/woff2';
-          link.crossOrigin = 'anonymous';
-          document.head.appendChild(link);
-        } else if (resource.includes('.webp') || resource.includes('.gif')) {
-          var img = new Image();
-          img.src = resource;
-          img.decoding = 'sync';
-        } else if (resource.includes('.mp4')) {
-          var video = document.createElement('video');
-          video.src = resource;
-          video.preload = 'metadata';
-        }
-      });
-      
-      // Otimizar renderização com GPU acceleration
-      document.body.style.willChange = 'transform';
-      document.body.style.transform = 'translateZ(0)';
-      
-      // Forçar layout síncrono para elementos críticos
-      var logo = document.querySelector('.logo img');
-      if (logo) {
-        logo.style.willChange = 'transform';
-        logo.style.transform = 'translateZ(0)';
-        logo.style.decoding = 'sync';
-      }
-      
-      var heroText = document.querySelector('.hero-text h1');
-      if (heroText) {
-        heroText.style.willChange = 'transform';
-        heroText.style.transform = 'translateZ(0)';
-      }
-      
-      var heroContent = document.querySelector('.hero-content');
-      if (heroContent) {
-        heroContent.style.willChange = 'transform';
-        heroContent.style.transform = 'translateZ(0)';
-      }
-      
-      // Otimizar vídeo de fundo
-      var videoBg = document.querySelector('.video-bg');
-      if (videoBg) {
-        videoBg.style.willChange = 'transform';
-        videoBg.style.transform = 'translateZ(0)';
-      }
-      
-      // Forçar repaint para melhorar Speed Index
-      requestAnimationFrame(function() {
-        document.body.offsetHeight; // Force reflow
-        console.log('📱 Ultra-aggressive mobile optimizations applied');
-      });
-    }
-  })();
-</script>
+
 </body>
 </html> 
