@@ -6319,9 +6319,10 @@ img[loading="lazy"].loaded { filter: none; }
         display: none !important;
     }
     
-    /* Esconder links sociais do header na versão mobile */
+    /* Mostrar links sociais do header na versão mobile */
     .social-links {
-        display: none !important;
+        display: flex !important;
+        gap: 12px;
     }
     
     /* Garantir que o vídeo seja exibido no mobile - Prioridade máxima */
