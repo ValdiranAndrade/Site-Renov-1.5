@@ -188,7 +188,7 @@ class LiteSpeedCacheOptimizer {
      */
     deferNonCriticalCSS() {
         // Remover CSS não crítico do carregamento inicial
-        const nonCriticalCSS = document.querySelector('link[href*="styles.min.css"]');
+        const nonCriticalCSS = document.querySelector('link[href*="styles.css"]');
         if (nonCriticalCSS) {
             nonCriticalCSS.setAttribute('media', 'print');
             nonCriticalCSS.setAttribute('onload', "this.media='all'");
@@ -198,7 +198,7 @@ class LiteSpeedCacheOptimizer {
         setTimeout(() => {
             const link = document.createElement('link');
             link.rel = 'stylesheet';
-            link.href = 'styles.min.css?v=1.6.6';
+            link.href = 'styles.css?v=1.6.6';
             link.media = 'all';
             document.head.appendChild(link);
         }, 1000);
