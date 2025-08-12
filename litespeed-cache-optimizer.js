@@ -284,16 +284,17 @@ class LiteSpeedCacheOptimizer {
      * Configurar headers CDN
      */
     setupCDNHeaders() {
-        // Adicionar headers de performance
-        const performanceHeaders = [
-            { name: 'X-Content-Type-Options', value: 'nosniff' },
-            { name: 'X-Frame-Options', value: 'SAMEORIGIN' },
-            { name: 'X-XSS-Protection', value: '1; mode=block' },
+        // Headers de segurança devem ser configurados no servidor
+        // X-Frame-Options, X-Content-Type-Options, X-XSS-Protection
+        // só podem ser definidos via HTTP headers, não via meta tags
+        
+        // Apenas headers que podem ser simulados via meta tags
+        const allowedHeaders = [
             { name: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' }
         ];
         
-        // Simular headers via meta tags
-        performanceHeaders.forEach(header => {
+        // Simular headers permitidos via meta tags
+        allowedHeaders.forEach(header => {
             const meta = document.createElement('meta');
             meta.httpEquiv = header.name;
             meta.content = header.value;
