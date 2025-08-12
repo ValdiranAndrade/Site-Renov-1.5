@@ -1321,8 +1321,8 @@
           nextButton: !!nextButton
         });
         
-        if (prevButton && nextButton) {
-          console.log('✅ Botões de navegação encontrados!');
+        if (prevButton && nextButton && slider && cards.length > 0) {
+          console.log('✅ Todos os elementos encontrados! Inicializando funcionalidade...');
           
           // Garantir que os botões sejam visíveis
           prevButton.style.display = 'flex';
@@ -1333,9 +1333,57 @@
           nextButton.style.visibility = 'visible';
           nextButton.style.opacity = '1';
           
-          console.log('✅ Botões configurados como visíveis!');
+          // Implementar funcionalidade de navegação
+          let currentIndex = 0;
+          const totalCards = cards.length;
+          
+          function updateSlider(index) {
+            const cardWidth = cards[0].offsetWidth;
+            const scrollPosition = index * (cardWidth + 24); // 24px é o gap
+            
+            slider.scrollTo({
+              left: scrollPosition,
+              behavior: 'smooth'
+            });
+            
+            // Atualizar indicadores
+            indicators.forEach((indicator, i) => {
+              indicator.classList.toggle('active', i === index);
+            });
+            
+            // Atualizar estado dos botões
+            prevButton.style.opacity = index === 0 ? '0.5' : '1';
+            nextButton.style.opacity = index === totalCards - 1 ? '0.5' : '1';
+            
+            currentIndex = index;
+          }
+          
+          // Event listeners para os botões
+          prevButton.addEventListener('click', () => {
+            if (currentIndex > 0) {
+              updateSlider(currentIndex - 1);
+            }
+          });
+          
+          nextButton.addEventListener('click', () => {
+            if (currentIndex < totalCards - 1) {
+              updateSlider(currentIndex + 1);
+            }
+          });
+          
+          // Event listeners para os indicadores
+          indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => {
+              updateSlider(index);
+            });
+          });
+          
+          // Inicializar estado
+          updateSlider(0);
+          
+          console.log('✅ Funcionalidade de navegação inicializada com sucesso!');
         } else {
-          console.error('❌ Botões de navegação não encontrados!');
+          console.error('❌ Elementos necessários não encontrados!');
         }
       }
     </script>
