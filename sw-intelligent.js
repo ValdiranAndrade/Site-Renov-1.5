@@ -141,8 +141,6 @@ self.addEventListener('install', event => {
         '/',
         '/index.html',
         '/assets/images/Renov-Logo.webp',
-        '/assets/fonts/Montserrat-Regular.woff2',
-        '/assets/fonts/Montserrat-Medium.woff2',
         '/assets/images/bg-como-funciona.webp'
       ]);
     })

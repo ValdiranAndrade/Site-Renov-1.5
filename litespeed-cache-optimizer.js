@@ -256,28 +256,9 @@ class LiteSpeedCacheOptimizer {
      * Otimizar fontes
      */
     optimizeFonts() {
-        // Preload fontes críticas
-        const criticalFonts = [
-            'assets/fonts/Montserrat-Regular.woff2',
-            'assets/fonts/Montserrat-Medium.woff2'
-        ];
-        
-        criticalFonts.forEach(font => {
-            const link = document.createElement('link');
-            link.rel = 'preload';
-            link.href = font;
-            link.as = 'font';
-            link.type = 'font/woff2';
-            link.crossOrigin = 'anonymous';
-            link.fetchPriority = 'high';
-            document.head.appendChild(link);
-        });
-        
-        // Configurar font-display: swap - Removido (não é um seletor válido)
-        // const fontFaces = document.querySelectorAll('@font-face');
-        // fontFaces.forEach(face => {
-        //     face.style.fontDisplay = 'swap';
-        // });
+        // Google Fonts Inter já carregado via CDN
+        // Não é necessário preload de fontes próprias
+        console.log('Google Fonts Inter já carregado via CDN');
     }
 
     /**
@@ -312,8 +293,6 @@ class LiteSpeedCacheOptimizer {
                 // Cache recursos críticos
                 const criticalResources = [
                     'assets/images/Renov-Logo.webp',
-                    'assets/fonts/Montserrat-Regular.woff2',
-                    'assets/fonts/Montserrat-Medium.woff2',
                     'assets/images/mobile/bg-como-funciona.webp'
                 ];
                 
