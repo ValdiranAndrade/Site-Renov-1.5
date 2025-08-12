@@ -46,60 +46,29 @@
     
     <!-- INTELLIGENT RESOURCE HINTS - Network-aware -->
     <script>
-      // ULTRA-OPTIMIZED FONT LOADING - Minimal critical path latency
-      function optimizeFontLoading() {
-        // Immediate fallback font application
-        document.body.classList.add('font-loading');
-        
-        // Ultra-fast font loading detection
-        if (document.fonts && document.fonts.ready) {
-          // Use Promise.race for faster detection
-          Promise.race([
-            document.fonts.ready,
-            new Promise(resolve => setTimeout(resolve, 50))
-          ]).then(() => {
-            document.body.classList.remove('font-loading');
-            document.body.classList.add('font-loaded');
-          });
-        } else {
-          // Ultra-fast fallback
-          setTimeout(() => {
-            document.body.classList.remove('font-loading');
-            document.body.classList.add('font-loaded');
-          }, 50);
-        }
-        
-        // Preload fonts with ultra-high priority
-        const fontUrls = [
-          'assets/fonts/Montserrat-Regular.woff2',
-          'assets/fonts/Montserrat-Medium.woff2'
-        ];
-        
-        fontUrls.forEach(url => {
-          const link = document.createElement('link');
-          link.rel = 'preload';
-          link.href = url;
-          link.as = 'font';
-          link.type = 'font/woff2';
-          link.crossOrigin = 'anonymous';
-          link.setAttribute('fetchpriority', 'high');
-          link.setAttribute('importance', 'high');
-          document.head.appendChild(link);
-        });
-      }
-      
-      // Execute font optimization immediately
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', optimizeFontLoading);
-      } else {
-        optimizeFontLoading();
-      }
-      
       // Dynamic resource hints based on connection speed
       function addResourceHints() {
+        const connectionSpeed = getConnectionSpeed();
         const head = document.head;
         
-        // DNS prefetch for external resources only
+        if (connectionSpeed === 'fast') {
+          // Preload critical resources for fast connections
+          const preloads = [
+            // Google Fonts já carregado via CDN
+          ];
+          
+          preloads.forEach(function(resource) {
+            const link = document.createElement('link');
+            link.rel = 'preload';
+            link.href = resource.href;
+            link.as = resource.as;
+            link.type = resource.type;
+            link.crossOrigin = resource.crossorigin;
+            head.appendChild(link);
+          });
+        }
+        
+        // DNS prefetch for external resources
         const dnsPrefetch = [
           'https://cdnjs.cloudflare.com'
         ];
@@ -120,42 +89,23 @@
       }
     </script>
     
-    <!-- ULTRA-OPTIMIZED FONT STRATEGY - Critical path latency reduction -->
+    <!-- OPTIMIZED FONT STRATEGY: Local fonts only - No external dependencies -->
     <!-- Google Fonts removed to eliminate critical request chains -->
     
-    <!-- CRITICAL FONT PRELOAD - Ultra optimized for critical path -->
-    <link rel="preload" href="assets/fonts/Montserrat-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous" fetchpriority="high">
-    <link rel="preload" href="assets/fonts/Montserrat-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous" fetchpriority="high">
-    
-    <!-- DNS PREFETCH - Optimize external resources -->
-    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-    
-    <!-- ULTRA-OPTIMIZED FONT LOADER - Critical path optimization -->
-    <script src="ultra-optimized-font-loader.js" defer></script>
-    
-    <!-- Font Awesome for social icons - Ultra deferred to avoid blocking LCP -->
+    <!-- Font Awesome for social icons - Deferred to avoid blocking LCP -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
     
-    <!-- ULTRA-OPTIMIZED CRITICAL CSS -->
+    <!-- Google Fonts - Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- LITESPEED CRITICAL CSS -->
     <style>
-      /* ULTRA-OPTIMIZED FONT FACE DECLARATIONS - Minimal latency */
-      @font-face{font-family:'Montserrat';src:url('assets/fonts/Montserrat-Regular.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap;font-preload:true;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
-      @font-face{font-family:'Montserrat';src:url('assets/fonts/Montserrat-Medium.woff2') format('woff2');font-weight:500;font-style:normal;font-display:swap;font-preload:true;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
-      
-      /* ULTRA-OPTIMIZED FALLBACK STRATEGY - Immediate rendering */
-      body{font-family:'Montserrat',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;color:#333;overflow-x:hidden;max-width:100vw;width:100%;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility}
-      
-      /* ULTRA-OPTIMIZED FONT LOADING STATES */
-      .font-loading{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-display:swap}
-      .font-loaded{font-family:'Montserrat',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-display:swap}
-      
-      /* CRITICAL TEXT OPTIMIZATION - Immediate visibility */
-      .hero-text h1,.hero-text p,.logo,.tab-btn,.cta-button{font-display:swap;font-synthesis:none}
       
       /* LITESPEED CRITICAL CSS - MINIFIED */
-      *{box-sizing:border-box;margin:0;padding:0}body{font-family:'Montserrat',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;color:#333;overflow-x:hidden;max-width:100vw;width:100%}.logo img{width:160px;height:40px;object-fit:contain;display:block;max-width:100%;contain:layout style paint}.header-content{display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem;max-width:1200px;margin:0 auto;position:relative;z-index:10;background:#fff;min-height:70px;contain:layout}.main-nav .tab-buttons{display:flex;gap:12px}.tab-btn{font-size:1.1rem;font-weight:400;padding:8px 18px;border-radius:24px;background:transparent;border:none;cursor:pointer}.tab-btn.active,.tab-btn:focus{background:#00b140;color:#fff!important;outline:none}.social-links{display:flex;gap:12px}.social-links a{font-size:1.1rem;color:#00b140;text-decoration:none}.social-links a:hover{color:#008d36}.hero{position:relative;width:100vw;height:140vh;display:flex;align-items:flex-start;overflow:hidden;margin-top:0;margin-bottom:-350px;background:#000;contain:layout style paint}.hero-content{position:relative;z-index:1;width:100%;max-width:1200px;margin:0 auto;padding:0 5%;margin-top:300px;contain:layout}.video-bg-wrapper{position:absolute;top:0;left:0;width:100vw;height:100%;z-index:0;overflow:hidden;pointer-events:none;transform:translateY(-300px);display:block;contain:layout style paint}.video-bg{position:absolute;top:0;left:50%;width:100vw;height:100%;min-width:100vw;min-height:100%;object-fit:cover;transform:translateX(-50%);opacity:1;visibility:visible;contain:layout style paint}.hero-text{color:#fff;text-align:center;margin-bottom:2rem;contain:layout}.hero-text h1{font-size:3.5rem;font-weight:700;margin-bottom:1rem;line-height:1.2;contain:layout style paint}.hero-text p{font-size:1.2rem;margin-bottom:2rem;opacity:0.9;contain:layout style paint}.cta-button{display:inline-block;background:#00b140;color:#fff;padding:15px 30px;text-decoration:none;border-radius:30px;font-weight:600;font-size:1.1rem;contain:layout style paint}.cta-button:hover{background:#008d36}
+      *{box-sizing:border-box;margin:0;padding:0}body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;color:#333;overflow-x:hidden;max-width:100vw;width:100%}.logo img{width:160px;height:40px;object-fit:contain;display:block;max-width:100%;contain:layout style paint}.header-content{display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem;max-width:1200px;margin:0 auto;position:relative;z-index:10;background:#fff;min-height:70px;contain:layout}.main-nav .tab-buttons{display:flex;gap:12px}.tab-btn{font-size:1.1rem;font-weight:400;padding:8px 18px;border-radius:24px;background:transparent;border:none;cursor:pointer}.tab-btn.active,.tab-btn:focus{background:#00b140;color:#fff!important;outline:none}.social-links{display:flex;gap:12px}.social-links a{font-size:1.1rem;color:#00b140;text-decoration:none}.social-links a:hover{color:#008d36}.hero{position:relative;width:100vw;height:140vh;display:flex;align-items:flex-start;overflow:hidden;margin-top:0;margin-bottom:-350px;background:#000;contain:layout style paint}.hero-content{position:relative;z-index:1;width:100%;max-width:1200px;margin:0 auto;padding:0 5%;margin-top:300px;contain:layout}.video-bg-wrapper{position:absolute;top:0;left:0;width:100vw;height:100%;z-index:0;overflow:hidden;pointer-events:none;transform:translateY(-300px);display:block;contain:layout style paint}.video-bg{position:absolute;top:0;left:50%;width:100vw;height:100%;min-width:100vw;min-height:100%;object-fit:cover;transform:translateX(-50%);opacity:1;visibility:visible;contain:layout style paint}.hero-text{color:#fff;text-align:center;margin-bottom:2rem;contain:layout}.hero-text h1{font-size:3.5rem;font-weight:700;margin-bottom:1rem;line-height:1.2;contain:layout style paint}.hero-text p{font-size:1.2rem;margin-bottom:2rem;opacity:0.9;contain:layout style paint}.cta-button{display:inline-block;background:#00b140;color:#fff;padding:15px 30px;text-decoration:none;border-radius:30px;font-weight:600;font-size:1.1rem;contain:layout style paint}.cta-button:hover{background:#008d36}
       
       /* LITESPEED MOBILE CSS - MINIFIED */
       @media (max-width:768px){.hero{height:100vh;margin-bottom:0;min-height:600px;align-items:stretch;contain:layout style paint}.hero-content{margin-top:120px;padding:0 20px;z-index:2;contain:layout;display:flex!important;visibility:visible!important;opacity:1!important}.header-content{padding:0.5rem 1rem;background:rgba(255,255,255,0.95);backdrop-filter:blur(10px);contain:layout;display:flex!important;visibility:visible!important;opacity:1!important}.logo{display:block!important;visibility:visible!important;opacity:1!important}.logo img{width:120px;height:30px;contain:layout style paint;display:block!important;visibility:visible!important;opacity:1!important}.hero-text{max-width:100%;padding:0;margin:0;contain:layout;display:block!important;visibility:visible!important;opacity:1!important}.mobile-bg{position:absolute;top:0;left:0;width:100vw;height:100%;min-width:100vw;min-height:100%;background-image:url('assets/images/bg-como-funciona.webp');background-size:150% auto;background-position:center;background-repeat:no-repeat;z-index:0;display:block!important;visibility:visible!important;opacity:1!important;contain:layout style paint}.video-bg{display:block!important;visibility:visible!important;opacity:1!important;position:absolute!important;top:0!important;left:50%!important;width:100vw!important;height:100%!important;min-width:100vw!important;min-height:100%!important;object-fit:cover!important;transform:translateX(-50%)!important;z-index:0!important;contain:layout style paint}.hero-text h1{font-size:32px;line-height:1.2;contain:layout style paint;display:block!important;visibility:visible!important;opacity:1!important}.hero-text p{font-size:16px;line-height:1.4;contain:layout style paint;display:block!important;visibility:visible!important;opacity:1!important}}@media (max-width:480px){.hero-text h1{font-size:28px;line-height:1.2;contain:layout style paint;display:block!important;visibility:visible!important;opacity:1!important}.hero-text p{font-size:14px;line-height:1.4;contain:layout style paint;display:block!important;visibility:visible!important;opacity:1!important}.logo img{width:100px;height:25px;contain:layout style paint;display:block!important;visibility:visible!important;opacity:1!important}}@media (max-width:360px){.hero-text h1{font-size:24px;line-height:1.2;contain:layout style paint;display:block!important;visibility:visible!important;opacity:1!important}.hero-text p{font-size:12px;line-height:1.4;contain:layout style paint;display:block!important;visibility:visible!important;opacity:1!important}.logo img{width:80px;height:20px;contain:layout style paint;display:block!important;visibility:visible!important;opacity:1!important}}
