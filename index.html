@@ -1295,9 +1295,17 @@
     
     <!-- Script para garantir que os botões de dúvidas frequentes funcionem - Deferred -->
     <script>
-      // Implementação robusta dos botões de navegação das dúvidas frequentes
-      function initializeFAQSlider() {
-        console.log('🔍 Inicializando slider de dúvidas frequentes...');
+      // Defer FAQ button initialization to avoid blocking LCP
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', function() {
+          setTimeout(initializeFAQButtons, 150);
+        });
+      } else {
+        setTimeout(initializeFAQButtons, 150);
+      }
+      
+      function initializeFAQButtons() {
+        console.log('🔍 Verificando botões de dúvidas frequentes...');
         
         const slider = document.querySelector('.respostas-slider');
         const cards = document.querySelectorAll('.resposta-card');
@@ -1313,102 +1321,23 @@
           nextButton: !!nextButton
         });
         
-        if (!slider || !prevButton || !nextButton) {
-          console.error('❌ Elementos essenciais não encontrados!');
-          return;
+        if (prevButton && nextButton) {
+          console.log('✅ Botões de navegação encontrados!');
+          
+          // Garantir que os botões sejam visíveis
+          prevButton.style.display = 'flex';
+          prevButton.style.visibility = 'visible';
+          prevButton.style.opacity = '1';
+          
+          nextButton.style.display = 'flex';
+          nextButton.style.visibility = 'visible';
+          nextButton.style.opacity = '1';
+          
+          console.log('✅ Botões configurados como visíveis!');
+        } else {
+          console.error('❌ Botões de navegação não encontrados!');
         }
-        
-        let currentIndex = 0;
-        const totalCards = cards.length;
-        
-        // Função para atualizar o slider
-        function updateSlider(index) {
-          if (index < 0 || index >= totalCards) return;
-          
-          currentIndex = index;
-          const cardWidth = cards[0].offsetWidth;
-          const scrollPosition = index * (cardWidth + 24); // 24px é o gap
-          
-          slider.scrollTo({
-            left: scrollPosition,
-            behavior: 'smooth'
-          });
-          
-          // Atualizar indicadores
-          indicators.forEach((indicator, i) => {
-            indicator.classList.toggle('active', i === index);
-            indicator.setAttribute('aria-pressed', i === index ? 'true' : 'false');
-          });
-          
-          // Atualizar estado dos botões
-          prevButton.style.opacity = index === 0 ? '0.5' : '1';
-          prevButton.disabled = index === 0;
-          nextButton.style.opacity = index === totalCards - 1 ? '0.5' : '1';
-          nextButton.disabled = index === totalCards - 1;
-          
-          console.log(`✅ Slider atualizado para índice ${index}`);
-        }
-        
-        // Event listeners para os botões
-        prevButton.addEventListener('click', function(e) {
-          e.preventDefault();
-          e.stopPropagation();
-          console.log('🖱️ Botão anterior clicado');
-          if (currentIndex > 0) {
-            updateSlider(currentIndex - 1);
-          }
-        });
-        
-        nextButton.addEventListener('click', function(e) {
-          e.preventDefault();
-          e.stopPropagation();
-          console.log('🖱️ Botão próximo clicado');
-          if (currentIndex < totalCards - 1) {
-            updateSlider(currentIndex + 1);
-          }
-        });
-        
-        // Event listeners para os indicadores
-        indicators.forEach((indicator, index) => {
-          indicator.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            console.log(`🖱️ Indicador ${index + 1} clicado`);
-            updateSlider(index);
-          });
-        });
-        
-        // Garantir que os botões sejam visíveis e funcionais
-        prevButton.style.display = 'flex';
-        prevButton.style.visibility = 'visible';
-        prevButton.style.opacity = '1';
-        prevButton.style.pointerEvents = 'auto';
-        prevButton.style.cursor = 'pointer';
-        
-        nextButton.style.display = 'flex';
-        nextButton.style.visibility = 'visible';
-        nextButton.style.opacity = '1';
-        nextButton.style.pointerEvents = 'auto';
-        nextButton.style.cursor = 'pointer';
-        
-        // Inicializar o slider
-        updateSlider(0);
-        
-        console.log('✅ Slider de dúvidas frequentes inicializado com sucesso!');
       }
-      
-      // Inicializar quando o DOM estiver pronto
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', function() {
-          setTimeout(initializeFAQSlider, 100);
-        });
-      } else {
-        setTimeout(initializeFAQSlider, 100);
-      }
-      
-      // Backup: tentar inicializar novamente após um delay
-      setTimeout(initializeFAQSlider, 500);
-      setTimeout(initializeFAQSlider, 1000);
     </script>
 
     <script>
