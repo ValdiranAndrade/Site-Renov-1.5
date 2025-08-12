@@ -10,58 +10,66 @@
     
     // 1. RESERVE SPACE FOR ALL IMAGES
     function reserveImageSpace() {
-        const images = document.querySelectorAll('img');
-        images.forEach(img => {
-            if (!img.width || !img.height) {
-                // Set default dimensions based on class
-                if (img.classList.contains('avatar')) {
-                    img.style.width = '60px';
-                    img.style.height = '60px';
-                    img.style.aspectRatio = '1/1';
-                } else if (img.classList.contains('impacto-icon')) {
-                    img.style.width = '80px';
-                    img.style.height = '80px';
-                    img.style.aspectRatio = '1/1';
-                } else if (img.closest('.parceiro-item')) {
-                    img.style.width = '120px';
-                    img.style.height = '60px';
-                    img.style.aspectRatio = '2/1';
-                } else {
-                    // Default aspect ratio
-                    img.style.aspectRatio = '16/9';
+        try {
+            const images = document.querySelectorAll('img');
+            images.forEach(img => {
+                if (!img.width || !img.height) {
+                    // Set default dimensions based on class
+                    if (img.classList.contains('avatar')) {
+                        img.style.width = '60px';
+                        img.style.height = '60px';
+                        img.style.aspectRatio = '1/1';
+                    } else if (img.classList.contains('impacto-icon')) {
+                        img.style.width = '80px';
+                        img.style.height = '80px';
+                        img.style.aspectRatio = '1/1';
+                    } else if (img.closest('.parceiro-item')) {
+                        img.style.width = '120px';
+                        img.style.height = '60px';
+                        img.style.aspectRatio = '2/1';
+                    } else {
+                        // Default aspect ratio
+                        img.style.aspectRatio = '16/9';
+                    }
                 }
-            }
-            
-            // Force display block
-            img.style.display = 'block';
-            img.style.maxWidth = '100%';
-            img.style.height = 'auto';
-        });
+                
+                // Force display block
+                img.style.display = 'block';
+                img.style.maxWidth = '100%';
+                img.style.height = 'auto';
+            });
+        } catch (error) {
+            console.warn('Erro ao reservar espaço para imagens:', error);
+        }
     }
     
     // 2. PREVENT TEXT LAYOUT SHIFT
     function preventTextShift() {
-        const textElements = document.querySelectorAll('h1, h2, h3, p');
-        textElements.forEach(element => {
-            if (element.classList.contains('hero-text')) {
-                element.style.minHeight = '200px';
-                element.style.display = 'flex';
-                element.style.flexDirection = 'column';
-                element.style.justifyContent = 'center';
-            }
-            
-            if (element.tagName === 'H1' && element.closest('.hero-text')) {
-                element.style.minHeight = '120px';
-                element.style.margin = '0';
-                element.style.padding = '0';
-            }
-            
-            if (element.tagName === 'P' && element.closest('.hero-text')) {
-                element.style.minHeight = '60px';
-                element.style.margin = '0';
-                element.style.padding = '0';
-            }
-        });
+        try {
+            const textElements = document.querySelectorAll('h1, h2, h3, p');
+            textElements.forEach(element => {
+                if (element.classList.contains('hero-text')) {
+                    element.style.minHeight = '200px';
+                    element.style.display = 'flex';
+                    element.style.flexDirection = 'column';
+                    element.style.justifyContent = 'center';
+                }
+                
+                if (element.tagName === 'H1' && element.closest('.hero-text')) {
+                    element.style.minHeight = '120px';
+                    element.style.margin = '0';
+                    element.style.padding = '0';
+                }
+                
+                if (element.tagName === 'P' && element.closest('.hero-text')) {
+                    element.style.minHeight = '60px';
+                    element.style.margin = '0';
+                    element.style.padding = '0';
+                }
+            });
+        } catch (error) {
+            console.warn('Erro ao prevenir shift de texto:', error);
+        }
     }
     
     // 3. STABILIZE VIDEO BACKGROUND

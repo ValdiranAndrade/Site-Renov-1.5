@@ -2,7 +2,6 @@
 
 /* 1. RESERVE SPACE FOR ALL IMAGES */
 img {
-    aspect-ratio: attr(width) / attr(height);
     max-width: 100%;
     height: auto;
     display: block;

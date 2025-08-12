@@ -1,203 +1,86 @@
-# 📦 Guia de Otimização de Payload - Renov
+# 🚀 Guia de Otimização de Payload - Renov
 
 ## 📊 Diagnóstico Atual
-- **Payload Total**: ~42MB
-- **Vídeo Principal**: 11.5MB (bg-IA.mp4-_1_.webm)
-- **Vídeos Secundários**: 14MB + 8.5MB + 1.4MB
-- **Imagens**: ~3.2MB
-- **CSS/JS**: ~255KB
+- **Total**: 42MB
+- **Vídeos**: 38MB (90% do payload)
+- **CSS**: 155KB
+- **HTML**: 100KB
+- **Imagens**: 3.2MB
+- **Fontes**: 204KB
 
-## 🎯 Problema Identificado
-O vídeo `bg-IA.mp4-_1_.webm` está consumindo 11.480,3 KiB (11.5MB), representando 27% do payload total.
+## 🎯 Estratégias Implementadas
 
-## ✅ Soluções Implementadas
-
-### 1. **Compressão de Vídeo**
-```bash
-# Comprimir vídeo de 11.5MB para 875KB (92% redução)
-ffmpeg -i "bg-IA.mp4-_1_.webm" -vf "scale=1280:720" -c:v libvpx-vp9 -crf 30 -b:v 0 "bg-IA-compressed.webm"
-```
-
-**Resultados:**
-- **Antes**: 11.5MB (11.480,3 KiB)
-- **Depois**: 875KB
-- **Redução**: 92.4%
-
-### 2. **Carregamento Condicional Baseado na Conexão**
+### 1. **Carregamento Inteligente Baseado na Conexão**
 ```javascript
 // Detecta velocidade da conexão
 function getConnectionSpeed() {
-    if ('connection' in navigator) {
-        const connection = navigator.connection;
-        if (connection.effectiveType === 'slow-2g' || connection.effectiveType === '2g') {
-            return 'very-slow';
-        } else if (connection.effectiveType === '3g') {
-            return 'slow';
-        } else if (connection.effectiveType === '4g') {
-            return 'medium';
-        } else {
-            return 'fast';
-        }
+  if ('connection' in navigator) {
+    const connection = navigator.connection;
+    if (connection.effectiveType === 'slow-2g' || connection.effectiveType === '2g') {
+      return 'slow';
+    } else if (connection.effectiveType === '3g') {
+      return 'medium';
+    } else {
+      return 'fast';
     }
-    return 'fast';
+  }
+  return 'fast';
 }
 ```
 
-### 3. **Estratégias por Tipo de Conexão**
+### 2. **Service Worker Inteligente**
+- **Conexão Rápida**: Cache-first para imagens/fontes, stale-while-revalidate para vídeos
+- **Conexão Média**: Network-first para vídeos/scripts
+- **Conexão Lenta**: Network-only para vídeos (não carrega)
 
-#### **Conexão Muito Lenta (2G/slow-2g)**
-- ✅ Substituir vídeo por imagem estática
-- ✅ Desabilitar animações CSS
-- ✅ Usar imagens JPEG em vez de WebP
-- ✅ Cache agressivo
+### 3. **Resource Hints Dinâmicos**
+- DNS prefetch para CDNs externos
+- Preload condicional baseado na velocidade da conexão
+- Lazy loading inteligente para vídeos
 
-#### **Conexão Lenta (3G)**
-- ✅ Usar vídeo comprimido (875KB)
-- ✅ Lazy loading para imagens
-- ✅ Reduzir qualidade de imagens
+### 4. **CSS Crítico Otimizado**
+- Apenas estilos essenciais para LCP
+- Fontes com `font-display: swap`
+- Media queries otimizadas
 
-#### **Conexão Média (4G)**
-- ✅ Usar vídeo comprimido
-- ✅ Carregamento normal de imagens
-- ✅ Cache moderado
+## 📈 Redução Esperada
 
-#### **Conexão Rápida (WiFi/5G)**
-- ✅ Vídeo original (se necessário)
-- ✅ Qualidade máxima
-- ✅ Preload de recursos
-
-### 4. **JavaScript de Otimização**
-- **payload-optimizer.js**: Script inteligente que:
-  - Detecta velocidade da conexão
-  - Substitui vídeos por imagens em conexões lentas
-  - Aplica compressão dinâmica
-  - Monitora transferência de dados
-  - Re-aplica otimizações se a conexão mudar
-
-## 📱 Otimizações Mobile-First
-
-### **1. Vídeos Responsivos**
-```html
-<video 
-    src="bg-IA-compressed.webm" 
-    data-original-src="assets/video/bg-IA.mp4-_1_.webm" 
-    data-compressed-src="bg-IA-compressed.webm"
-    class="ai-video-bg">
-</video>
-```
-
-### **2. Imagens Adaptativas**
-```html
-<picture>
-    <source media="(max-width: 768px)" srcset="mobile.webp">
-    <source media="(max-width: 1200px)" srcset="tablet.webp">
-    <img src="desktop.webp" alt="Imagem">
-</picture>
-```
-
-### **3. Lazy Loading Inteligente**
-```javascript
-// Para conexões lentas
-if (connectionSpeed === 'very-slow' || connectionSpeed === 'slow') {
-    const images = document.querySelectorAll('img[src*="assets/images"]');
-    images.forEach(img => {
-        if (!img.classList.contains('logo') && !img.closest('.hero')) {
-            img.loading = 'lazy';
-        }
-    });
-}
-```
-
-## 🚀 Resultados Esperados
-
-### **Redução de Payload por Conexão**
-
-#### **Conexão Muito Lenta (2G)**
-- **Antes**: 42MB
-- **Depois**: ~3MB (93% redução)
-- **Estratégia**: Imagens estáticas + cache agressivo
-
-#### **Conexão Lenta (3G)**
-- **Antes**: 42MB
-- **Depois**: ~8MB (81% redução)
-- **Estratégia**: Vídeo comprimido + lazy loading
-
-#### **Conexão Média (4G)**
+### **Conexão Rápida (4G/WiFi)**
 - **Antes**: 42MB
 - **Depois**: ~15MB (64% redução)
-- **Estratégia**: Vídeo comprimido + otimizações moderadas
+- **Estratégia**: Cache agressivo + preload
 
-#### **Conexão Rápida (WiFi/5G)**
+### **Conexão Média (3G)**
 - **Antes**: 42MB
-- **Depois**: ~25MB (40% redução)
-- **Estratégia**: Qualidade balanceada
+- **Depois**: ~8MB (81% redução)
+- **Estratégia**: Network-first + cache seletivo
 
-### **Melhorias de Performance**
-- ⚡ **Tempo de Carregamento**: 21.8s → < 5s
-- 📱 **Mobile**: 22.3s → < 8s
-- 💾 **Custo de Dados**: Redução de 60-90%
-- 🎯 **Core Web Vitals**: Melhoria significativa
+### **Conexão Lenta (2G)**
+- **Antes**: 42MB
+- **Depois**: ~3MB (93% redução)
+- **Estratégia**: Vídeos desabilitados + cache essencial
 
-## 🔧 Monitoramento
+## 🔧 Próximas Otimizações
 
-### **Performance Observer**
-```javascript
-const observer = new PerformanceObserver((list) => {
-    const entries = list.getEntries();
-    entries.forEach(entry => {
-        if (entry.entryType === 'resource') {
-            const sizeKB = entry.transferSize / 1024;
-            if (sizeKB > 1000) { // Arquivos maiores que 1MB
-                console.log(`⚠️ Arquivo grande: ${entry.name} (${sizeKB.toFixed(1)}KB)`);
-            }
-        }
-    });
-});
-observer.observe({ entryTypes: ['resource'] });
-```
-
-### **Métricas de Sucesso**
-- Payload < 5MB para conexões lentas
-- Payload < 15MB para conexões médias
-- Zero arquivos > 2MB
-- Carregamento < 5s em 3G
-
-## 📋 Checklist de Otimização
-
-### **Vídeos**
-- [x] Comprimir vídeo principal (11.5MB → 875KB)
-- [x] Implementar carregamento condicional
-- [x] Fallback para imagens estáticas
-- [x] Lazy loading para vídeos não críticos
-
-### **Imagens**
-- [x] WebP para conexões rápidas
-- [x] JPEG para conexões lentas
-- [x] Lazy loading inteligente
-- [x] Dimensões responsivas
-
-### **Scripts**
-- [x] Defer para scripts não críticos
-- [x] Minificação de JavaScript
-- [x] Carregamento condicional
-- [x] Cache inteligente
-
-### **CSS**
-- [x] CSS crítico inline
-- [x] Defer para CSS não crítico
-- [x] Minificação
-- [x] Remoção de estilos não utilizados
-
-## 🎯 Próximos Passos
-
-### **1. Compressão Adicional**
+### **1. Compressão de Vídeos**
 ```bash
-# Comprimir outros vídeos grandes
-ffmpeg -i "bg-IA.mp4 (1).mp4" -vf "scale=1280:720" -c:v libx264 -crf 28 "bg-IA-compressed.mp4"
-ffmpeg -i "bg-video.mp4.mp4" -vf "scale=1280:720" -c:v libx264 -crf 28 "bg-video-compressed.mp4"
+# Instalar FFmpeg
+brew install ffmpeg
+
+# Comprimir vídeos
+ffmpeg -i "bg-IA.mp4 (1).mp4" -vf "scale=1280:720" -c:v libx264 -crf 28 -preset fast "bg-IA-compressed.mp4"
 ```
 
-### **2. Otimização de Imagens**
+### **2. Minificação de CSS**
+```bash
+# Instalar minificador
+npm install -g clean-css-cli
+
+# Minificar CSS
+cleancss -o styles.min.css styles.css
+```
+
+### **3. Otimização de Imagens**
 ```bash
 # Converter para WebP
 cwebp -q 85 imagem.png -o imagem.webp
@@ -206,12 +89,40 @@ cwebp -q 85 imagem.png -o imagem.webp
 pngquant --quality=65-80 imagem.png
 ```
 
-### **3. Bundle Splitting**
+### **4. Bundle Splitting**
 - Separar CSS crítico do não-crítico
-- Code splitting para JavaScript
-- Carregamento sob demanda
+- Carregar scripts não-essenciais sob demanda
+- Implementar code splitting
 
-## 📈 Métricas de Performance
+## 📱 Estratégias Mobile-First
+
+### **1. Imagens Responsivas**
+```html
+<picture>
+  <source media="(max-width: 768px)" srcset="mobile.webp">
+  <source media="(max-width: 1200px)" srcset="tablet.webp">
+  <img src="desktop.webp" alt="Imagem">
+</picture>
+```
+
+### **2. Vídeos Condicionais**
+```html
+<video data-src="desktop.mp4" data-mobile-src="mobile.mp4">
+  <!-- Carregamento inteligente via JavaScript -->
+</video>
+```
+
+### **3. Fontes Otimizadas**
+```css
+@font-face {
+  font-family: 'Montserrat';
+  src: url('Montserrat-Regular.woff2') format('woff2');
+  font-display: swap;
+  unicode-range: U+0000-00FF; /* Apenas caracteres latinos */
+}
+```
+
+## 🎯 Métricas de Performance
 
 ### **Core Web Vitals Alvo**
 - **LCP**: < 2.5s
@@ -223,8 +134,49 @@ pngquant --quality=65-80 imagem.png
 - **Visitas subsequentes**: < 2MB
 - **Cache hit rate**: > 90%
 
----
+## 🔍 Monitoramento
 
-**Status**: ✅ Implementado  
-**Última Atualização**: Janeiro 2025  
-**Próxima Revisão**: Fevereiro 2025 
+### **1. Performance API**
+```javascript
+// Monitorar LCP
+new PerformanceObserver((list) => {
+  const entries = list.getEntries();
+  const lastEntry = entries[entries.length - 1];
+  console.log('LCP:', lastEntry.startTime);
+}).observe({entryTypes: ['largest-contentful-paint']});
+```
+
+### **2. Network Information API**
+```javascript
+// Monitorar mudanças na conexão
+navigator.connection.addEventListener('change', () => {
+  console.log('Nova velocidade:', navigator.connection.effectiveType);
+});
+```
+
+## 🚀 Resultados Esperados
+
+### **Melhorias de Performance**
+- ⚡ **LCP**: 21.8s → < 3s
+- 📱 **Mobile**: 22.3s → < 4s
+- 💾 **Cache**: 0% → > 90%
+- 🌐 **Bandwidth**: 42MB → < 5MB
+
+### **Experiência do Usuário**
+- ✅ Carregamento instantâneo em conexões rápidas
+- ✅ Funcionalidade preservada em conexões lentas
+- ✅ Cache inteligente para visitas repetidas
+- ✅ Adaptação automática à qualidade da conexão
+
+## 📋 Checklist de Implementação
+
+- [x] Service Worker inteligente
+- [x] Carregamento baseado na conexão
+- [x] Resource hints dinâmicos
+- [x] CSS crítico otimizado
+- [ ] Compressão de vídeos
+- [ ] Minificação de CSS
+- [ ] Otimização de imagens
+- [ ] Bundle splitting
+- [ ] Monitoramento de performance
+- [ ] Testes em diferentes conexões 

@@ -219,7 +219,7 @@
     <!-- CLS OPTIMIZATION CSS -->
     <style>
         /* CRITICAL CLS FIXES */
-        img { aspect-ratio: attr(width) / attr(height); max-width: 100%; height: auto; display: block; }
+        img { max-width: 100%; height: auto; display: block; }
         .logo img { width: 160px !important; height: 40px !important; aspect-ratio: 4/1 !important; }
         .video-bg-wrapper { aspect-ratio: 16/9 !important; min-height: 100vh !important; width: 100vw !important; }
         .video-bg { width: 100% !important; height: 100% !important; object-fit: cover !important; }
@@ -234,21 +234,6 @@
         .header-content { min-height: 70px !important; height: 70px !important; }
         body { overflow-x: hidden !important; width: 100vw !important; max-width: 100vw !important; }
         .page-wrapper { min-height: 100vh !important; width: 100vw !important; max-width: 100vw !important; overflow-x: hidden !important; }
-        
-        /* REMOVER MARGEM BRANCA ENTRE HEADER E HERO */
-        header { margin: 0 !important; padding: 0 !important; }
-        main { margin: 0 !important; padding: 0 !important; }
-        .hero { margin-top: 0 !important; padding-top: 0 !important; }
-        .tab-content { margin: 0 !important; padding: 0 !important; }
-        #home { margin: 0 !important; padding: 0 !important; }
-        
-        /* REMOVER MARGENS BRANCAS SUPERIOR E LATERAL */
-        * { margin: 0 !important; padding: 0 !important; }
-        html, body { margin: 0 !important; padding: 0 !important; }
-        .page-wrapper { margin: 0 !important; padding: 0 !important; }
-        header, main, section { margin: 0 !important; padding: 0 !important; }
-        .hero, .hero-content, .video-bg-wrapper { margin: 0 !important; padding: 0 !important; }
-        .mobile-bg { margin: 0 !important; padding: 0 !important; top: 0 !important; left: 0 !important; }
         
         @media (max-width: 768px) {
             .logo img { width: 120px !important; height: 30px !important; }
@@ -525,7 +510,7 @@
                         <!-- Nova seção: Avaliação Inteligente -->
                         <section class="ai-hero">
                             <div class="ai-video-bg-wrapper">
-                                <video src="bg-IA-compressed.webm" alt="Background animado da seção IA" class="ai-video-bg" style="width: 100%; height: 100%; object-fit: cover; display: block;" fetchpriority="high" autoplay muted loop playsinline data-original-src="assets/video/bg-IA.mp4-_1_.webm" data-compressed-src="bg-IA-compressed.webm">
+                                <video src="assets/video/bg-IA.mp4-_1_.webm" alt="Background animado da seção IA" class="ai-video-bg" style="width: 100%; height: 100%; object-fit: cover; display: block;" fetchpriority="high" autoplay muted loop playsinline>
                                     Seu navegador não suporta o elemento de vídeo.
                                 </video>
                             </div>
@@ -1234,9 +1219,6 @@
 
     <!-- CLS OPTIMIZER - Critical for layout stability -->
     <script src="cls-optimizer.js?v=1.0.0"></script>
-    
-    <!-- PAYLOAD OPTIMIZER - Reduce network payload -->
-    <script src="payload-optimizer.js?v=1.0.0"></script>
     
     <!-- LITESPEED CACHE OPTIMIZER - Deferred to avoid blocking LCP -->
     <script src="litespeed-cache-optimizer.js?v=1.0.0" defer></script>

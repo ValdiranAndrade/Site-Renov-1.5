@@ -1834,44 +1834,9 @@ header {
     background: transparent !important;
     position: relative;
     z-index: 10;
-    margin-bottom: 0 !important;
+    margin-bottom: 20px;
     padding: 0 !important;
     padding-bottom: 0 !important;
-}
-
-/* Remover espaços entre header e hero */
-header + main,
-header + main .hero {
-    margin-top: 0 !important;
-    padding-top: 0 !important;
-}
-
-/* Garantir que não haja espaços */
-.page-wrapper > header + main {
-    margin-top: 0 !important;
-    padding-top: 0 !important;
-}
-
-/* Remover qualquer espaço entre header e hero */
-header ~ main .hero,
-header + main .tab-content .hero,
-#home .hero {
-    margin-top: 0 !important;
-    padding-top: 0 !important;
-    margin-bottom: 0 !important;
-    padding-bottom: 0 !important;
-}
-
-/* Garantir que o main não tenha espaços */
-main {
-    margin-top: 0 !important;
-    padding-top: 0 !important;
-}
-
-/* Garantir que o tab-content não tenha espaços */
-.tab-content {
-    margin-top: 0 !important;
-    padding-top: 0 !important;
 }
 
 .header-content {
@@ -2032,9 +1997,8 @@ main {
 /* Home */
 .hero {
     text-align: center;
-    padding: 0 !important;
+    padding: 0 0 0 0;
     margin-top: 0 !important;
-    margin-bottom: 0 !important;
     position: relative;
     overflow: hidden;
 }
