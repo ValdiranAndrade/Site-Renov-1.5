@@ -256,25 +256,44 @@ class LiteSpeedCacheOptimizer {
      * Otimizar fontes
      */
     optimizeFonts() {
-        // Google Fonts Inter já carregado via CDN
-        // Não é necessário preload de fontes próprias
-        console.log('Google Fonts Inter já carregado via CDN');
+        // Preload fontes críticas
+        const criticalFonts = [
+            'assets/fonts/Montserrat-Regular.woff2',
+            'assets/fonts/Montserrat-Medium.woff2'
+        ];
+        
+        criticalFonts.forEach(font => {
+            const link = document.createElement('link');
+            link.rel = 'preload';
+            link.href = font;
+            link.as = 'font';
+            link.type = 'font/woff2';
+            link.crossOrigin = 'anonymous';
+            link.fetchPriority = 'high';
+            document.head.appendChild(link);
+        });
+        
+        // Configurar font-display: swap - Removido (não é um seletor válido)
+        // const fontFaces = document.querySelectorAll('@font-face');
+        // fontFaces.forEach(face => {
+        //     face.style.fontDisplay = 'swap';
+        // });
     }
 
     /**
      * Configurar headers CDN
      */
     setupCDNHeaders() {
-        // Headers de segurança devem ser configurados no servidor
-        // X-Frame-Options, X-Content-Type-Options, X-XSS-Protection
-        // só podem ser definidos via HTTP headers, não via meta tags
+        // Headers de segurança devem ser definidos via servidor HTTP
+        // Não podem ser simulados via meta tags
+        console.log('ℹ️ Headers de segurança devem ser configurados no servidor');
         
-        // Apenas headers que podem ser simulados via meta tags
+        // Apenas headers que podem ser definidos via meta tags
         const allowedHeaders = [
-            { name: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' }
+            { name: 'Content-Security-Policy', value: "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self';" }
         ];
         
-        // Simular headers permitidos via meta tags
+        // Aplicar apenas headers permitidos
         allowedHeaders.forEach(header => {
             const meta = document.createElement('meta');
             meta.httpEquiv = header.name;
@@ -293,6 +312,8 @@ class LiteSpeedCacheOptimizer {
                 // Cache recursos críticos
                 const criticalResources = [
                     'assets/images/Renov-Logo.webp',
+                    'assets/fonts/Montserrat-Regular.woff2',
+                    'assets/fonts/Montserrat-Medium.woff2',
                     'assets/images/mobile/bg-como-funciona.webp'
                 ];
                 
