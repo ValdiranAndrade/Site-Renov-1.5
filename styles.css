@@ -7210,8 +7210,8 @@ img[loading="lazy"].loaded { filter: none; }
 }
 
 /* REGRAS FINAIS PARA TEXTO SOBRE NÓS MOBILE */
-#sobre .hero-text h2 { font-size: 2.5rem !important; margin-top: 0 !important; line-height: 1.2 !important; }
-#sobre .hero-text p { font-size: 1.1rem !important; margin-top: 0 !important; line-height: 1.5 !important; }
+#sobre .hero-text h2 { font-size: 0.5rem !important; margin-top: 0 !important; line-height: 1.1 !important; }
+#sobre .hero-text p { font-size: 0.3rem !important; margin-top: 0 !important; line-height: 1.3 !important; }
 
 /* REGRAS ULTRA ESPECÍFICAS PARA TEXTO SOBRE NÓS MOBILE */
 @media (max-width: 900px) {
@@ -7228,9 +7228,9 @@ img[loading="lazy"].loaded { filter: none; }
     transform: translateX(10px) !important;
   }
   body #sobre .hero-text p { 
-    font-size: 1.1rem !important; 
+    font-size: 0.3rem !important; 
     margin-top: 0 !important; 
-    line-height: 1.5 !important;
+    line-height: 1.3 !important;
     margin-left: 10px !important;
     transform: translateX(10px) !important;
   }
@@ -7660,252 +7660,255 @@ html body #sobre .hero-text p {
     will-change: opacity;
 }
 
-/* Soluções específicas para CLS (Cumulative Layout Shift) */
+/* Otimizações críticas para LCP e CLS */
 
-/* Garantir que o vídeo hero mantenha suas dimensões */
-#hero-video {
-    /* Dimensões fixas para prevenir CLS */
-    width: 100vw !important;
-    height: 100vh !important;
-    min-width: 100vw !important;
-    min-height: 100vh !important;
-    /* Posicionamento fixo */
-    position: absolute !important;
-    top: 0 !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    /* Garantir visibilidade */
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    /* Prevenir layout shift */
-    box-sizing: border-box !important;
-    /* Otimizar para LCP */
-    contain: layout style paint !important;
-    will-change: auto !important;
-    z-index: 0 !important;
-}
-
-/* Garantir que o wrapper do vídeo mantenha dimensões */
-.video-bg-wrapper {
-    /* Dimensões fixas */
-    width: 100vw !important;
-    height: 100vh !important;
-    min-width: 100vw !important;
-    min-height: 100vh !important;
-    /* Posicionamento */
-    position: relative !important;
-    overflow: hidden !important;
-    /* Prevenir layout shift */
-    box-sizing: border-box !important;
-    /* Garantir que ocupe espaço */
-    display: block !important;
-}
-
-/* Garantir que o background mobile mantenha dimensões */
-.mobile-bg {
-    /* Dimensões fixas */
-    width: 100vw !important;
-    height: 100vh !important;
-    min-width: 100vw !important;
-    min-height: 100vh !important;
-    /* Posicionamento */
-    position: absolute !important;
-    top: 0 !important;
-    left: 0 !important;
-    /* Garantir visibilidade */
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    /* Prevenir layout shift */
-    box-sizing: border-box !important;
-    /* Otimizar para LCP */
-    contain: layout style paint !important;
-    will-change: auto !important;
-    z-index: 0 !important;
-}
-
-/* Garantir que o logo mantenha dimensões */
-.logo img {
-    /* Dimensões fixas */
-    width: 160px !important;
-    height: 40px !important;
-    min-width: 160px !important;
-    min-height: 40px !important;
-    /* Garantir visibilidade */
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    /* Prevenir layout shift */
-    box-sizing: border-box !important;
-    /* Otimizar para LCP */
-    contain: layout style paint !important;
-    will-change: auto !important;
-    /* Garantir carregamento prioritário */
-    image-rendering: -webkit-optimize-contrast !important;
-    image-rendering: crisp-edges !important;
-}
-
-/* Garantir que o hero content mantenha dimensões */
-.hero-content {
-    /* Dimensões mínimas */
-    min-height: 100vh !important;
-    /* Posicionamento */
-    position: relative !important;
-    z-index: 1 !important;
-    /* Prevenir layout shift */
-    box-sizing: border-box !important;
-    /* Garantir que ocupe espaço */
-    display: flex !important;
-    align-items: center !important;
-    justify-content: flex-start !important;
-}
-
-/* Garantir que o hero text mantenha dimensões */
-.hero-text {
-    /* Dimensões mínimas */
-    min-height: 200px !important;
-    /* Prevenir layout shift */
-    box-sizing: border-box !important;
-    /* Garantir que ocupe espaço */
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: center !important;
-}
-
-/* Garantir que títulos mantenham dimensões */
-.hero-text h1 {
-    /* Dimensões mínimas */
-    min-height: 1.2em !important;
-    /* Prevenir layout shift */
-    box-sizing: border-box !important;
-    /* Garantir que ocupe espaço */
-    display: block !important;
-    /* Prevenir quebra de layout */
-    word-wrap: break-word !important;
-    overflow-wrap: break-word !important;
-    /* Garantir que o texto não cause overflow */
-    max-width: 100% !important;
-    /* Garantir visibilidade */
-    font-size: 48px !important;
-    line-height: 1.05 !important;
-    color: #fff !important;
-    font-weight: 700 !important;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.8) !important;
-}
-
-/* Garantir que parágrafos mantenham dimensões */
+/* Forçar carregamento prioritário de elementos LCP */
+.hero,
+.video-bg-wrapper,
+.hero-content,
+.hero-text,
+.hero-text h1,
 .hero-text p {
-    /* Dimensões mínimas */
-    min-height: 1.5em !important;
-    /* Prevenir layout shift */
-    box-sizing: border-box !important;
-    /* Garantir que ocupe espaço */
+    /* Garantir que elementos LCP sejam renderizados imediatamente */
     display: block !important;
-    /* Prevenir quebra de layout */
-    word-wrap: break-word !important;
-    overflow-wrap: break-word !important;
-    /* Garantir que o texto não cause overflow */
-    max-width: 100% !important;
-    /* Garantir visibilidade */
-    font-size: 18px !important;
-    line-height: 1.5 !important;
-    color: #fff !important;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.7) !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    /* Prioridade máxima para carregamento */
+    z-index: 1;
+    /* Garantir que sejam detectáveis */
+    position: relative;
+    /* Prevenir layout shift */
+    box-sizing: border-box;
+    /* Otimizar para performance */
+    will-change: auto;
+    /* Garantir que a fonte seja carregada */
+    font-display: swap;
 }
 
-/* Garantir que containers de diferenciais mantenham dimensões */
-.diferencial-card {
-    /* Dimensões mínimas */
-    min-height: 300px !important;
-    /* Prevenir layout shift */
-    box-sizing: border-box !important;
-    /* Garantir que ocupe espaço */
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: flex-start !important;
-}
-
-/* Garantir que ícones de diferenciais mantenham dimensões */
-.diferencial-icon {
-    /* Dimensões fixas */
-    width: 80px !important;
-    height: 80px !important;
-    min-width: 80px !important;
-    min-height: 80px !important;
-    /* Prevenir layout shift */
-    box-sizing: border-box !important;
-    /* Garantir que ocupe espaço */
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-}
-
-/* Garantir que imagens de ícones mantenham dimensões */
-.diferencial-icon img {
-    /* Dimensões fixas */
-    width: 80px !important;
-    height: 65px !important;
-    min-width: 80px !important;
-    min-height: 65px !important;
-    /* Prevenir layout shift */
-    box-sizing: border-box !important;
-    /* Garantir que ocupe espaço */
+/* Otimização específica para vídeo hero - elemento LCP principal */
+#hero-video {
+    /* Garantir carregamento imediato */
     display: block !important;
-    /* Manter aspect ratio */
-    aspect-ratio: 80/65 !important;
-    object-fit: contain !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    /* Prioridade máxima */
+    z-index: 1;
+    /* Garantir que o vídeo seja renderizado imediatamente */
+    contain: layout style paint;
+    /* Otimizar para LCP */
+    will-change: auto;
+    /* Garantir que o vídeo seja o elemento LCP */
+    position: relative;
+    /* Prevenir layout shift */
+    box-sizing: border-box;
+    /* Forçar hardware acceleration */
+    transform: translateZ(0);
+    /* Garantir que o poster seja carregado com prioridade */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* Prevenir layout shift durante carregamento */
+    min-height: 100vh;
+    /* Garantir que o poster seja detectável */
+    background-color: #000; /* Fallback color */
 }
 
-/* Garantir que containers de avaliação mantenham dimensões */
+/* Otimização para mobile background - candidato LCP em mobile */
+.mobile-bg {
+    /* Garantir que seja detectável para LCP */
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    /* Prioridade máxima */
+    z-index: 1;
+    /* Garantir carregamento imediato */
+    background-attachment: scroll;
+    /* Otimizar para performance */
+    will-change: auto;
+    /* Prevenir layout shift */
+    box-sizing: border-box;
+    /* Forçar hardware acceleration */
+    transform: translateZ(0);
+    /* Garantir que o background seja carregado com prioridade */
+    background-size: 150% auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* Prevenir layout shift durante carregamento */
+    min-height: 100vh;
+    /* Garantir que o background seja detectável */
+    background-color: #f5f5f5; /* Fallback color */
+}
+
+/* Otimização para logo - candidato LCP */
+.logo img {
+    /* Garantir que o logo seja detectável imediatamente */
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    /* Prioridade máxima para carregamento */
+    z-index: 1;
+    /* Garantir que o logo seja renderizado imediatamente */
+    contain: layout style paint;
+    /* Otimizar para LCP */
+    will-change: auto;
+    /* Garantir que o logo seja o elemento LCP */
+    position: relative;
+    /* Prevenir layout shift */
+    box-sizing: border-box;
+    /* Garantir carregamento prioritário */
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    /* Forçar hardware acceleration */
+    transform: translateZ(0);
+}
+
+/* Otimizações específicas para CLS */
+
+/* Garantir que elementos críticos mantenham suas dimensões */
+.diferencial-card,
 .avaliacao-container,
 .diagnostico-container,
 .pagamento-container,
 .novo-container {
-    /* Dimensões fixas */
-    min-height: 700px !important;
-    height: 700px !important;
-    /* Prevenir layout shift */
-    box-sizing: border-box !important;
-    /* Garantir que ocupe espaço */
-    display: flex !important;
-    flex-direction: column !important;
-    position: relative !important;
-    overflow: hidden !important;
-}
-
-/* Garantir que backgrounds de containers mantenham dimensões */
-.avaliacao-bg,
-.diagnostico-bg,
-.pagamento-bg,
-.novo-bg {
-    /* Dimensões fixas */
-    width: 100% !important;
-    height: 100% !important;
-    min-height: 700px !important;
-    /* Prevenir layout shift */
-    box-sizing: border-box !important;
-    /* Garantir que ocupe espaço */
-    position: absolute !important;
-    inset: 0 !important;
+    /* Reservar espaço para evitar layout shift */
+    min-height: 300px;
+    /* Garantir que o container mantenha suas dimensões */
+    box-sizing: border-box;
     /* Prevenir layout shift durante carregamento */
-    background-color: #f5f5f5 !important; /* Fallback color */
+    background-color: #fff; /* Fallback color */
+    /* Otimizar para performance */
+    will-change: auto;
+    /* Forçar hardware acceleration */
+    transform: translateZ(0);
 }
 
-/* Garantir que conteúdo de containers mantenha dimensões */
-.avaliacao-conteudo,
-.diagnostico-conteudo,
-.pagamento-conteudo,
-.novo-conteudo {
-    /* Dimensões mínimas */
-    min-height: 200px !important;
-    /* Prevenir layout shift */
-    box-sizing: border-box !important;
-    /* Garantir que ocupe espaço */
-    position: relative !important;
-    z-index: 2 !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    justify-content: flex-start !important;
+/* Otimizar elementos de texto para prevenir CLS */
+.hero-text h1,
+.hero-text p,
+.diferencial-title,
+.diferencial-text,
+.avaliacao-titulo,
+.avaliacao-descricao,
+.diagnostico-titulo,
+.diagnostico-descricao,
+.pagamento-titulo,
+.pagamento-descricao,
+.novo-titulo,
+.novo-descricao {
+    /* Reservar espaço para evitar layout shift */
+    min-height: 1.2em;
+    /* Garantir que a fonte seja carregada */
+    font-display: swap;
+    /* Fallback para fontes não carregadas */
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    /* Prevenir quebra de layout */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    /* Garantir que o texto não cause overflow */
+    max-width: 100%;
+    box-sizing: border-box;
+    /* Otimizar para performance */
+    will-change: auto;
+    /* Forçar hardware acceleration */
+    transform: translateZ(0);
+}
+
+/* Otimizações para animações e transições */
+.optimized-transition {
+    /* Usar transform em vez de propriedades que causam reflow */
+    transform: translateZ(0);
+    /* Otimizar para mudanças */
+    will-change: transform;
+    /* Evitar mudanças de layout */
+    contain: layout style paint;
+    /* Forçar hardware acceleration */
+    backface-visibility: hidden;
+    /* Otimizar para performance */
+    perspective: 1000px;
+}
+
+/* Otimizações para elementos que mudam frequentemente */
+.slider-element,
+.tab-element,
+.menu-element {
+    /* Usar transform em vez de left/top */
+    transform: translateX(0);
+    /* Evitar mudanças de layout */
+    contain: layout style paint;
+    /* Otimizar para mudanças */
+    will-change: transform;
+    /* Forçar hardware acceleration */
+    backface-visibility: hidden;
+    /* Otimizar para performance */
+    perspective: 1000px;
+}
+
+/* Otimizações para elementos de vídeo */
+.video-element {
+    /* Usar transform em vez de position absolute com left */
+    transform: translateX(-50%);
+    /* Evitar reflow com mudanças de display */
+    contain: layout style paint;
+    /* Otimizar para mudanças de estilo */
+    will-change: transform, opacity;
+    /* Forçar hardware acceleration */
+    backface-visibility: hidden;
+    /* Otimizar para performance */
+    perspective: 1000px;
+}
+
+/* Otimizações para elementos de menu */
+.menu-element {
+    /* Usar transform em vez de propriedades que causam reflow */
+    transform: translateX(0);
+    /* Evitar mudanças de layout */
+    contain: layout style paint;
+    /* Otimizar para animações */
+    will-change: transform;
+    /* Forçar hardware acceleration */
+    backface-visibility: hidden;
+    /* Otimizar para performance */
+    perspective: 1000px;
+}
+
+/* Otimizações para elementos de tab */
+.tab-element {
+    /* Usar opacity em vez de display para transições */
+    opacity: 1;
+    /* Evitar reflow com mudanças de visibilidade */
+    contain: layout style paint;
+    /* Otimizar para mudanças */
+    will-change: opacity;
+    /* Forçar hardware acceleration */
+    backface-visibility: hidden;
+    /* Otimizar para performance */
+    perspective: 1000px;
+}
+
+/* Otimizações para elementos de slider */
+.slider-card {
+    /* Usar transform para posicionamento */
+    transform: translateX(0);
+    /* Evitar mudanças de layout */
+    contain: layout style paint;
+    /* Otimizar para animações */
+    will-change: transform;
+    /* Forçar hardware acceleration */
+    backface-visibility: hidden;
+    /* Otimizar para performance */
+    perspective: 1000px;
+}
+
+/* Otimizações para elementos de indicador */
+.indicator-element {
+    /* Usar opacity em vez de display */
+    opacity: 1;
+    /* Evitar reflow */
+    contain: layout style paint;
+    /* Otimizar para mudanças */
+    will-change: opacity;
+    /* Forçar hardware acceleration */
+    backface-visibility: hidden;
+    /* Otimizar para performance */
+    perspective: 1000px;
 }

@@ -247,17 +247,122 @@
     <!-- Preloads críticos para LCP -->
     <link rel="preload" href="bg-video-compressed.webm" as="video" type="video/webm">
     <link rel="preload" href="assets/images/bg-como-funciona.webp" as="image" type="image/webp">
-    <link rel="preload" href="assets/images/Renov-Logo.webp" as="image" type="image/webp" fetchpriority="high" decoding="sync">
+    <link rel="preload" href="assets/images/Renov-Logo.webp" as="image" type="image/webp">
     
-    <!-- Preconnect para recursos externos -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-    
-    <!-- DNS prefetch para melhorar performance -->
+    <!-- DNS prefetch para recursos externos -->
     <link rel="dns-prefetch" href="//fonts.googleapis.com">
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    
+    <!-- Preconnect para recursos críticos -->
+    <link rel="preconnect" href="//fonts.googleapis.com">
+    <link rel="preconnect" href="//fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="//cdnjs.cloudflare.com">
+    
+    <!-- Preload de fontes críticas -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"></noscript>
+    
+    <!-- CSS Crítico Inline para LCP e CLS -->
+    <style>
+      /* CSS crítico para LCP - carregamento imediato */
+      .hero {
+        position: relative;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+      
+      .video-bg-wrapper {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+      }
+      
+      .video-bg {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      
+      .hero-content {
+        position: relative;
+        z-index: 1;
+        text-align: center;
+        color: #fff;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+      
+      .hero-text h1 {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        line-height: 1.2;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+      }
+      
+      .hero-text p {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+        line-height: 1.6;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+      }
+      
+      /* CSS crítico para CLS - reservar espaço */
+      .diferencial-icon {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 1.5rem;
+        min-height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
+      }
+      
+      .diferencial-icon img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        aspect-ratio: 80/65;
+        max-width: 80px;
+        max-height: 65px;
+        min-height: 65px;
+      }
+      
+      /* Prevenir CLS em containers */
+      .avaliacao-bg,
+      .diagnostico-bg,
+      .pagamento-bg,
+      .novo-bg {
+        min-height: 700px;
+        box-sizing: border-box;
+        background-color: #f5f5f5;
+      }
+      
+      /* Otimizações para mobile */
+      @media (max-width: 768px) {
+        .hero-text h1 {
+          font-size: 2rem;
+        }
+        
+        .hero-text p {
+          font-size: 1rem;
+        }
+      }
+    </style>
 </head>
 <body>
 
@@ -402,7 +507,7 @@
                     <div class="mobile-bg" style="position: absolute; top: 0; left: 0; width: 100vw; height: 100%; min-width: 100vw; min-height: 100%; background-image: url('assets/images/bg-como-funciona.webp'); background-size: 150% auto; background-position: center; background-repeat: no-repeat; z-index: 0; display: block;" data-critical="true" data-lcp-candidate="true"></div>
                     
                     <!-- Vídeo para desktop e mobile - LCP OPTIMIZED -->
-                    <video id="hero-video" autoplay muted loop playsinline class="video-bg" preload="auto" poster="assets/images/bg-como-funciona.webp" data-critical="true" data-lcp-candidate="true" fetchpriority="high" style="display: block; visibility: visible; opacity: 1; width: 100vw; height: 100%; object-fit: cover; position: absolute; top: 0; left: 50%; transform: translateX(-50%); z-index: 0;">
+                    <video id="hero-video" autoplay muted loop playsinline class="video-bg" preload="metadata" poster="assets/images/bg-como-funciona.webp" data-critical="true" data-lcp-candidate="true" fetchpriority="high" style="display: block; visibility: visible; opacity: 1;">
                       <source src="bg-video-compressed.webm" type="video/webm" fetchpriority="high">
                       <source src="bg-video-compressed.webm" type="video/webm" fetchpriority="high">
                       Seu navegador não suporta o elemento de vídeo.
@@ -1227,18 +1332,10 @@
           return 'fast'; // Default to fast
         }
         
-        // Load LCP optimizer first
-        function loadLCPOptimizer() {
-          var script = document.createElement('script');
-          script.src = 'lcp-optimizer.js';
-          script.async = false;
-          document.head.appendChild(script);
-        }
-        
         // Load critical script after page load to avoid blocking LCP
         function loadCriticalScript() {
           var script = document.createElement('script');
-          script.src = 'script.min.js?v=1.6.6';
+          script.src = 'script-optimized.js?v=1.6.6';
           script.async = true;
           document.body.appendChild(script);
         }
@@ -1292,9 +1389,6 @@
             observer.observe(video);
           });
         }
-        
-        // Load LCP optimizer immediately
-        loadLCPOptimizer();
         
         // Defer critical script loading to avoid blocking LCP
         if (document.readyState === 'loading') {
