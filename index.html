@@ -1189,8 +1189,7 @@
     <!-- LITESPEED CACHE OPTIMIZER - Deferred to avoid blocking LCP -->
     <script src="litespeed-cache-optimizer.js?v=1.0.0" defer></script>
     
-    <!-- MOBILE LITESPEED OPTIMIZER - Deferred to avoid blocking LCP -->
-    <script src="mobile-litespeed-optimizer.js?v=1.0.0" defer></script>
+    <!-- MOBILE LITESPEED OPTIMIZER - Removido (arquivo não existe) -->
     
     <!-- LITESPEED SCRIPT OPTIMIZATION - Deferred to avoid blocking LCP -->
     <script>
@@ -1223,18 +1222,11 @@
         
         // Load non-critical scripts after page load
         function loadNonCriticalScripts() {
-          var scripts = [
-            'fix-cors-issues.js?v=1.6.3',
-            'remove-version-params.js?v=1.6.3'
-          ];
-          
-          scripts.forEach(function(src) {
-            var script = document.createElement('script');
-            script.src = src;
-            script.async = true;
-            script.defer = true;
-            document.body.appendChild(script);
-          });
+          // Scripts removidos - arquivos não existem
+          // var scripts = [
+          //   'fix-cors-issues.js?v=1.6.3',
+          //   'remove-version-params.js?v=1.6.3'
+          // ];
         }
         
         // Intelligent video loading based on connection speed
