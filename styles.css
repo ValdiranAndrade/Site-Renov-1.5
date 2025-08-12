@@ -6177,7 +6177,6 @@ picture img {
   font-weight: 400;
   font-style: normal;
   font-display: swap;
-  font-preload: true;
 }
 @font-face {
   font-family: 'Montserrat';
@@ -6185,6 +6184,1478 @@ picture img {
   font-weight: 500;
   font-style: normal;
   font-display: swap;
-  font-preload: true;
 }
-/* Removed duplicate font-face declarations to reduce critical path */
+@font-face {
+  font-family: 'Montserrat';
+  src: url('assets/fonts/Montserrat-Medium.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Resolver problema do poster aparecendo brevemente */
+.video-bg {
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: block !important;
+}
+
+/* Esconder poster até o vídeo carregar */
+video[poster] {
+    background: #000;
+}
+
+/* Garantir que o vídeo apareça imediatamente */
+.video-bg-wrapper {
+    background: #000;
+}
+
+/* Mobile LCP optimizations - Consolidated */
+@media (max-width: 768px) {
+    .hero-text h1 {
+        font-size: 32px !important;
+        line-height: 1.1 !important;
+        font-weight: 700 !important;
+        color: #fff !important;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.8) !important;
+        margin-bottom: 16px !important;
+        text-align: left !important;
+    }
+    
+    .hero-text p {
+        font-size: 16px !important;
+        line-height: 1.5 !important;
+        color: #fff !important;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.7) !important;
+        margin: 0 !important;
+    }
+    
+    .hero-content {
+        margin-top: 120px !important;
+        padding: 0 20px !important;
+        position: relative !important;
+        z-index: 2 !important;
+    }
+    
+    .hero {
+        height: 100vh !important;
+        min-height: 600px !important;
+        margin-bottom: 0 !important;
+        background: #000 !important;
+    }
+    
+    .header-content {
+        padding: 0.5rem 1rem !important;
+        background: rgba(255,255,255,0.95) !important;
+        backdrop-filter: blur(10px) !important;
+        position: relative !important;
+        z-index: 10 !important;
+    }
+    
+    .logo img {
+        width: 120px !important;
+        height: 30px !important;
+        max-width: 100% !important;
+        height: auto !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-text h1 {
+        font-size: 28px !important;
+        line-height: 1.2 !important;
+    }
+    
+    .hero-text p {
+        font-size: 14px !important;
+        line-height: 1.4 !important;
+    }
+    
+    .logo img {
+        width: 100px !important;
+        height: 25px !important;
+    }
+    
+    .hero-content {
+        margin-top: 100px !important;
+        padding: 0 15px !important;
+    }
+    
+    /* Correções específicas para Sobre Nós em mobile */
+    #sobre .hero-content {
+        padding: 20px !important;
+        min-height: 100vh !important;
+        display: flex !important;
+        align-items: flex-start !important;
+        justify-content: flex-start !important;
+        z-index: 100 !important;
+        position: relative !important;
+        margin-top: 0 !important;
+        padding-top: 120px !important;
+        padding-bottom: 30px !important;
+        margin-left: 400px !important;
+        transform: translateX(400px) !important;
+    }
+    #sobre .hero-text h2 {
+        font-size: 0.7rem !important;
+        color: #000 !important;
+        text-shadow: none !important;
+        z-index: 20 !important;
+        position: relative !important;
+        line-height: 1.2 !important;
+        margin-bottom: 15px !important;
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+    #sobre .hero-text p {
+        font-size: 0.55rem !important;
+        color: #000 !important;
+        text-shadow: none !important;
+        z-index: 20 !important;
+        position: relative !important;
+        line-height: 1.5 !important;
+        margin-bottom: 12px !important;
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+    #sobre .hero {
+        min-height: 100vh !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        justify-content: flex-start !important;
+        overflow: visible !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        padding-top: 160px !important;
+    }
+}
+
+img, video { max-width: 100%; height: auto; display: block; }
+img[loading="lazy"] { filter: blur(0.5px); transition: filter 0.2s; }
+img[loading="lazy"].loaded { filter: none; }
+
+@media (max-width: 768px) {
+  body { font-size: 16px; }
+  h1 { font-size: 2.5rem !important; line-height: 1.2 !important; }
+  h2 { font-size: 2rem !important; line-height: 1.3 !important; }
+  p { font-size: 1rem !important; line-height: 1.6 !important; }
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('assets/fonts/Montserrat-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Montserrat';
+  src: url('assets/fonts/Montserrat-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Montserrat';
+  src: url('assets/fonts/Montserrat-Medium.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@media screen and (max-width: 940px) {
+    /* Esconder menu desktop na versão mobile */
+    .main-nav,
+    .tab-buttons,
+    .tab-btn {
+        display: none !important;
+    }
+    
+    /* Mostrar links sociais do header na versão mobile */
+    .social-links {
+        display: flex !important;
+        gap: 12px;
+    }
+    
+    /* Garantir que o vídeo seja exibido no mobile - Prioridade máxima */
+    .video-bg,
+    #hero-video,
+    video.video-bg {
+        display: block !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        width: 100vw !important;
+        height: 100% !important;
+        min-width: 100vw !important;
+        min-height: 100% !important;
+        object-fit: cover !important;
+        position: absolute !important;
+        top: 0 !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        z-index: 0 !important;
+        background: transparent !important;
+    }
+    
+    /* Garantir que o wrapper do vídeo funcione corretamente */
+    .video-bg-wrapper {
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100vw !important;
+        height: 100% !important;
+        z-index: 0 !important;
+        overflow: hidden !important;
+        pointer-events: none !important;
+    }
+    
+    /* Esconder a imagem poster em dispositivos que suportam vídeo */
+    .video-bg[poster] {
+        display: none !important;
+    }
+    
+    /* Mostrar menu mobile */
+    .mobile-menu-toggle {
+        display: flex !important;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 30px;
+        height: 24px;
+        cursor: pointer;
+        z-index: 1000;
+    }
+    
+    .mobile-menu-toggle span {
+        display: block;
+        width: 100%;
+        height: 3px;
+        background-color: #00b140;
+        border-radius: 2px;
+        transition: all 0.3s ease;
+    }
+    
+    .mobile-menu-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(6px, 6px);
+    }
+    
+    .mobile-menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .mobile-menu-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(6px, -6px);
+    }
+    
+    /* Menu Mobile Overlay - LATERAL DIREITO */
+    .mobile-menu-overlay {
+        position: fixed;
+        top: 0;
+        right: -350px;
+        width: 350px;
+        height: 100%;
+        background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+        z-index: 9999;
+        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.3);
+        border-radius: 20px 0 0 20px;
+        overflow: hidden;
+    }
+    
+    .mobile-menu-overlay.active {
+        right: 0;
+    }
+    
+    .mobile-menu-content {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        padding: 30px 25px;
+        display: flex;
+        flex-direction: column;
+        background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    }
+    
+    .mobile-menu-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 25px;
+        border-bottom: 2px solid #e9ecef;
+        margin-bottom: 30px;
+        position: relative;
+    }
+    
+    .mobile-menu-header::after {
+        display: none;
+    }
+    
+    .mobile-menu-close {
+        background: linear-gradient(135deg, #00b140, #008d36);
+        border: none;
+        font-size: 18px;
+        color: #fff;
+        cursor: pointer;
+        padding: 12px;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 177, 64, 0.3);
+    }
+    
+    .mobile-menu-close:hover {
+        transform: scale(1.1);
+        box-shadow: 0 6px 20px rgba(0, 177, 64, 0.4);
+    }
+    
+    .mobile-nav {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        margin-top: 20px;
+    }
+    
+    .mobile-nav-item {
+        font-size: 16px;
+        font-weight: 600;
+        color: #333;
+        text-decoration: none;
+        padding: 18px 20px;
+        border-radius: 12px;
+        transition: all 0.3s ease;
+        background: #fff;
+        border: 2px solid transparent;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .mobile-nav-item::before {
+        display: none;
+    }
+    
+    .mobile-nav-item:hover::before {
+        display: none;
+    }
+    
+    .mobile-nav-item:hover,
+    .mobile-nav-item.active {
+        color: #00b140;
+        border-color: #00b140;
+        background: linear-gradient(135deg, #f0fff4, #e6fffa);
+        transform: translateX(5px);
+        box-shadow: 0 4px 15px rgba(0, 177, 64, 0.2);
+    }
+    
+    .mobile-social-links {
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+        padding-top: 25px;
+        border-top: 2px solid #e9ecef;
+        margin-top: auto;
+        position: relative;
+    }
+    
+    .mobile-social-links::before {
+        display: none;
+    }
+    
+    .mobile-social-links a {
+        font-size: 22px;
+        color: #00b140;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        background: #fff;
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid transparent;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+    
+    .mobile-social-links a:hover {
+        color: #fff;
+        background: linear-gradient(135deg, #00b140, #008d36);
+        transform: scale(1.1);
+        box-shadow: 0 4px 15px rgba(0, 177, 64, 0.3);
+    }
+}
+
+/* Esconder menu mobile em telas maiores */
+@media screen and (min-width: 941px) {
+    .mobile-menu-toggle,
+    .mobile-menu-overlay {
+        display: none !important;
+    }
+}
+/* classes gerais */
+.flex{
+    -ms-flex-direction: column;
+}
+
+/* Esconder menu mobile por padrão */
+.mobile-menu-toggle,
+.mobile-menu-overlay {
+    display: none;
+}
+
+/* Vídeo para desktop */
+.desktop-video {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    width: 100vw;
+    height: 100%;
+    min-width: 100vw;
+    min-height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 0;
+    background: transparent;
+}
+
+/* Mobile: esconder vídeo e mostrar imagem de fundo */
+@media screen and (max-width: 940px) {
+    .desktop-video {
+        display: none !important;
+    }
+    
+    .mobile-bg {
+        display: block !important;
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100vw !important;
+        height: 100% !important;
+        min-width: 100vw !important;
+        min-height: 100% !important;
+        background-size: 150% auto !important;
+        background-position: center !important;
+        background-repeat: no-repeat !important;
+        z-index: 0 !important;
+    }
+    
+    /* Garantir que a .hero ocupe toda a altura no mobile */
+    .hero {
+        height: 100vh !important;
+        min-height: 100vh !important;
+        margin-bottom: 0 !important;
+    }
+    
+    /* Garantir que o wrapper do vídeo ocupe toda a área */
+    .video-bg-wrapper {
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100vw !important;
+        height: 100% !important;
+        min-height: 100% !important;
+        z-index: 0 !important;
+        overflow: hidden !important;
+        pointer-events: none !important;
+        transform: none !important;
+    }
+    
+    /* Garantir que o conteúdo da hero seja posicionado corretamente */
+    .hero-content {
+        position: relative !important;
+        z-index: 1 !important;
+        width: 100% !important;
+        max-width: 1200px !important;
+        margin: 0 auto !important;
+        padding: 0 20px !important;
+        margin-top: 120px !important;
+    }
+}
+
+/* Desktop: mostrar vídeo e esconder imagem de fundo */
+@media screen and (min-width: 941px) {
+    .desktop-video {
+        display: block !important;
+    }
+    
+    .mobile-bg {
+        display: none !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .ai-hero-content {
+        top: 40%; /* move para cima */
+    }
+    
+    .mobile-bg {
+        background-size: 150% auto !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .mobile-bg {
+        background-size: 170% auto !important;
+    }
+}
+
+@media (max-width: 360px) {
+    .mobile-bg {
+        background-size: 200% auto !important;
+    }
+}
+@media screen and (max-width: 580px){
+/* conteiner Redes de Varejo e Lojas e Revendas */
+.parceiro-experiencia-card {
+    flex-direction: column;
+    min-height: 0;
+    max-width: 98vw;
+}
+}
+
+/* MOBILE FOOTER - 1176px */
+@media (max-width: 1176px) {
+
+  /* Reset completo do footer */
+  footer {
+    background: #fff !important;
+    color: #000 !important;
+    padding: 0 !important;
+    border: none !important;
+  }
+  
+  /* Container principal - parte branca */
+  footer > div:first-child {
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    padding: 12px 8px 12px 8px !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    gap: 20px !important;
+    flex-wrap: nowrap !important;
+    background: #fff !important;
+  }
+  
+  /* Esconder navegação central */
+  footer > div:first-child > div:nth-child(2) {
+    display: none !important;
+  }
+  
+  /* Mostrar redes sociais no rodapé mobile */
+  footer .social-links {
+    display: flex !important;
+    gap: 16px !important;
+    margin-top: 8px !important;
+  }
+  
+  footer .social-links a {
+    color: #000 !important;
+    font-size: 1.5rem !important;
+    transition: color 0.2s !important;
+  }
+  
+  footer .social-links a:hover {
+    color: #00b140 !important;
+  }
+  
+  /* Mostrar redes sociais no cabeçalho mobile */
+  header .social-links {
+    display: flex !important;
+    gap: 16px !important;
+  }
+  
+  header .social-links a {
+    color: #000 !important;
+    font-size: 1.5rem !important;
+    transition: color 0.2s !important;
+  }
+  
+  header .social-links a:hover {
+    color: #00b140 !important;
+  }
+  
+  /* Garantir que as redes sociais apareçam no menu mobile */
+  .mobile-social-links {
+    display: flex !important;
+    gap: 16px !important;
+    justify-content: center !important;
+    margin-top: 16px !important;
+  }
+  
+  .mobile-social-links a {
+    color: #000 !important;
+    font-size: 1.5rem !important;
+    transition: color 0.2s !important;
+  }
+  
+  .mobile-social-links a:hover {
+    color: #00b140 !important;
+  }
+  
+  /* Mover menu mobile para a direita */
+  .mobile-menu-toggle {
+    order: 3 !important;
+    margin-left: auto !important;
+  }
+  
+  /* Reduzir footer no mobile */
+  @media (max-width: 768px) {
+    footer > div:first-child {
+      padding: 8px 6px 8px 6px !important;
+      gap: 12px !important;
+      align-items: center !important;
+    }
+    
+    footer .social-links {
+      margin-top: 0 !important;
+      gap: 6px !important;
+      align-items: center !important;
+      display: flex !important;
+    }
+    
+    footer .social-links a {
+      font-size: 1.1rem !important;
+      display: flex !important;
+      align-items: center !important;
+    }
+    
+    footer > div:first-child > div:first-child {
+      flex: 0 0 auto !important;
+      display: flex !important;
+      align-items: center !important;
+    }
+    
+    footer > div:first-child > div:last-child {
+      flex: 0 0 auto !important;
+      display: flex !important;
+      align-items: center !important;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    footer > div:first-child {
+      padding: 6px 4px 6px 4px !important;
+      gap: 8px !important;
+      align-items: center !important;
+    }
+    
+    footer .social-links {
+      gap: 4px !important;
+      align-items: center !important;
+      display: flex !important;
+    }
+    
+    footer .social-links a {
+      font-size: 1rem !important;
+      display: flex !important;
+      align-items: center !important;
+    }
+    
+    footer > div:first-child > div:first-child {
+      flex: 0 0 auto !important;
+      display: flex !important;
+      align-items: center !important;
+    }
+    
+    footer > div:first-child > div:last-child {
+      flex: 0 0 auto !important;
+      display: flex !important;
+      align-items: center !important;
+    }
+  }
+  
+  @media (max-width: 360px) {
+    footer > div:first-child {
+      padding: 4px 2px 4px 2px !important;
+      gap: 6px !important;
+    }
+    
+    footer .social-links a {
+      font-size: 0.9rem !important;
+    }
+  }
+  
+  /* Reduzir tamanho da logo no footer para mobile */
+  @media (max-width: 768px) {
+    footer img[src*="Renov-Logo.webp"] {
+      width: 100px !important;
+      height: auto !important;
+      margin-top: 15px !important;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    footer img[src*="Renov-Logo.webp"] {
+      width: 80px !important;
+      height: auto !important;
+    }
+  }
+  
+  @media (max-width: 360px) {
+    footer img[src*="Renov-Logo.webp"] {
+      width: 70px !important;
+      height: auto !important;
+    }
+  }
+  
+  /* Reduzir ainda mais para telas muito pequenas (200px) */
+  @media (max-width: 200px) {
+    footer > div:first-child {
+      padding: 2px 1px 2px 1px !important;
+      gap: 4px !important;
+    }
+    
+    footer .social-links a {
+      font-size: 0.8rem !important;
+    }
+    
+    footer img[src*="Renov-Logo.webp"] {
+      width: 50px !important;
+      height: auto !important;
+    }
+    
+    footer > div:first-child > div:first-child {
+      flex: 0 0 auto !important;
+      min-width: auto !important;
+    }
+    
+    footer > div:first-child > div:last-child {
+      flex: 0 0 auto !important;
+      min-width: auto !important;
+    }
+  }
+  
+  /* Reorganizar elementos do cabeçalho mobile */
+  header .header-content {
+    justify-content: space-between !important;
+    align-items: center !important;
+    flex-direction: row !important;
+    display: flex !important;
+  }
+  
+  header .logo {
+    order: 1 !important;
+    flex: 0 0 auto !important;
+  }
+  
+  header .social-links {
+    order: 2 !important;
+    flex: 0 0 auto !important;
+    margin: 0 !important;
+  }
+  
+  header .mobile-menu-toggle {
+    order: 3 !important;
+    flex: 0 0 auto !important;
+    margin-left: auto !important;
+  }
+  
+  /* Esconder navegação principal no mobile */
+  header .main-nav {
+    display: none !important;
+  }
+  
+  /* Forçar margem zero na hero mobile */
+  .hero {
+    margin-top: -100px !important;
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+    padding-top: 0 !important;
+    position: relative !important;
+  }
+  
+  /* Garantir que o conteúdo da hero seja visível */
+  .hero-content {
+    position: relative !important;
+    z-index: 10 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: 100% !important;
+  }
+  
+  .hero-text {
+    position: relative !important;
+    z-index: 20 !important;
+    color: #fff !important;
+    text-align: center !important;
+    max-width: 800px !important;
+    margin: 0 auto !important;
+    padding: 0 20px !important;
+  }
+  
+  .hero-text h1 {
+    color: #fff !important;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7) !important;
+  }
+  
+  .hero-text p {
+    color: #fff !important;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.7) !important;
+  }
+  
+  /* Sobrescrever qualquer outro CSS */
+  body .hero {
+    margin-top: -100px !important;
+  }
+  
+  html body .hero {
+    margin-top: -100px !important;
+  }
+  
+  /* Forçar aplicação */
+  .hero[style*="margin-top"] {
+    margin-top: -100px !important;
+  }
+  
+  /* Sobrescrever estilos inline */
+  .hero {
+    margin-top: -100px !important;
+  }
+  
+  /* Aplicar apenas à hero da home, não à hero-ia */
+  .hero:not(.ai-hero) {
+    margin-top: -100px !important;
+  }
+  
+  /* Garantir que as abas sejam visíveis quando ativas */
+  .tab-content.active {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+  
+  .tab-content:not(.active) {
+    display: none !important;
+  }
+  
+
+  
+  /* Reduzir espaçamento inferior do cabeçalho */
+  header {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+    position: relative !important;
+    z-index: 1000 !important;
+  }
+  
+  /* Reduzir espaçamento da seção hero */
+  .hero-content {
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+  }
+  
+  /* Manter copyright na faixa preta */
+  footer > div:nth-child(2) {
+    display: block !important;
+    background: #181818 !important;
+    color: #bbb !important;
+    margin: 0 !important;
+    padding: 18px 0 8px 0 !important;
+    text-align: center !important;
+    font-size: 1rem !important;
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+  }
+  
+  /* Logo container */
+  footer > div:first-child > div:first-child {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 8px !important;
+    flex: 0 0 auto !important;
+    min-width: 180px !important;
+    max-width: 200px !important;
+  }
+  
+  /* Ajustar layout para acomodar redes sociais */
+  footer > div:first-child {
+    gap: 24px !important;
+  }
+  
+  /* Contato container (endereço e telefone) */
+  footer > div:first-child > div:last-child {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 8px !important;
+    flex: 1 1 auto !important;
+    min-width: 200px !important;
+  }
+  
+  /* Garantir que os elementos de contato sejam visíveis */
+  footer > div:first-child > div:last-child > div {
+    display: flex !important;
+    align-items: flex-start !important;
+    gap: 10px !important;
+    font-size: 1rem !important;
+    margin-left: 0 !important;
+  }
+  
+  /* Forçar cores corretas */
+  footer > div:first-child > div:last-child span {
+    color: #000 !important;
+    text-align: left !important;
+  }
+  
+  footer > div:first-child > div:last-child i {
+    color: #00b140 !important;
+    margin-top: 6px !important;
+  }
+}
+
+/* SOLUÇÃO ESPECÍFICA PARA MOVER TEXTO PARA DIREITA */
+@media (max-width: 768px) {
+  #sobre .hero-text {
+    margin-left: 400px !important;
+    transform: translateX(400px) !important;
+  }
+  
+  #sobre .hero-text h2,
+  #sobre .hero-text p {
+    margin-left: 400px !important;
+    transform: translateX(400px) !important;
+  }
+}
+
+@media (max-width: 480px) {
+  #sobre .hero-text {
+    margin-left: 400px !important;
+    transform: translateX(400px) !important;
+  }
+  
+  #sobre .hero-text h2,
+  #sobre .hero-text p {
+    margin-left: 400px !important;
+    transform: translateX(400px) !important;
+  }
+}
+
+/* SOLUÇÃO SIMPLES PARA TEXTO VISÍVEL EM SOBRE NÓS MOBILE */
+#sobre .hero-text h2,
+#sobre .hero-text p {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    color: #000 !important;
+    position: relative !important;
+    z-index: 999 !important;
+    margin-left: 400px !important;
+    transform: translateX(400px) !important;
+}
+
+@media (max-width: 768px) {
+    #sobre .hero-text h2,
+    #sobre .hero-text p {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        color: #000 !important;
+        position: relative !important;
+        z-index: 999 !important;
+        font-size: 1.6rem !important;
+        line-height: 1.2 !important;
+    }
+}
+
+@media (max-width: 480px) {
+    #sobre .hero-text h2,
+    #sobre .hero-text p {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        color: #000 !important;
+        position: relative !important;
+        z-index: 999 !important;
+        font-size: 1.4rem !important;
+        line-height: 1.2 !important;
+    }
+}
+
+@media (max-width: 768px) {
+  #sobre .hero-text {
+    margin-top: 80px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  #sobre .hero-text {
+    margin-top: 60px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  #sobre .hero-text {
+    margin-top: 200px !important;
+  }
+}
+@media (max-width: 480px) {
+  #sobre .hero-text {
+    margin-top: 200px !important;
+  }
+}
+
+/* REGRAS FINAIS PARA TEXTO SOBRE NÓS MOBILE */
+#sobre .hero-text h2 { font-size: 0.5rem !important; margin-top: 0 !important; line-height: 1.1 !important; }
+#sobre .hero-text p { font-size: 0.3rem !important; margin-top: 0 !important; line-height: 1.3 !important; }
+
+/* REGRAS ULTRA ESPECÍFICAS PARA TEXTO SOBRE NÓS MOBILE */
+@media (max-width: 900px) {
+  body #sobre .hero-text { 
+    margin-top: 10px !important; 
+    margin-left: 10px !important;
+    transform: translateX(10px) !important;
+  }
+  body #sobre .hero-text h2 { 
+    font-size: 0.5rem !important; 
+    margin-top: 0 !important; 
+    line-height: 1.1 !important;
+    margin-left: 10px !important;
+    transform: translateX(10px) !important;
+  }
+  body #sobre .hero-text p { 
+    font-size: 0.3rem !important; 
+    margin-top: 0 !important; 
+    line-height: 1.3 !important;
+    margin-left: 10px !important;
+    transform: translateX(10px) !important;
+  }
+}
+
+/* REGRAS COM ESPECIFICIDADE MÁXIMA PARA SOBRESCREVER TUDO */
+html body #sobre .hero-text,
+html body #sobre .hero-text h2,
+html body #sobre .hero-text p {
+  margin-left: 10px !important;
+  transform: translateX(10px) !important;
+}
+
+/* SOBRESCREVER ESTILOS INLINE */
+html body #sobre .hero-text h1[style*="font-size"] {
+  font-size: 48px !important;
+  line-height: 1.05 !important;
+  margin-bottom: 24px !important;
+  color: #fff !important;
+  font-weight: 700 !important;
+  text-align: left !important;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.8) !important;
+  margin-top: 10px !important;
+  margin-left: 10px !important;
+}
+
+html body #sobre .hero-text p[style*="font-size"] {
+  color: #fff !important;
+  font-size: 18px !important;
+  line-height: 1.5 !important;
+  margin: 0 !important;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.7) !important;
+  margin-top: 10px !important;
+  margin-left: 10px !important;
+}
+
+/* REGRAS FINAIS PARA TAMANHOS CORRETOS - SOBRESCREVER TUDO */
+html body #sobre .hero-text h1 {
+  font-size: 48px !important;
+  line-height: 1.05 !important;
+  margin-bottom: 24px !important;
+  color: #fff !important;
+  font-weight: 700 !important;
+  text-align: left !important;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.8) !important;
+  margin-top: 10px !important;
+  margin-left: 10px !important;
+}
+
+html body #sobre .hero-text p {
+  color: #fff !important;
+  font-size: 18px !important;
+  line-height: 1.5 !important;
+  margin: 0 !important;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.7) !important;
+  margin-top: 10px !important;
+  margin-left: 10px !important;
+}
+
+/* REGRAS ESPECÍFICAS PARA MOBILE */
+@media (max-width: 768px) {
+  html body #sobre .hero-text {
+    position: absolute !important;
+    top: 50% !important;
+    left: 20px !important;
+    transform: translateY(-50%) !important;
+    z-index: 100 !important;
+    max-width: 80% !important;
+    margin-top: 200px !important;
+  }
+  
+  html body #sobre .hero-text h1 {
+    font-size: 32px !important;
+    line-height: 1.1 !important;
+    font-weight: 700 !important;
+    color: #fff !important;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8) !important;
+    margin-bottom: 16px !important;
+    text-align: left !important;
+    margin-top: 0 !important;
+    margin-left: 0 !important;
+  }
+  
+  html body #sobre .hero-text p {
+    font-size: 16px !important;
+    line-height: 1.5 !important;
+    color: #fff !important;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.7) !important;
+    margin: 0 !important;
+    margin-top: 0 !important;
+    margin-left: 0 !important;
+  }
+}
+
+@media (max-width: 480px) {
+  html body #sobre .hero-text {
+    position: absolute !important;
+    top: 50% !important;
+    left: 15px !important;
+    transform: translateY(-50%) !important;
+    z-index: 100 !important;
+    max-width: 85% !important;
+    margin-top: 200px !important;
+  }
+  
+  html body #sobre .hero-text h1 {
+    font-size: 28px !important;
+    line-height: 1.2 !important;
+    font-weight: 700 !important;
+    color: #fff !important;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8) !important;
+    margin-bottom: 16px !important;
+    text-align: left !important;
+    margin-top: 0 !important;
+    margin-left: 0 !important;
+  }
+  
+  html body #sobre .hero-text p {
+    font-size: 14px !important;
+    line-height: 1.4 !important;
+    color: #fff !important;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.7) !important;
+    margin: 0 !important;
+    margin-top: 0 !important;
+    margin-left: 0 !important;
+  }
+}
+
+@media (max-width: 360px) {
+  html body #sobre .hero-text {
+    position: absolute !important;
+    top: 50% !important;
+    left: 10px !important;
+    transform: translateY(-50%) !important;
+    z-index: 100 !important;
+    max-width: 90% !important;
+    margin-top: 200px !important;
+  }
+  
+  html body #sobre .hero-text h1 {
+    font-size: 24px !important;
+    line-height: 1.2 !important;
+    font-weight: 700 !important;
+    color: #fff !important;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8) !important;
+    margin-bottom: 16px !important;
+    text-align: left !important;
+    margin-top: 0 !important;
+    margin-left: 0 !important;
+  }
+  
+  html body #sobre .hero-text p {
+    font-size: 12px !important;
+    line-height: 1.4 !important;
+    color: #fff !important;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.7) !important;
+    margin: 0 !important;
+    margin-top: 0 !important;
+    margin-left: 0 !important;
+  }
+}
+
+@media (max-width: 320px) {
+  html body #sobre .hero-text {
+    position: absolute !important;
+    top: 50% !important;
+    left: 8px !important;
+    transform: translateY(-50%) !important;
+    z-index: 100 !important;
+    max-width: 95% !important;
+    margin-top: 200px !important;
+  }
+  
+  html body #sobre .hero-text h1 {
+    font-size: 20px !important;
+    line-height: 1.2 !important;
+    font-weight: 700 !important;
+    color: #fff !important;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8) !important;
+    margin-bottom: 16px !important;
+    text-align: left !important;
+    margin-top: 0 !important;
+    margin-left: 0 !important;
+  }
+  
+  html body #sobre .hero-text p {
+    font-size: 10px !important;
+    line-height: 1.4 !important;
+    color: #fff !important;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.7) !important;
+    margin: 0 !important;
+    margin-top: 0 !important;
+    margin-left: 0 !important;
+  }
+}
+
+/* Mover formulário de contato para a esquerda na versão mobile */
+@media (max-width: 768px) {
+  #contato .contato-l5-wrapper h1 {
+    margin-left: 20px !important;
+  }
+  #contato .contato-l5-wrapper p {
+    margin-left: 20px !important;
+  }
+  #contato .contato-l5-wrapper > div {
+    margin-left: 20px !important;
+  }
+  #contato .contato-l5-wrapper > div > div {
+    margin-left: 0 !important;
+  }
+  
+  /* Ocultar informações de contato na versão mobile */
+  #contato .contato-l5-wrapper > div > div:last-child {
+    display: none !important;
+  }
+}
+
+@media (max-width: 480px) {
+  #contato .contato-l5-wrapper h1 {
+    margin-left: 10px !important;
+  }
+  #contato .contato-l5-wrapper p {
+    margin-left: 10px !important;
+  }
+  #contato .contato-l5-wrapper > div {
+    margin-left: 10px !important;
+  }
+  #contato .contato-l5-wrapper > div > div {
+    margin-left: 0 !important;
+  }
+  
+  /* Ocultar informações de contato na versão mobile */
+  #contato .contato-l5-wrapper > div > div:last-child {
+    display: none !important;
+  }
+}
+
+/* Otimização LCP para vídeo hero */
+#hero-video {
+    /* Garantir que o vídeo seja detectável imediatamente */
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    /* Prioridade máxima para carregamento */
+    z-index: 1;
+    /* Garantir que o vídeo seja renderizado imediatamente */
+    contain: layout style paint;
+    /* Otimizar para LCP */
+    will-change: auto;
+    /* Garantir que o vídeo seja o elemento LCP */
+    position: relative;
+    /* Prevenir layout shift */
+    box-sizing: border-box;
+}
+
+/* Otimização para poster do vídeo */
+#hero-video[poster] {
+    /* Garantir que o poster seja carregado com prioridade */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* Prevenir layout shift durante carregamento */
+    min-height: 100vh;
+    /* Garantir que o poster seja detectável */
+    display: block !important;
+    visibility: visible !important;
+}
+
+/* Otimização para mobile background */
+.mobile-bg {
+    /* Garantir que seja detectável para LCP */
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    /* Prioridade máxima */
+    z-index: 1;
+    /* Garantir carregamento imediato */
+    background-attachment: scroll;
+    /* Otimizar para performance */
+    will-change: auto;
+    /* Prevenir layout shift */
+    box-sizing: border-box;
+}
+
+/* Garantir que elementos LCP sejam visíveis imediatamente */
+[data-lcp-candidate="true"] {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    /* Prioridade máxima para carregamento */
+    z-index: 1;
+    /* Garantir que sejam detectáveis */
+    position: relative;
+    /* Prevenir layout shift */
+    box-sizing: border-box;
+}
+
+/* Otimização para elementos críticos */
+[data-critical="true"] {
+    /* Garantir carregamento prioritário */
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    /* Prioridade máxima */
+    z-index: 1;
+    /* Garantir que sejam detectáveis */
+    position: relative;
+    /* Prevenir layout shift */
+    box-sizing: border-box;
+}
+
+/* Otimização LCP para logo */
+.logo img {
+    /* Garantir que o logo seja detectável imediatamente */
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    /* Prioridade máxima para carregamento */
+    z-index: 1;
+    /* Garantir que o logo seja renderizado imediatamente */
+    contain: layout style paint;
+    /* Otimizar para LCP */
+    will-change: auto;
+    /* Garantir que o logo seja o elemento LCP */
+    position: relative;
+    /* Prevenir layout shift */
+    box-sizing: border-box;
+    /* Garantir carregamento prioritário */
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+}
+
+/* Otimização para logo no mobile menu */
+.mobile-menu-header .logo img {
+    /* Garantir que seja detectável para LCP */
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    /* Prioridade máxima */
+    z-index: 1;
+    /* Garantir carregamento imediato */
+    contain: layout style paint;
+    /* Otimizar para performance */
+    will-change: auto;
+    /* Prevenir layout shift */
+    box-sizing: border-box;
+}
+
+/* Otimizações para reduzir reflow forçado */
+
+/* Usar transform em vez de propriedades que causam reflow */
+.optimized-transform {
+    transform: translateZ(0); /* Force hardware acceleration */
+    will-change: transform; /* Hint para o browser */
+}
+
+/* Otimizar elementos que mudam frequentemente */
+.slider-element {
+    /* Usar transform em vez de left/top */
+    transform: translateX(0);
+    /* Evitar mudanças de layout */
+    contain: layout style paint;
+    /* Otimizar para mudanças */
+    will-change: transform;
+}
+
+/* Otimizar animações para reduzir reflow */
+@keyframes optimized-fade {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.optimized-animation {
+    animation: optimized-fade 0.3s ease-out;
+    /* Usar transform em vez de propriedades que causam reflow */
+    transform: translateZ(0);
+    will-change: transform, opacity;
+}
+
+/* Otimizar elementos de vídeo */
+.video-optimized {
+    /* Usar transform em vez de position absolute com left */
+    transform: translateX(-50%);
+    /* Evitar reflow com mudanças de display */
+    contain: layout style paint;
+    /* Otimizar para mudanças de estilo */
+    will-change: transform, opacity;
+}
+
+/* Otimizar elementos de menu */
+.menu-optimized {
+    /* Usar transform em vez de propriedades que causam reflow */
+    transform: translateX(0);
+    /* Evitar mudanças de layout */
+    contain: layout style paint;
+    /* Otimizar para animações */
+    will-change: transform;
+}
+
+/* Otimizar elementos de tab */
+.tab-optimized {
+    /* Usar opacity em vez de display para transições */
+    opacity: 1;
+    /* Evitar reflow com mudanças de visibilidade */
+    contain: layout style paint;
+    /* Otimizar para mudanças */
+    will-change: opacity;
+}
+
+/* Otimizar elementos de slider */
+.slider-card {
+    /* Usar transform para posicionamento */
+    transform: translateX(0);
+    /* Evitar mudanças de layout */
+    contain: layout style paint;
+    /* Otimizar para animações */
+    will-change: transform;
+}
+
+/* Otimizar elementos de indicador */
+.indicator-optimized {
+    /* Usar opacity em vez de display */
+    opacity: 1;
+    /* Evitar reflow */
+    contain: layout style paint;
+    /* Otimizar para mudanças */
+    will-change: opacity;
+}
