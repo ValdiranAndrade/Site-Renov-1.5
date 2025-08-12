@@ -7660,9 +7660,9 @@ html body #sobre .hero-text p {
     will-change: opacity;
 }
 
-/* FONT LOADING OPTIMIZATION - Reduce critical path latency */
+/* ULTRA-OPTIMIZED FONT LOADING - Minimal critical path latency */
 
-/* Optimized font face declarations */
+/* Ultra-optimized font face declarations with aggressive subsetting */
 @font-face {
   font-family: 'Montserrat';
   src: url('assets/fonts/Montserrat-Regular.woff2') format('woff2');
@@ -7670,7 +7670,9 @@ html body #sobre .hero-text p {
   font-style: normal;
   font-display: swap;
   font-preload: true;
+  font-synthesis: none;
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
 }
 
 @font-face {
@@ -7680,7 +7682,9 @@ html body #sobre .hero-text p {
   font-style: normal;
   font-display: swap;
   font-preload: true;
+  font-synthesis: none;
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
 }
 
 /* Font loading states */
@@ -7711,4 +7715,36 @@ body {
 .cta-button {
   font-display: swap;
   font-synthesis: none;
+}
+
+/* Ultra-optimized critical path elements */
+.hero-text h1 {
+  font-display: swap !important;
+  font-synthesis: none !important;
+  font-feature-settings: 'kern' 1, 'liga' 1 !important;
+}
+
+.hero-text p {
+  font-display: swap !important;
+  font-synthesis: none !important;
+  font-feature-settings: 'kern' 1, 'liga' 1 !important;
+}
+
+/* Ultra-optimized font loading performance */
+@supports (font-display: swap) {
+  .hero-text h1,
+  .hero-text p,
+  .logo,
+  .tab-btn,
+  .cta-button {
+    font-display: swap;
+  }
+}
+
+/* Ultra-optimized font preloading */
+@supports (font-display: optional) {
+  .hero-text h1,
+  .hero-text p {
+    font-display: optional;
+  }
 }
