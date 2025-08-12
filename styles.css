@@ -473,6 +473,29 @@ footer:last-child {
     padding-bottom: 0 !important;
 }
 
+/* Remover margem branca após o footer */
+footer {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+/* Garantir que não haja espaço após o footer */
+body {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+html {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+/* Remover qualquer espaço após o footer */
+*:last-child {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
+
 .footer-content {
     max-width: 1200px;
     margin: 0 auto 0 auto;
