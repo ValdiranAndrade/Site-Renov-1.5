@@ -7660,255 +7660,55 @@ html body #sobre .hero-text p {
     will-change: opacity;
 }
 
-/* Otimizações críticas para LCP e CLS */
+/* FONT LOADING OPTIMIZATION - Reduce critical path latency */
 
-/* Forçar carregamento prioritário de elementos LCP */
-.hero,
-.video-bg-wrapper,
-.hero-content,
-.hero-text,
-.hero-text h1,
-.hero-text p {
-    /* Garantir que elementos LCP sejam renderizados imediatamente */
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    /* Prioridade máxima para carregamento */
-    z-index: 1;
-    /* Garantir que sejam detectáveis */
-    position: relative;
-    /* Prevenir layout shift */
-    box-sizing: border-box;
-    /* Otimizar para performance */
-    will-change: auto;
-    /* Garantir que a fonte seja carregada */
-    font-display: swap;
+/* Optimized font face declarations */
+@font-face {
+  font-family: 'Montserrat';
+  src: url('assets/fonts/Montserrat-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  font-preload: true;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
-/* Otimização específica para vídeo hero - elemento LCP principal */
-#hero-video {
-    /* Garantir carregamento imediato */
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    /* Prioridade máxima */
-    z-index: 1;
-    /* Garantir que o vídeo seja renderizado imediatamente */
-    contain: layout style paint;
-    /* Otimizar para LCP */
-    will-change: auto;
-    /* Garantir que o vídeo seja o elemento LCP */
-    position: relative;
-    /* Prevenir layout shift */
-    box-sizing: border-box;
-    /* Forçar hardware acceleration */
-    transform: translateZ(0);
-    /* Garantir que o poster seja carregado com prioridade */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    /* Prevenir layout shift durante carregamento */
-    min-height: 100vh;
-    /* Garantir que o poster seja detectável */
-    background-color: #000; /* Fallback color */
+@font-face {
+  font-family: 'Montserrat';
+  src: url('assets/fonts/Montserrat-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  font-preload: true;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
-/* Otimização para mobile background - candidato LCP em mobile */
-.mobile-bg {
-    /* Garantir que seja detectável para LCP */
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    /* Prioridade máxima */
-    z-index: 1;
-    /* Garantir carregamento imediato */
-    background-attachment: scroll;
-    /* Otimizar para performance */
-    will-change: auto;
-    /* Prevenir layout shift */
-    box-sizing: border-box;
-    /* Forçar hardware acceleration */
-    transform: translateZ(0);
-    /* Garantir que o background seja carregado com prioridade */
-    background-size: 150% auto;
-    background-position: center;
-    background-repeat: no-repeat;
-    /* Prevenir layout shift durante carregamento */
-    min-height: 100vh;
-    /* Garantir que o background seja detectável */
-    background-color: #f5f5f5; /* Fallback color */
+/* Font loading states */
+.font-loading {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  font-display: swap;
 }
 
-/* Otimização para logo - candidato LCP */
-.logo img {
-    /* Garantir que o logo seja detectável imediatamente */
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    /* Prioridade máxima para carregamento */
-    z-index: 1;
-    /* Garantir que o logo seja renderizado imediatamente */
-    contain: layout style paint;
-    /* Otimizar para LCP */
-    will-change: auto;
-    /* Garantir que o logo seja o elemento LCP */
-    position: relative;
-    /* Prevenir layout shift */
-    box-sizing: border-box;
-    /* Garantir carregamento prioritário */
-    image-rendering: -webkit-optimize-contrast;
-    image-rendering: crisp-edges;
-    /* Forçar hardware acceleration */
-    transform: translateZ(0);
+.font-loaded {
+  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  font-display: swap;
 }
 
-/* Otimizações específicas para CLS */
-
-/* Garantir que elementos críticos mantenham suas dimensões */
-.diferencial-card,
-.avaliacao-container,
-.diagnostico-container,
-.pagamento-container,
-.novo-container {
-    /* Reservar espaço para evitar layout shift */
-    min-height: 300px;
-    /* Garantir que o container mantenha suas dimensões */
-    box-sizing: border-box;
-    /* Prevenir layout shift durante carregamento */
-    background-color: #fff; /* Fallback color */
-    /* Otimizar para performance */
-    will-change: auto;
-    /* Forçar hardware acceleration */
-    transform: translateZ(0);
+/* Optimize font rendering */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: 'kern' 1;
+  font-kerning: normal;
 }
 
-/* Otimizar elementos de texto para prevenir CLS */
+/* Critical text optimization */
 .hero-text h1,
 .hero-text p,
-.diferencial-title,
-.diferencial-text,
-.avaliacao-titulo,
-.avaliacao-descricao,
-.diagnostico-titulo,
-.diagnostico-descricao,
-.pagamento-titulo,
-.pagamento-descricao,
-.novo-titulo,
-.novo-descricao {
-    /* Reservar espaço para evitar layout shift */
-    min-height: 1.2em;
-    /* Garantir que a fonte seja carregada */
-    font-display: swap;
-    /* Fallback para fontes não carregadas */
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    /* Prevenir quebra de layout */
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    /* Garantir que o texto não cause overflow */
-    max-width: 100%;
-    box-sizing: border-box;
-    /* Otimizar para performance */
-    will-change: auto;
-    /* Forçar hardware acceleration */
-    transform: translateZ(0);
-}
-
-/* Otimizações para animações e transições */
-.optimized-transition {
-    /* Usar transform em vez de propriedades que causam reflow */
-    transform: translateZ(0);
-    /* Otimizar para mudanças */
-    will-change: transform;
-    /* Evitar mudanças de layout */
-    contain: layout style paint;
-    /* Forçar hardware acceleration */
-    backface-visibility: hidden;
-    /* Otimizar para performance */
-    perspective: 1000px;
-}
-
-/* Otimizações para elementos que mudam frequentemente */
-.slider-element,
-.tab-element,
-.menu-element {
-    /* Usar transform em vez de left/top */
-    transform: translateX(0);
-    /* Evitar mudanças de layout */
-    contain: layout style paint;
-    /* Otimizar para mudanças */
-    will-change: transform;
-    /* Forçar hardware acceleration */
-    backface-visibility: hidden;
-    /* Otimizar para performance */
-    perspective: 1000px;
-}
-
-/* Otimizações para elementos de vídeo */
-.video-element {
-    /* Usar transform em vez de position absolute com left */
-    transform: translateX(-50%);
-    /* Evitar reflow com mudanças de display */
-    contain: layout style paint;
-    /* Otimizar para mudanças de estilo */
-    will-change: transform, opacity;
-    /* Forçar hardware acceleration */
-    backface-visibility: hidden;
-    /* Otimizar para performance */
-    perspective: 1000px;
-}
-
-/* Otimizações para elementos de menu */
-.menu-element {
-    /* Usar transform em vez de propriedades que causam reflow */
-    transform: translateX(0);
-    /* Evitar mudanças de layout */
-    contain: layout style paint;
-    /* Otimizar para animações */
-    will-change: transform;
-    /* Forçar hardware acceleration */
-    backface-visibility: hidden;
-    /* Otimizar para performance */
-    perspective: 1000px;
-}
-
-/* Otimizações para elementos de tab */
-.tab-element {
-    /* Usar opacity em vez de display para transições */
-    opacity: 1;
-    /* Evitar reflow com mudanças de visibilidade */
-    contain: layout style paint;
-    /* Otimizar para mudanças */
-    will-change: opacity;
-    /* Forçar hardware acceleration */
-    backface-visibility: hidden;
-    /* Otimizar para performance */
-    perspective: 1000px;
-}
-
-/* Otimizações para elementos de slider */
-.slider-card {
-    /* Usar transform para posicionamento */
-    transform: translateX(0);
-    /* Evitar mudanças de layout */
-    contain: layout style paint;
-    /* Otimizar para animações */
-    will-change: transform;
-    /* Forçar hardware acceleration */
-    backface-visibility: hidden;
-    /* Otimizar para performance */
-    perspective: 1000px;
-}
-
-/* Otimizações para elementos de indicador */
-.indicator-element {
-    /* Usar opacity em vez de display */
-    opacity: 1;
-    /* Evitar reflow */
-    contain: layout style paint;
-    /* Otimizar para mudanças */
-    will-change: opacity;
-    /* Forçar hardware acceleration */
-    backface-visibility: hidden;
-    /* Otimizar para performance */
-    perspective: 1000px;
+.logo,
+.tab-btn,
+.cta-button {
+  font-display: swap;
+  font-synthesis: none;
 }
