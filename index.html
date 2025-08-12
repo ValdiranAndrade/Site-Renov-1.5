@@ -42,10 +42,10 @@
     <meta http-equiv="Expires" content="Thu, 31 Dec 2025 23:59:59 GMT">
     
     <!-- ULTRA-CRITICAL PRELOADS FOR LCP OPTIMIZATION -->
-    <link rel="preload" href="assets/images/Renov-Logo.webp" as="image" fetchpriority="high">
-    <link rel="preload" href="assets/images/bg-como-funciona.webp" as="image" fetchpriority="high">
-    <link rel="preload" href="bg-video-compressed.webm" fetchpriority="high">
-    <link rel="preload" href="bg-IA-compressed.webm" fetchpriority="high">
+    <link rel="preload" href="assets/images/Renov-Logo.webp" as="image" fetchpriority="high" decoding="sync">
+    <link rel="preload" href="assets/images/bg-como-funciona.webp" as="image" fetchpriority="high" decoding="sync">
+    <link rel="preload" href="bg-video-compressed.webm" as="fetch" fetchpriority="high">
+    <link rel="preload" href="bg-IA-compressed.webm" as="fetch" fetchpriority="high">
     
     <!-- CRITICAL CSS INLINE FOR LCP -->
     <style>
@@ -288,41 +288,6 @@
       (function() {
         'use strict';
         
-        // Detectar se veio de vagas.html e corrigir estado da página
-        if (document.referrer && document.referrer.includes('vagas.html')) {
-          console.log('🔄 Detectado retorno de vagas.html - aplicando correções...');
-          
-          // Forçar recarregamento do estado da página
-          setTimeout(function() {
-            if (typeof openTab === 'function') {
-              openTab('home');
-            }
-            
-            // Forçar visibilidade de elementos críticos
-            var criticalElements = [
-              '.header-content',
-              '.logo',
-              '.hero-content',
-              '.hero-text',
-              '.video-bg',
-              '.video-bg-wrapper',
-              '.tab-content',
-              '.tab-btn'
-            ];
-            
-            criticalElements.forEach(function(selector) {
-              var elements = document.querySelectorAll(selector);
-              elements.forEach(function(element) {
-                element.style.display = '';
-                element.style.visibility = '';
-                element.style.opacity = '';
-              });
-            });
-            
-            console.log('✅ Correções aplicadas para retorno de vagas.html');
-          }, 100);
-        }
-        
         // Detectar mobile
         var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || 
                        window.innerWidth <= 768;
@@ -372,42 +337,6 @@
         
           console.log('⚡ Speed Index Ultra-optimization aplicado');
         }
-        
-        // Detectar navegação back/forward e corrigir estado
-        window.addEventListener('pageshow', function(event) {
-          if (event.persisted) {
-            console.log('🔄 Página carregada do cache - aplicando correções...');
-            
-            setTimeout(function() {
-              if (typeof openTab === 'function') {
-                openTab('home');
-              }
-              
-              // Forçar visibilidade de elementos críticos
-              var criticalElements = [
-                '.header-content',
-                '.logo',
-                '.hero-content',
-                '.hero-text',
-                '.video-bg',
-                '.video-bg-wrapper',
-                '.tab-content',
-                '.tab-btn'
-              ];
-              
-              criticalElements.forEach(function(selector) {
-                var elements = document.querySelectorAll(selector);
-                elements.forEach(function(element) {
-                  element.style.display = '';
-                  element.style.visibility = '';
-                  element.style.opacity = '';
-                });
-              });
-              
-              console.log('✅ Correções aplicadas para navegação back/forward');
-            }, 100);
-          }
-        });
       })();
     </script>
     
@@ -419,7 +348,7 @@
                 <a href="#" onclick="openTab('home'); return false;" style="text-decoration: none; cursor: pointer;">
                     <picture>
                         <source srcset="assets/images/Renov-Logo.webp" type="image/webp">
-                        <img src="assets/images/Renov-Logo.webp" alt="Renov - Sua Troca Inteligente" loading="eager" fetchpriority="high" width="160" height="40" data-critical="true" data-lcp-candidate="true">
+                        <img src="assets/images/Renov-Logo.webp" alt="Renov - Sua Troca Inteligente" loading="eager" fetchpriority="high" decoding="sync" width="160" height="40" data-critical="true" data-lcp-candidate="true">
                     </picture>
                 </a>
             </div>
@@ -495,8 +424,8 @@
                     
                     <!-- Vídeo para desktop e mobile - LCP ULTRA OPTIMIZED -->
                     <video id="hero-video" autoplay muted loop playsinline class="video-bg" preload="auto" poster="assets/images/bg-como-funciona.webp" data-critical="true" data-lcp-candidate="true" fetchpriority="high" style="display: block; visibility: visible; opacity: 1; will-change: transform; transform: translateZ(0);">
-                      <source src="bg-video-compressed.webm" type="video/webm">
-                      <source src="bg-video-compressed.webm" type="video/webm">
+                      <source src="bg-video-compressed.webm" type="video/webm" fetchpriority="high">
+                      <source src="bg-video-compressed.webm" type="video/webm" fetchpriority="high">
                       Seu navegador não suporta o elemento de vídeo.
                     </video>
                   </div>
@@ -584,7 +513,7 @@
                         <!-- Nova seção: Avaliação Inteligente -->
                         <section class="ai-hero">
                             <div class="ai-video-bg-wrapper">
-                                <video src="bg-IA-compressed.webm" class="ai-video-bg" style="width: 100%; height: 100%; object-fit: cover; display: block;" autoplay muted loop playsinline preload="metadata">
+                                <video src="bg-IA-compressed.webm" alt="Background animado da seção IA" class="ai-video-bg" style="width: 100%; height: 100%; object-fit: cover; display: block;" fetchpriority="high" autoplay muted loop playsinline preload="metadata">
                                     <source src="bg-IA-compressed.webm" type="video/webm">
                                     Seu navegador não suporta o elemento de vídeo.
                                 </video>
@@ -1584,6 +1513,39 @@
                 targetTab.style.opacity = '1';
                 targetTab.classList.add('active');
                 console.log('✅ ABA ABERTA:', tabId);
+                
+                // RECARREGAR RECURSOS CRÍTICOS SE FOR HOME
+                if (tabId === 'home') {
+                  console.log('🔄 Recarregando recursos críticos para Home...');
+                  
+                  // Recarregar vídeo hero
+                  const heroVideo = document.getElementById('hero-video');
+                  if (heroVideo) {
+                    heroVideo.load();
+                    heroVideo.style.display = 'block';
+                    heroVideo.style.visibility = 'visible';
+                    heroVideo.style.opacity = '1';
+                  }
+                  
+                  // Recarregar background mobile
+                  const mobileBg = document.querySelector('.mobile-bg');
+                  if (mobileBg) {
+                    mobileBg.style.display = 'block';
+                    mobileBg.style.visibility = 'visible';
+                    mobileBg.style.opacity = '1';
+                  }
+                  
+                  // Recarregar logo
+                  const logo = document.querySelector('.logo img');
+                  if (logo) {
+                    logo.style.display = 'block';
+                    logo.style.visibility = 'visible';
+                    logo.style.opacity = '1';
+                  }
+                  
+                  // Forçar reflow
+                  document.body.offsetHeight;
+                }
               } else {
                 console.error('❌ ABA NÃO ENCONTRADA:', tabId);
               }
@@ -1676,6 +1638,45 @@
         setTimeout(forceInitMobileMenu, 1000);
         
         console.log('🚀 SOLUÇÃO AGGRESSIVA CONFIGURADA!');
+        
+        // LISTENER PARA RECARREGAR RECURSOS QUANDO VOLTA DA PÁGINA DE PARCEIROS
+        window.addEventListener('focus', function() {
+          console.log('🔄 Página voltou ao foco - verificando recursos...');
+          
+          // Verificar se estamos na aba home
+          const homeTab = document.getElementById('home');
+          if (homeTab && homeTab.classList.contains('active')) {
+            console.log('🏠 Home ativa - recarregando recursos críticos...');
+            
+            // Recarregar vídeo hero
+            const heroVideo = document.getElementById('hero-video');
+            if (heroVideo) {
+              heroVideo.load();
+              heroVideo.style.display = 'block';
+              heroVideo.style.visibility = 'visible';
+              heroVideo.style.opacity = '1';
+            }
+            
+            // Recarregar background mobile
+            const mobileBg = document.querySelector('.mobile-bg');
+            if (mobileBg) {
+              mobileBg.style.display = 'block';
+              mobileBg.style.visibility = 'visible';
+              mobileBg.style.opacity = '1';
+            }
+            
+            // Recarregar logo
+            const logo = document.querySelector('.logo img');
+            if (logo) {
+              logo.style.display = 'block';
+              logo.style.visibility = 'visible';
+              logo.style.opacity = '1';
+            }
+            
+            // Forçar reflow
+            document.body.offsetHeight;
+          }
+        });
       })();
     </script>
     <!-- Form submission script - Deferred -->
