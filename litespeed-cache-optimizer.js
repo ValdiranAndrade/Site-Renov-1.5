@@ -58,7 +58,7 @@ class LiteSpeedCacheOptimizer {
             body { 
                 margin: 0; 
                 padding: 0; 
-                font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+                font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
                 line-height: 1.6;
                 color: #333;
                 overflow-x: hidden;
@@ -256,22 +256,14 @@ class LiteSpeedCacheOptimizer {
      * Otimizar fontes
      */
     optimizeFonts() {
-        // Preload fontes críticas
-        const criticalFonts = [
-            'assets/fonts/Montserrat-Regular.woff2',
-            'assets/fonts/Montserrat-Medium.woff2'
-        ];
+        // Google Fonts já carregado via CDN - não precisa de preload local
+        console.log('ℹ️ Google Fonts (Inter) já carregado via CDN');
         
-        criticalFonts.forEach(font => {
-            const link = document.createElement('link');
-            link.rel = 'preload';
-            link.href = font;
-            link.as = 'font';
-            link.type = 'font/woff2';
-            link.crossOrigin = 'anonymous';
-            link.fetchPriority = 'high';
-            document.head.appendChild(link);
-        });
+        // Fontes Montserrat removidas - migração para Google Fonts
+        // const criticalFonts = [
+        //     'assets/fonts/Montserrat-Regular.woff2',
+        //     'assets/fonts/Montserrat-Medium.woff2'
+        // ];
         
         // Configurar font-display: swap - Removido (não é um seletor válido)
         // const fontFaces = document.querySelectorAll('@font-face');
@@ -312,9 +304,8 @@ class LiteSpeedCacheOptimizer {
                 // Cache recursos críticos
                 const criticalResources = [
                     'assets/images/Renov-Logo.webp',
-                    'assets/fonts/Montserrat-Regular.woff2',
-                    'assets/fonts/Montserrat-Medium.woff2',
                     'assets/images/mobile/bg-como-funciona.webp'
+                    // Fontes Montserrat removidas - migração para Google Fonts
                 ];
                 
                 criticalResources.forEach(resource => {

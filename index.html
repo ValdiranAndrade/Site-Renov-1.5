@@ -43,26 +43,6 @@
     
     <!-- ULTRA-CRITICAL PRELOADS FOR LCP OPTIMIZATION -->
     <link rel="preload" href="assets/images/Renov-Logo.webp" as="image" fetchpriority="high" decoding="sync">
-    <link rel="preload" href="assets/images/bg-como-funciona.webp" as="image" fetchpriority="high" decoding="sync">
-    <link rel="preload" href="bg-video-compressed.webm" as="fetch" fetchpriority="high">
-    <link rel="preload" href="bg-IA-compressed.webm" as="fetch" fetchpriority="high">
-    
-    <!-- CRITICAL CSS INLINE FOR LCP -->
-    <style>
-      /* CRITICAL CSS FOR LCP - Inline to avoid render blocking */
-      *{box-sizing:border-box;margin:0;padding:0}
-      body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;color:#333;overflow-x:hidden;max-width:100vw;width:100%}
-      .hero{position:relative;width:100vw;height:140vh;display:flex;align-items:flex-start;overflow:hidden;margin-top:0;margin-bottom:-350px;background:#000}
-      .hero-content{position:relative;z-index:1;width:100%;max-width:1200px;margin:0 auto;padding:0 5%;margin-top:300px}
-      .hero-text{color:#fff;text-align:center;margin-bottom:2rem}
-      .hero-text h1{font-size:3.5rem;font-weight:700;margin-bottom:1rem;line-height:1.2}
-      .hero-text p{font-size:1.2rem;margin-bottom:2rem;opacity:0.9}
-      .video-bg{position:absolute;top:0;left:50%;width:100vw;height:100%;min-width:100vw;min-height:100%;object-fit:cover;transform:translateX(-50%);opacity:1;visibility:visible}
-      .mobile-bg{position:absolute;top:0;left:0;width:100vw;height:100%;min-width:100vw;min-height:100%;background-image:url('assets/images/bg-como-funciona.webp');background-size:150% auto;background-position:center;background-repeat:no-repeat;z-index:0;display:block!important;visibility:visible!important;opacity:1!important}
-      .logo img{width:160px;height:40px;object-fit:contain;display:block;max-width:100%}
-      .header-content{display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem;max-width:1200px;margin:0 auto;position:relative;z-index:10;background:#fff;min-height:70px}
-      @media (max-width:768px){.hero{height:100vh;margin-bottom:0;min-height:600px;align-items:stretch}.hero-content{margin-top:120px;padding:0 20px;z-index:2;display:flex!important;visibility:visible!important;opacity:1!important}.hero-text h1{font-size:32px;line-height:1.2;display:block!important;visibility:visible!important;opacity:1!important}.hero-text p{font-size:16px;line-height:1.4;display:block!important;visibility:visible!important;opacity:1!important}.logo img{width:120px;height:30px;display:block!important;visibility:visible!important;opacity:1!important}}
-    </style>
     
     <!-- INTELLIGENT RESOURCE HINTS - Network-aware -->
     <script>
@@ -131,16 +111,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
     
-    <!-- Google Fonts - Inter - Optimized for LCP -->
+    <!-- Google Fonts - Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- LITESPEED CRITICAL CSS - OPTIMIZED FOR LCP -->
+    <!-- LITESPEED CRITICAL CSS -->
     <style>
-      /* LITESPEED CRITICAL CSS - MINIFIED - LCP OPTIMIZED */
-      .main-nav .tab-buttons{display:flex;gap:12px}.tab-btn{font-size:1.1rem;font-weight:400;padding:8px 18px;border-radius:24px;background:transparent;border:none;cursor:pointer}.tab-btn.active,.tab-btn:focus{background:#00b140;color:#fff!important;outline:none}.social-links{display:flex;gap:12px}.social-links a{font-size:1.1rem;color:#00b140;text-decoration:none}.social-links a:hover{color:#008d36}.video-bg-wrapper{position:absolute;top:0;left:0;width:100vw;height:100%;z-index:0;overflow:hidden;pointer-events:none;transform:translateY(-300px);display:block}.cta-button{display:inline-block;background:#00b140;color:#fff;padding:15px 30px;text-decoration:none;border-radius:30px;font-weight:600;font-size:1.1rem}.cta-button:hover{background:#008d36}
+      
+      /* LITESPEED CRITICAL CSS - MINIFIED */
+      *{box-sizing:border-box;margin:0;padding:0}body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;color:#333;overflow-x:hidden;max-width:100vw;width:100%}.logo img{width:160px;height:40px;object-fit:contain;display:block;max-width:100%;contain:layout style paint}.header-content{display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem;max-width:1200px;margin:0 auto;position:relative;z-index:10;background:#fff;min-height:70px;contain:layout}.main-nav .tab-buttons{display:flex;gap:12px}.tab-btn{font-size:1.1rem;font-weight:400;padding:8px 18px;border-radius:24px;background:transparent;border:none;cursor:pointer}.tab-btn.active,.tab-btn:focus{background:#00b140;color:#fff!important;outline:none}.social-links{display:flex;gap:12px}.social-links a{font-size:1.1rem;color:#00b140;text-decoration:none}.social-links a:hover{color:#008d36}.hero{position:relative;width:100vw;height:140vh;display:flex;align-items:flex-start;overflow:hidden;margin-top:0;margin-bottom:-350px;background:#000;contain:layout style paint}.hero-content{position:relative;z-index:1;width:100%;max-width:1200px;margin:0 auto;padding:0 5%;margin-top:300px;contain:layout}.video-bg-wrapper{position:absolute;top:0;left:0;width:100vw;height:100%;z-index:0;overflow:hidden;pointer-events:none;transform:translateY(-300px);display:block;contain:layout style paint}.video-bg{position:absolute;top:0;left:50%;width:100vw;height:100%;min-width:100vw;min-height:100%;object-fit:cover;transform:translateX(-50%);opacity:1;visibility:visible;contain:layout style paint}.hero-text{color:#fff;text-align:center;margin-bottom:2rem;contain:layout}.hero-text h1{font-size:3.5rem;font-weight:700;margin-bottom:1rem;line-height:1.2;contain:layout style paint}.hero-text p{font-size:1.2rem;margin-bottom:2rem;opacity:0.9;contain:layout style paint}.cta-button{display:inline-block;background:#00b140;color:#fff;padding:15px 30px;text-decoration:none;border-radius:30px;font-weight:600;font-size:1.1rem;contain:layout style paint}.cta-button:hover{background:#008d36}
       
       /* LITESPEED MOBILE CSS - MINIFIED */
       @media (max-width:768px){.hero{height:100vh;margin-bottom:0;min-height:600px;align-items:stretch;contain:layout style paint}.hero-content{margin-top:120px;padding:0 20px;z-index:2;contain:layout;display:flex!important;visibility:visible!important;opacity:1!important}.header-content{padding:0.5rem 1rem;background:rgba(255,255,255,0.95);backdrop-filter:blur(10px);contain:layout;display:flex!important;visibility:visible!important;opacity:1!important}.logo{display:block!important;visibility:visible!important;opacity:1!important}.logo img{width:120px;height:30px;contain:layout style paint;display:block!important;visibility:visible!important;opacity:1!important}.hero-text{max-width:100%;padding:0;margin:0;contain:layout;display:block!important;visibility:visible!important;opacity:1!important}.mobile-bg{position:absolute;top:0;left:0;width:100vw;height:100%;min-width:100vw;min-height:100%;background-image:url('assets/images/bg-como-funciona.webp');background-size:150% auto;background-position:center;background-repeat:no-repeat;z-index:0;display:block!important;visibility:visible!important;opacity:1!important;contain:layout style paint}.video-bg{display:block!important;visibility:visible!important;opacity:1!important;position:absolute!important;top:0!important;left:50%!important;width:100vw!important;height:100%!important;min-width:100vw!important;min-height:100%!important;object-fit:cover!important;transform:translateX(-50%)!important;z-index:0!important;contain:layout style paint}.hero-text h1{font-size:32px;line-height:1.2;contain:layout style paint;display:block!important;visibility:visible!important;opacity:1!important}.hero-text p{font-size:16px;line-height:1.4;contain:layout style paint;display:block!important;visibility:visible!important;opacity:1!important}}@media (max-width:480px){.hero-text h1{font-size:28px;line-height:1.2;contain:layout style paint;display:block!important;visibility:visible!important;opacity:1!important}.hero-text p{font-size:14px;line-height:1.4;contain:layout style paint;display:block!important;visibility:visible!important;opacity:1!important}.logo img{width:100px;height:25px;contain:layout style paint;display:block!important;visibility:visible!important;opacity:1!important}}@media (max-width:360px){.hero-text h1{font-size:24px;line-height:1.2;contain:layout style paint;display:block!important;visibility:visible!important;opacity:1!important}.hero-text p{font-size:12px;line-height:1.4;contain:layout style paint;display:block!important;visibility:visible!important;opacity:1!important}.logo img{width:80px;height:20px;contain:layout style paint;display:block!important;visibility:visible!important;opacity:1!important}}
@@ -257,7 +237,7 @@
     <noscript><link rel="stylesheet" href="styles.css?v=1.6.6"></noscript>
     
     <title>Renov - Sua Troca Inteligente</title>
-    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="icon" type="image/x-icon" href="assets/images/Renov-Logo.webp">
     
     <!-- Apple Touch Icon -->
@@ -422,8 +402,8 @@
                     <!-- Background para mobile - LCP OPTIMIZED -->
                     <div class="mobile-bg" style="position: absolute; top: 0; left: 0; width: 100vw; height: 100%; min-width: 100vw; min-height: 100%; background-image: url('assets/images/bg-como-funciona.webp'); background-size: 150% auto; background-position: center; background-repeat: no-repeat; z-index: 0; display: block;" data-critical="true" data-lcp-candidate="true"></div>
                     
-                    <!-- Vídeo para desktop e mobile - LCP ULTRA OPTIMIZED -->
-                    <video id="hero-video" autoplay muted loop playsinline class="video-bg" preload="auto" poster="assets/images/bg-como-funciona.webp" data-critical="true" data-lcp-candidate="true" fetchpriority="high" style="display: block; visibility: visible; opacity: 1; will-change: transform; transform: translateZ(0);">
+                    <!-- Vídeo para desktop e mobile - LCP OPTIMIZED -->
+                    <video id="hero-video" autoplay muted loop playsinline class="video-bg" preload="metadata" poster="assets/images/bg-como-funciona.webp" data-critical="true" data-lcp-candidate="true" fetchpriority="high" style="display: block; visibility: visible; opacity: 1;">
                       <source src="bg-video-compressed.webm" type="video/webm" fetchpriority="high">
                       <source src="bg-video-compressed.webm" type="video/webm" fetchpriority="high">
                       Seu navegador não suporta o elemento de vídeo.
@@ -1513,39 +1493,6 @@
                 targetTab.style.opacity = '1';
                 targetTab.classList.add('active');
                 console.log('✅ ABA ABERTA:', tabId);
-                
-                // RECARREGAR RECURSOS CRÍTICOS SE FOR HOME
-                if (tabId === 'home') {
-                  console.log('🔄 Recarregando recursos críticos para Home...');
-                  
-                  // Recarregar vídeo hero
-                  const heroVideo = document.getElementById('hero-video');
-                  if (heroVideo) {
-                    heroVideo.load();
-                    heroVideo.style.display = 'block';
-                    heroVideo.style.visibility = 'visible';
-                    heroVideo.style.opacity = '1';
-                  }
-                  
-                  // Recarregar background mobile
-                  const mobileBg = document.querySelector('.mobile-bg');
-                  if (mobileBg) {
-                    mobileBg.style.display = 'block';
-                    mobileBg.style.visibility = 'visible';
-                    mobileBg.style.opacity = '1';
-                  }
-                  
-                  // Recarregar logo
-                  const logo = document.querySelector('.logo img');
-                  if (logo) {
-                    logo.style.display = 'block';
-                    logo.style.visibility = 'visible';
-                    logo.style.opacity = '1';
-                  }
-                  
-                  // Forçar reflow
-                  document.body.offsetHeight;
-                }
               } else {
                 console.error('❌ ABA NÃO ENCONTRADA:', tabId);
               }
@@ -1638,45 +1585,6 @@
         setTimeout(forceInitMobileMenu, 1000);
         
         console.log('🚀 SOLUÇÃO AGGRESSIVA CONFIGURADA!');
-        
-        // LISTENER PARA RECARREGAR RECURSOS QUANDO VOLTA DA PÁGINA DE PARCEIROS
-        window.addEventListener('focus', function() {
-          console.log('🔄 Página voltou ao foco - verificando recursos...');
-          
-          // Verificar se estamos na aba home
-          const homeTab = document.getElementById('home');
-          if (homeTab && homeTab.classList.contains('active')) {
-            console.log('🏠 Home ativa - recarregando recursos críticos...');
-            
-            // Recarregar vídeo hero
-            const heroVideo = document.getElementById('hero-video');
-            if (heroVideo) {
-              heroVideo.load();
-              heroVideo.style.display = 'block';
-              heroVideo.style.visibility = 'visible';
-              heroVideo.style.opacity = '1';
-            }
-            
-            // Recarregar background mobile
-            const mobileBg = document.querySelector('.mobile-bg');
-            if (mobileBg) {
-              mobileBg.style.display = 'block';
-              mobileBg.style.visibility = 'visible';
-              mobileBg.style.opacity = '1';
-            }
-            
-            // Recarregar logo
-            const logo = document.querySelector('.logo img');
-            if (logo) {
-              logo.style.display = 'block';
-              logo.style.visibility = 'visible';
-              logo.style.opacity = '1';
-            }
-            
-            // Forçar reflow
-            document.body.offsetHeight;
-          }
-        });
       })();
     </script>
     <!-- Form submission script - Deferred -->

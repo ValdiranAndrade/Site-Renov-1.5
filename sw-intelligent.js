@@ -141,6 +141,7 @@ self.addEventListener('install', event => {
         '/',
         '/index.html',
         '/assets/images/Renov-Logo.webp',
+        // Fontes Montserrat removidas - migração para Google Fonts
         '/assets/images/bg-como-funciona.webp'
       ]);
     })
