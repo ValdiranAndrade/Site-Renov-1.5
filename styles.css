@@ -7467,3 +7467,89 @@ html body #sobre .hero-text p {
     display: none !important;
   }
 }
+
+/* Otimizações avançadas de font-display para reduzir CLS */
+
+/* Estratégia para textos críticos (títulos principais) */
+.hero-text h1,
+.hero-text h2,
+.diferencial-title,
+.avaliacao-titulo,
+.diagnostico-titulo,
+.pagamento-titulo,
+.novo-titulo {
+    /* Usar font-display: optional para textos críticos */
+    font-display: optional;
+    /* Fallback para fontes do sistema */
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    /* Reservar espaço para evitar layout shift */
+    min-height: 1.2em;
+    /* Garantir quebra adequada */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    /* Prevenir overflow */
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* Estratégia para textos secundários */
+.hero-text p,
+.diferencial-text,
+.avaliacao-descricao,
+.diagnostico-descricao,
+.pagamento-descricao,
+.novo-descricao {
+    /* Usar font-display: fallback para textos secundários */
+    font-display: fallback;
+    /* Fallback para fontes do sistema */
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    /* Reservar espaço mínimo */
+    min-height: 1.5em;
+    /* Garantir quebra adequada de texto */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    /* Prevenir overflow */
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* Estratégia para elementos de navegação */
+.tab-btn,
+.social-links a,
+.cta-button {
+    /* Usar font-display: swap para elementos interativos */
+    font-display: swap;
+    /* Fallback para fontes do sistema */
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+/* Preload de fontes críticas */
+@font-face {
+    font-family: 'Montserrat';
+    src: url('assets/fonts/Montserrat-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: optional;
+    /* Preload para fontes críticas */
+    font-display: fallback;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('assets/fonts/Montserrat-Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+    font-display: optional;
+    /* Preload para fontes críticas */
+    font-display: fallback;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('assets/fonts/Montserrat-Medium.woff2') format('woff2');
+    font-weight: 600;
+    font-style: normal;
+    font-display: optional;
+    /* Preload para fontes críticas */
+    font-display: fallback;
+}
