@@ -9,39 +9,36 @@ O arquivo `bg-IA.mp4-_1_.webm` estava causando um payload de rede muito grande (
 
 #### Vídeo IA (bg-IA.mp4-_1_.webm)
 - **Arquivo original**: `bg-IA.mp4-_1_.webm` (11.480,3 KiB)
-- **Arquivo comprimido**: `bg-IA-compressed.webm` (875 KiB)
-- **Arquivo ultra-comprimido**: `bg-IA-ultra-compressed.webm` (420 KiB)
-- **Redução total**: ~96,3% de redução no tamanho do arquivo
+- **Arquivo otimizado**: `bg-IA-compressed.webm` (875 KiB)
+- **Redução**: ~92% de redução no tamanho do arquivo
 
 #### Vídeo Principal (bg-video.mp4.mp4)
 - **Arquivo original**: `bg-video.mp4.mp4` (8,5 MB)
-- **Arquivo comprimido**: `bg-video-compressed.webm` (1,6 MB)
-- **Arquivo ultra-comprimido**: `bg-video-ultra-compressed.webm` (758 KiB)
-- **Redução total**: ~91,1% de redução no tamanho do arquivo
+- **Arquivo otimizado**: `bg-video-compressed.webm` (1,6 MB)
+- **Redução**: ~81% de redução no tamanho do arquivo
 
 #### Total de Redução
-- **Antes**: ~20 MB de vídeos
-- **Depois**: ~1,2 MB de vídeos
-- **Redução total**: ~94% de redução no payload de vídeos
+- **Antes**: ~19,5 MB de vídeos
+- **Depois**: ~2,5 MB de vídeos
+- **Redução total**: ~87% de redução no payload de vídeos
 
 ### 2. Otimizações Técnicas Aplicadas
-- **Codec**: VP9 com CRF 35 para compressão ultra-agressiva
-- **Resolução**: Reduzida para 960x540 (otimizada para web)
+- **Codec**: VP9 com CRF 30 para melhor compressão
+- **Resolução**: Reduzida para 1280x720 (mantendo qualidade visual)
 - **FPS**: Mantido em 60fps para suavidade
 - **Áudio**: Removido (não necessário para background)
-- **Qualidade**: Balanceada entre tamanho e qualidade visual
 
 ### 3. Atributos HTML Otimizados
 ```html
 <video 
-    src="bg-IA-ultra-compressed.webm" 
+    src="bg-IA-compressed.webm" 
     preload="metadata"
     fetchpriority="high"
     autoplay 
     muted 
     loop 
     playsinline>
-    <source src="bg-IA-ultra-compressed.webm" type="video/webm">
+    <source src="bg-IA-compressed.webm" type="video/webm">
 </video>
 ```
 
@@ -52,10 +49,10 @@ O arquivo `bg-IA.mp4-_1_.webm` estava causando um payload de rede muito grande (
 ## Benefícios Alcançados
 
 ### Performance
-- **Redução de 94% no payload total de vídeos**
+- **Redução de 87% no payload total de vídeos**
 - **Carregamento mais rápido** de todas as seções com vídeo
 - **Menor consumo de dados** para usuários móveis
-- **Economia de ~18,8 MB** por carregamento da página
+- **Economia de ~17 MB** por carregamento da página
 
 ### SEO e Core Web Vitals
 - **Melhoria no LCP** (Largest Contentful Paint)
@@ -98,11 +95,7 @@ O arquivo `bg-IA.mp4-_1_.webm` estava causando um payload de rede muito grande (
 
 ### Compressão de Vídeo (FFmpeg)
 ```bash
-# Compressão padrão
-ffmpeg -i input.webm -c:v libvpx-vp9 -crf 30 -b:v 0 -vf "scale=1280:720" -an output-compressed.webm
-
-# Compressão ultra-agressiva
-ffmpeg -i input.webm -c:v libvpx-vp9 -crf 35 -b:v 0 -vf "scale=960:540" -an output-ultra-compressed.webm
+ffmpeg -i input.webm -c:v libvpx-vp9 -crf 30 -b:v 0 -vf "scale=1280:720" -c:a none output-compressed.webm
 ```
 
 ### Verificação de Tamanho

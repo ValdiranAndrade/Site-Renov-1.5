@@ -7468,88 +7468,113 @@ html body #sobre .hero-text p {
   }
 }
 
-/* Otimizações avançadas de font-display para reduzir CLS */
-
-/* Estratégia para textos críticos (títulos principais) */
-.hero-text h1,
-.hero-text h2,
-.diferencial-title,
-.avaliacao-titulo,
-.diagnostico-titulo,
-.pagamento-titulo,
-.novo-titulo {
-    /* Usar font-display: optional para textos críticos */
-    font-display: optional;
-    /* Fallback para fontes do sistema */
-    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    /* Reservar espaço para evitar layout shift */
-    min-height: 1.2em;
-    /* Garantir quebra adequada */
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    /* Prevenir overflow */
-    max-width: 100%;
+/* Otimização LCP para vídeo hero */
+#hero-video {
+    /* Garantir que o vídeo seja detectável imediatamente */
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    /* Prioridade máxima para carregamento */
+    z-index: 1;
+    /* Garantir que o vídeo seja renderizado imediatamente */
+    contain: layout style paint;
+    /* Otimizar para LCP */
+    will-change: auto;
+    /* Garantir que o vídeo seja o elemento LCP */
+    position: relative;
+    /* Prevenir layout shift */
     box-sizing: border-box;
 }
 
-/* Estratégia para textos secundários */
-.hero-text p,
-.diferencial-text,
-.avaliacao-descricao,
-.diagnostico-descricao,
-.pagamento-descricao,
-.novo-descricao {
-    /* Usar font-display: fallback para textos secundários */
-    font-display: fallback;
-    /* Fallback para fontes do sistema */
-    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    /* Reservar espaço mínimo */
-    min-height: 1.5em;
-    /* Garantir quebra adequada de texto */
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    /* Prevenir overflow */
-    max-width: 100%;
+/* Otimização para poster do vídeo */
+#hero-video[poster] {
+    /* Garantir que o poster seja carregado com prioridade */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* Prevenir layout shift durante carregamento */
+    min-height: 100vh;
+    /* Garantir que o poster seja detectável */
+    display: block !important;
+    visibility: visible !important;
+}
+
+/* Otimização para mobile background */
+.mobile-bg {
+    /* Garantir que seja detectável para LCP */
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    /* Prioridade máxima */
+    z-index: 1;
+    /* Garantir carregamento imediato */
+    background-attachment: scroll;
+    /* Otimizar para performance */
+    will-change: auto;
+    /* Prevenir layout shift */
     box-sizing: border-box;
 }
 
-/* Estratégia para elementos de navegação */
-.tab-btn,
-.social-links a,
-.cta-button {
-    /* Usar font-display: swap para elementos interativos */
-    font-display: swap;
-    /* Fallback para fontes do sistema */
-    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+/* Garantir que elementos LCP sejam visíveis imediatamente */
+[data-lcp-candidate="true"] {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    /* Prioridade máxima para carregamento */
+    z-index: 1;
+    /* Garantir que sejam detectáveis */
+    position: relative;
+    /* Prevenir layout shift */
+    box-sizing: border-box;
 }
 
-/* Preload de fontes críticas */
-@font-face {
-    font-family: 'Montserrat';
-    src: url('assets/fonts/Montserrat-Regular.woff2') format('woff2');
-    font-weight: 400;
-    font-style: normal;
-    font-display: optional;
-    /* Preload para fontes críticas */
-    font-display: fallback;
+/* Otimização para elementos críticos */
+[data-critical="true"] {
+    /* Garantir carregamento prioritário */
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    /* Prioridade máxima */
+    z-index: 1;
+    /* Garantir que sejam detectáveis */
+    position: relative;
+    /* Prevenir layout shift */
+    box-sizing: border-box;
 }
 
-@font-face {
-    font-family: 'Montserrat';
-    src: url('assets/fonts/Montserrat-Medium.woff2') format('woff2');
-    font-weight: 500;
-    font-style: normal;
-    font-display: optional;
-    /* Preload para fontes críticas */
-    font-display: fallback;
+/* Otimização LCP para logo */
+.logo img {
+    /* Garantir que o logo seja detectável imediatamente */
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    /* Prioridade máxima para carregamento */
+    z-index: 1;
+    /* Garantir que o logo seja renderizado imediatamente */
+    contain: layout style paint;
+    /* Otimizar para LCP */
+    will-change: auto;
+    /* Garantir que o logo seja o elemento LCP */
+    position: relative;
+    /* Prevenir layout shift */
+    box-sizing: border-box;
+    /* Garantir carregamento prioritário */
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
 }
 
-@font-face {
-    font-family: 'Montserrat';
-    src: url('assets/fonts/Montserrat-Medium.woff2') format('woff2');
-    font-weight: 600;
-    font-style: normal;
-    font-display: optional;
-    /* Preload para fontes críticas */
-    font-display: fallback;
+/* Otimização para logo no mobile menu */
+.mobile-menu-header .logo img {
+    /* Garantir que seja detectável para LCP */
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    /* Prioridade máxima */
+    z-index: 1;
+    /* Garantir carregamento imediato */
+    contain: layout style paint;
+    /* Otimizar para performance */
+    will-change: auto;
+    /* Prevenir layout shift */
+    box-sizing: border-box;
 }
