@@ -140,71 +140,6 @@ section h2 span {
     overflow: hidden;
     margin-top: 0 !important;
     margin-bottom: -350px;
-    padding-top: 0 !important;
-}
-
-/* REMOVER MARGEM BRANCA ENTRE HEADER E HERO */
-header {
-    margin: 0 !important;
-    padding: 0 !important;
-}
-
-main {
-    margin: 0 !important;
-    padding: 0 !important;
-}
-
-.tab-content {
-    margin: 0 !important;
-    padding: 0 !important;
-}
-
-#home {
-    margin: 0 !important;
-    padding: 0 !important;
-}
-
-/* REMOVER MARGENS BRANCAS SUPERIOR E LATERAL */
-* {
-    margin: 0 !important;
-    padding: 0 !important;
-    box-sizing: border-box !important;
-}
-
-html, body {
-    margin: 0 !important;
-    padding: 0 !important;
-    width: 100vw !important;
-    height: 100vh !important;
-    overflow-x: hidden !important;
-}
-
-.page-wrapper {
-    margin: 0 !important;
-    padding: 0 !important;
-    width: 100vw !important;
-    min-height: 100vh !important;
-    overflow-x: hidden !important;
-}
-
-header, main, section {
-    margin: 0 !important;
-    padding: 0 !important;
-}
-
-.hero, .hero-content, .video-bg-wrapper {
-    margin: 0 !important;
-    padding: 0 !important;
-}
-
-.mobile-bg {
-    margin: 0 !important;
-    padding: 0 !important;
-    top: 0 !important;
-    left: 0 !important;
-    position: absolute !important;
-    width: 100vw !important;
-    height: 100% !important;
 }
 
 /* Ajuste responsivo para telas pequenas */
@@ -1899,9 +1834,44 @@ header {
     background: transparent !important;
     position: relative;
     z-index: 10;
-    margin-bottom: 20px;
+    margin-bottom: 0 !important;
     padding: 0 !important;
     padding-bottom: 0 !important;
+}
+
+/* Remover espaços entre header e hero */
+header + main,
+header + main .hero {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+/* Garantir que não haja espaços */
+.page-wrapper > header + main {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+/* Remover qualquer espaço entre header e hero */
+header ~ main .hero,
+header + main .tab-content .hero,
+#home .hero {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+/* Garantir que o main não tenha espaços */
+main {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+/* Garantir que o tab-content não tenha espaços */
+.tab-content {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
 }
 
 .header-content {
@@ -2062,8 +2032,9 @@ main {
 /* Home */
 .hero {
     text-align: center;
-    padding: 0 0 0 0;
+    padding: 0 !important;
     margin-top: 0 !important;
+    margin-bottom: 0 !important;
     position: relative;
     overflow: hidden;
 }
