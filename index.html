@@ -48,6 +48,21 @@
     <script>
       // Dynamic resource hints based on connection speed
       function addResourceHints() {
+        // Função getConnectionSpeed movida para escopo global
+        function getConnectionSpeed() {
+          if ('connection' in navigator) {
+            const connection = navigator.connection;
+            if (connection.effectiveType === 'slow-2g' || connection.effectiveType === '2g') {
+              return 'slow';
+            } else if (connection.effectiveType === '3g') {
+              return 'medium';
+            } else {
+              return 'fast';
+            }
+          }
+          return 'fast'; // Default to fast
+        }
+        
         const connectionSpeed = getConnectionSpeed();
         const head = document.head;
         

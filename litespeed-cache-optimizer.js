@@ -273,11 +273,11 @@ class LiteSpeedCacheOptimizer {
             document.head.appendChild(link);
         });
         
-        // Configurar font-display: swap
-        const fontFaces = document.querySelectorAll('@font-face');
-        fontFaces.forEach(face => {
-            face.style.fontDisplay = 'swap';
-        });
+        // Configurar font-display: swap - Removido (não é um seletor válido)
+        // const fontFaces = document.querySelectorAll('@font-face');
+        // fontFaces.forEach(face => {
+        //     face.style.fontDisplay = 'swap';
+        // });
     }
 
     /**
