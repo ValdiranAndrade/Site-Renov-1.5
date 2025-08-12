@@ -325,23 +325,32 @@ section h2 span {
     margin: 0;
 }
 
+/* Prevenir CLS no título principal */
 .hero-text h1 {
-    font-size: 48px;
-    line-height: 1.05 !important;
-    margin-bottom: 24px;
-    color: #fff !important;
-    font-weight: 700;
-    text-align: left;
-    white-space: normal !important;
+    /* Reservar espaço para evitar layout shift */
+    min-height: 1.2em;
+    /* Garantir que a fonte seja carregada */
+    font-display: swap;
+    /* Fallback para fontes não carregadas */
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    /* Prevenir quebra de layout */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    /* Garantir que o texto não cause overflow */
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
+/* Prevenir CLS em elementos de texto críticos */
 .hero-text p {
-    font-size: 18px;
-    line-height: 1.5;
-    color: #fff !important;
-    margin: 0;
-    text-align: left;
-    max-width: 500px;
+    /* Reservar espaço mínimo */
+    min-height: 1.5em;
+    /* Garantir quebra adequada de texto */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    /* Prevenir overflow */
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 @media (max-width: 768px) {
@@ -813,12 +822,26 @@ footer:last-child {
     width: 80px;
     height: 80px;
     margin-bottom: 1.5rem;
+    /* Prevenir CLS - reservar espaço para o ícone */
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Garantir que o container mantenha suas dimensões */
+    box-sizing: border-box;
 }
 
 .diferencial-icon img {
     width: 100%;
     height: 100%;
     object-fit: contain;
+    /* Prevenir CLS - manter aspect ratio */
+    aspect-ratio: 80/65;
+    /* Garantir que a imagem não cause layout shift */
+    max-width: 80px;
+    max-height: 65px;
+    /* Fallback para navegadores que não suportam aspect-ratio */
+    min-height: 65px;
 }
 
 .diferencial-title {
@@ -826,6 +849,14 @@ footer:last-child {
     font-weight: 700;
     color: #1d1d1f;
     margin-bottom: 1rem;
+    /* Prevenir CLS em títulos de seção */
+    min-height: 1.2em;
+    /* Garantir quebra adequada */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    /* Prevenir overflow */
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 .diferencial-text {
@@ -4263,6 +4294,12 @@ header::before, header::after,
     height: 100%;
     background: url('assets/images/avaliacao-mock.webp') center bottom/cover no-repeat !important;
     z-index: 1;
+    /* Prevenir CLS - reservar espaço para background */
+    min-height: 700px;
+    /* Garantir que o container mantenha suas dimensões */
+    box-sizing: border-box;
+    /* Prevenir layout shift durante carregamento */
+    background-color: #f5f5f5; /* Fallback color */
 }
 .avaliacao-conteudo {
     position: relative;
@@ -4520,6 +4557,12 @@ header::before, header::after,
     background: url('assets/images/diagnostico-mock.webp') center bottom/cover no-repeat !important;
     z-index: 1;
     opacity: 1;
+    /* Prevenir CLS - reservar espaço para background */
+    min-height: 700px;
+    /* Garantir que o container mantenha suas dimensões */
+    box-sizing: border-box;
+    /* Prevenir layout shift durante carregamento */
+    background-color: #f5f5f5; /* Fallback color */
 }
 .diagnostico-conteudo {
     position: relative;
@@ -4595,6 +4638,12 @@ header::before, header::after,
     background: url('assets/images/logistica-mock.webp') center bottom/cover no-repeat !important;
     z-index: 1;
     opacity: 1;
+    /* Prevenir CLS - reservar espaço para background */
+    min-height: 700px;
+    /* Garantir que o container mantenha suas dimensões */
+    box-sizing: border-box;
+    /* Prevenir layout shift durante carregamento */
+    background-color: #f5f5f5; /* Fallback color */
 }
 .pagamento-conteudo {
     position: relative;
@@ -4684,6 +4733,12 @@ header::before, header::after,
     background: url('assets/images/pagamento-mock.webp') center bottom/cover no-repeat !important;
     z-index: 1;
     opacity: 1;
+    /* Prevenir CLS - reservar espaço para background */
+    min-height: 700px;
+    /* Garantir que o container mantenha suas dimensões */
+    box-sizing: border-box;
+    /* Prevenir layout shift durante carregamento */
+    background-color: #f5f5f5; /* Fallback color */
 }
 .novo-conteudo {
     position: relative;
