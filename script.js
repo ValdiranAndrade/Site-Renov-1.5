@@ -546,8 +546,14 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         
         // Atualiza estado dos botões
-        prevButton.style.opacity = index === 0 ? '0.5' : '1';
-        nextButton.style.opacity = index === totalCards - 1 ? '0.5' : '1';
+        if (prevButton) {
+            prevButton.style.opacity = index === 0 ? '0.5' : '1';
+            prevButton.disabled = index === 0;
+        }
+        if (nextButton) {
+            nextButton.style.opacity = index === totalCards - 1 ? '0.5' : '1';
+            nextButton.disabled = index === totalCards - 1;
+        }
     }
     
     // Event listeners para os botões de navegação
